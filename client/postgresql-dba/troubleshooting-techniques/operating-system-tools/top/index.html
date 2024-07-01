@@ -1,0 +1,35 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/postgresql-dba/content/111-troubleshooting-techniques/102-operating-system-tools/100-top.md"></div> <h1 id="top-command-in-postgresql">Top Command in PostgreSQL</h1>
+<p>The <code>top</code> command is an essential operating system tool for monitoring system processes and resources in real-time. As you manage your PostgreSQL database, it’s important to monitor and manage the resources being consumed by various processes to ensure optimal performance.</p>
+<h2 id="overview">Overview</h2>
+<p><code>top</code> is a command-line utility that comes pre-installed on most Unix-based operating systems such as Linux, macOS, and BSD. It provides a dynamic, real-time view of the processes running on a system, displaying valuable information like process ID, user, CPU usage, memory usage, and more.</p>
+<h2 id="using-top-with-postgresql">Using <code>top</code> with PostgreSQL</h2>
+<p>When dealing with PostgreSQL, you can use <code>top</code> to monitor and troubleshoot various aspects of your database system, such as:</p>
+<ul>
+<li>Identifying the most resource-intensive PostgreSQL processes</li>
+<li>Monitoring server resources like CPU and memory usage</li>
+<li>Identifying sources of slow database queries or poor performance</li>
+</ul>
+<p>To get started, simply run the <code>top</code> command in your terminal:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#50FA7B">top</span></span>
+<span class="line"></span></code></pre>
+<p>You’ll see a live, scrolling list of currently running processes, each one showing various metrics such as:</p>
+<ul>
+<li><code>PID</code>: Process ID</li>
+<li><code>USER</code>: User who owns the process</li>
+<li><code>%CPU</code>: CPU usage by the process</li>
+<li><code>%MEM</code>: Memory usage by the process</li>
+<li><code>TIME+</code>: Total CPU time consumed by the process</li>
+<li><code>COMMAND</code>: Process name or command</li>
+</ul>
+<p>To filter the list to display only PostgreSQL processes, you can press ‘u’, type <code>postgres</code>, and hit Enter.</p>
+<h2 id="additional-commands">Additional Commands</h2>
+<p><code>top</code> allows you to interact with the process list in various ways using the following key commands:</p>
+<ul>
+<li><code>q</code>: Quit <code>top</code></li>
+<li><code>k</code>: Kill a process by entering its PID</li>
+<li><code>r</code>: Renice (change priority) of a process by entering its PID</li>
+<li><code>f</code>: Customize displayed fields</li>
+<li><code>o</code>: Change the sorting order of processes</li>
+<li><code>?</code>: Display help</li>
+</ul>
+<p>Remember that effective PostgreSQL management requires more than just monitoring processes but proactively optimizing queries, indexes, and overall database performance. The <code>top</code> command, however, can be a valuable asset in your toolkit to help diagnose and troubleshoot resource-intensive processes in your PostgreSQL server environment.</p>

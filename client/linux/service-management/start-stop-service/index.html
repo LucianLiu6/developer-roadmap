@@ -1,0 +1,15 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/linux/content/108-service-management/101-start-stop-service.md"></div> <h1 id="start-stop-service">Start Stop Service</h1>
+<p>In Linux, Service Management refers to controlling and managing system services, such as firewall, network, database, and other essential services. This play a critical role in the system’s functionality and stability.</p>
+<p>One of the fundamental parts of service management in Linux is starting and stopping service. System administrators often need to start, stop, or restart services after an update or configuration changes. In Linux, this can be done using the <code>systemctl</code> command.</p>
+<p>Here is a simple example:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6272A4"># To start a service</span></span>
+<span class="line"><span style="color:#50FA7B">sudo</span><span style="color:#F1FA8C"> systemctl</span><span style="color:#F1FA8C"> start</span><span style="color:#F1FA8C"> service_name</span><span style="color:#F8F8F2">   </span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6272A4"># To stop a service</span></span>
+<span class="line"><span style="color:#50FA7B">sudo</span><span style="color:#F1FA8C"> systemctl</span><span style="color:#F1FA8C"> stop</span><span style="color:#F1FA8C"> service_name</span><span style="color:#F8F8F2">   </span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6272A4"># To restart a service</span></span>
+<span class="line"><span style="color:#50FA7B">sudo</span><span style="color:#F1FA8C"> systemctl</span><span style="color:#F1FA8C"> restart</span><span style="color:#F1FA8C"> service_name</span><span style="color:#F8F8F2">   </span></span>
+<span class="line"></span></code></pre>
+<p>Replace <code>service_name</code> with the name of the service you want to start, stop or restart. Always make sure to use sudo to execute these commands as they require root permissions.
+Please note, these commands will vary based on the specific Linux distribution and the init system it uses.</p>

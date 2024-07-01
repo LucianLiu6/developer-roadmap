@@ -1,0 +1,38 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/react-native/content/104-core-components/110-view/101-keyboard-avoiding-view.md"></div> <h1 id="keyboardavoidingview">KeyboardAvoidingView</h1>
+<p><code>KeyboardAvoidingView</code> is a built-in React Native component that automatically adjusts its children components’ position when the keyboard opens, preventing them from being obscured by the on-screen keyboard. It’s a useful component, particularly for forms and input fields where the user needs to see the text they’re typing.</p>
+<h2 id="usage">Usage</h2>
+<p>To use the <code>KeyboardAvoidingView</code>, simply wrap the desired components that need to avoid the keyboard with the <code>KeyboardAvoidingView</code> component. The prop <code>behavior</code> is used to specify the type of animating behavior the component will use. This behavior differs depending on the platform and can be one of ‘height’, ‘position’, ‘padding’, or a custom defined behavior.</p>
+<p>Here’s a basic example:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#FF79C6">import</span><span style="color:#F8F8F2"> React </span><span style="color:#FF79C6">from</span><span style="color:#E9F284"> '</span><span style="color:#F1FA8C">react</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"><span style="color:#FF79C6">import</span><span style="color:#F8F8F2"> { View, TextInput, StyleSheet, KeyboardAvoidingView } </span><span style="color:#FF79C6">from</span><span style="color:#E9F284"> '</span><span style="color:#F1FA8C">react-native</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">const</span><span style="color:#50FA7B"> App</span><span style="color:#FF79C6"> =</span><span style="color:#F8F8F2"> () </span><span style="color:#FF79C6">=></span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#FF79C6">  return</span><span style="color:#F8F8F2"> (</span></span>
+<span class="line"><span style="color:#F8F8F2">    &#x3C;</span><span style="color:#8BE9FD;font-style:italic">KeyboardAvoidingView</span></span>
+<span class="line"><span style="color:#50FA7B;font-style:italic">      style</span><span style="color:#FF79C6">={</span><span style="color:#F8F8F2">styles.container</span><span style="color:#FF79C6">}</span></span>
+<span class="line"><span style="color:#50FA7B;font-style:italic">      behavior</span><span style="color:#FF79C6">=</span><span style="color:#E9F284">"</span><span style="color:#F1FA8C">padding</span><span style="color:#E9F284">"</span><span style="color:#6272A4"> // Additional padding when the keyboard is open.</span></span>
+<span class="line"><span style="color:#F8F8F2">    ></span></span>
+<span class="line"><span style="color:#F8F8F2">      &#x3C;</span><span style="color:#8BE9FD;font-style:italic">TextInput</span></span>
+<span class="line"><span style="color:#50FA7B;font-style:italic">        placeholder</span><span style="color:#FF79C6">=</span><span style="color:#E9F284">"</span><span style="color:#F1FA8C">Type something here</span><span style="color:#E9F284">"</span></span>
+<span class="line"><span style="color:#50FA7B;font-style:italic">        style</span><span style="color:#FF79C6">={</span><span style="color:#F8F8F2">styles.textInput</span><span style="color:#FF79C6">}</span></span>
+<span class="line"><span style="color:#F8F8F2">      /></span></span>
+<span class="line"><span style="color:#F8F8F2">    &#x3C;/</span><span style="color:#8BE9FD;font-style:italic">KeyboardAvoidingView</span><span style="color:#F8F8F2">></span></span>
+<span class="line"><span style="color:#F8F8F2">  );</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">const</span><span style="color:#F8F8F2"> styles </span><span style="color:#FF79C6">=</span><span style="color:#F8F8F2"> StyleSheet.</span><span style="color:#50FA7B">create</span><span style="color:#F8F8F2">({</span></span>
+<span class="line"><span style="color:#F8F8F2">  container</span><span style="color:#FF79C6">:</span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#F8F8F2">    flex</span><span style="color:#FF79C6">:</span><span style="color:#BD93F9"> 1</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#F8F8F2">    justifyContent</span><span style="color:#FF79C6">:</span><span style="color:#E9F284"> '</span><span style="color:#F1FA8C">center</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#F8F8F2">  },</span></span>
+<span class="line"><span style="color:#F8F8F2">  textInput</span><span style="color:#FF79C6">:</span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#F8F8F2">    borderWidth</span><span style="color:#FF79C6">:</span><span style="color:#BD93F9"> 1</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#F8F8F2">    borderColor</span><span style="color:#FF79C6">:</span><span style="color:#E9F284"> '</span><span style="color:#F1FA8C">black</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#F8F8F2">    padding</span><span style="color:#FF79C6">:</span><span style="color:#BD93F9"> 10</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#F8F8F2">    margin</span><span style="color:#FF79C6">:</span><span style="color:#BD93F9"> 20</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#F8F8F2">  },</span></span>
+<span class="line"><span style="color:#F8F8F2">});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">export</span><span style="color:#FF79C6"> default</span><span style="color:#F8F8F2"> App;</span></span>
+<span class="line"></span></code></pre>
+<p>Remember to test the behavior on different devices and platforms to ensure the desired result is achieved.</p>

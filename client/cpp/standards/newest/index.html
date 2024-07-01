@@ -1,0 +1,85 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/cpp/content/113-standards/103-newest.md"></div> <h1 id="c-newest-standard-c20">C++ Newest Standard: C++20</h1>
+<p>C++20 is the newest standard of the C++ programming language, which was officially published in December 2020. It introduces many new features, enhancements, and improvements over the previous standards. Here is a brief summary of some key features in C++20.</p>
+<ul>
+<li>
+<p><strong>Concepts</strong>: Concepts provide a way to specify constraints on template parameters, ensuring that they meet a specific set of requirements. This allows for better compile-time error messages and code readability.</p>
+<p>Example:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>template&#x3C;typename T></span></span>
+<span class="line"><span>concept Printable = requires(T x) {</span></span>
+<span class="line"><span>    {std::cout &#x3C;&#x3C; x};</span></span>
+<span class="line"><span>};</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>template&#x3C;Printable T></span></span>
+<span class="line"><span>void print(const T&#x26; x) {</span></span>
+<span class="line"><span>    std::cout &#x3C;&#x3C; x &#x3C;&#x3C; '\n';</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span></code></pre>
+</li>
+<li>
+<p><strong>Ranges</strong>: Ranges build on the iterator concept and provide a more usable and composable framework for dealing with sequences of values. They simplify the way algorithms can be applied to collections of data.</p>
+<p>Example:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>#include &#x3C;iostream></span></span>
+<span class="line"><span>#include &#x3C;vector></span></span>
+<span class="line"><span>#include &#x3C;ranges></span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>int main() {</span></span>
+<span class="line"><span>    std::vector&#x3C;int> numbers{1, 2, 3, 4, 5};</span></span>
+<span class="line"><span>    auto even_view = numbers | std::views::filter([](int n) { return n % 2 == 0; });</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    for (int n : even_view) {</span></span>
+<span class="line"><span>        std::cout &#x3C;&#x3C; n &#x3C;&#x3C; ' ';</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span></code></pre>
+</li>
+<li>
+<p><strong>Coroutines</strong>: Coroutines offer a way to split complex, long-running functions into smaller, more manageable chunks, allowing them to be suspended and resumed at specific points.</p>
+<p>Example:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>#include &#x3C;iostream></span></span>
+<span class="line"><span>#include &#x3C;coroutine></span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>std::generator&#x3C;int> generator() {</span></span>
+<span class="line"><span>    for (int i = 0; i &#x3C; 5; ++i)</span></span>
+<span class="line"><span>        co_yield i;</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>int main() {</span></span>
+<span class="line"><span>    for (int value : generator())</span></span>
+<span class="line"><span>        std::cout &#x3C;&#x3C; value &#x3C;&#x3C; ' ';</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span></code></pre>
+</li>
+<li>
+<p><strong>Lambdas with template parameters</strong>: C++20 enables using <code>auto</code> as a lambda parameter, allowing for generic lambdas with templated parameters.</p>
+<p>Example:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>auto sum = [](auto a, auto b) {</span></span>
+<span class="line"><span>    return a + b;</span></span>
+<span class="line"><span>};</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>int res1 = sum(1, 2);           // int</span></span>
+<span class="line"><span>double res2 = sum(1.0, 2.0);    // double</span></span>
+<span class="line"><span></span></span></code></pre>
+</li>
+<li>
+<p><strong>Constexpr enhancements</strong>: <code>constexpr</code> support is extended with additional features, such as <code>constexpr</code> dynamic allocations, <code>constexpr</code> try-catch blocks, and <code>constexpr</code> lambdas.</p>
+<p>Example:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>struct Point {</span></span>
+<span class="line"><span>    constexpr Point(int x, int y): x_{x}, y_{y} {}</span></span>
+<span class="line"><span>    int x_, y_;</span></span>
+<span class="line"><span>};</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>constexpr auto create_points() {</span></span>
+<span class="line"><span>    Point points[3]{};</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    for (int i = 0; i &#x3C; 3; ++i) {</span></span>
+<span class="line"><span>        points[i] = Point{i, i * i};</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    return points;</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>constexpr auto points = create_points();</span></span>
+<span class="line"><span></span></span></code></pre>
+</li>
+</ul>
+<p>There are many other features in C++20, such as new standard library improvements, <code>std::format</code>, improvements to compile-time programming, and more. These are just a few highlights that showcase the versatility and power of the newest standard of C++.</p>

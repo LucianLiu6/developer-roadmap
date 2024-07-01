@@ -1,0 +1,33 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/postgresql-dba/content/111-troubleshooting-techniques/104-profiling-tools/102-ebpf.md"></div> <h1 id="ebpf-extended-berkeley-packet-filter">eBPF (Extended Berkeley Packet Filter)</h1>
+<p>eBPF is a powerful Linux kernel technology used for tracing and profiling various system components such as processes, filesystems, network connections, and more. It has gained enormous popularity among developers and administrators because of its ability to offer deep insights into the system’s behavior, performance, and resource usage at runtime. In the context of profiling PostgreSQL, eBPF can provide valuable information about query execution, system calls, and resource consumption patterns.</p>
+<h2 id="how-it-works">How it works</h2>
+<p>eBPF operates by allowing users to load custom bytecode programs into the Linux kernel, safely and efficiently. These programs can then gather data, perform computations, and manipulate system behavior to achieve the desired outcome. The eBPF programs are attached to pre-defined hooks in the kernel, such as entry and exit points of system calls or specific events. Once attached, the eBPF program executes when an event in the system triggers the hook.</p>
+<h2 id="profiling-postgresql-with-ebpf">Profiling PostgreSQL with eBPF</h2>
+<p>There are various eBPF-based tools available for profiling PostgreSQL, like <code>bcc</code> (BPF Compiler Collection) and <code>bpftrace</code>. These tools come with a wide array of helpful scripts to analyze different aspects of PostgreSQL performance, including file I/O, network, memory, and CPU usage.</p>
+<p>Here are a few popular eBPF scripts that can be used for PostgreSQL profiling:</p>
+<ul>
+<li><strong>pg_read_sleep.bpftrace</strong>: This script analyzes the time PostgreSQL spends reading data from storage.</li>
+<li><strong>pg_writesnoop.bt</strong>: It monitors write operations in PostgreSQL, which can be helpful to identify slow queries and transactions.</li>
+<li><strong>pg_cpudist.bt</strong>: Illustrates the CPU consumption distribution of PostgreSQL processes, useful for spotting performance bottlenecks.</li>
+</ul>
+<h2 id="getting-started-with-ebpf-and-postgresql">Getting started with eBPF and PostgreSQL</h2>
+<p>To use eBPF for PostgreSQL profiling, follow these steps:</p>
+<ul>
+<li>Install <code>bcc</code>, <code>bpftrace</code>, and other required dependencies on your system.</li>
+<li>Download or create eBPF-based profiling scripts relevant to PostgreSQL.</li>
+<li>Launch the scripts with the appropriate arguments, targeting your PostgreSQL processes.</li>
+<li>Analyze the profiling data to identify areas for optimization and improvement.</li>
+</ul>
+<h2 id="benefits-of-ebpf">Benefits of eBPF</h2>
+<ul>
+<li>Efficient and safe kernel-level tracing with minimal overhead</li>
+<li>Precise and granular data collection</li>
+<li>Customizable and extensible programs to address specific performance issues</li>
+<li>Wide range of tools and scripts available for various system components</li>
+</ul>
+<h2 id="drawbacks-of-ebpf">Drawbacks of eBPF</h2>
+<ul>
+<li>Requires root access and compatible kernel versions</li>
+<li>Can be complex and challenging to write custom eBPF programs</li>
+</ul>
+<p>Overall, eBPF is a potent and versatile profiling tool that can significantly improve your understanding of PostgreSQL’s behavior, identify bottlenecks, and optimize performance. However, it requires some expertise and familiarity with eBPF and PostgreSQL internals to unleash its full potential.</p>

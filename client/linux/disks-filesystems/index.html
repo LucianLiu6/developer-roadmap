@@ -1,0 +1,7 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/linux/content/110-disks-filesystems/index.md"></div> <h1 id="linux-disks-filesystems">Linux Disks Filesystems</h1>
+<p>Linux uses a variety of filesystems to allow us to store and retrieve data from the hardware of a computer system such as disks. The filesystem defines how data is organized, stored, and retrieved on these storage devices. Examples of popular Linux filesystems include EXT4, FAT32, NTFS, and Btrfs.</p>
+<p>Each filesystem has its own advantages, disadvantages, and use cases. For example, EXT4 is typically used for Linux system volumes due to its robustness and compatibility with Linux, while FAT32 may be used for removable media like USB drives for its compatibility with almost all operating systems.</p>
+<p>Here’s an example of how to display the type of filesystems of your mounted devices with the “df” command in Linux:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#50FA7B">df</span><span style="color:#BD93F9"> -T</span></span>
+<span class="line"></span></code></pre>
+<p>The output shows the names of your disks, their filesystem types, and other additional information such as total space, used space, and available space on the disks.</p>

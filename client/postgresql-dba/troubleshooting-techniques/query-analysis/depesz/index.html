@@ -1,0 +1,33 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/postgresql-dba/content/111-troubleshooting-techniques/103-query-analysis/101-depesz.md"></div> <h1 id="depesz-a-tool-for-query-analysis">Depesz: A Tool for Query Analysis</h1>
+<p>”Depesz” is a popular, online query analysis tool for PostgreSQL, named after Hubert “depesz” Lubaczewski, the creator of the tool. It helps you understand and analyze the output of <code>EXPLAIN ANALYZE</code>, a powerful command in PostgreSQL for examining and optimizing your queries. Depesz is often used to simplify the query analysis process, as it offers valuable insights into the performance of your SQL queries and aids in tuning them for better efficiency.</p>
+<h2 id="key-features-of-depesz">Key Features of Depesz</h2>
+<ul>
+<li>
+<p><strong>Simple &#x26; User-friendly Interface:</strong> Depesz is designed to make the process of analyzing query plans easier by visualizing the output of <code>EXPLAIN ANALYZE</code> in a well-structured, colorful, and easy-to-understand format.</p>
+</li>
+<li>
+<p><strong>Annotation &#x26; Highlighting:</strong> Depesz can annotate your query plan with additional information, making it easier to understand and find potential issues. Nodes with high costs or exclusive times are automatically highlighted and color-coded, so you can easily detect potential bottlenecks in your query execution plan.</p>
+</li>
+<li>
+<p><strong>Performance Metrics:</strong> Depesz displays various performance metrics for each node in the query plan, such as total duration, source data size, the number of rows returned, and more. This granularity of information helps you gain better insights into the performance of your query and pinpoint areas that need optimization.</p>
+</li>
+<li>
+<p><strong>Optimization Recommendations:</strong> Depesz provides recommendations for optimizing your SQL queries, based on the evaluation of the execution plan, cost estimates, and other relevant factors.</p>
+</li>
+</ul>
+<h2 id="how-to-use-depesz">How to Use Depesz</h2>
+<ul>
+<li>
+<p>Generate the <code>EXPLAIN ANALYZE</code> output of your PostgreSQL query:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>EXPLAIN (ANALYZE, BUFFERS, FORMAT JSON) SELECT * FROM mytable WHERE mycolumn = 'some_value';</span></span>
+<span class="line"><span></span></span></code></pre>
+<p>Make sure to include the <code>ANALYZE</code>, <code>BUFFERS</code>, and <code>FORMAT JSON</code> options for a more comprehensive analysis.</p>
+</li>
+<li>
+<p>Paste the JSON output to the Depesz input field, available at <a href="https://explain.depesz.com/" rel="noopener noreferrer nofollow" target="_blank">https://explain.depesz.com/</a>, and click the “Explain!” button.</p>
+</li>
+<li>
+<p>Analyze the visual output and optimization recommendations provided by Depesz. Check for high-cost nodes, and review their details to identify the areas that need improvement.</p>
+</li>
+</ul>
+<p>In summary, Depesz is a powerful online tool that vastly simplifies the process of analyzing <code>EXPLAIN ANALYZE</code> outputs in PostgreSQL. By utilizing its visualization and optimization recommendations, you can optimize your database queries for improved performance and efficiency.</p>

@@ -1,0 +1,34 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/postgresql-dba/content/110-advanced-topics/100-low-level-internals/104-physical-storage-and-file-layout.md"></div> <h1 id="physical-storage-and-file-layout">Physical Storage and File Layout</h1>
+<p>In this section, we will delve into PostgreSQL’s low-level implementation details, specifically its physical storage and file layout. Understanding these aspects will empower you with the knowledge to optimize your database, effectively allocate resources, and pinpoint potential bottlenecks or inefficiencies.</p>
+<h2 id="storage-model">Storage Model</h2>
+<p>PostgreSQL organizes information into a hierarchical structure as follows:</p>
+<ul>
+<li><strong>Clusters</strong>: Represents a complete PostgreSQL instance containing multiple databases managed by a single server process. A single server can manage multiple clusters, typically using different ports.</li>
+<li><strong>Databases</strong>: An individual database contains a set of schemas and is owned by one or more users.</li>
+<li><strong>Schemas</strong>: A namespace used to group tables, indexes, and other objects. Each schema is independent and can contain objects with the same names but different purposes.</li>
+<li><strong>Tables</strong>: Consists of rows and columns that store the actual data.</li>
+</ul>
+<h2 id="table-storage">Table Storage</h2>
+<p>Tables are divided into fixed-size <strong>blocks</strong> (by default, 8 KB). Each block contains a set of <strong>rows</strong> (also called tuples), which can store one or more values. The maximum number of columns a table can have is 1664. Each row occupies a variable amount of space depending on the data it stores. To optimize storage, PostgreSQL employs techniques such as packing smaller rows into a single block and using TOAST (The Oversized-Attribute Storage Technique) tables to handle large values.</p>
+<h2 id="file-layout">File Layout</h2>
+<p>PostgreSQL stores its data in the <code>$PGDATA</code> directory, typically found under <code>/var/lib/postgresql/</code> in a Linux environment. Here’s an overview of the main subdirectories:</p>
+<ul>
+<li><strong>base/</strong>: Holds the actual data files, with one subdirectory per database, identified by their OID (Object Identifier).
+<ul>
+<li>e.g., <code>base/12345/</code>: Contains data files for database <code>12345</code>.</li>
+</ul>
+</li>
+<li><strong>global/</strong>: Contains global objects such as roles and tablespaces that are shared across all databases in a cluster.</li>
+<li><strong>pg_xlog/</strong> or <strong>pg_wal/</strong> (depending on the PostgreSQL version): Stores Write-Ahead Log (WAL) files used for crash recovery and replication.</li>
+<li><strong>pg_clog/</strong> or <strong>pg_xact/</strong> (depending on the PostgreSQL version): Contains transaction status information.</li>
+</ul>
+<h2 id="table-files">Table Files</h2>
+<p>Inside a database’s directory, you’ll find files representing tables, indexes, sequences, and other objects. Naming follows the pattern <code>OID</code> with a suffix depending on the type of file:</p>
+<ul>
+<li><strong>OID</strong>: Main data file for a table or index.</li>
+<li><strong>OID_fsm</strong>: Free Space Map (FSM) for a table or index, storing info about available space in table/index.</li>
+<li><strong>OID_vm</strong>: Visibility Map for a table, storing info about which rows are visible to transactions.</li>
+</ul>
+<h2 id="toast-tables">TOAST Tables</h2>
+<p>For large values that can’t fit into a regular table row, PostgreSQL uses TOAST tables. TOAST tables are stored alongside regular tables, but their files have an additional <code>_toast</code> in their names, e.g., <code>OID_toast</code>.</p>
+<p>In conclusion, understanding PostgreSQL’s physical storage and file layout is essential for effective database performance tuning, resource allocation, and troubleshooting. With this knowledge, you are now better equipped to handle complex PostgreSQL tasks and optimizations. Happy database managing!</p>

@@ -1,0 +1,26 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/cpp/content/116-build-systems/102-ninja.md"></div> <h1 id="ninja">Ninja</h1>
+<p>Ninja is a small build system with a focus on speed. It is designed to handle large projects by generating build files that implement the minimal amount of work necessary to build the code. This results in faster build times, especially for large codebases. Ninja is often used in conjunction with other build systems like CMake, which can generate Ninja build files for you.</p>
+<p>Ninja build files are typically named <code>build.ninja</code> and contain rules, build statements, and variable declarations. Here’s a simple example of a Ninja build file for a C++ project:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span># Variable declarations</span></span>
+<span class="line"><span>cxx = g++</span></span>
+<span class="line"><span>cflags = -Wall -Wextra -std=c++17</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span># Rule for compiling the C++ files</span></span>
+<span class="line"><span>rule cxx_compile</span></span>
+<span class="line"><span>  command = $cxx $cflags -c $in -o $out</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span># Build statements for the source files</span></span>
+<span class="line"><span>build main.o: cxx_compile main.cpp</span></span>
+<span class="line"><span>build foo.o: cxx_compile foo.cpp</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span># Rule for linking the object files</span></span>
+<span class="line"><span>rule link</span></span>
+<span class="line"><span>  command = $cxx $in -o $out</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span># Build statement for the final executable</span></span>
+<span class="line"><span>build my_program: link main.o foo.o</span></span>
+<span class="line"><span></span></span></code></pre>
+<p>To build the project using this <code>build.ninja</code> file, simply run <code>ninja</code> in the terminal:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#50FA7B">$</span><span style="color:#F1FA8C"> ninja</span></span>
+<span class="line"></span></code></pre>
+<p>This will build the <code>my_program</code> executable by first compiling the <code>main.cpp</code> and <code>foo.cpp</code> files into object files, and then linking them together.</p>

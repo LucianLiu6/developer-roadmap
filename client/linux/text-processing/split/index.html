@@ -1,0 +1,10 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/linux/content/104-text-processing/108-split.md"></div> <h1 id="linux-text-processing-split-command">Linux Text Processing: Split Command</h1>
+<p>Linux provides an extensive set of tools for manipulating text data. One of such utilities is the <code>split</code> command that is used, as the name suggests, to split large files into smaller files. The <code>split</code> command in Linux divides a file into multiple equal parts, based on the lines or bytes specified by the user.</p>
+<p>It’s a useful command because of its practical applicability. For instance, if you have a large data file that can’t be used efficiently because of its size, then the split command can be used to break up the file into more manageable pieces.</p>
+<p>The basic syntax of the <code>split</code> command is:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#50FA7B">split</span><span style="color:#F8F8F2"> [options] [input [prefix]]</span></span>
+<span class="line"></span></code></pre>
+<p>By default, the <code>split</code> command divides the file into smaller files of 1000 lines each. If no input file is provided, or if it is given as -, it reads from standard input.</p>
+<p>For example, to split a file named ‘bigfile.txt’ into files of 500 lines each, the command would be:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#50FA7B">split</span><span style="color:#BD93F9"> -l</span><span style="color:#BD93F9"> 500</span><span style="color:#F1FA8C"> bigfile.txt</span><span style="color:#F8F8F2"> </span></span>
+<span class="line"></span></code></pre>

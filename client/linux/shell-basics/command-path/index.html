@@ -1,0 +1,7 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/linux/content/102-shell-basics/100-command-path.md"></div> <h1 id="command-path-in-shell-basics">Command Path in Shell Basics</h1>
+<p>In Linux, the command path is an important concept under shell basics. Simply put, command path is a variable that is used by the shell to determine where to look for the executable files to run. Linux commands are nothing but programs residing in particular directories. But, one does not have to navigate to these directories every time to run these programs. The command path comes to the rescue!</p>
+<p>Usually, when you type a command in the terminal, the shell needs to know the absolute path of the command’s executable to run it. Instead of typing the full path each time, command paths allow the shell to automatically search the indicated directories in the correct order. These paths are stored in the $PATH environment variable.</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="color:#8BE9FD">echo</span><span style="color:#BD93F9"> $PATH</span></span>
+<span class="line"></span></code></pre>
+<p>Running this command in a Linux terminal will return all the directories that the shell will search, in order, to find the command it has to run. The directories are separated by a colon.</p>
+<p>This feature makes using Linux command-line interface convenient and efficient.</p>

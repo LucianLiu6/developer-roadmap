@@ -1,0 +1,54 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/postgresql-dba/content/106-postgresql-security-concepts/104-pg-hba-conf.md"></div> <h1 id="postgresql-security-pg_hbaconf">PostgreSQL Security: pg_hba.conf</h1>
+<p>When securing your PostgreSQL database, one of the most important components to configure is the <code>pg_hba.conf</code> (short for PostgreSQL Host-Based Authentication Configuration) file. This file is a part of PostgreSQL’s Host-Based Authentication (HBA) system and is responsible for controlling how clients authenticate and connect to your database.</p>
+<p>In this section, we’ll discuss:</p>
+<ul>
+<li>The purpose and location of the <code>pg_hba.conf</code> file</li>
+<li>The structure and format of the file</li>
+<li>Different authentication methods available</li>
+<li>How to configure <code>pg_hba.conf</code> for different scenarios</li>
+</ul>
+<h3 id="purpose-and-location-of-pg_hbaconf">Purpose and Location of <code>pg_hba.conf</code></h3>
+<p>The <code>pg_hba.conf</code> file allows you to set rules that determine who can connect to your database and how they authenticate themselves. By default, the <code>pg_hba.conf</code> file is located in PostgreSQL’s data directory. You can find the data directory by issuing the <code>SHOW data_directory;</code> command in the <code>psql</code> command line interface.</p>
+<h3 id="structure-and-format-of-pg_hbaconf">Structure and Format of <code>pg_hba.conf</code></h3>
+<p>The <code>pg_hba.conf</code> file consists of a series of lines, each defining a rule for a specific type of connection. The general format of a rule is:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>connection_type    database    user    address    authentication_method [authentication_options]</span></span>
+<span class="line"><span></span></span></code></pre>
+<ul>
+<li><code>connection_type</code>: Specifies whether the connection is local (e.g., via a Unix-domain socket) or host (e.g., via a TCP/IP connection).</li>
+<li><code>database</code>: Specifies the databases to which this rule applies. It can be a single database, a comma-separated list of databases, or <code>all</code> to cover all databases.</li>
+<li><code>user</code>: Specifies the users affected by this rule. It can be a single user, a comma-separated list of users, or <code>all</code> to cover all users.</li>
+<li><code>address</code>: Specifies the client IP address or host. This field is only used for <code>host</code> type connections.</li>
+<li><code>authentication_method</code>: Specifies the method used to authenticate the user, e.g., <code>trust</code>, <code>password</code>, <code>md5</code>, etc.</li>
+<li><code>authentication_options</code>: Optional field for providing additional authentication method options.</li>
+</ul>
+<h3 id="authentication-methods">Authentication Methods</h3>
+<p>There are several authentication methods available in PostgreSQL, including:</p>
+<ul>
+<li><code>trust</code>: Allows the user to connect without providing a password. This method should be used with caution and only for highly trusted networks.</li>
+<li><code>reject</code>: Rejects the connection attempt.</li>
+<li><code>password</code>: Requires the user to provide a plain-text password. This method is less secure because the password can be intercepted.</li>
+<li><code>md5</code>: Requires the user to provide a password encrypted using the MD5 algorithm.</li>
+<li><code>scram-sha-256</code>: This method uses the SCRAM-SHA-256 authentication standard, providing an even higher level of security than <code>md5</code>.</li>
+<li><code>ident</code>: Uses the operating system’s identification service to authenticate users.</li>
+<li><code>peer</code>: Authenticates based on the client’s operating system user.</li>
+</ul>
+<h3 id="configuring-pg_hbaconf">Configuring <code>pg_hba.conf</code></h3>
+<p>When configuring <code>pg_hba.conf</code>, you’ll want to create specific rules depending on your desired level of security and access control. Start with the most restrictive rules and then proceed to less restrictive ones. Here are a few examples:</p>
+<ul>
+<li>
+<p>Allow a local connection to all databases for user <code>postgres</code> without a password:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>local    all    postgres    trust</span></span>
+<span class="line"><span></span></span></code></pre>
+</li>
+<li>
+<p>Allow a TCP/IP connection from a specific IP address for user <code>user1</code> and require an MD5 encrypted password:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>host    mydb    user1    192.168.0.10/32    md5</span></span>
+<span class="line"><span></span></span></code></pre>
+</li>
+<li>
+<p>Require SCRAM-SHA-256 authentication for all users connecting via TCP/IP from any IP address:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>host    all    all    0.0.0.0/0    scram-sha-256</span></span>
+<span class="line"><span></span></span></code></pre>
+</li>
+</ul>
+<p>By understanding and configuring the <code>pg_hba.conf</code> file, you can ensure a secure and controlled environment for client connections to your PostgreSQL databases.</p>

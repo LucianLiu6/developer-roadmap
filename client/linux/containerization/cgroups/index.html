@@ -1,0 +1,14 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/linux/content/116-containerization/101-cgroups.md"></div> <h1 id="cgroups">Cgroups</h1>
+<p>Cgroups, short for control groups, is a Linux kernel feature which allows processes to be organized into hierarchical groups. Its crucial role in containerization, is its ability to limit, account and isolate the resource usage (CPU, memory, disk I/O, etc.) of these process groups.</p>
+<p>In the context of containerization, where lightweight isolated environments are running on the same host machine, cgroups become paramount for efficient resource management. By using cgroups, one can ensure that each container doesn’t monopolize host resources, leading to improved overall system stability and performance.</p>
+<p>Here’s an example of how you might create a new cgroup for a container:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6272A4"># Create a new cgroup for a container;</span></span>
+<span class="line"><span style="color:#50FA7B">sudo</span><span style="color:#F1FA8C"> cgcreate</span><span style="color:#BD93F9"> -g</span><span style="color:#F1FA8C"> cpu:/my_new_container</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6272A4"># Assign the current shell's process to the new cgroup;</span></span>
+<span class="line"><span style="color:#8BE9FD">echo</span><span style="color:#BD93F9;font-style:italic"> $$</span><span style="color:#FF79C6"> |</span><span style="color:#50FA7B"> sudo</span><span style="color:#F1FA8C"> tee</span><span style="color:#F1FA8C"> /sys/fs/cgroup/cpu/my_new_container/tasks</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6272A4"># Limit the CPU usage of the cgroup to 20%;</span></span>
+<span class="line"><span style="color:#8BE9FD">echo</span><span style="color:#BD93F9"> 200000</span><span style="color:#FF79C6"> |</span><span style="color:#50FA7B"> sudo</span><span style="color:#F1FA8C"> tee</span><span style="color:#F1FA8C"> /sys/fs/cgroup/cpu/my_new_container/cpu.cfs_quota_us</span></span>
+<span class="line"></span></code></pre>
+<p>In this snippet, we are using <code>cgcreate</code> to create a new cgroup, then adding the current process to it, and finally setting a CPU limit.</p>

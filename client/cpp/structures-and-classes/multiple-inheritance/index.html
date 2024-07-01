@@ -1,0 +1,62 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/cpp/content/107-structures-and-classes/102-multiple-inheritance/index.md"></div> <h1 id="multiple-inheritance">Multiple Inheritance</h1>
+<p>Multiple inheritance is a feature in C++ where a class can inherit characteristics (data members and member functions) from more than one parent class. The concept is similar to single inheritance (where a class inherits from a single base class), but in multiple inheritance, a class can have multiple base classes.</p>
+<p>When a class inherits multiple base classes, it becomes a mixture of their properties and behaviors, and can override or extend them as needed.</p>
+<h2 id="syntax">Syntax</h2>
+<p>Here is the syntax to declare a class with multiple inheritance:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#FF79C6">class</span><span style="color:#8BE9FD"> DerivedClass</span><span style="color:#F8F8F2"> : access-specifier BaseClass1, </span><span style="color:#8BE9FD;font-style:italic">access</span><span style="color:#F8F8F2">-specifier BaseClass2, ...</span></span>
+<span class="line"><span style="color:#F8F8F2">{</span></span>
+<span class="line"><span style="color:#6272A4">    // class body</span></span>
+<span class="line"><span style="color:#F8F8F2">};</span></span>
+<span class="line"></span></code></pre>
+<p>The <code>DerivedClass</code> will inherit members from both <code>BaseClass1</code> and <code>BaseClass2</code>. The <code>access-specifier</code> (like <code>public</code>, <code>protected</code>, or <code>private</code>) determines the accessibility of the inherited members.</p>
+<h2 id="example">Example</h2>
+<p>Here is an example of multiple inheritance in action:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#FF79C6">#include</span><span style="color:#E9F284"> &#x3C;</span><span style="color:#F1FA8C">iostream</span><span style="color:#E9F284">></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6272A4">// Base class 1</span></span>
+<span class="line"><span style="color:#FF79C6">class</span><span style="color:#8BE9FD"> Animal</span></span>
+<span class="line"><span style="color:#F8F8F2">{</span></span>
+<span class="line"><span style="color:#FF79C6">public:</span></span>
+<span class="line"><span style="color:#FF79C6">    void</span><span style="color:#50FA7B"> eat</span><span style="color:#F8F8F2">()</span></span>
+<span class="line"><span style="color:#F8F8F2">    {</span></span>
+<span class="line"><span style="color:#F8F8F2">        std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">cout </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C">I can eat!</span><span style="color:#E9F284">"</span><span style="color:#FF79C6"> &#x3C;&#x3C;</span><span style="color:#F8F8F2"> std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">endl;</span></span>
+<span class="line"><span style="color:#F8F8F2">    }</span></span>
+<span class="line"><span style="color:#F8F8F2">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6272A4">// Base class 2</span></span>
+<span class="line"><span style="color:#FF79C6">class</span><span style="color:#8BE9FD"> Mammal</span></span>
+<span class="line"><span style="color:#F8F8F2">{</span></span>
+<span class="line"><span style="color:#FF79C6">public:</span></span>
+<span class="line"><span style="color:#FF79C6">    void</span><span style="color:#50FA7B"> breath</span><span style="color:#F8F8F2">()</span></span>
+<span class="line"><span style="color:#F8F8F2">    {</span></span>
+<span class="line"><span style="color:#F8F8F2">        std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">cout </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C">I can breathe!</span><span style="color:#E9F284">"</span><span style="color:#FF79C6"> &#x3C;&#x3C;</span><span style="color:#F8F8F2"> std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">endl;</span></span>
+<span class="line"><span style="color:#F8F8F2">    }</span></span>
+<span class="line"><span style="color:#F8F8F2">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6272A4">// Derived class inheriting from both Animal and Mammal</span></span>
+<span class="line"><span style="color:#FF79C6">class</span><span style="color:#8BE9FD"> Dog</span><span style="color:#F8F8F2"> : </span><span style="color:#FF79C6">public</span><span style="color:#8BE9FD;font-style:italic"> Animal</span><span style="color:#F8F8F2">, </span><span style="color:#FF79C6">public</span><span style="color:#8BE9FD;font-style:italic"> Mammal</span></span>
+<span class="line"><span style="color:#F8F8F2">{</span></span>
+<span class="line"><span style="color:#FF79C6">public:</span></span>
+<span class="line"><span style="color:#FF79C6">    void</span><span style="color:#50FA7B"> bark</span><span style="color:#F8F8F2">()</span></span>
+<span class="line"><span style="color:#F8F8F2">    {</span></span>
+<span class="line"><span style="color:#F8F8F2">        std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">cout </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C">I can bark! Woof woof!</span><span style="color:#E9F284">"</span><span style="color:#FF79C6"> &#x3C;&#x3C;</span><span style="color:#F8F8F2"> std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">endl;</span></span>
+<span class="line"><span style="color:#F8F8F2">    }</span></span>
+<span class="line"><span style="color:#F8F8F2">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">int</span><span style="color:#50FA7B"> main</span><span style="color:#F8F8F2">()</span></span>
+<span class="line"><span style="color:#F8F8F2">{</span></span>
+<span class="line"><span style="color:#F8F8F2">    Dog myDog;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6272A4">    // Calling members from both base classes</span></span>
+<span class="line"><span style="color:#F8F8F2">    myDog.</span><span style="color:#50FA7B">eat</span><span style="color:#F8F8F2">();</span></span>
+<span class="line"><span style="color:#F8F8F2">    myDog.</span><span style="color:#50FA7B">breath</span><span style="color:#F8F8F2">();</span></span>
+<span class="line"><span style="color:#F8F8F2">    </span></span>
+<span class="line"><span style="color:#6272A4">    // Calling a member from the derived class</span></span>
+<span class="line"><span style="color:#F8F8F2">    myDog.</span><span style="color:#50FA7B">bark</span><span style="color:#F8F8F2">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">    return</span><span style="color:#BD93F9"> 0</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"></span></code></pre>
+<h2 id="note">Note</h2>
+<p>In some cases, multiple inheritance can lead to complications such as ambiguity and the “diamond problem”. Ensure that you use multiple inheritance judiciously and maintain well-structured and modular classes to prevent issues.</p>
+<p>For more information on C++ multiple inheritance and related topics, refer to C++ documentation or a comprehensive C++ programming guide.</p>

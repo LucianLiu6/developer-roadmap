@@ -1,0 +1,38 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/sql/content/111-transactions/104-rollback.md"></div> <h1 id="rollback">ROLLBACK</h1>
+<p>The <code>ROLLBACK</code> command is a transactional control language (TCL) instruction that undoes an unsuccessful or unsatisfactory running transaction. This process also applies to SQL Server where all individual statements in SQL Server are treated as a single atomic transaction.</p>
+<p>When a <code>ROLLBACK</code> command is issued, all the operations (such as Insert, Delete, Update, etc.) are undone and the database is restored to its initial state before the transaction started.</p>
+<h2 id="when-to-use-rollback">When to use <code>ROLLBACK</code></h2>
+<ol>
+<li>If the transaction is unacceptable or unsuccessful.</li>
+<li>If you want to revert the unwanted changes.</li>
+</ol>
+<p>Here is a basic example:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#FF79C6">BEGIN</span><span style="color:#FF79C6"> TRANSACTION</span><span style="color:#F8F8F2">;  </span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6272A4">-- This would delete all rows from the table.</span></span>
+<span class="line"><span style="color:#FF79C6">DELETE</span><span style="color:#FF79C6"> FROM</span><span style="color:#F8F8F2"> Employee;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6272A4">-- Oh no! That's not what I wanted. Let's roll that back.</span></span>
+<span class="line"><span style="color:#FF79C6">ROLLBACK</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"></span></code></pre>
+<p>In this example, the <code>ROLLBACK</code> command would restore all deleted data into the <code>Employee</code> table.</p>
+<p>SQL also allows the usage of <code>SAVEPOINT</code>s along with the <code>ROLLBACK</code> command, which allows rolling back to a specific point in a transaction, instead of rolling back the entire transaction.</p>
+<p>Here is an example of using <code>SAVEPOINT</code>s:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#FF79C6">BEGIN</span><span style="color:#FF79C6"> TRANSACTION</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6272A4">-- Adding new employee.</span></span>
+<span class="line"><span style="color:#FF79C6">INSERT INTO</span><span style="color:#F8F8F2"> Employee(ID, </span><span style="color:#FF79C6">Name</span><span style="color:#F8F8F2">) </span><span style="color:#FF79C6">VALUES</span><span style="color:#F8F8F2">(</span><span style="color:#BD93F9">1</span><span style="color:#F8F8F2">, </span><span style="color:#E9F284">'</span><span style="color:#F1FA8C">John</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6272A4">-- Create a savepoint to be able to roll back to this point.</span></span>
+<span class="line"><span style="color:#F8F8F2">SAVEPOINT SP1;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6272A4">-- Oh no! I made a mistake creating this employee. Let's roll back to the savepoint.</span></span>
+<span class="line"><span style="color:#FF79C6">ROLLBACK</span><span style="color:#FF79C6"> TO</span><span style="color:#F8F8F2"> SAVEPOINT SP1;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6272A4">-- Now I can try again.</span></span>
+<span class="line"><span style="color:#FF79C6">INSERT INTO</span><span style="color:#F8F8F2"> Employee(ID, </span><span style="color:#FF79C6">Name</span><span style="color:#F8F8F2">) </span><span style="color:#FF79C6">VALUES</span><span style="color:#F8F8F2">(</span><span style="color:#BD93F9">1</span><span style="color:#F8F8F2">, </span><span style="color:#E9F284">'</span><span style="color:#F1FA8C">Jack</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6272A4">-- Commit the changes.</span></span>
+<span class="line"><span style="color:#FF79C6">COMMIT</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"></span></code></pre>
+<p>In this example, <code>ROLLBACK TO SAVEPOINT SP1</code> would undo the first insert into the <code>Employee</code> table while preserving the state of the database as it was at the savepoint <code>SP1</code>. So, the second insert command would properly add ‘Jack’ in place of ‘John’.</p>

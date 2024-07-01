@@ -1,0 +1,31 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/react-native/content/104-core-components/101-text-input.md"></div> <h1 id="text-input">Text Input</h1>
+<p><code>TextInput</code> is a core component in React Native that allows the user to enter text. It is commonly used to collect user data, like emails or passwords. You can customize the appearance of <code>TextInput</code> by using various props such as <code>placeholder</code>, <code>multiline</code>, <code>maxLength</code>, and more.</p>
+<p>Here’s a basic example of using <code>TextInput</code>:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#FF79C6">import</span><span style="color:#F8F8F2"> React, { useState } </span><span style="color:#FF79C6">from</span><span style="color:#E9F284"> '</span><span style="color:#F1FA8C">react</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"><span style="color:#FF79C6">import</span><span style="color:#F8F8F2"> { TextInput, View, Button } </span><span style="color:#FF79C6">from</span><span style="color:#E9F284"> '</span><span style="color:#F1FA8C">react-native</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">const</span><span style="color:#50FA7B"> App</span><span style="color:#FF79C6"> =</span><span style="color:#F8F8F2"> () </span><span style="color:#FF79C6">=></span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#FF79C6">  const</span><span style="color:#F8F8F2"> [text, setText] </span><span style="color:#FF79C6">=</span><span style="color:#50FA7B"> useState</span><span style="color:#F8F8F2">(</span><span style="color:#E9F284">''</span><span style="color:#F8F8F2">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">  const</span><span style="color:#50FA7B"> handleSubmit</span><span style="color:#FF79C6"> =</span><span style="color:#F8F8F2"> () </span><span style="color:#FF79C6">=></span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#50FA7B">    alert</span><span style="color:#F8F8F2">(</span><span style="color:#E9F284">'</span><span style="color:#F1FA8C">You entered: </span><span style="color:#E9F284">'</span><span style="color:#FF79C6"> +</span><span style="color:#F8F8F2"> text);</span></span>
+<span class="line"><span style="color:#F8F8F2">  };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">  return</span><span style="color:#F8F8F2"> (</span></span>
+<span class="line"><span style="color:#F8F8F2">    &#x3C;</span><span style="color:#8BE9FD;font-style:italic">View</span><span style="color:#F8F8F2">></span></span>
+<span class="line"><span style="color:#F8F8F2">      &#x3C;</span><span style="color:#8BE9FD;font-style:italic">TextInput</span></span>
+<span class="line"><span style="color:#50FA7B;font-style:italic">        style</span><span style="color:#FF79C6">={</span><span style="color:#F8F8F2">{ height</span><span style="color:#FF79C6">:</span><span style="color:#BD93F9"> 40</span><span style="color:#F8F8F2">, borderColor</span><span style="color:#FF79C6">:</span><span style="color:#E9F284"> '</span><span style="color:#F1FA8C">gray</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">, borderWidth</span><span style="color:#FF79C6">:</span><span style="color:#BD93F9"> 1</span><span style="color:#F8F8F2"> }</span><span style="color:#FF79C6">}</span></span>
+<span class="line"><span style="color:#50FA7B;font-style:italic">        onChangeText</span><span style="color:#FF79C6">={</span><span style="color:#FFB86C;font-style:italic">text</span><span style="color:#FF79C6"> =></span><span style="color:#50FA7B"> setText</span><span style="color:#F8F8F2">(text)</span><span style="color:#FF79C6">}</span></span>
+<span class="line"><span style="color:#50FA7B;font-style:italic">        value</span><span style="color:#FF79C6">={</span><span style="color:#F8F8F2">text</span><span style="color:#FF79C6">}</span></span>
+<span class="line"><span style="color:#50FA7B;font-style:italic">        placeholder</span><span style="color:#FF79C6">=</span><span style="color:#E9F284">"</span><span style="color:#F1FA8C">Enter text here</span><span style="color:#E9F284">"</span></span>
+<span class="line"><span style="color:#F8F8F2">      /></span></span>
+<span class="line"><span style="color:#F8F8F2">      &#x3C;</span><span style="color:#8BE9FD;font-style:italic">Button</span></span>
+<span class="line"><span style="color:#50FA7B;font-style:italic">        onPress</span><span style="color:#FF79C6">={</span><span style="color:#F8F8F2">handleSubmit</span><span style="color:#FF79C6">}</span></span>
+<span class="line"><span style="color:#50FA7B;font-style:italic">        title</span><span style="color:#FF79C6">=</span><span style="color:#E9F284">"</span><span style="color:#F1FA8C">Submit</span><span style="color:#E9F284">"</span></span>
+<span class="line"><span style="color:#F8F8F2">      /></span></span>
+<span class="line"><span style="color:#F8F8F2">    &#x3C;/</span><span style="color:#8BE9FD;font-style:italic">View</span><span style="color:#F8F8F2">></span></span>
+<span class="line"><span style="color:#F8F8F2">  );</span></span>
+<span class="line"><span style="color:#F8F8F2">};</span></span>
+<span class="line"></span></code></pre>
+<p>In this example, the <code>TextInput</code> component is styled with a border, and there’s a placeholder text to show the user the expected input. The <code>onChangeText</code> prop is used to manage the state of the input text, and a “Submit” button is provided to process the input data.</p>
+<p>For more advanced use cases, you can explore the <a href="https://reactnative.dev/docs/textinput" rel="noopener noreferrer nofollow" target="_blank">official documentation</a>.</p>

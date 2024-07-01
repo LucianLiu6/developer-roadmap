@@ -1,0 +1,43 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/sql/content/115-advanced-sql/103-ctes.md"></div> <h1 id="ctes-common-table-expressions">CTEs (Common Table Expressions)</h1>
+<p>CTEs or Common Table Expressions are a type of temporary result set that are defined within the execution scope of a single SQL statement. They act like a temporary view for a single query, and they are typically used to simplify subqueries and improve readability.</p>
+<h2 id="syntax">Syntax</h2>
+<p>Here is the basic syntax of how to use a CTE in SQL:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#FF79C6">WITH</span><span style="color:#F8F8F2"> CTE_Name </span><span style="color:#FF79C6">AS</span></span>
+<span class="line"><span style="color:#F8F8F2">(</span></span>
+<span class="line"><span style="color:#FF79C6">    SQL</span><span style="color:#F8F8F2"> Query</span></span>
+<span class="line"><span style="color:#F8F8F2">)</span></span>
+<span class="line"><span style="color:#FF79C6">SELECT</span><span style="color:#FF79C6"> *</span><span style="color:#FF79C6"> FROM</span><span style="color:#F8F8F2"> CTE_Name</span></span>
+<span class="line"></span></code></pre>
+<p>In this syntax, the “WITH” keyword is used to create a CTE. The SQL query inside the parentheses is the query that creates the CTE. The final SELECT statement is used to query the data from the CTE.</p>
+<h2 id="basic-usage">Basic Usage</h2>
+<p>An example of how to use a CTE is demonstrated below:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#FF79C6">WITH</span><span style="color:#F8F8F2"> Sales_CTE (SalesPersonID, NumberOfOrders)</span></span>
+<span class="line"><span style="color:#FF79C6">AS</span></span>
+<span class="line"><span style="color:#F8F8F2">(</span></span>
+<span class="line"><span style="color:#FF79C6">  SELECT</span><span style="color:#F8F8F2"> SalesPersonID, </span><span style="color:#8BE9FD">COUNT</span><span style="color:#F8F8F2">(OrderID)</span></span>
+<span class="line"><span style="color:#FF79C6">  FROM</span><span style="color:#F8F8F2"> SalesOrderHeader</span></span>
+<span class="line"><span style="color:#FF79C6">  GROUP BY</span><span style="color:#F8F8F2"> SalesPersonID</span></span>
+<span class="line"><span style="color:#F8F8F2">)</span></span>
+<span class="line"><span style="color:#FF79C6">SELECT</span><span style="color:#BD93F9"> E</span><span style="color:#F8F8F2">.</span><span style="color:#BD93F9">EmployeeID</span><span style="color:#F8F8F2">, </span><span style="color:#BD93F9">E</span><span style="color:#F8F8F2">.</span><span style="color:#BD93F9">FirstName</span><span style="color:#F8F8F2">, </span><span style="color:#BD93F9">E</span><span style="color:#F8F8F2">.</span><span style="color:#BD93F9">LastName</span><span style="color:#F8F8F2">, </span><span style="color:#BD93F9">S</span><span style="color:#F8F8F2">.</span><span style="color:#BD93F9">NumberOfOrders</span></span>
+<span class="line"><span style="color:#FF79C6">FROM</span><span style="color:#F8F8F2"> Employee E</span></span>
+<span class="line"><span style="color:#FF79C6">JOIN</span><span style="color:#F8F8F2"> Sales_CTE S</span></span>
+<span class="line"><span style="color:#FF79C6">ON</span><span style="color:#BD93F9"> E</span><span style="color:#F8F8F2">.</span><span style="color:#BD93F9">EmployeeID</span><span style="color:#FF79C6"> =</span><span style="color:#BD93F9"> S</span><span style="color:#F8F8F2">.</span><span style="color:#BD93F9">SalesPersonID</span></span>
+<span class="line"><span style="color:#FF79C6">ORDER BY</span><span style="color:#BD93F9"> S</span><span style="color:#F8F8F2">.</span><span style="color:#BD93F9">NumberOfOrders</span><span style="color:#FF79C6"> DESC</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"></span></code></pre>
+<p>In this example, the CTE groups sales data by <code>SalesPersonID</code> and then joins this with the <code>Employee</code> table based on the <code>EmployeeID</code> to get the corresponding employee details.</p>
+<h2 id="recursive-ctes">Recursive CTEs</h2>
+<p>SQL also supports recursive CTEs, which are CTEs that reference themselves. Recursive CTEs are generally used to solve problems that require iteration, such as traversing hierarchies. Here’s an example:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#FF79C6">WITH</span><span style="color:#F8F8F2"> Recursive_CTE </span><span style="color:#FF79C6">AS</span></span>
+<span class="line"><span style="color:#F8F8F2">(</span></span>
+<span class="line"><span style="color:#FF79C6">  SELECT</span><span style="color:#F8F8F2"> EmployeeID, ManagerID, FirstName</span></span>
+<span class="line"><span style="color:#FF79C6">  FROM</span><span style="color:#F8F8F2"> Employee</span></span>
+<span class="line"><span style="color:#FF79C6">  WHERE</span><span style="color:#F8F8F2"> ManagerID </span><span style="color:#FF79C6">IS</span><span style="color:#FF79C6"> NULL</span></span>
+<span class="line"><span style="color:#FF79C6">  UNION ALL</span></span>
+<span class="line"><span style="color:#FF79C6">  SELECT</span><span style="color:#BD93F9"> E</span><span style="color:#F8F8F2">.</span><span style="color:#BD93F9">EmployeeID</span><span style="color:#F8F8F2">, </span><span style="color:#BD93F9">E</span><span style="color:#F8F8F2">.</span><span style="color:#BD93F9">ManagerID</span><span style="color:#F8F8F2">, </span><span style="color:#BD93F9">E</span><span style="color:#F8F8F2">.</span><span style="color:#BD93F9">FirstName</span></span>
+<span class="line"><span style="color:#FF79C6">  FROM</span><span style="color:#F8F8F2"> Employee E</span></span>
+<span class="line"><span style="color:#FF79C6">  INNER JOIN</span><span style="color:#F8F8F2"> Recursive_CTE RCTE</span></span>
+<span class="line"><span style="color:#FF79C6">  ON</span><span style="color:#BD93F9"> E</span><span style="color:#F8F8F2">.</span><span style="color:#BD93F9">ManagerID</span><span style="color:#FF79C6"> =</span><span style="color:#BD93F9"> RCTE</span><span style="color:#F8F8F2">.</span><span style="color:#BD93F9">EmployeeID</span></span>
+<span class="line"><span style="color:#F8F8F2">)</span></span>
+<span class="line"><span style="color:#FF79C6">SELECT</span><span style="color:#FF79C6"> *</span><span style="color:#FF79C6"> FROM</span><span style="color:#F8F8F2"> Recursive_CTE;</span></span>
+<span class="line"></span></code></pre>
+<p>In the example above, the CTE starts with the employees who have no manager (<code>ManagerID IS NULL</code>). Then it recursively adds employees who are managed by the employees already in the CTE. The result is a list of all employees in the company, hierarchically organized by manager.</p>

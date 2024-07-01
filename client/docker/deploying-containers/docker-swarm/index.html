@@ -1,0 +1,30 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/docker/content/112-deploying-containers/102-docker-swarm.md"></div> <h1 id="docker-swarm">Docker Swarm</h1>
+<p>Docker Swarm is a container orchestration tool that enables users to manage multiple Docker nodes and deploy services across them. It is a native clustering and orchestration feature built into the Docker Engine, which allows you to create and manage a swarm of Docker nodes, referred to as a <em>Swarm</em>.</p>
+<h2 id="key-concepts">Key concepts</h2>
+<ul>
+<li>
+<p><strong>Node</strong>: A Docker node is an instance of the Docker Engine that participates in the swarm. Nodes can either be a <em>worker</em> or a <em>manager</em>. Worker nodes are responsible for running containers whereas manager nodes control the swarm and store the necessary metadata.</p>
+</li>
+<li>
+<p><strong>Services</strong>: A service is a high-level abstraction of the tasks required to run your containers. It defines the desired state of a collection of containers, specifying the Docker image, desired number of replicas, and required ports.</p>
+</li>
+<li>
+<p><strong>Tasks</strong>: A task carries a Docker container and the commands required to run it. Swarm manager nodes assign tasks to worker nodes based on the available resources.</p>
+</li>
+</ul>
+<h2 id="main-advantages">Main advantages</h2>
+<ul>
+<li>
+<p><strong>Scalability</strong>: Docker Swarm allows you to scale services horizontally by easily increasing or decreasing the number of replicas.</p>
+</li>
+<li>
+<p><strong>Load balancing</strong>: Swarm ensures that the nodes within the swarm evenly handle container workloads by providing internal load balancing.</p>
+</li>
+<li>
+<p><strong>Service discovery</strong>: Docker Swarm allows you to automatically discover other services in the swarm by assigning a unique DNS entry to each service.</p>
+</li>
+<li>
+<p><strong>Rolling updates</strong>: Swarm enables you to perform rolling updates with near-zero downtime, easing the process of deploying new versions of your applications.</p>
+</li>
+</ul>
+<p>Visit the official <a href="https://docs.docker.com/engine/swarm/" rel="noopener noreferrer nofollow" target="_blank">Docker Swarm documentation</a> to learn more about its features and best practices.</p>

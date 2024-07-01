@@ -1,0 +1,17 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/linux/content/110-disks-filesystems/103-adding-disks.md"></div> <h1 id="adding-disks">Adding Disks</h1>
+<p>In Linux, hard disks and portable drives are managed and controlled through a series of directories and files, commonly referred to as the Linux Filesystem. When you add new disks in Linux, you need to prepare them before they can be used.</p>
+<p>The process involves creating partitions on the disk, creating filesystem on the partitions, and then mounting the filesystems to directories in your system’s directory tree. This becomes important especially when working with multiple disk drives or large data storage units in order to create a seamless user experience.</p>
+<p>The following are common commands to manage disks:</p>
+<ul>
+<li>Use <code>lsblk</code> to list all block devices (disk and partitions).</li>
+<li>Use <code>fdisk /dev/sdX</code> to create a new partition on a disk.</li>
+<li>Use <code>mkfs.ext4 /dev/sdX1</code> to create a new filesystem on a partition.</li>
+<li>Use <code>mount /dev/sdX1 /mount/point</code> to mount a filesystem to a directory.</li>
+</ul>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#6272A4"># example commands to add new disk</span></span>
+<span class="line"><span style="color:#50FA7B">lsblk</span><span style="color:#6272A4">                     # list all disks and partitions</span></span>
+<span class="line"><span style="color:#50FA7B">sudo</span><span style="color:#F1FA8C"> fdisk</span><span style="color:#F1FA8C"> /dev/sdb</span><span style="color:#6272A4">       # let's suppose new disk is /dev/sdb</span></span>
+<span class="line"><span style="color:#50FA7B">sudo</span><span style="color:#F1FA8C"> mkfs.ext4</span><span style="color:#F1FA8C"> /dev/sdb1</span><span style="color:#6272A4">  # make filesystem(e.g., ext4) on partition 1</span></span>
+<span class="line"><span style="color:#50FA7B">sudo</span><span style="color:#F1FA8C"> mount</span><span style="color:#F1FA8C"> /dev/sdb1</span><span style="color:#F1FA8C"> /mnt</span><span style="color:#6272A4"> # mount new filesystem to /mnt directory</span></span>
+<span class="line"></span></code></pre>
+<p>Remember to replace <code>/dev/sdb</code> and <code>/dev/sdb1</code> with your actual disk and partition identifiers. The mount point <code>/mnt</code> may also be replaced with any other directory as per your system’s structure and preference.</p>

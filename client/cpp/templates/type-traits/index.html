@@ -1,0 +1,47 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/cpp/content/111-templates/102-type-traits.md"></div> <h1 id="type-traits">Type Traits</h1>
+<p>Type Traits are a set of template classes in C++ that help in getting the information about the type’s properties, behavior, or characteristics. They can be found in the <code>&#x3C;type_traits></code> header file. By using Type Traits, you can adapt your code depending on the properties of a given type, or even enforce specific properties for your type parameters in template code.</p>
+<p>Some common type traits are:</p>
+<ul>
+<li><code>std::is_pointer</code>: Checks if a given type is a pointer type.</li>
+<li><code>std::is_arithmetic</code>: Checks if the given type is an arithmetic type.</li>
+<li><code>std::is_function</code>: Checks if the given type is a function type.</li>
+<li><code>std::decay</code>: Applies decltype rules to the input type ( strips references, cv-qualifiers, etc. ).</li>
+</ul>
+<h2 id="usage">Usage</h2>
+<p>You can use type traits like this:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#FF79C6">#include</span><span style="color:#E9F284"> &#x3C;</span><span style="color:#F1FA8C">iostream</span><span style="color:#E9F284">></span></span>
+<span class="line"><span style="color:#FF79C6">#include</span><span style="color:#E9F284"> &#x3C;</span><span style="color:#F1FA8C">type_traits</span><span style="color:#E9F284">></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">int</span><span style="color:#50FA7B"> main</span><span style="color:#F8F8F2">() {</span></span>
+<span class="line"><span style="color:#FF79C6">    int</span><span style="color:#F8F8F2"> a;</span></span>
+<span class="line"><span style="color:#FF79C6">    int*</span><span style="color:#F8F8F2"> a_ptr </span><span style="color:#FF79C6">=</span><span style="color:#FF79C6"> &#x26;</span><span style="color:#F8F8F2">a;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F8F8F2">    std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">cout </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C">Is 'a' a pointer? </span><span style="color:#E9F284">"</span><span style="color:#FF79C6"> &#x3C;&#x3C;</span><span style="color:#F8F8F2"> std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">boolalpha </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#F8F8F2"> std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">is_pointer&#x3C;</span><span style="color:#FF79C6">decltype</span><span style="color:#F8F8F2">(a)></span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">value </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#F8F8F2"> std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">endl;</span></span>
+<span class="line"><span style="color:#F8F8F2">    std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">cout </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C">Is 'a_ptr' a pointer? </span><span style="color:#E9F284">"</span><span style="color:#FF79C6"> &#x3C;&#x3C;</span><span style="color:#F8F8F2"> std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">boolalpha </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#F8F8F2"> std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">is_pointer&#x3C;</span><span style="color:#FF79C6">decltype</span><span style="color:#F8F8F2">(a_ptr)></span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">value </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#F8F8F2"> std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">endl;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">    return</span><span style="color:#BD93F9"> 0</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"></span></code></pre>
+<h2 id="composing-type-traits">Composing Type Traits</h2>
+<p>Some type traits help you compose other traits or modify them, such as:</p>
+<ul>
+<li><code>std::conditional</code>: If a given boolean value is true, use type A; otherwise, use type B.</li>
+<li><code>std::enable_if</code>: If a given boolean value is true, use type A; otherwise, there is no nested type.</li>
+</ul>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#FF79C6">#include</span><span style="color:#E9F284"> &#x3C;</span><span style="color:#F1FA8C">iostream</span><span style="color:#E9F284">></span></span>
+<span class="line"><span style="color:#FF79C6">#include</span><span style="color:#E9F284"> &#x3C;</span><span style="color:#F1FA8C">type_traits</span><span style="color:#E9F284">></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">template</span><span style="color:#F8F8F2"> &#x3C;</span><span style="color:#FF79C6">typename</span><span style="color:#8BE9FD;font-style:italic"> T</span><span style="color:#F8F8F2">></span></span>
+<span class="line"><span style="color:#FF79C6">typename</span><span style="color:#F8F8F2"> std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">enable_if&#x3C;std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">is_arithmetic&#x3C;</span><span style="color:#8BE9FD;font-style:italic">T</span><span style="color:#F8F8F2">></span><span style="color:#FF79C6">::</span><span style="color:#8BE9FD;font-style:italic">value</span><span style="color:#F8F8F2">, </span><span style="color:#8BE9FD;font-style:italic">T</span><span style="color:#F8F8F2">></span><span style="color:#FF79C6">::</span><span style="color:#8BE9FD;font-style:italic">type</span><span style="color:#50FA7B"> find_max</span><span style="color:#F8F8F2">(T a, T b) {</span></span>
+<span class="line"><span style="color:#FF79C6">    return</span><span style="color:#F8F8F2"> a </span><span style="color:#FF79C6">></span><span style="color:#F8F8F2"> b </span><span style="color:#FF79C6">?</span><span style="color:#F8F8F2"> a </span><span style="color:#FF79C6">:</span><span style="color:#F8F8F2"> b;</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">int</span><span style="color:#50FA7B"> main</span><span style="color:#F8F8F2">() {</span></span>
+<span class="line"><span style="color:#FF79C6">    int</span><span style="color:#F8F8F2"> max </span><span style="color:#FF79C6">=</span><span style="color:#50FA7B"> find_max</span><span style="color:#F8F8F2">(</span><span style="color:#BD93F9">10</span><span style="color:#F8F8F2">, </span><span style="color:#BD93F9">20</span><span style="color:#F8F8F2">);</span></span>
+<span class="line"><span style="color:#F8F8F2">    std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">cout </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C">Max: </span><span style="color:#E9F284">"</span><span style="color:#FF79C6"> &#x3C;&#x3C;</span><span style="color:#F8F8F2"> max </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#F8F8F2"> std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">endl;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">    return</span><span style="color:#BD93F9"> 0</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"></span></code></pre>
+<p>In this example, the <code>find_max</code> template function is only defined when T is an arithmetic type (e.g., int, float, double). This prevents unintended usage of the <code>find_max</code> function with non-arithmetic types.</p>
+<p>Overall, type traits are a powerful tool to create more generic, extensible, and efficient C++ code, providing a way to query and adapt your code based on type characteristics.</p>

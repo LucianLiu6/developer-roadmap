@@ -1,0 +1,25 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/docker/content/101-underlying-technologies/102-union-filesystems.md"></div> <h1 id="union-filesystems">Union Filesystems</h1>
+<p>Union filesystems, also known as UnionFS, play a crucial role in the overall functioning of Docker. It’s a unique type of filesystem that creates a virtual, layered file structure by overlaying multiple directories. Instead of modifying the original file system or merging directories, UnionFS enables the simultaneous mounting of multiple directories on a single mount point while keeping their contents separate. This feature is especially beneficial in the context of Docker, as it allows us to manage and optimize storage performance by minimizing duplication and reducing the container image size.</p>
+<p>These are some of the essential features of union filesystems:</p>
+<ul>
+<li>
+<p><strong>Layered Structure</strong>: UnionFS builds a layered structure consisting of multiple read-only layers and a top writable layer. This structure enables efficient handling of changes by only updating the writable layer, while the read-only layers preserve the original data.</p>
+</li>
+<li>
+<p><strong>Copy-on-Write</strong>: The copy-on-write (COW) mechanism is an indispensable feature of UnionFS. If a container makes changes to an existing file, the system creates a copy of the file in the writable layer, leaving the original file in the read-only layer untouched. This process restricts modification to the topmost layer, ensuring a fast and resource-efficient operation.</p>
+</li>
+<li>
+<p><strong>Resource Sharing</strong>: Union filesystems allow multiple containers to share common base layers while running separately. This feature prevents resource duplication and saves significant storage space.</p>
+</li>
+<li>
+<p><strong>Fast Container Initialization</strong>: Union filesystems make it possible to create new containers instantly by merely creating a new writable layer on existing read-only layers. This quick initialization reduces the overhead of duplicated file operations, ultimately improving performance.</p>
+</li>
+</ul>
+<h2 id="popular-union-filesystems-in-docker">Popular Union Filesystems in Docker</h2>
+<p>Docker supports multiple union filesystems that facilitate building and managing containers. Some of the popular options include:</p>
+<ul>
+<li><a href="http://aufs.sourceforge.net/" rel="noopener noreferrer nofollow" target="_blank">@article@<strong>AUFS (Advanced Multi-Layered Unification Filesystem)</strong></a>: AUFS is widely used as a Docker storage driver, enabling efficient management of multiple layers.</li>
+<li><a href="https://www.kernel.org/doc/html/latest/filesystems/overlayfs.html" rel="noopener noreferrer nofollow" target="_blank">@article@<strong>OverlayFS (Overlay Filesystem)</strong></a>: OverlayFS is another union filesystem supported by Docker. It uses a simplified approach compared to AUFS to create and manage overlayed directories.</li>
+<li><a href="https://btrfs.wiki.kernel.org/index.php/Main_Page" rel="noopener noreferrer nofollow" target="_blank">@article@<strong>Btrfs (B-Tree Filesystem)</strong></a>: Btrfs, a modern file system, offers compatibility with union filesystems in addition to advanced storage features like snapshots and checksumming.</li>
+<li><a href="https://zfsonlinux.org/" rel="noopener noreferrer nofollow" target="_blank">@article@<strong>ZFS (Z File System)</strong></a>: ZFS is a high-capacity and robust storage platform that provides union filesystem features along with data protection, compression, and deduplication.</li>
+</ul>

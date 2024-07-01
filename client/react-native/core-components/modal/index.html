@@ -1,0 +1,53 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/react-native/content/104-core-components/108-modal.md"></div> <h1 id="modal">Modal</h1>
+<p>A <code>Modal</code> is a component that displays content on top of the current view, creating an overlay that can be used for various purposes, such as displaying additional information, confirmation messages, or a selection menu.</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#FF79C6">import</span><span style="color:#F8F8F2"> React, {useState} </span><span style="color:#FF79C6">from</span><span style="color:#E9F284"> '</span><span style="color:#F1FA8C">react</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"><span style="color:#FF79C6">import</span><span style="color:#F8F8F2"> {Modal, Text, TouchableHighlight, View, Alert} </span><span style="color:#FF79C6">from</span><span style="color:#E9F284"> '</span><span style="color:#F1FA8C">react-native</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">const</span><span style="color:#50FA7B"> App</span><span style="color:#FF79C6"> =</span><span style="color:#F8F8F2"> () </span><span style="color:#FF79C6">=></span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#FF79C6">  const</span><span style="color:#F8F8F2"> [modalVisible, setModalVisible] </span><span style="color:#FF79C6">=</span><span style="color:#50FA7B"> useState</span><span style="color:#F8F8F2">(</span><span style="color:#BD93F9">false</span><span style="color:#F8F8F2">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">  return</span><span style="color:#F8F8F2"> (</span></span>
+<span class="line"><span style="color:#F8F8F2">    &#x3C;</span><span style="color:#8BE9FD;font-style:italic">View</span><span style="color:#F8F8F2">></span></span>
+<span class="line"><span style="color:#F8F8F2">      &#x3C;</span><span style="color:#8BE9FD;font-style:italic">Modal</span></span>
+<span class="line"><span style="color:#50FA7B;font-style:italic">        animationType</span><span style="color:#FF79C6">=</span><span style="color:#E9F284">"</span><span style="color:#F1FA8C">slide</span><span style="color:#E9F284">"</span></span>
+<span class="line"><span style="color:#50FA7B;font-style:italic">        transparent</span><span style="color:#FF79C6">={</span><span style="color:#BD93F9">true</span><span style="color:#FF79C6">}</span></span>
+<span class="line"><span style="color:#50FA7B;font-style:italic">        visible</span><span style="color:#FF79C6">={</span><span style="color:#F8F8F2">modalVisible</span><span style="color:#FF79C6">}</span></span>
+<span class="line"><span style="color:#50FA7B;font-style:italic">        onRequestClose</span><span style="color:#FF79C6">={</span><span style="color:#F8F8F2">() </span><span style="color:#FF79C6">=></span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#F8F8F2">          Alert.</span><span style="color:#50FA7B">alert</span><span style="color:#F8F8F2">(</span><span style="color:#E9F284">'</span><span style="color:#F1FA8C">Modal has been closed.</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">);</span></span>
+<span class="line"><span style="color:#50FA7B">          setModalVisible</span><span style="color:#F8F8F2">(</span><span style="color:#FF79C6">!</span><span style="color:#F8F8F2">modalVisible);</span></span>
+<span class="line"><span style="color:#F8F8F2">        }</span><span style="color:#FF79C6">}</span><span style="color:#F8F8F2">></span></span>
+<span class="line"><span style="color:#F8F8F2">        &#x3C;</span><span style="color:#8BE9FD;font-style:italic">View</span><span style="color:#F8F8F2">></span></span>
+<span class="line"><span style="color:#F8F8F2">          &#x3C;</span><span style="color:#8BE9FD;font-style:italic">View</span><span style="color:#F8F8F2">></span></span>
+<span class="line"><span style="color:#F8F8F2">            &#x3C;</span><span style="color:#8BE9FD;font-style:italic">Text</span><span style="color:#F8F8F2">>Hello, I am a Modal!&#x3C;/</span><span style="color:#8BE9FD;font-style:italic">Text</span><span style="color:#F8F8F2">></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F8F8F2">            &#x3C;</span><span style="color:#8BE9FD;font-style:italic">TouchableHighlight</span></span>
+<span class="line"><span style="color:#50FA7B;font-style:italic">              onPress</span><span style="color:#FF79C6">={</span><span style="color:#F8F8F2">() </span><span style="color:#FF79C6">=></span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#50FA7B">                setModalVisible</span><span style="color:#F8F8F2">(</span><span style="color:#FF79C6">!</span><span style="color:#F8F8F2">modalVisible);</span></span>
+<span class="line"><span style="color:#F8F8F2">              }</span><span style="color:#FF79C6">}</span><span style="color:#F8F8F2">></span></span>
+<span class="line"><span style="color:#F8F8F2">              &#x3C;</span><span style="color:#8BE9FD;font-style:italic">Text</span><span style="color:#F8F8F2">>Hide Modal&#x3C;/</span><span style="color:#8BE9FD;font-style:italic">Text</span><span style="color:#F8F8F2">></span></span>
+<span class="line"><span style="color:#F8F8F2">            &#x3C;/</span><span style="color:#8BE9FD;font-style:italic">TouchableHighlight</span><span style="color:#F8F8F2">></span></span>
+<span class="line"><span style="color:#F8F8F2">          &#x3C;/</span><span style="color:#8BE9FD;font-style:italic">View</span><span style="color:#F8F8F2">></span></span>
+<span class="line"><span style="color:#F8F8F2">        &#x3C;/</span><span style="color:#8BE9FD;font-style:italic">View</span><span style="color:#F8F8F2">></span></span>
+<span class="line"><span style="color:#F8F8F2">      &#x3C;/</span><span style="color:#8BE9FD;font-style:italic">Modal</span><span style="color:#F8F8F2">></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F8F8F2">      &#x3C;</span><span style="color:#8BE9FD;font-style:italic">TouchableHighlight</span></span>
+<span class="line"><span style="color:#50FA7B;font-style:italic">        onPress</span><span style="color:#FF79C6">={</span><span style="color:#F8F8F2">() </span><span style="color:#FF79C6">=></span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#50FA7B">          setModalVisible</span><span style="color:#F8F8F2">(</span><span style="color:#BD93F9">true</span><span style="color:#F8F8F2">);</span></span>
+<span class="line"><span style="color:#F8F8F2">        }</span><span style="color:#FF79C6">}</span><span style="color:#F8F8F2">></span></span>
+<span class="line"><span style="color:#F8F8F2">        &#x3C;</span><span style="color:#8BE9FD;font-style:italic">Text</span><span style="color:#F8F8F2">>Show Modal&#x3C;/</span><span style="color:#8BE9FD;font-style:italic">Text</span><span style="color:#F8F8F2">></span></span>
+<span class="line"><span style="color:#F8F8F2">      &#x3C;/</span><span style="color:#8BE9FD;font-style:italic">TouchableHighlight</span><span style="color:#F8F8F2">></span></span>
+<span class="line"><span style="color:#F8F8F2">    &#x3C;/</span><span style="color:#8BE9FD;font-style:italic">View</span><span style="color:#F8F8F2">></span></span>
+<span class="line"><span style="color:#F8F8F2">  );</span></span>
+<span class="line"><span style="color:#F8F8F2">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">export</span><span style="color:#FF79C6"> default</span><span style="color:#F8F8F2"> App;</span></span>
+<span class="line"></span></code></pre>
+<p>In this example, <code>Modal</code> is imported from <code>react-native</code> and used to create a modal overlay. The modal visibility is managed using the <code>useState</code> hook and is toggled using the <code>TouchableHighlight</code> components.</p>
+<p>Some of the modal properties include:</p>
+<ul>
+<li><code>animationType</code>: Controls how the modal appears and disappears. Possible values are <code>none</code>, <code>slide</code>, and <code>fade</code>. Default is <code>none</code>.</li>
+<li><code>transparent</code>: Determines whether the background is transparent or not. Default is <code>false</code>.</li>
+<li><code>visible</code>: Controls the visibility of the modal. Default is <code>true</code>.</li>
+<li><code>onRequestClose</code>: Called when the user tries to close the modal. Required on Android to properly handle the hardware back button.</li>
+</ul>
+<p>For more information and prop details, you can check out the <a href="https://reactnative.dev/docs/modal" rel="noopener noreferrer nofollow" target="_blank">official documentation</a>.</p>

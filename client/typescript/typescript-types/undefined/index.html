@@ -1,0 +1,17 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/typescript/content/101-typescript-types/104-undefined.md"></div> <h1 id="undefined">undefined</h1>
+<p>JavaScript has two primitive values used to signal absent or uninitialized value: <code>null</code> (absent) and <code>undefined</code> (uninitialized).</p>
+<p>TypeScript has two corresponding <em>types</em> by the same names. How these types behave depends on whether you have the <code>strictNullChecks</code> option on.</p>
+<p>With <code>strictNullChecks</code> off, values that might be <code>null</code> or <code>undefined</code> can still be accessed normally, and the values <code>null</code> and <code>undefined</code> can be assigned to a property of any type. This is similar to how languages without <code>null</code> checks (e.g. C#, Java) behave. The lack of checking for these values tends to be a major source of bugs; TypeScript always recommend people turn <code>strictNullChecks</code> on if it’s practical to do so in the codebase.</p>
+<p>With <code>strictNullChecks</code> on, when a value is <code>null</code> or <code>undefined</code>, you will need to test for those values before using methods or properties on that value. Just like checking for <code>undefined</code> before using an optional property, we can use narrowing to check for values that might be <code>null</code>:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="typescript"><code><span class="line"><span style="color:#FF79C6">function</span><span style="color:#50FA7B"> doSomething</span><span style="color:#F8F8F2">(</span><span style="color:#FFB86C;font-style:italic">x</span><span style="color:#FF79C6">:</span><span style="color:#8BE9FD;font-style:italic"> string</span><span style="color:#FF79C6"> |</span><span style="color:#8BE9FD;font-style:italic"> null</span><span style="color:#F8F8F2">) {</span></span>
+<span class="line"><span style="color:#FF79C6">  if</span><span style="color:#F8F8F2"> (x </span><span style="color:#FF79C6">===</span><span style="color:#BD93F9"> null</span><span style="color:#F8F8F2">) {</span></span>
+<span class="line"><span style="color:#6272A4">    // do nothing</span></span>
+<span class="line"><span style="color:#F8F8F2">  } </span><span style="color:#FF79C6">else</span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#F8F8F2">    console.</span><span style="color:#50FA7B">log</span><span style="color:#F8F8F2">(</span><span style="color:#E9F284">'</span><span style="color:#F1FA8C">Hello, </span><span style="color:#E9F284">'</span><span style="color:#FF79C6"> +</span><span style="color:#F8F8F2"> x.</span><span style="color:#50FA7B">toUpperCase</span><span style="color:#F8F8F2">());</span></span>
+<span class="line"><span style="color:#F8F8F2">  }</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"></span></code></pre>
+<p>Learn more from the following links:</p>
+<ul>
+<li><a href="https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#null-and-undefined" rel="noopener noreferrer nofollow" target="_blank">@article@null and undefined</a></li>
+</ul>

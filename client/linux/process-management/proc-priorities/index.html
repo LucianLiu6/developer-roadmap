@@ -1,0 +1,10 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/linux/content/106-process-management/104-proc-priorities.md"></div> <h1 id="proc-priorities-under-process-management">Proc Priorities Under Process Management</h1>
+<p>In the Linux environment, every running task or essentially a “process” is assigned a certain priority level that impacts its execution timing. These priorities are instrumental in efficient system resource utilization, enabling Linux to fine-tune execution and allocate system resources smartly.</p>
+<p>The Linux kernel sorts processes in the proc structure, typically found under the <code>/proc</code> file system directory. This structure contains information about all active processes, including their priorities. The concept of proc priorities under process management refers to the priority accorded to each process by the system. This priority value (also known as “nice” value) ranges from -20 (highest priority) to +19 (lowest priority).</p>
+<p>By understanding and managing proc priorities, you can optimize system performance and control which processes receive more or less of the CPU’s attention.</p>
+<p>Here’s a simple command in the Linux terminal to display the process ID, priority, and user for all processes:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="color:#50FA7B">ps</span><span style="color:#BD93F9"> -eo</span><span style="color:#F1FA8C"> pid,pri,user</span></span>
+<span class="line"></span></code></pre>
+<p>To change the priority of any process, you can use the <code>renice</code> command:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="color:#50FA7B">renice</span><span style="color:#F1FA8C"> +5</span><span style="color:#BD93F9"> -p</span><span style="color:#F8F8F2"> [PID]   </span><span style="color:#6272A4"># Increase priority by 5 units for process ID [PID]</span></span>
+<span class="line"></span></code></pre>

@@ -1,0 +1,18 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/prompt-engineering/content/102-prompts/good-prompts/103-give-conditions.md"></div> <h1 id="give-conditions">Give Conditions</h1>
+<p>Giving conditions and then asking the model to follow those conditions helps steer the model’s responses toward specific behaviors or outcomes.</p>
+<p>For example, you might give the model some long recipe text and ask it to extract the steps from the recipe or to return something else if the no receipe found in the text. In this way, you are making the output conditional giving the model some additional context.</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>You will be provided with text delimited by triple quotes. </span></span>
+<span class="line"><span>If it contains a sequence of instructions, \ </span></span>
+<span class="line"><span>re-write those instructions in the following format:</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Step 1 - ...</span></span>
+<span class="line"><span>Step 2 - …</span></span>
+<span class="line"><span>…</span></span>
+<span class="line"><span>Step N - …</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>If the text does not contain a sequence of instructions, \ </span></span>
+<span class="line"><span>then simply write \"No steps provided</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>"""INSERT YOUR RECIPE TEXT HERE"""</span></span>
+<span class="line"><span></span></span></code></pre>

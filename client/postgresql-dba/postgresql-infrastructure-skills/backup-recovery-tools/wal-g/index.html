@@ -1,0 +1,41 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/postgresql-dba/content/107-postgresql-infrastructure-skills/102-backup-recovery-tools/101-wal-g.md"></div> <h1 id="wal-g---an-advanced-backup-recovery-tool-for-postgresql">WAL-G - An Advanced Backup Recovery Tool for PostgreSQL</h1>
+<p><strong>WAL-G</strong> is an open-source backup management tool for PostgreSQL databases, designed to efficiently store and manage your backups while offering continuous archiving and point-in-time recovery. It builds upon the concept of Write Ahead Logs (WAL), preserving all modifications to the database and ensuring durability and consistency.</p>
+<h2 id="features-of-wal-g">Features of WAL-G</h2>
+<ul>
+<li>
+<p><strong>Tree-based Incremental Backups</strong>: WAL-G leverages tree-based incremental backups, which allows for efficient storage of the backup information, reducing the time and space required to create and maintain your backups.</p>
+</li>
+<li>
+<p><strong>Delta Backups</strong>: It compresses the data and minimizes space requirements by creating full, incremental and delta backups. Delta backups contain only the differences from previous delta or full backups.</p>
+</li>
+<li>
+<p><strong>Encryption and Compression</strong>: WAL-G provides options for encryption and compression of the WAL files, which helps to save storage space and improve data security.</p>
+</li>
+<li>
+<p><strong>PITR (Point-in-time Recovery)</strong>: WAL-G enables you to recover the database to a specific point in time, down to an individual transaction level. This feature can be helpful in case of data corruption or human error.</p>
+</li>
+<li>
+<p><strong>Compatible with Multiple PostgreSQL Versions</strong>: It supports a wide range of PostgreSQL versions (9.6 and newer) and various storage types, such as AWS S3, GCS, and other platforms.</p>
+</li>
+</ul>
+<h2 id="how-to-use-wal-g">How to Use WAL-G</h2>
+<p>To use WAL-G, you must first install the WAL-G library, configure the environment variables, and set up the required access credentials for your storage provider.</p>
+<ul>
+<li>
+<p><strong>Installation</strong>: You can download the library from the <a href="https://github.com/wal-g/wal-g/releases" rel="noopener noreferrer nofollow" target="_blank">official GitHub repository</a> or use package managers like apt or yum. Follow the <a href="https://github.com/wal-g/wal-g#installation" rel="noopener noreferrer nofollow" target="_blank">installation guide</a> for step-by-step instructions.</p>
+</li>
+<li>
+<p><strong>Configuration</strong>: Set the necessary environment variables for WAL-G, including credentials, storage provider, and encryption settings. Here’s an example configuration for AWS S3:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>export WALG_S3_PREFIX=s3://mybucket/backups</span></span>
+<span class="line"><span>export AWS_REGION=us-west-1</span></span>
+<span class="line"><span>export AWS_ACCESS_KEY_ID=my_access_key</span></span>
+<span class="line"><span>export AWS_SECRET_ACCESS_KEY=my_secret_key</span></span>
+<span class="line"><span>export WALG_COMPRESSION_METHOD=brotli</span></span>
+<span class="line"><span>export WALG_ENCRYPTION_KEY=some_encryption_key</span></span>
+<span class="line"><span></span></span></code></pre>
+</li>
+<li>
+<p><strong>Using WAL-G Commands</strong>: WAL-G offers several commands to manage and restore your backups, such as <code>backup-push</code>, <code>backup-fetch</code>, <code>wal-push</code>, <code>wal-fetch</code>, and more. To know more about these commands, you can refer to the <a href="https://github.com/wal-g/wal-g#commands" rel="noopener noreferrer nofollow" target="_blank">official documentation</a>.</p>
+</li>
+</ul>
+<p>By using WAL-G, you can have a robust and efficient backup management system for your PostgreSQL databases, ensuring data durability, consistency, and quick recovery when needed.</p>

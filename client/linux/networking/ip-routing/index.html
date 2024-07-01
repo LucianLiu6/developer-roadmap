@@ -1,0 +1,7 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/linux/content/112-networking/104-ip-routing.md"></div> <h1 id="ip-routing">IP Routing</h1>
+<p>IP Routing in Linux refers to the process of setting up routing tables and configuring network routes for networking interfaces within the Linux operating system. It is the kernel’s responsibility to handle this task which involves the selection of pathways for sending network packets across to their intended destinations on a network.</p>
+<p>This task is carried out using various command-line tools and the networking configuration files. The principle command-line tool for network configuration in Linux used to be <code>ifconfig</code>, but it has now been mostly replaced by the <code>ip</code> command.</p>
+<p>For example, to view the routing table in Linux, the following command is used:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#50FA7B">$</span><span style="color:#F1FA8C"> ip</span><span style="color:#F1FA8C"> route</span><span style="color:#F1FA8C"> show</span></span>
+<span class="line"></span></code></pre>
+<p>This command returns a list of all routes that are known to the kernel.</p>

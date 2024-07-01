@@ -1,0 +1,60 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/postgresql-dba/content/111-troubleshooting-techniques/104-profiling-tools/104-core-dumps.md"></div> <h1 id="core-dumps">Core Dumps</h1>
+<p>A core dump is a file that contains the memory image of a running process and its process status. It’s typically generated when a program crashes or encounters an unrecoverable error, allowing developers to analyze the state of the program at the time of the crash. In the context of PostgreSQL, core dumps can help diagnose and fix issues with the database system.</p>
+<p>In this section, we’ll discuss:</p>
+<ul>
+<li>Configuring PostgreSQL to generate core dumps</li>
+<li>Analyzing core dumps</li>
+</ul>
+<h2 id="configuring-postgresql-to-generate-core-dumps">Configuring PostgreSQL to Generate Core Dumps</h2>
+<p>By default, core dumps may be disabled on your system or have limited size restrictions. To enable core dumps in PostgreSQL, you’ll need to modify the following operating system settings.</p>
+<ul>
+<li>
+<p><strong>ulimit</strong> - Set the core file size limit to “unlimited” for the PostgreSQL process by updating the <code>ulimit</code> configuration:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>ulimit -c unlimited</span></span>
+<span class="line"><span></span></span></code></pre>
+</li>
+<li>
+<p><strong>sysctl</strong> - Enable core dumps for setuid (user ID change on execution) programs. Edit <code>/etc/sysctl.conf</code> file (or create it if it doesn’t exist) and add the following line:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>fs.suid_dumpable=2</span></span>
+<span class="line"><span></span></span></code></pre>
+<p>Apply changes by running:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>sysctl -p</span></span>
+<span class="line"><span></span></span></code></pre>
+</li>
+<li>
+<p><strong>PostgreSQL configuration</strong> - Set the <code>debug_assertions</code> configuration parameter to “on” in <code>postgresql.conf</code>:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>debug_assertions = on</span></span>
+<span class="line"><span></span></span></code></pre>
+<p>Restart PostgreSQL for the changes to take effect.</p>
+</li>
+</ul>
+<h2 id="analyzing-core-dumps">Analyzing Core Dumps</h2>
+<p>When a core dump occurs, it’s saved in the current working directory of the PostgreSQL process. You can use debugging tools like <code>gdb</code> (GNU Debugger) to analyze the core dump.</p>
+<p>Here is a simple step-by-step guide to analyze a core dump using <code>gdb</code>:</p>
+<ul>
+<li>
+<p>Install <code>gdb</code> if it’s not already installed on your system:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>sudo apt-get install gdb</span></span>
+<span class="line"><span></span></span></code></pre>
+</li>
+<li>
+<p>Locate the core dump file (usually named <code>core</code> or <code>core.&#x3C;pid></code>).</p>
+</li>
+<li>
+<p>Run <code>gdb</code> with the PostgreSQL binary and the core dump file as arguments:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>gdb /path/to/postgres-binary /path/to/core-dump</span></span>
+<span class="line"><span></span></span></code></pre>
+</li>
+<li>
+<p>Once <code>gdb</code> starts, you can issue commands to examine the state of the program:</p>
+<ul>
+<li><code>bt</code> (backtrace) - displays the call stack at the time of the crash</li>
+<li><code>frame &#x3C;number></code> - select a specific frame in the call stack</li>
+<li><code>info locals</code> - display local variables in the current frame</li>
+</ul>
+</li>
+<li>
+<p>When you’re done analyzing, exit <code>gdb</code> by entering the command <code>quit</code>.</p>
+</li>
+</ul>
+<p>Remember, core dumps can contain sensitive information, such as table data or user passwords, so make sure to handle them securely and delete them when no longer needed.</p>

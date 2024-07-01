@@ -1,0 +1,28 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/cpp/content/118-working-with-libs/100-inclusion.md"></div> <h1 id="inclusion-in-c">Inclusion in C++</h1>
+<p>In C++ programming, inclusion refers to incorporating external libraries, header files, or other code files into your program. This process allows developers to access pre-built functions, classes, and variable declarations that can be used in their own code. There are two types of inclusion in C++:</p>
+<ul>
+<li>Header Inclusion</li>
+<li>Source Inclusion</li>
+</ul>
+<h3 id="header-inclusion">Header Inclusion</h3>
+<p>Header inclusion involves including header files using the preprocessor directive <code>#include</code>. Header files are typically used to provide function prototypes, class declarations, and constant definitions that can be shared across multiple source files. There are two ways to include header files in your program:</p>
+<ul>
+<li>Angle brackets <code>&#x3C;></code>: Used for including standard library headers, like <code>iostream</code>, <code>vector</code>, or <code>algorithm</code>.</li>
+</ul>
+<p>Example:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#FF79C6">#include</span><span style="color:#E9F284"> &#x3C;</span><span style="color:#F1FA8C">iostream</span><span style="color:#E9F284">></span></span>
+<span class="line"><span style="color:#FF79C6">#include</span><span style="color:#E9F284"> &#x3C;</span><span style="color:#F1FA8C">vector</span><span style="color:#E9F284">></span></span>
+<span class="line"></span></code></pre>
+<ul>
+<li>Double quotes <code>""</code>: Used for including user-defined headers or headers provided by third-party libraries.</li>
+</ul>
+<p>Example:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#FF79C6">#include</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C">myHeader.h</span><span style="color:#E9F284">"</span></span>
+<span class="line"><span style="color:#FF79C6">#include</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C">thirdPartyLibrary.h</span><span style="color:#E9F284">"</span></span>
+<span class="line"></span></code></pre>
+<h3 id="source-inclusion">Source Inclusion</h3>
+<p>Source inclusion refers to including the content of a source file directly in another source file. This approach is generally not recommended as it can lead to multiple definitions and increased compile times but it can occasionally be useful for certain tasks (e.g., templates or simple small programs). To include a source file, you can use the <code>#include</code> directive with double quotes, just like with header files:</p>
+<p>Example:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#FF79C6">#include</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C">mySourceFile.cpp</span><span style="color:#E9F284">"</span></span>
+<span class="line"></span></code></pre>
+<p>Remember, using source inclusion for large projects or in situations where it’s not necessary can lead to unexpected issues and should be avoided.</p>

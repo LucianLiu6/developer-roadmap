@@ -1,0 +1,52 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/postgresql-dba/content/111-troubleshooting-techniques/106-log-analysis/101-awk.md"></div> <h1 id="awk">Awk</h1>
+<p>Awk is a versatile text processing tool that is widely used for various data manipulation, log analysis, and text reporting tasks. It is especially suitable for working with structured text data, such as data in columns. Awk can easily extract specific fields or perform calculations on them, making it an ideal choice for log analysis.</p>
+<h2 id="basic-awk-syntax">Basic Awk Syntax</h2>
+<p>The basic syntax of an Awk command is as follows:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="color:#50FA7B">awk</span><span style="color:#E9F284"> '</span><span style="color:#F1FA8C">pattern { action }</span><span style="color:#E9F284">'</span><span style="color:#F1FA8C"> filename</span></span>
+<span class="line"></span></code></pre>
+<p>Here, <code>pattern</code> is a regular expression that is matched against the input lines, and <code>action</code> is a series of commands that are executed for each line matching the pattern. If no pattern is specified, the action is applied to all input lines. If no action is specified, the default action is to print the entire line.</p>
+<p>An example of a simple Awk command:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="color:#50FA7B">awk</span><span style="color:#E9F284"> '</span><span style="color:#F1FA8C">{ print $1 }</span><span style="color:#E9F284">'</span><span style="color:#F1FA8C"> filename</span></span>
+<span class="line"></span></code></pre>
+<p>This command will print the first field (column) of each line in the file.</p>
+<h2 id="key-features-of-awk">Key Features of Awk</h2>
+<ul>
+<li>
+<p><strong>Field Separator:</strong> Awk automatically splits input lines into fields based on a predefined field separator (by default, it’s whitespace). The fields are stored in variables <code>$1, $2, $3, ...</code>, where <code>$1</code> refers to the first field, <code>$2</code> to the second, and so on. The entire line can be accessed using the <code>$0</code> variable.</p>
+</li>
+<li>
+<p><strong>Built-in Variables:</strong> Awk has several built-in variables that can be used to configure its behavior or extract useful information. Some of the commonly used variables are:</p>
+<ul>
+<li><code>FS</code>: Field separator (default is whitespace)</li>
+<li><code>OFS</code>: Output field separator (default is a space)</li>
+<li><code>NR</code>: Number of records (input lines) processed so far</li>
+<li><code>NF</code>: Number of fields in the current input line</li>
+</ul>
+</li>
+<li>
+<p><strong>Control Structures:</strong> Awk supports various control structures like <code>if</code>, <code>else</code>, <code>while</code>, <code>for</code>, and others, which can be used to create more complex processing logic.</p>
+</li>
+<li>
+<p><strong>Built-in Functions:</strong> Awk provides a range of built-in functions for string manipulation, numerical calculations, and other operations. Examples include <code>length(string)</code>, <code>gsub(regexp, replacement, string)</code>, and <code>sqrt(number)</code>.</p>
+</li>
+</ul>
+<h2 id="awk-examples-for-log-analysis">Awk Examples for Log Analysis</h2>
+<p>Here are some examples of using Awk for log analysis tasks:</p>
+<ul>
+<li>
+<p>Count the number of lines in a log file:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="color:#50FA7B">awk</span><span style="color:#E9F284"> '</span><span style="color:#F1FA8C">END { print NR }</span><span style="color:#E9F284">'</span><span style="color:#F1FA8C"> logfile</span></span>
+<span class="line"></span></code></pre>
+</li>
+<li>
+<p>Extract the 5th field from a log file and print the unique values and their occurrence count:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="color:#50FA7B">awk</span><span style="color:#E9F284"> '</span><span style="color:#F1FA8C">{ count[$5]++ } END { for (value in count) print value, count[value] }</span><span style="color:#E9F284">'</span><span style="color:#F1FA8C"> logfile</span></span>
+<span class="line"></span></code></pre>
+</li>
+<li>
+<p>Calculate the average of the 3rd field in a log file:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="color:#50FA7B">awk</span><span style="color:#E9F284"> '</span><span style="color:#F1FA8C">{ sum += $3; n++ } END { print sum/n }</span><span style="color:#E9F284">'</span><span style="color:#F1FA8C"> logfile</span></span>
+<span class="line"></span></code></pre>
+</li>
+</ul>
+<p>Using Awk can greatly simplify log analysis tasks, making it easier to extract valuable insights from your PostgreSQL logs. Keep exploring Awk commands and their functionality to uncover more possibilities in log analysis.</p>

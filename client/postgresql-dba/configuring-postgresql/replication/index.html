@@ -1,0 +1,30 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/postgresql-dba/content/105-configuring-postgresql/103-replication.md"></div> <h1 id="replication-in-postgresql">Replication in PostgreSQL</h1>
+<p>Replication, in simple terms, is the process of copying data from one database server to another. It helps in maintaining a level of redundancy and improving the performance of databases. Replication ensures that your database remains highly available, fault-tolerant, and scalable. In this section, we’ll briefly discuss replication methods that are supported by PostgreSQL.</p>
+<h2 id="why-use-replication">Why Use Replication?</h2>
+<p>Replication has several purposes:</p>
+<ul>
+<li><strong>High Availability</strong>: By creating multiple copies of your data, if one server goes down, you can easily switch to another, leading to minimal downtime.</li>
+<li><strong>Load Balancing</strong>: Distribute the load across multiple servers, allowing you to scale queries across multiple nodes while ensuring data consistency.</li>
+<li><strong>Backup</strong>: Replication provides an effective backup method to recover data in case of hardware failure or data loss.</li>
+</ul>
+<h2 id="types-of-replication-in-postgresql">Types of Replication in PostgreSQL</h2>
+<p>PostgreSQL supports two main types of replication:</p>
+<h3 id="physical-replication">Physical Replication</h3>
+<p>Physical replication primarily involves copying the <em>physical</em> files of the database from the primary server to one or more secondary servers. This is also known as <em>binary replication</em>. It creates a byte-for-byte copy of the entire database cluster, including the Write-Ahead Log (WAL) files.</p>
+<p>There are two physical replication methods in PostgreSQL:</p>
+<ul>
+<li>
+<p><strong>Streaming Replication</strong>: In this method, the secondary server establishes a connection with the primary server and streams the changes (WALs) in real-time, leading to almost zero data loss while minimizing the replication lag.</p>
+</li>
+<li>
+<p><strong>Log Shipping</strong>: The primary server sends the WAL files to the secondary server(s) at regular intervals based on a configured timeframe. The secondary server can experience a lag in processing the changes, depending on the interval.</p>
+</li>
+</ul>
+<h3 id="logical-replication">Logical Replication</h3>
+<p>Logical replication deals with replicating data at the <em>logical</em> level, through replication of individual tables or objects. Logical replication replicates data changes using logical changesets (also known as <em>change data capture</em>) in a publisher-subscriber model.</p>
+<ul>
+<li><strong>Logical (or Change Data Capture) Replication</strong>: This method provides fine-grained control over the replication setup, allowing you to replicate only specific tables or rows. It is highly customizable and typically produces a lower overhead than physical replication.</li>
+</ul>
+<h2 id="conclusion">Conclusion</h2>
+<p>Replication is a critical aspect of maintaining a highly available and efficient PostgreSQL environment. By understanding the various replication methods and their use cases, you can better configure your PostgreSQL deployment to suit your application’s requirements. Remember to always monitor and fine-tune your replication setup to ensure optimal performance and reliability.</p>
+<p>In the next section, we’ll dive into configuring replication in PostgreSQL and cover some best practices for setting up a highly available PostgreSQL environment.</p>

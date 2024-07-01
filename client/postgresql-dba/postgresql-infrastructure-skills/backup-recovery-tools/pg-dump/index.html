@@ -1,0 +1,31 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/postgresql-dba/content/107-postgresql-infrastructure-skills/102-backup-recovery-tools/104-pg-dump.md"></div> <h1 id="pg_dump-a-postgresql-backup-tool">pg_dump: A PostgreSQL Backup Tool</h1>
+<p><code>pg_dump</code> is a utility for creating a backup (or “dump”) of a single PostgreSQL database in a textual format. It is a robust, feature-rich utility that allows you to transfer your data safely to a different system or to keep a backup for recovery purposes.</p>
+<h2 id="key-features-of-pg_dump">Key Features of pg_dump</h2>
+<ul>
+<li><em>Selective Data Dump</em>: <code>pg_dump</code> allows you to choose the specific tables, sequences, or other database objects you wish to back up.</li>
+<li><em>Portable Format</em>: The backup created by <code>pg_dump</code> is in SQL format, which makes it easily accessible and transferable for other PostgreSQL installations.</li>
+<li><em>Supports Multiple Output Formats</em>: The output can be generated in plain text, tar, or custom formats to suit your needs.</li>
+<li><em>Backup of Permissions and Metadata</em>: Along with data, <code>pg_dump</code> also captures necessary permissions, metadata, and other database objects like views and indexes.</li>
+<li><em>Concurrency While Backing Up</em>: <code>pg_dump</code> runs concurrently with the live database, ensuring the data consistency during the backup process.</li>
+</ul>
+<h2 id="basic-usage-of-pg_dump">Basic Usage of pg_dump</h2>
+<p>To create a backup of a database, run the following command:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="color:#50FA7B">pg_dump</span><span style="color:#F8F8F2"> [OPTIONS] </span><span style="color:#BD93F9">--file</span><span style="color:#FF79C6">=&#x3C;</span><span style="color:#F1FA8C">output_file</span><span style="color:#FF79C6">></span><span style="color:#F8F8F2"> &#x3C;database_name></span></span>
+<span class="line"></span></code></pre>
+<p>You can replace <code>&#x3C;output_file></code> with the name of your backup file and <code>&#x3C;database_name></code> with the name of the database you wish to back up.</p>
+<p>A common example would be:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="color:#50FA7B">pg_dump</span><span style="color:#BD93F9"> --username=</span><span style="color:#FF79C6">&#x3C;</span><span style="color:#BD93F9">user</span><span style="color:#FF79C6">></span><span style="color:#BD93F9"> --file=backup.sql</span><span style="color:#FF79C6"> &#x3C;</span><span style="color:#F1FA8C">database_nam</span><span style="color:#F8F8F2">e</span><span style="color:#FF79C6">></span></span>
+<span class="line"></span></code></pre>
+<h2 id="restoring-the-backup">Restoring the Backup</h2>
+<p>To restore the backup, you can use the <code>psql</code> command:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="color:#50FA7B">psql</span><span style="color:#BD93F9"> --username=</span><span style="color:#FF79C6">&#x3C;</span><span style="color:#BD93F9">user</span><span style="color:#FF79C6">></span><span style="color:#FF79C6"> &#x3C;</span><span style="color:#F1FA8C">database_nam</span><span style="color:#F8F8F2">e</span><span style="color:#FF79C6">></span><span style="color:#FF79C6"> &#x3C;</span><span style="color:#F1FA8C"> backup.sql</span></span>
+<span class="line"></span></code></pre>
+<h2 id="additional-options">Additional Options</h2>
+<ul>
+<li><code>--format=&#x3C;format></code>: Change the output format, which can be ‘p’ (plain text), ‘t’ (tar), or ‘c’ (custom).</li>
+<li><code>--schema-only</code>: Output only the schema structure (no actual data).</li>
+<li><code>--data-only</code>: Output only the data, not the schema.</li>
+<li><code>--table=&#x3C;table_name></code>: Output only the defined table, you can use this multiple times for multiple tables.</li>
+<li><code>--exclude-table=&#x3C;table_name></code>: Exclude the defined table from dump, you can use this multiple times for multiple tables.</li>
+</ul>
+<p>Refer to the <a href="https://www.postgresql.org/docs/current/app-pgdump.html" rel="noopener noreferrer nofollow" target="_blank">official PostgreSQL documentation</a> for an in-depth understanding and more advanced usage of <code>pg_dump</code>.</p>

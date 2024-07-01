@@ -1,0 +1,65 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/postgresql-dba/content/107-postgresql-infrastructure-skills/103-upgrade-procedures/index.md"></div> <h1 id="upgrade-procedures-in-postgresql">Upgrade Procedures in PostgreSQL</h1>
+<p>Upgrading a PostgreSQL database is an essential task that developers and administrators need to perform periodically. Knowing the most effective and secure upgrade procedures helps you minimize downtime and maintain the stability of your applications. In this section, we will discuss various methods for upgrading PostgreSQL and the pros and cons of each method.</p>
+<h2 id="in-place-upgrades">In-Place Upgrades</h2>
+<p>In-place upgrades involve updating the PostgreSQL package (RPM or DEB packages, for example) to the newest version. The PostgreSQL service is then restarted to run the upgraded version.</p>
+<p><strong>Pros:</strong></p>
+<ul>
+<li>Easy to perform</li>
+<li>Minimal effort and planning required</li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul>
+<li>Longer downtime during the upgrade process</li>
+<li>Difficult to revert to the older version if problems occur</li>
+</ul>
+<h2 id="logical-upgrades">Logical Upgrades</h2>
+<p>Logical upgrade procedures involve exporting and importing data as SQL files or using tools like <code>pg_dump</code> and <code>pg_restore</code>. This method involves creating a new instance of the PostgreSQL server, importing the dumped data, and then repointing applications to the new instance.</p>
+<p><strong>Pros:</strong></p>
+<ul>
+<li>Allows for data validation before switching applications to new instances</li>
+<li>Easier to revert back to the old instance in case of issues</li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul>
+<li>Time-consuming, especially for large databases</li>
+<li>May require extra storage space for exported data files</li>
+</ul>
+<h2 id="physical-upgrades">Physical Upgrades</h2>
+<p>Physical upgrades involve copying the entire data directory over to the new PostgreSQL instance. This method requires that the new version of PostgreSQL can use the existing format of the data directory. In this process, you would stop the PostgreSQL service, copy the data directory, and then start the service on the new instance.</p>
+<p><strong>Pros:</strong></p>
+<ul>
+<li>Minimal downtime compared to logical upgrades</li>
+<li>Easier process for large databases</li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul>
+<li>Higher risk of data corruption</li>
+<li>Compatibility issues may arise with new PostgreSQL versions</li>
+</ul>
+<h2 id="pg_upgrade">Pg_upgrade</h2>
+<p>Pg_upgrade (formerly known as <code>pg_migrator</code>) is a tool provided by PostgreSQL that allows for faster, in-place upgrading by creating hard links instead of copying data files. This greatly reduces downtime and storage requirements.</p>
+<p><strong>Pros:</strong></p>
+<ul>
+<li>Faster than other methods</li>
+<li>No need for additional storage space</li>
+<li>Minimal downtime</li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul>
+<li>Can be challenging to recover from errors</li>
+<li>Must have compatibility at the disk level between source and target clusters</li>
+</ul>
+<h2 id="replication-based-upgrades">Replication-based Upgrades</h2>
+<p>Tools like <code>pglogical</code>, <code>pglogical_slot</code> or built-in replication can be used for upgrading PostgreSQL using replication. The fundamental idea is that while the old version is running, a replica instance is created with the new PostgreSQL version. Once the replication process is complete, the application can be repointed to the new instance.</p>
+<p><strong>Pros:</strong></p>
+<ul>
+<li>Minimal downtime</li>
+<li>Can validate and test new instance before switching over</li>
+<li>Easier to revert back to an older instance if needed</li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul>
+<li>Time-consuming for initial setup and replication</li>
+<li>Requires additional hardware resources for replica instances</li>
+</ul>
+<p>In summary, the ideal upgrade strategy for your PostgreSQL infrastructure would depend on various factors like database size, downtime tolerance, and resource availability. It’s recommended to have a well-planned and tested upgrade strategy in place to ensure smooth and successful upgrades.</p>

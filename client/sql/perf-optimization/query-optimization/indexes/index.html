@@ -1,0 +1,32 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/sql/content/114-perf-optimization/100-query-optimization/100-indexes.md"></div> <h1 id="using-indexes">Using Indexes</h1>
+<p>Indexes in SQL are used as a way to quicken the rate of retrieval operations on a database table. Much like the index in a book, SQL indexes allow the database program to find the data without needing to go through every row in a table and thus improves performance.</p>
+<h2 id="types-of-indexes">Types of Indexes:</h2>
+<ol>
+<li><strong>Single-Column Indexes:</strong></li>
+</ol>
+<p>These are created based on only one table column. The syntax for creating a single column index is as follows:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>CREATE INDEX index_name</span></span>
+<span class="line"><span>ON table_name (column1);</span></span>
+<span class="line"><span></span></span></code></pre>
+<ol start="2">
+<li><strong>Unique Indexes:</strong></li>
+</ol>
+<p>They ensure the data contained in a column or a combination of two or more columns is unique. Syntax to create unique index is as follows:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>CREATE UNIQUE INDEX index_name</span></span>
+<span class="line"><span>ON table_name (column1, column2...);</span></span>
+<span class="line"><span></span></span></code></pre>
+<ol start="3">
+<li><strong>Composite Indexes:</strong></li>
+</ol>
+<p>These are based on two or more columns of a table. It’s important to note that, the order of columns in the definition of an index is important. Syntax to create a Composite Indexes is as follows:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>CREATE INDEX index_name</span></span>
+<span class="line"><span>ON table_name (column1, column2);</span></span>
+<span class="line"><span></span></span></code></pre>
+<ol start="4">
+<li><strong>Implicit Indexes:</strong></li>
+</ol>
+<p>These are indexes that are automatically created by the database server when an object is defined. For example, when a primary key is defined.</p>
+<h2 id="how-indexes-work">How Indexes Work</h2>
+<p>SQL indexes work by storing a part of a table’s data in a place where it can be accessed extremely swiftly. The index holds the column value, and the location of the record itself. This is similar to how an index in a book stores the word, and the page number on which the word can be found.</p>
+<h2 id="considerations">Considerations</h2>
+<p>While they do provide a significant advantage, they also require additional storage and can slow down the rate of updates and inserts into a database. As such, indexes should be used judiciously, taking into consideration the nature of the data in the table and the kinds of queries that will be used.</p>

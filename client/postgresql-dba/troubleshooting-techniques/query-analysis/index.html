@@ -1,0 +1,39 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/postgresql-dba/content/111-troubleshooting-techniques/103-query-analysis/index.md"></div> <h1 id="query-analysis">Query Analysis</h1>
+<p>Query analysis is an essential troubleshooting technique when working with PostgreSQL. It helps you understand the performance of your queries, identify potential bottlenecks, and optimize them for better efficiency. In this section, we will discuss the key components of query analysis, and demonstrate how to use PostgreSQL tools such as <code>EXPLAIN</code> and <code>EXPLAIN ANALYZE</code> to gain valuable insights about your queries.</p>
+<h2 id="key-components-of-query-analysis">Key Components of Query Analysis</h2>
+<p>There are several aspects you need to consider while analyzing a query:</p>
+<ul>
+<li><strong>Query Complexity</strong>: Complex queries with multiple joins, aggregations, or nested subqueries can be slow and resource-intensive. Simplifying or breaking down complex queries can improve their performance.</li>
+<li><strong>Indexes</strong>: Indexes can make a significant difference when searching for specific rows in big tables. Ensure that your queries take advantage of the available indexes, and consider adding new indexes where needed.</li>
+<li><strong>Data Types</strong>: Using inappropriate data types can lead to slow queries and wastage of storage. Make sure you use the correct data types and operators for your specific use case.</li>
+<li><strong>Concurrency</strong>: High concurrency can lead to lock contention, causing slow performance. Ensure that your application handles concurrent queries efficiently.</li>
+<li><strong>Hardware</strong>: The performance of your queries can be influenced by the hardware and system resources available. Regularly monitoring your system’s performance can help you identify hardware-related issues.</li>
+</ul>
+<h2 id="using-explain-and-explain-analyze">Using EXPLAIN and EXPLAIN ANALYZE</h2>
+<p>PostgreSQL provides the <code>EXPLAIN</code> and <code>EXPLAIN ANALYZE</code> commands to help you understand the query execution plan and performance.</p>
+<h2 id="explain">EXPLAIN</h2>
+<p><code>EXPLAIN</code> displays the query execution plan that the PostgreSQL optimizer generates for a given SQL statement. It does not actually execute the query but shows how the query would be executed.</p>
+<p>Syntax:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#F8F8F2">EXPLAIN [OPTIONS] your_query;</span></span>
+<span class="line"></span></code></pre>
+<p>Example:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#F8F8F2">EXPLAIN </span><span style="color:#FF79C6">SELECT</span><span style="color:#FF79C6"> *</span><span style="color:#FF79C6"> FROM</span><span style="color:#F8F8F2"> users </span><span style="color:#FF79C6">WHERE</span><span style="color:#F8F8F2"> age </span><span style="color:#FF79C6">></span><span style="color:#BD93F9"> 30</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"></span></code></pre>
+<h2 id="explain-analyze">EXPLAIN ANALYZE</h2>
+<p><code>EXPLAIN ANALYZE</code> not only displays the query execution plan but also executes the query, providing actual runtime statistics like the total execution time and the number of rows processed. This information can help you identify bottlenecks and analyze query performance more accurately.</p>
+<p>Syntax:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#F8F8F2">EXPLAIN ANALYZE [OPTIONS] your_query;</span></span>
+<span class="line"></span></code></pre>
+<p>Example:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#F8F8F2">EXPLAIN ANALYZE </span><span style="color:#FF79C6">SELECT</span><span style="color:#FF79C6"> *</span><span style="color:#FF79C6"> FROM</span><span style="color:#F8F8F2"> users </span><span style="color:#FF79C6">WHERE</span><span style="color:#F8F8F2"> age </span><span style="color:#FF79C6">></span><span style="color:#BD93F9"> 30</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"></span></code></pre>
+<h2 id="understanding-the-query-execution-plan">Understanding the Query Execution Plan</h2>
+<p>The output of <code>EXPLAIN</code> or <code>EXPLAIN ANALYZE</code> provides valuable insights into your query’s performance, such as:</p>
+<ul>
+<li><strong>Operations</strong>: The sequence of operations such as table scans, index scans, joins, and sorts performed to execute the query.</li>
+<li><strong>Cost</strong>: An estimated cost value for each operation, calculated by the PostgreSQL optimizer. Lower cost values indicate better performance.</li>
+<li><strong>Total Execution Time</strong>: When using <code>EXPLAIN ANALYZE</code>, the actual execution time of the query is displayed, which can help in identifying slow queries.</li>
+<li><strong>Row Count</strong>: The estimated or actual number of rows processed by each operation.</li>
+</ul>
+<p>By studying the query execution plan and the associated statistics, you can gain a deeper understanding of your query’s performance and identify areas for improvement.</p>
+<p>Now that you have learned about query analysis, you can apply these techniques to optimize your PostgreSQL queries and improve the overall performance of your database system.</p>

@@ -1,0 +1,13 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/computer-science/content/103-asymptotic-notation/103-common-runtimes/104-exponential.md"></div> <h1 id="exponential">Exponential</h1>
+<p>Exponential algorithms are those that grow at a rate of 2^n. This means that for each additional input, the algorithm will take twice as long to run. The following function is an example of an exponential algorithm:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#FF79C6">def</span><span style="color:#50FA7B"> exponential</span><span style="color:#F8F8F2">(</span><span style="color:#FFB86C;font-style:italic">n</span><span style="color:#F8F8F2">):</span></span>
+<span class="line"><span style="color:#FF79C6">    if</span><span style="color:#F8F8F2"> n </span><span style="color:#FF79C6">==</span><span style="color:#BD93F9"> 0</span><span style="color:#F8F8F2">:</span></span>
+<span class="line"><span style="color:#FF79C6">        return</span><span style="color:#BD93F9"> 1</span></span>
+<span class="line"><span style="color:#FF79C6">    return</span><span style="color:#F8F8F2"> exponential(n </span><span style="color:#FF79C6">-</span><span style="color:#BD93F9"> 1</span><span style="color:#F8F8F2">) </span><span style="color:#FF79C6">+</span><span style="color:#F8F8F2"> exponential(n </span><span style="color:#FF79C6">-</span><span style="color:#BD93F9"> 1</span><span style="color:#F8F8F2">)</span></span>
+<span class="line"></span></code></pre>
+<p>As you can see, the algorithm’s runtime grows exponentially. For each additional input, the algorithm will take twice as long to run.</p>
+<p>Visit the following resources to learn more:</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=Z0bH0cMY0E8" rel="noopener noreferrer nofollow" target="_blank">@video@Big O Notation — Calculating Time Complexity</a></li>
+<li><a href="https://www.youtube.com/watch?v=V6mKVRU1evU" rel="noopener noreferrer nofollow" target="_blank">@video@Big O Notations</a></li>
+</ul>

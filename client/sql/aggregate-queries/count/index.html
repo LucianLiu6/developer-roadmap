@@ -1,0 +1,19 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/sql/content/104-aggregate-queries/102-count.md"></div> <h1 id="count">COUNT</h1>
+<p><code>COUNT</code> is a SQL function that returns the number of rows that match a specified criteria. Essentially, <code>COUNT</code> function is used when you need to know the count of a record in a certain table’s column.</p>
+<p>There are two types of count function; <code>COUNT(*)</code> and <code>COUNT(column)</code>.</p>
+<ul>
+<li><code>COUNT(*)</code> counts all the rows in the target table whether columns contain null values or not.</li>
+</ul>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#FF79C6">SELECT</span><span style="color:#8BE9FD"> COUNT</span><span style="color:#F8F8F2">(</span><span style="color:#FF79C6">*</span><span style="color:#F8F8F2">) </span><span style="color:#FF79C6">FROM</span><span style="color:#F8F8F2"> table_name;</span></span>
+<span class="line"></span></code></pre>
+<ul>
+<li><code>COUNT(column)</code> counts the rows in the column of a table excluding null.</li>
+</ul>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#FF79C6">SELECT</span><span style="color:#8BE9FD"> COUNT</span><span style="color:#F8F8F2">(column_name) </span><span style="color:#FF79C6">FROM</span><span style="color:#F8F8F2"> table_name;</span></span>
+<span class="line"></span></code></pre>
+<p>You may also use <code>COUNT()</code> in conjunction with <code>GROUP BY</code> to return the count of rows within each group.</p>
+<p>A typical example would be:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#FF79C6">SELECT</span><span style="color:#F8F8F2"> column_name, </span><span style="color:#8BE9FD">COUNT</span><span style="color:#F8F8F2">(</span><span style="color:#FF79C6">*</span><span style="color:#F8F8F2">) </span><span style="color:#FF79C6">FROM</span><span style="color:#F8F8F2"> table_name </span><span style="color:#FF79C6">GROUP BY</span><span style="color:#F8F8F2"> column_name;</span></span>
+<span class="line"></span></code></pre>
+<p>Here, <code>column_name</code> is the name of the column based on which the rows will be grouped. This query will return the count of rows in each group of <code>column_name</code>.</p>
+<p>By understanding how to use the <code>COUNT()</code> function, you can extract more meaningful data from your tables, and perform analytics and generate reports based on the counts of certain attributes in your database.</p>

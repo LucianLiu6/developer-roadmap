@@ -1,0 +1,10 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/linux/content/112-networking/105-dns-resolution.md"></div> <h1 id="dns-resolution-in-networking-on-linux">DNS Resolution in Networking on Linux</h1>
+<p>Domain Name System (DNS) is a decentralized system used for converting hostnames into IP addresses, making it easier for users to access websites without having to remember specific numeric IP addresses. DNS resolution, therefore, is a critical aspect of networking in Linux.</p>
+<p>On Linux systems, when an application needs to connect to a certain URL, it consults the DNS resolver. This resolver, using the file <code>/etc/resolv.conf</code>, communicates with the DNS server, which then converts the URL into an IP address to establish a network connection.</p>
+<p>Below command is used to query DNS and fetch IP addresses:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#50FA7B">nslookup</span><span style="color:#F1FA8C"> www.example.com</span></span>
+<span class="line"></span></code></pre>
+<p>Or using dig command:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#50FA7B">dig</span><span style="color:#F1FA8C"> www.example.com</span></span>
+<span class="line"></span></code></pre>
+<p>Getting a good understanding of the DNS resolution process provides a solid base for tasks like network troubleshooting and web server setup on a Linux system.</p>

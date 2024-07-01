@@ -1,0 +1,57 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/postgresql-dba/content/104-learn-sql-concepts/100-ddl-queries/102-data-types.md"></div> <h1 id="data-types-in-postgresql">Data Types in PostgreSQL</h1>
+<p>In PostgreSQL, data types are used to specify what kind of data is allowed in a particular column of a table. Choosing the right data type is important for ensuring data integrity and optimizing performance.</p>
+<h2 id="numeric-types">Numeric Types</h2>
+<ul>
+<li><code>INTEGER</code>: Used to store whole numbers in the range -2147483648 to 2147483647.</li>
+<li><code>BIGINT</code>: Used for storing larger whole numbers in the range -9223372036854775808 to 9223372036854775807.</li>
+<li><code>REAL</code>: Used for storing approximate 6-digit decimal values.</li>
+<li><code>DOUBLE PRECISION</code>: Used for storing approximate 15-digit decimal values.</li>
+<li><code>NUMERIC(precision, scale)</code>: Used for storing exact decimal values, where <strong>precision</strong> defines the total number of digits and <strong>scale</strong> defines the number of digits after the decimal point.</li>
+</ul>
+<h2 id="character-types">Character Types</h2>
+<ul>
+<li><code>CHAR(n)</code>: Fixed-length character string with a specified length <strong>n</strong> (1 to 10485760).</li>
+<li><code>VARCHAR(n)</code>: Variable-length character string with a maximum length <strong>n</strong> (1 to 10485760).</li>
+<li><code>TEXT</code>: Variable-length character string with no specified limit.</li>
+</ul>
+<h2 id="datetime-types">Date/Time Types</h2>
+<ul>
+<li><code>DATE</code>: Stores only date values (no time) in the format ‘YYYY-MM-DD’.</li>
+<li><code>TIME</code>: Stores only time values (no date) in the format ‘HH:MI:SS’.</li>
+<li><code>TIMESTAMP</code>: Stores both date and time values in the format ‘YYYY-MM-DD HH:MI:SS’.</li>
+<li><code>INTERVAL</code>: Stores a duration or interval, e.g., ‘2 hours’, ‘3 days’, ‘1 month’, etc.</li>
+</ul>
+<h2 id="boolean-type">Boolean Type</h2>
+<ul>
+<li><code>BOOLEAN</code>: Stores either <code>TRUE</code> or <code>FALSE</code>.</li>
+</ul>
+<h2 id="enumerated-types">Enumerated Types</h2>
+<p>Enumerated types are user-defined data types that consist of a static, ordered set of values. The syntax for creating an enumerated type is:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#FF79C6">CREATE</span><span style="color:#FF79C6"> TYPE</span><span style="color:#50FA7B"> name</span><span style="color:#FF79C6"> AS</span><span style="color:#F8F8F2"> ENUM (value1, value2, value3, ...);</span></span>
+<span class="line"></span></code></pre>
+<h2 id="json-types">JSON Types</h2>
+<ul>
+<li><code>JSON</code>: Stores JSON data as a string.</li>
+<li><code>JSONB</code>: Stores JSON data in a binary format for faster processing and querying.</li>
+</ul>
+<h2 id="array-types">Array Types</h2>
+<p>Arrays are one-dimensional or multi-dimensional structures that can store multiple values of the same data type. To define an array, simply use the base data type followed by square brackets <code>[]</code>.</p>
+<h2 id="geometric-types">Geometric Types</h2>
+<p>PostgreSQL supports various geometric types for storing points, lines, and polygons.</p>
+<ul>
+<li><code>POINT</code>: Represents a geometric point with two coordinates (x, y).</li>
+<li><code>LINE</code>: Represents a line with a start and an end point.</li>
+<li><code>POLYGON</code>: Represents a closed geometric shape with multiple points.</li>
+</ul>
+<h2 id="network-address-types">Network Address Types</h2>
+<ul>
+<li><code>CIDR</code>: Stores an IPv4 or IPv6 network address and its subnet mask.</li>
+<li><code>INET</code>: Stores an IPv4 or IPv6 host address with an optional subnet mask.</li>
+<li><code>MACADDR</code>: Stores a MAC address (6-byte hardware address).</li>
+</ul>
+<h2 id="bit-strings">Bit Strings</h2>
+<ul>
+<li><code>BIT(n)</code>: Fixed-length bit field with a specified length <strong>n</strong>.</li>
+<li><code>BIT VARYING(n)</code>: Variable-length bit field with a maximum length <strong>n</strong>.</li>
+</ul>
+<p>Now that you are familiar with the different data types available in PostgreSQL, make sure to choose the appropriate data type for each column in your tables to ensure proper storage and performance.</p>

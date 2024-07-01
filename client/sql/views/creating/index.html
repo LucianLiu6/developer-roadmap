@@ -1,0 +1,82 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/sql/content/109-views/100-creating.md"></div> <h1 id="creating-views">Creating Views</h1>
+<p>In SQL, creating views can be achieved through the <code>CREATE VIEW</code> statement. A view is a virtual table based on the result-set of an SQL statement. It contains rows and columns from one or more tables. The syntax for the <code>CREATE VIEW</code> statement is:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#FF79C6">CREATE</span><span style="color:#FF79C6"> VIEW</span><span style="color:#50FA7B"> view_name</span><span style="color:#FF79C6"> AS</span></span>
+<span class="line"><span style="color:#FF79C6">SELECT</span><span style="color:#F8F8F2"> column1, column2, ...</span></span>
+<span class="line"><span style="color:#FF79C6">FROM</span><span style="color:#F8F8F2"> table_name</span></span>
+<span class="line"><span style="color:#FF79C6">WHERE</span><span style="color:#F8F8F2"> condition;</span></span>
+<span class="line"></span></code></pre>
+<p>Here:</p>
+<ul>
+<li><code>CREATE VIEW view_name</code> : It creates a new view that you define with <code>view_name</code>.</li>
+<li><code>AS SELECT column1, column2 ...</code> : These are the columns you want in your view. You can choose one or more columns from one or more tables.</li>
+<li><code>FROM table_name</code> : <code>table_name</code> is the name of the table from which you want to create the view.</li>
+<li><code>WHERE</code> : It is an optional clause that you can use to specify conditions for displaying records.</li>
+</ul>
+<p><strong>Example:</strong></p>
+<p>Let’s say you have a table named <code>Employees</code> having following data:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>ID</th><th>NAME</th><th>SALARY</th><th>DEPARTMENT_ID</th></tr></thead><tbody><tr><td>1</td><td>John</td><td>3000</td><td>2</td></tr><tr><td>2</td><td>Sue</td><td>3500</td><td>3</td></tr><tr><td>3</td><td>Phil</td><td>4500</td><td>2</td></tr><tr><td>4</td><td>Anna</td><td>5000</td><td>1</td></tr></tbody></table>
+<p>You can create a view that shows only the employees from department 2:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#FF79C6">CREATE</span><span style="color:#FF79C6"> VIEW</span><span style="color:#50FA7B"> Department2</span><span style="color:#FF79C6"> AS</span></span>
+<span class="line"><span style="color:#FF79C6">SELECT</span><span style="color:#FF79C6"> Name</span><span style="color:#F8F8F2">, Salary</span></span>
+<span class="line"><span style="color:#FF79C6">FROM</span><span style="color:#F8F8F2"> Employees</span></span>
+<span class="line"><span style="color:#FF79C6">WHERE</span><span style="color:#F8F8F2"> Department_ID </span><span style="color:#FF79C6">=</span><span style="color:#BD93F9"> 2</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"></span></code></pre>
+<p>After running this statement, <code>Department2</code> will be a saved view in your database, and you can query it like you would with a standard table:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#FF79C6">SELECT</span><span style="color:#FF79C6"> *</span></span>
+<span class="line"><span style="color:#FF79C6">FROM</span><span style="color:#F8F8F2"> Department2;</span></span>
+<span class="line"></span></code></pre>
+<p>This would bring up</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>NAME</th><th>SALARY</th></tr></thead><tbody><tr><td>John</td><td>3000</td></tr><tr><td>Phil</td><td>4500</td></tr></tbody></table>
+<p>In total, the <code>CREATE VIEW</code> statement is a useful command when you want to save a particular query and its result set for future use. This can simplify complex queries by breaking them up into manageable parts.</p>

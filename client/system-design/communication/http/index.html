@@ -1,0 +1,18 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/system-design/content/115-communication/100-http.md"></div> <h1 id="http">HTTP</h1>
+<p>HTTP is a method for encoding and transporting data between a client and a server. It is a request/response protocol: clients issue requests and servers issue responses with relevant content and completion status info about the request. HTTP is self-contained, allowing requests and responses to flow through many intermediate routers and servers that perform load balancing, caching, encryption, and compression.</p>
+<p>A basic HTTP request consists of a verb (method) and a resource (endpoint). Below are common HTTP verbs:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Verb   | Description                   | Idempotent* | Safe | Cacheable                               |</span></span>
+<span class="line"><span>-------|-------------------------------|-------------|------|-----------------------------------------|</span></span>
+<span class="line"><span>GET    | Reads a resource              | Yes         | Yes  | Yes                                     |</span></span>
+<span class="line"><span>POST   | Creates a resource or trigger | No          | No   | Yes if response contains freshness info |</span></span>
+<span class="line"><span>PUT    | Creates or replace a resource | Yes         | No   | No                                      |</span></span>
+<span class="line"><span>PATCH  | Partially updates a resource  | No          | No   | Yes if response contains freshness info |</span></span>
+<span class="line"><span>DELETE | Deletes a resource            | Yes         | No   | No                                      |</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span></span></span></code></pre>
+<p>HTTP is an application layer protocol relying on lower-level protocols such as TCP and UDP.</p>
+<ul>
+<li><a href="https://cs.fyi/guide/http-in-depth" rel="noopener noreferrer nofollow" target="_blank">@article@Everything you need to know about HTTP</a></li>
+<li><a href="https://www.nginx.com/resources/glossary/http/" rel="noopener noreferrer nofollow" target="_blank">@article@What Is HTTP?</a></li>
+<li><a href="https://www.quora.com/What-is-the-difference-between-HTTP-protocol-and-TCP-protocol" rel="noopener noreferrer nofollow" target="_blank">@article@What is the difference between HTTP protocol and TCP protocol?</a></li>
+</ul>

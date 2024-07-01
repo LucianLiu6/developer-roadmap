@@ -1,0 +1,34 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/typescript/content/108-classes/104-inheritance-vs-polymorphism.md"></div> <h1 id="inheritance-vs-polymorphism">Inheritance vs Polymorphism</h1>
+<p>Inheritance and polymorphism are two fundamental concepts in object-oriented programming, and they are supported in TypeScript as well.</p>
+<p>Inheritance refers to a mechanism where a subclass inherits properties and methods from its parent class. This allows a subclass to reuse the code and behavior of its parent class while also adding or modifying its own behavior. In TypeScript, inheritance is achieved using the extends keyword.</p>
+<p>Polymorphism refers to the ability of an object to take on many forms. This allows objects of different classes to be treated as objects of a common class, as long as they share a common interface or inheritance hierarchy. In TypeScript, polymorphism is achieved through method overriding and method overloading.</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="typescript"><code><span class="line"><span style="color:#FF79C6">class</span><span style="color:#8BE9FD"> Animal</span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#50FA7B">  makeSound</span><span style="color:#F8F8F2">()</span><span style="color:#FF79C6">:</span><span style="color:#8BE9FD;font-style:italic"> void</span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#F8F8F2">    console.</span><span style="color:#50FA7B">log</span><span style="color:#F8F8F2">(</span><span style="color:#E9F284">'</span><span style="color:#F1FA8C">Making animal sound</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">);</span></span>
+<span class="line"><span style="color:#F8F8F2">  }</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">class</span><span style="color:#8BE9FD"> Dog</span><span style="color:#FF79C6"> extends</span><span style="color:#8BE9FD;font-style:italic"> Animal</span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#50FA7B">  makeSound</span><span style="color:#F8F8F2">()</span><span style="color:#FF79C6">:</span><span style="color:#8BE9FD;font-style:italic"> void</span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#F8F8F2">    console.</span><span style="color:#50FA7B">log</span><span style="color:#F8F8F2">(</span><span style="color:#E9F284">'</span><span style="color:#F1FA8C">Bark</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">);</span></span>
+<span class="line"><span style="color:#F8F8F2">  }</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">class</span><span style="color:#8BE9FD"> Cat</span><span style="color:#FF79C6"> extends</span><span style="color:#8BE9FD;font-style:italic"> Animal</span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#50FA7B">  makeSound</span><span style="color:#F8F8F2">()</span><span style="color:#FF79C6">:</span><span style="color:#8BE9FD;font-style:italic"> void</span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#F8F8F2">    console.</span><span style="color:#50FA7B">log</span><span style="color:#F8F8F2">(</span><span style="color:#E9F284">'</span><span style="color:#F1FA8C">Meow</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">);</span></span>
+<span class="line"><span style="color:#F8F8F2">  }</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">let</span><span style="color:#F8F8F2"> animal</span><span style="color:#FF79C6">:</span><span style="color:#8BE9FD;font-style:italic"> Animal</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F8F8F2">animal </span><span style="color:#FF79C6">=</span><span style="color:#FF79C6;font-weight:bold"> new</span><span style="color:#50FA7B"> Dog</span><span style="color:#F8F8F2">();</span></span>
+<span class="line"><span style="color:#F8F8F2">animal.</span><span style="color:#50FA7B">makeSound</span><span style="color:#F8F8F2">(); </span><span style="color:#6272A4">// Output: Bark</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F8F8F2">animal </span><span style="color:#FF79C6">=</span><span style="color:#FF79C6;font-weight:bold"> new</span><span style="color:#50FA7B"> Cat</span><span style="color:#F8F8F2">();</span></span>
+<span class="line"><span style="color:#F8F8F2">animal.</span><span style="color:#50FA7B">makeSound</span><span style="color:#F8F8F2">(); </span><span style="color:#6272A4">// Output: Meow</span></span>
+<span class="line"></span></code></pre>
+<p>Learn more from the following resources:</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=Sn6K57YSuwU" rel="noopener noreferrer nofollow" target="_blank">@video@Inheritance and Polymorphism In TypeScript</a></li>
+</ul>

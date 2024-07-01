@@ -1,0 +1,11 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/linux/content/116-containerization/100-ulimits.md"></div> <h1 id="understanding-ulimits">Understanding Ulimits</h1>
+<p>Linux-based containerization technology such as Docker utilizes ‘ulimits’ as one of the security features to control the resource consumption for each running container. Ulimits (user limits) are a feature of the Linux kernel that restricts the resources that any single user can consume. These resources include open file handles, locked-in physical memory, and others.</p>
+<p>Used effectively, ulimits can prevent a rogue or errant process in a particular container from exhausting the server’s resources and creating a denial-of-service situation for other containers or processes.</p>
+<p>In a containerized environment, it is crucial to skillfully manage these resource limits to ensure optimal performance and security of all containers.</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6272A4"># To see current ulimits:</span></span>
+<span class="line"><span style="color:#8BE9FD">ulimit</span><span style="color:#BD93F9"> -a</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6272A4"># To set a specific ulimit (soft limit), for example file handles:</span></span>
+<span class="line"><span style="color:#8BE9FD">ulimit</span><span style="color:#BD93F9"> -n</span><span style="color:#BD93F9"> 1024</span></span>
+<span class="line"></span></code></pre>
+<p>Properly configuring and understanding ulimits – especially in containerized environments – is an essential part of system administration in Linux.</p>

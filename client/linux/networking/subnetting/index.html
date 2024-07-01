@@ -1,0 +1,10 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/linux/content/112-networking/101-subnetting.md"></div> <h1 id="subnetting">Subnetting</h1>
+<p>Subnetting is a critical process in Linux networking. This practice involves dividing a network into two or more networks, known as subnets. Subnetting helps improve network performance and security. In Linux, subnetting can be managed within the context of the Internet Protocol (IP) addressing scheme, where it’s crucial in organizing and managing IP addresses within a network, preventing IP conflicts and efficiently utilizing IP address ranges. This technique is invaluable in large complex Linux networking environments where IP address management can become overwhelmingly intricate.</p>
+<p>Generally, the following commands are used in Linux for subnetting:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#6272A4"># Display current routing table</span></span>
+<span class="line"><span style="color:#50FA7B">$</span><span style="color:#F1FA8C"> route</span><span style="color:#BD93F9"> -n</span><span style="color:#F8F8F2"> </span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6272A4"># Add a new subnet</span></span>
+<span class="line"><span style="color:#50FA7B">$</span><span style="color:#F1FA8C"> route</span><span style="color:#F1FA8C"> add</span><span style="color:#BD93F9"> -net</span><span style="color:#F1FA8C"> xxx.xxx.xxx.x/xx</span><span style="color:#F1FA8C"> gw</span><span style="color:#F1FA8C"> yyy.yyy.yyy.y</span></span>
+<span class="line"></span></code></pre>
+<p>Please replace the <code>xxx.xxx.xxx.x/xx</code> with your desired subnet address and network mask and replace <code>yyy.yyy.yyy.y</code> with the intended default gateway for the subnet.</p>

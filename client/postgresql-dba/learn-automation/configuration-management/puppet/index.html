@@ -1,0 +1,40 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/postgresql-dba/content/108-learn-automation/102-configuration-management/103-puppet.md"></div> <h1 id="puppet-configuration-management-for-postgresql">Puppet: Configuration Management for PostgreSQL</h1>
+<p>Puppet is an open-source software configuration management tool that enables system administrators to automate the provisioning, configuration, and management of a server infrastructure. It helps minimize human errors, ensures consistency across multiple systems, and simplifies the process of managing PostgreSQL installations.</p>
+<p>This section of the guide will provide insights into the following aspects of using Puppet for PostgreSQL configuration management:</p>
+<h2 id="getting-started-with-puppet">Getting Started with Puppet</h2>
+<p>Ensure you have Puppet installed on your system. You can find detailed installation instructions in the <a href="https://puppet.com/docs/puppet/latest/puppet_platform.html" rel="noopener noreferrer nofollow" target="_blank">official Puppet documentation</a>.</p>
+<p>After installing Puppet, you can configure it to manage PostgreSQL by installing the appropriate PostgreSQL module from the Puppet Forge:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#50FA7B">puppet</span><span style="color:#F1FA8C"> module</span><span style="color:#F1FA8C"> install</span><span style="color:#F1FA8C"> puppetlabs-postgresql</span></span>
+<span class="line"></span></code></pre>
+<h2 id="configuring-postgresql-with-puppet">Configuring PostgreSQL with Puppet</h2>
+<p>Once the PostgreSQL module is installed, you can create a Puppet manifest to define your desired PostgreSQL configuration. Manifests are written in the Puppet language and define the desired state of your system. A basic PostgreSQL manifest may look like this:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="puppet"><code><span class="line"><span style="color:#FF79C6">class</span><span style="color:#F8F8F2"> { </span><span style="color:#E9F284">'</span><span style="color:#F1FA8C">postgresql::globals</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">:</span></span>
+<span class="line"><span style="color:#BD93F9">  manage_package_repo </span><span style="color:#FF79C6">=></span><span style="color:#BD93F9"> true</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#BD93F9">  version             </span><span style="color:#FF79C6">=></span><span style="color:#E9F284"> '</span><span style="color:#F1FA8C">12</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#BD93F9">  encoding            </span><span style="color:#FF79C6">=></span><span style="color:#E9F284"> '</span><span style="color:#F1FA8C">UTF8</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#BD93F9">  locale              </span><span style="color:#FF79C6">=></span><span style="color:#E9F284"> '</span><span style="color:#F1FA8C">en_US.UTF-8</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#F8F8F2">} </span><span style="color:#FF79C6">-></span></span>
+<span class="line"><span style="color:#FF79C6">class</span><span style="color:#F8F8F2"> { </span><span style="color:#E9F284">'</span><span style="color:#F1FA8C">postgresql::server</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">:</span></span>
+<span class="line"><span style="color:#BD93F9">  service_ensure </span><span style="color:#FF79C6">=></span><span style="color:#E9F284"> '</span><span style="color:#F1FA8C">running</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#BD93F9">  initdb_locale  </span><span style="color:#FF79C6">=></span><span style="color:#E9F284"> '</span><span style="color:#F1FA8C">en_US.UTF-8</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"></span></code></pre>
+<p>This manifest installs and configures PostgreSQL 12 with the UTF-8 encoding and the en_US.UTF-8 locale. Ensure the manifest is saved with the ‘.pp’ file extension (e.g., <code>postgres.pp</code>.</p>
+<h2 id="applying-puppet-manifests">Applying Puppet Manifests</h2>
+<p>To apply the PostgreSQL manifest:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#50FA7B">puppet</span><span style="color:#F1FA8C"> apply</span><span style="color:#F1FA8C"> /path/to/your/postgres.pp</span></span>
+<span class="line"></span></code></pre>
+<p>Puppet will process the manifest and apply the desired state on the target system. In case of errors or issues, Puppet provides detailed reports for debugging and troubleshooting.</p>
+<h2 id="managing-roles-users-and-permissions">Managing Roles, Users, and Permissions</h2>
+<p>Puppet allows you to manage PostgreSQL roles, users, and their permissions. For example:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="puppet"><code><span class="line"><span style="color:#FF79C6">postgresql::server::role</span><span style="color:#F8F8F2"> { </span><span style="color:#E9F284">'</span><span style="color:#F1FA8C">myuser</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">:</span></span>
+<span class="line"><span style="color:#BD93F9">  password_hash </span><span style="color:#FF79C6">=></span><span style="color:#F8F8F2"> postgresql_password(</span><span style="color:#E9F284">'</span><span style="color:#F1FA8C">myuser</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">, </span><span style="color:#E9F284">'</span><span style="color:#F1FA8C">mypassword</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">),</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">postgresql::server::database</span><span style="color:#F8F8F2"> { </span><span style="color:#E9F284">'</span><span style="color:#F1FA8C">mydb</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">:</span></span>
+<span class="line"><span style="color:#BD93F9">  owner </span><span style="color:#FF79C6">=></span><span style="color:#E9F284"> '</span><span style="color:#F1FA8C">myuser</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"></span></code></pre>
+<p>This manifest creates a new PostgreSQL user ‘myuser’ with the password ‘mypassword’, and also creates a new database ‘mydb’ owned by ‘myuser’.</p>
+<h2 id="further-resources">Further Resources</h2>
+<p>For more information and advanced usage, refer to the <a href="https://puppet.com/docs/puppet/latest/index.html" rel="noopener noreferrer nofollow" target="_blank">official Puppet documentation</a> and the <a href="https://forge.puppet.com/modules/puppetlabs/postgresql/" rel="noopener noreferrer nofollow" target="_blank">Puppet PostgreSQL module documentation</a> on the Puppet Forge.</p>

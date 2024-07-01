@@ -1,0 +1,50 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/sql/content/107-sub-queries/index.md"></div> <h1 id="sub-queries">Sub Queries</h1>
+<p>In SQL, a subquery is a query embedded within another SQL query. You can alternately call it a nested or an inner query. The containing query is often referred to as the outer query. Subqueries are utilized to retrieve data that will be used in the main query as a condition to further restrict the data to be retrieved.</p>
+<p>Subqueries can be used in various parts of a query, including:</p>
+<ul>
+<li><strong>SELECT</strong> statement</li>
+<li><strong>FROM</strong> clause</li>
+<li><strong>WHERE</strong> clause</li>
+<li><strong>GROUP BY</strong> clause</li>
+<li><strong>HAVING</strong> clause</li>
+</ul>
+<h2 id="syntax">Syntax</h2>
+<p>In general, the syntax can be written as:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#FF79C6">SELECT</span><span style="color:#F8F8F2"> column_name [, column_name]</span></span>
+<span class="line"><span style="color:#FF79C6">FROM</span><span style="color:#F8F8F2">   table1 [, table2 ]</span></span>
+<span class="line"><span style="color:#FF79C6">WHERE</span><span style="color:#F8F8F2">  column_name OPERATOR</span></span>
+<span class="line"><span style="color:#F8F8F2">   (</span><span style="color:#FF79C6">SELECT</span><span style="color:#F8F8F2"> column_name [, column_name]</span></span>
+<span class="line"><span style="color:#FF79C6">   FROM</span><span style="color:#F8F8F2"> table1 [, table2 ]</span></span>
+<span class="line"><span style="color:#F8F8F2">   [WHERE])</span></span>
+<span class="line"></span></code></pre>
+<h2 id="types-of-subqueries">Types of Subqueries</h2>
+<ol>
+<li>
+<p><strong>Scalar Subquery</strong>: It returns single value.</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#FF79C6">SELECT</span><span style="color:#FF79C6"> name</span><span style="color:#F8F8F2"> </span></span>
+<span class="line"><span style="color:#FF79C6">FROM</span><span style="color:#F8F8F2"> student </span></span>
+<span class="line"><span style="color:#FF79C6">WHERE</span><span style="color:#F8F8F2"> roll_id </span><span style="color:#FF79C6">=</span><span style="color:#F8F8F2"> (</span><span style="color:#FF79C6">SELECT</span><span style="color:#F8F8F2"> roll_id </span><span style="color:#FF79C6">FROM</span><span style="color:#F8F8F2"> student </span><span style="color:#FF79C6">WHERE</span><span style="color:#FF79C6"> name=</span><span style="color:#E9F284">'</span><span style="color:#F1FA8C">John</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">);</span></span>
+<span class="line"></span></code></pre>
+</li>
+<li>
+<p><strong>Row subquery</strong>: It returns a single row or multiple rows of two or more values.</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#FF79C6">SELECT</span><span style="color:#FF79C6"> *</span><span style="color:#FF79C6"> FROM</span><span style="color:#F8F8F2"> student </span></span>
+<span class="line"><span style="color:#FF79C6">WHERE</span><span style="color:#F8F8F2"> (roll_id, age)</span><span style="color:#FF79C6">=</span><span style="color:#F8F8F2">(</span><span style="color:#FF79C6">SELECT</span><span style="color:#8BE9FD"> MIN</span><span style="color:#F8F8F2">(roll_id),</span><span style="color:#8BE9FD">MIN</span><span style="color:#F8F8F2">(age) </span><span style="color:#FF79C6">FROM</span><span style="color:#F8F8F2"> student);</span></span>
+<span class="line"></span></code></pre>
+</li>
+<li>
+<p><strong>Column subquery</strong>: It returns single column value with multiple rows and one column.</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#FF79C6">SELECT</span><span style="color:#FF79C6"> name</span><span style="color:#F8F8F2">, age </span><span style="color:#FF79C6">FROM</span><span style="color:#F8F8F2"> student </span></span>
+<span class="line"><span style="color:#FF79C6">WHERE</span><span style="color:#FF79C6"> name</span><span style="color:#FF79C6"> in</span><span style="color:#F8F8F2"> (</span><span style="color:#FF79C6">SELECT</span><span style="color:#FF79C6"> name</span><span style="color:#FF79C6"> FROM</span><span style="color:#F8F8F2"> student);</span></span>
+<span class="line"></span></code></pre>
+</li>
+<li>
+<p><strong>Table subquery</strong>: It returns more than one row and more than one column.</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#FF79C6">SELECT</span><span style="color:#FF79C6"> name</span><span style="color:#F8F8F2">, age </span></span>
+<span class="line"><span style="color:#FF79C6">FROM</span><span style="color:#F8F8F2"> student </span></span>
+<span class="line"><span style="color:#FF79C6">WHERE</span><span style="color:#F8F8F2"> (</span><span style="color:#FF79C6">name</span><span style="color:#F8F8F2">, age) </span><span style="color:#FF79C6">IN</span><span style="color:#F8F8F2"> (</span><span style="color:#FF79C6">SELECT</span><span style="color:#FF79C6"> name</span><span style="color:#F8F8F2">, age </span><span style="color:#FF79C6">FROM</span><span style="color:#F8F8F2"> student);</span></span>
+<span class="line"></span></code></pre>
+</li>
+</ol>
+<h2 id="general-note">General Note</h2>
+<p>Subqueries can be either correlated or uncorrelated. A correlated subquery is a subquery that uses values from the outer query. Conversely, an uncorrelated subquery is a subquery that can be run independently of the outer query.</p>

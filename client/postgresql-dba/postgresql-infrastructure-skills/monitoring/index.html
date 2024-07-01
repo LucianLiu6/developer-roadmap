@@ -1,0 +1,77 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/postgresql-dba/content/107-postgresql-infrastructure-skills/106-monitoring/index.md"></div> <h1 id="monitoring-in-postgresql">Monitoring in PostgreSQL</h1>
+<p>Monitoring is an essential aspect of maintaining a healthy and well-performing PostgreSQL database infrastructure. It helps to ensure optimal performance and allows for early detection of potential issues before they lead to serious problems or outages. In this section, we’ll discuss the basics of PostgreSQL monitoring, key performance indicators (KPIs), helpful monitoring tools, and best practices.</p>
+<h2 id="why-monitoring-is-important">Why Monitoring is Important</h2>
+<ul>
+<li>
+<p><strong>Optimizes database performance</strong>: Regular monitoring helps detect issues in the PostgreSQL infrastructure that can impact performance, such as resource contention, inefficient queries, or improperly sized hardware.</p>
+</li>
+<li>
+<p><strong>Ensures data integrity</strong>: Monitoring can help detect database errors or corruption, allowing you to address the problem before it causes data loss or affects other parts of your application.</p>
+</li>
+<li>
+<p><strong>Prevents downtime</strong>: By identifying potential issues before they become critical, monitoring can help prevent system outages and minimize downtime.</p>
+</li>
+<li>
+<p><strong>Capacity planning</strong>: Monitoring can provide insights into resource utilization, enabling you to make informed decisions about scaling and resource allocation.</p>
+</li>
+</ul>
+<h2 id="key-performance-indicators-kpis">Key Performance Indicators (KPIs)</h2>
+<p>Some of the KPIs you should track for PostgreSQL monitoring include:</p>
+<ul>
+<li>
+<p><strong>Queries per second</strong>: The number of queries executed by the PostgreSQL server per second. High query rates can indicate performance bottlenecks or inefficient queries.</p>
+</li>
+<li>
+<p><strong>Connections</strong>: The number of active connections to the PostgreSQL server. Connection spikes can indicate issues with connection pooling or application performance.</p>
+</li>
+<li>
+<p><strong>CPU, Memory, and Disk utilization</strong>: Monitor the CPU, memory, and disk usage of the PostgreSQL server to identify potential resource bottlenecks.</p>
+</li>
+<li>
+<p><strong>Cache hit ratio</strong>: The ratio of database requests (reads/writes) served from the cache compared to those served by reading/writing directly to disk. High cache hit ratios generally indicate good memory utilization and efficient queries.</p>
+</li>
+<li>
+<p><strong>Slow queries</strong>: The number of queries taking longer than a specified threshold to execute. Identifying slow queries can help target specific areas for performance optimization.</p>
+</li>
+<li>
+<p><strong>Replication lag</strong>: The time difference between the master database and its replicas, which should be minimal to ensure data consistency.</p>
+</li>
+</ul>
+<h2 id="monitoring-tools">Monitoring Tools</h2>
+<p>Several tools are available to help you with PostgreSQL monitoring:</p>
+<ul>
+<li>
+<p><strong>pg_stat_statements</strong>: A built-in PostgreSQL extension that provides insights into query performance and resource utilization.</p>
+</li>
+<li>
+<p><strong>pgBadger</strong>: A popular open-source log analyzer that provides detailed reports on query performance and error analysis.</p>
+</li>
+<li>
+<p><strong>Pgpool-II</strong>: A middleware solution that provides load balancing, connection pooling, and monitoring features for PostgreSQL.</p>
+</li>
+<li>
+<p><strong>Check_postgres</strong>: A script for monitoring various aspects of a PostgreSQL database, useful for integrating with monitoring solutions like Nagios or Zabbix.</p>
+</li>
+<li>
+<p><strong>Datadog, New Relic, and other APM tools</strong>: These third-party services provide powerful monitoring, alerting, and visualization capabilities for PostgreSQL databases.</p>
+</li>
+</ul>
+<h2 id="best-practices">Best Practices</h2>
+<ul>
+<li>
+<p><strong>Set up alerts</strong>: Configure alerting based on KPI thresholds so you can quickly address potential issues before they become critical.</p>
+</li>
+<li>
+<p><strong>Monitor logs</strong>: Regularly review PostgreSQL logs to identify error messages, slow queries, or other issues impacting performance or stability.</p>
+</li>
+<li>
+<p><strong>Monitor replication</strong>: Keep a close eye on replication lag and the health of your replicas to ensure data consistency and high availability.</p>
+</li>
+<li>
+<p><strong>Establish baselines</strong>: Establish performance and resource baselines to help identify deviations from normal behavior and to compare before/after infrastructure changes.</p>
+</li>
+<li>
+<p><strong>Test and optimize</strong>: Continuously test and optimize your queries, schemas, and configurations to maximize performance.</p>
+</li>
+</ul>
+<p>By following these guidelines and maintaining a strong monitoring strategy, you can ensure a healthy, high-performing PostgreSQL infrastructure.</p>

@@ -1,0 +1,20 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/postgresql-dba/content/112-sql-optimization-techniques/100-indexes-usecases/105-brin.md"></div> <h1 id="brin-block-range-index">BRIN (Block Range INdex)</h1>
+<p>BRIN is an abbreviation for Block Range INdex which is an indexing technique introduced in PostgreSQL 9.5. This indexing strategy is best suited for large tables containing sorted data. It works by storing metadata regarding ranges of pages in the table. This enables quick filtering of data when searching for rows that match specific criteria.</p>
+<h2 id="advantages">Advantages</h2>
+<ul>
+<li><strong>Space-efficient:</strong> BRIN indexes require significantly less storage space compared to other indexing techniques such as B-tree or hash indexes, as they store only summary information for larger blocks of data.</li>
+<li><strong>Faster index creation:</strong> Creating a BRIN index is faster than creating other index types, due to the lower number of entries stored.</li>
+<li><strong>Low maintenance cost:</strong> BRIN indexes are less likely to become fragmented due to updates and insertions, resulting in lower maintenance overhead.</li>
+<li><strong>Best for large tables:</strong> BRIN is particularly effective for very large tables with billions of rows. It is particularly beneficial when the data is sorted or when there is a natural sort order based on a specific column.</li>
+</ul>
+<h2 id="limitations">Limitations</h2>
+<ul>
+<li><strong>Less efficient for small tables:</strong> For relatively small tables, a BRIN index might not offer much improvement in query performance compared to other index types.</li>
+<li><strong>Not suitable for unsorted data:</strong> BRIN indexes are designed to work effectively with sorted data or data with a natural order. Unsorted data or data with many distinct values across the range of the indexed column may not benefit much from a BRIN index.</li>
+</ul>
+<h2 id="usage">Usage</h2>
+<p>To create a BRIN index, you can use the following SQL command:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#FF79C6">CREATE</span><span style="color:#FF79C6"> INDEX</span><span style="color:#50FA7B"> index_name</span><span style="color:#FF79C6"> ON</span><span style="color:#F8F8F2"> table_name </span><span style="color:#FF79C6">USING</span><span style="color:#F8F8F2"> brin (column_name);</span></span>
+<span class="line"></span></code></pre>
+<h2 id="summary">Summary</h2>
+<p>BRIN indexes offer a space-efficient and fast solution for indexing large, sorted datasets. While not suitable for all tables and queries, they can significantly improve performance when used appropriately. Consider using a BRIN index when working with large tables with sorted or naturally ordered data.</p>

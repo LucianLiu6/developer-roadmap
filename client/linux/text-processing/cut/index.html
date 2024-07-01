@@ -1,0 +1,10 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/linux/content/104-text-processing/101-cut.md"></div> <h1 id="cut-command">Cut Command</h1>
+<p>The <code>cut</code> command is a text processing utility that allows you to cut out sections of each line from a file or output, and display it on the standard output (usually, the terminal). It’s commonly used in scripts and pipelines, especially for file operations and text manipulation.</p>
+<p>This command is extremely helpful when you only need certain parts of the file, such as a column, a range of columns, or a specific field. For example, with Linux system logs or CSV files, you might only be interested in certain bits of information.</p>
+<p>A basic syntax of <code>cut</code> command is:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>cut OPTION... [FILE]...</span></span>
+<span class="line"><span></span></span></code></pre>
+<p>Here’s an example of how you might use the <code>cut</code> command in Linux:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#8BE9FD">echo</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C">one,two,three,four</span><span style="color:#E9F284">"</span><span style="color:#FF79C6"> |</span><span style="color:#50FA7B"> cut</span><span style="color:#BD93F9"> -d</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C">,</span><span style="color:#E9F284">"</span><span style="color:#BD93F9"> -f</span><span style="color:#BD93F9"> 2</span></span>
+<span class="line"></span></code></pre>
+<p>This command will output the second field (<code>two</code>) by using the comma as a field delimiter (<code>-d ","</code>).</p>

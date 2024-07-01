@@ -1,0 +1,30 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/postgresql-dba/content/111-troubleshooting-techniques/104-profiling-tools/103-perf-tools.md"></div> <h1 id="profiling-with-perf-tools">Profiling with Perf Tools</h1>
+<p><em>Perf tools</em> is a powerful and versatile toolset that can help you in profiling and analyzing the performance of your PostgreSQL instance. It provides various components that enable you to monitor the system-level performance, trace and analyze the control flow between different components, and gather performance data about specific parts of your PostgreSQL instance.</p>
+<p>In this section, we will briefly introduce the concept of perf tools, and discuss some of its features and components that can be helpful in profiling PostgreSQL.</p>
+<h2 id="what-is-perf-tools">What is Perf Tools?</h2>
+<p>Perf tools is a suite of performance analysis tools that comes as part of the Linux kernel. It enables you to monitor various performance-related events happening in your system, such as CPU cycles, instructions executed, cache misses, and other hardware-related metrics. These tools can be helpful in understanding the bottlenecks and performance issues in your PostgreSQL instance and can be used to discover areas of improvement.</p>
+<p>In essence, perf tools provides two main components:</p>
+<ul>
+<li><strong>perf_events:</strong> A kernel subsystem that provides performance monitoring by exposing CPU hardware counters and other low-level events.</li>
+<li><strong>perf command-line tool:</strong> A command-line interface that allows you to interact with perf_events to perform various profiling and tracing tasks.</li>
+</ul>
+<h2 id="using-perf-tools-in-profiling-postgresql">Using Perf Tools in Profiling PostgreSQL</h2>
+<p>Here are some of the key features of perf tools that can be used to profile and analyze the performance of your PostgreSQL instance:</p>
+<ul>
+<li>
+<p><strong>Sampling and Counting:</strong> Perf tools can be used to capture the performance data of your PostgreSQL processes by sampling or counting the events occurring during their execution. You can use the <code>perf record</code> command to collect samples, and <code>perf report</code> or <code>perf annotate</code> to analyze the recorded data.</p>
+</li>
+<li>
+<p><strong>Time-based Profiling:</strong> Perf tools can be used to perform time-based profiling, which involves analyzing the performance data over a fixed period. You can use the <code>perf top</code> command to get a live view of the most active functions in the PostgreSQL process.</p>
+</li>
+<li>
+<p><strong>Call Graphs and Flame Graphs:</strong> Perf tools can be used to generate call graphs or flame graphs, which provide a visual representation of the call stack and allow you to understand the relationship between different functions. You can create call graphs using the <code>perf callgraph</code> command, or use external tools like <a href="https://github.com/brendangregg/FlameGraph" rel="noopener noreferrer nofollow" target="_blank">FlameGraph</a> to generate flame graphs from the perf data.</p>
+</li>
+<li>
+<p><strong>Static Tracing:</strong> Perf tools can be used to trace specific events or code paths in your PostgreSQL system, allowing you to better understand the inner workings of the system. You can use the <code>perf trace</code> command to trace specific events, or use the <code>perf probe</code> command to add custom trace points.</p>
+</li>
+<li>
+<p><strong>Dynamic Tracing:</strong> Perf tools also supports dynamic tracing, which allows you to trace and analyze running processes without modifying their code. This can be particularly useful when profiling large or complex systems, such as PostgreSQL. You can use the <code>perf dynamic-trace</code> command to enable dynamic tracing on your PostgreSQL processes.</p>
+</li>
+</ul>
+<p>In conclusion, perf tools is a powerful performance profiling tool available in Linux-based systems that can help you analyze the performance of your PostgreSQL instance. By understanding the key features and components of perf tools, you can make better decisions about improving the performance and efficiency of your PostgreSQL system.</p>

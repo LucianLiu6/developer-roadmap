@@ -1,0 +1,70 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/react-native/content/106-styling/102-accessibility.md"></div> <h1 id="accessibility">Accessibility</h1>
+<p>Accessibility (a11y) in React Native allows you to create applications that are usable to everyone, including people with disabilities. It provides a set of attributes and APIs to customize UI components by considering diverse user needs.</p>
+<h2 id="accessibility-props">Accessibility Props</h2>
+<p>React Native provides several accessibility properties that can be applied to components for enhancing their a11y features:</p>
+<p><code>accessible</code> : (Boolean) - Indicates if the element can be focused by screen readers.</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#F8F8F2">&#x3C;</span><span style="color:#8BE9FD;font-style:italic">TouchableOpacity</span><span style="color:#50FA7B;font-style:italic"> accessible</span><span style="color:#FF79C6">={</span><span style="color:#BD93F9">true</span><span style="color:#FF79C6">}</span><span style="color:#F8F8F2"> /></span></span>
+<span class="line"></span></code></pre>
+<p><code>accessibilityLabel</code> : (String) - Used by the screen reader to describe the element to the user.</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#F8F8F2">&#x3C;</span><span style="color:#8BE9FD;font-style:italic">TouchableOpacity</span><span style="color:#50FA7B;font-style:italic"> accessibilityLabel</span><span style="color:#FF79C6">=</span><span style="color:#E9F284">"</span><span style="color:#F1FA8C">Tap me!</span><span style="color:#E9F284">"</span><span style="color:#F8F8F2">></span></span>
+<span class="line"></span></code></pre>
+<p><code>accessibilityHint</code> : (String) - Gives a hint to the user of the components behavior.</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#F8F8F2">&#x3C;</span><span style="color:#8BE9FD;font-style:italic">TouchableOpacity</span><span style="color:#50FA7B;font-style:italic"> accessibilityHint</span><span style="color:#FF79C6">=</span><span style="color:#E9F284">"</span><span style="color:#F1FA8C">Tapping this button will show a welcome text</span><span style="color:#E9F284">"</span><span style="color:#F8F8F2">></span></span>
+<span class="line"></span></code></pre>
+<p><code>accessibilityRole</code> : (String) - Describes the role of the element for the screen reader.</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#F8F8F2">&#x3C;</span><span style="color:#8BE9FD;font-style:italic">TextInput</span><span style="color:#50FA7B;font-style:italic"> accessibilityRole</span><span style="color:#FF79C6">=</span><span style="color:#E9F284">"</span><span style="color:#F1FA8C">search</span><span style="color:#E9F284">"</span><span style="color:#F8F8F2"> /></span></span>
+<span class="line"></span></code></pre>
+<p><code>accessibilityValue</code> : (Object with properties: min, max, now) - Defines the accessibility values for elements such as progress bars or sliders, among others.</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#F8F8F2">&#x3C;</span><span style="color:#8BE9FD;font-style:italic">Slider</span></span>
+<span class="line"><span style="color:#50FA7B;font-style:italic">  accessibilityValue</span><span style="color:#FF79C6">={</span><span style="color:#F8F8F2">{</span></span>
+<span class="line"><span style="color:#F8F8F2">    min</span><span style="color:#FF79C6">:</span><span style="color:#BD93F9"> 0</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#F8F8F2">    max</span><span style="color:#FF79C6">:</span><span style="color:#BD93F9"> 100</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#F8F8F2">    now</span><span style="color:#FF79C6">:</span><span style="color:#BD93F9"> 50</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#F8F8F2">  }</span><span style="color:#FF79C6">}</span></span>
+<span class="line"><span style="color:#F8F8F2">/></span></span>
+<span class="line"></span></code></pre>
+<p><code>accessibilityState</code> : (Object) - Represents the current state of the component.</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#F8F8F2">&#x3C;</span><span style="color:#8BE9FD;font-style:italic">TouchableOpacity</span></span>
+<span class="line"><span style="color:#50FA7B;font-style:italic">  accessibilityState</span><span style="color:#FF79C6">={</span><span style="color:#F8F8F2">{</span></span>
+<span class="line"><span style="color:#F8F8F2">    disabled</span><span style="color:#FF79C6">:</span><span style="color:#BD93F9"> false</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#F8F8F2">    selected</span><span style="color:#FF79C6">:</span><span style="color:#BD93F9"> true</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#F8F8F2">  }</span><span style="color:#FF79C6">}</span></span>
+<span class="line"><span style="color:#F8F8F2">/></span></span>
+<span class="line"></span></code></pre>
+<p><code>accessibilityActions</code> and <code>onAccessibilityAction</code> are used to create custom actions.</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#FF79C6">import</span><span style="color:#F8F8F2"> { AccessibilityInfo, Text, View } </span><span style="color:#FF79C6">from</span><span style="color:#E9F284"> '</span><span style="color:#F1FA8C">react-native</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">function</span><span style="color:#50FA7B"> CustomButton</span><span style="color:#F8F8F2">() {</span></span>
+<span class="line"><span style="color:#FF79C6">  const</span><span style="color:#F8F8F2"> [count, setCount] </span><span style="color:#FF79C6">=</span><span style="color:#F8F8F2"> React.</span><span style="color:#50FA7B">useState</span><span style="color:#F8F8F2">(</span><span style="color:#BD93F9">0</span><span style="color:#F8F8F2">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">  const</span><span style="color:#50FA7B"> onIncrement</span><span style="color:#FF79C6"> =</span><span style="color:#F8F8F2"> () </span><span style="color:#FF79C6">=></span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#50FA7B">    setCount</span><span style="color:#F8F8F2">(count </span><span style="color:#FF79C6">+</span><span style="color:#BD93F9"> 1</span><span style="color:#F8F8F2">);</span></span>
+<span class="line"><span style="color:#F8F8F2">  };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F8F8F2">  React.</span><span style="color:#50FA7B">useEffect</span><span style="color:#F8F8F2">(() </span><span style="color:#FF79C6">=></span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#FF79C6">    const</span><span style="color:#50FA7B"> announce</span><span style="color:#FF79C6"> =</span><span style="color:#F8F8F2"> () </span><span style="color:#FF79C6">=></span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#F8F8F2">      AccessibilityInfo.</span><span style="color:#50FA7B">announceForAccessibility</span><span style="color:#F8F8F2">(</span><span style="color:#F1FA8C">`Count raised to </span><span style="color:#FF79C6">${</span><span style="color:#F8F8F2">count</span><span style="color:#FF79C6">}</span><span style="color:#F1FA8C">`</span><span style="color:#F8F8F2">);</span></span>
+<span class="line"><span style="color:#F8F8F2">    };</span></span>
+<span class="line"><span style="color:#50FA7B">    announce</span><span style="color:#F8F8F2">();</span></span>
+<span class="line"><span style="color:#F8F8F2">  }, [count]);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">  return</span><span style="color:#F8F8F2"> (</span></span>
+<span class="line"><span style="color:#F8F8F2">    &#x3C;</span><span style="color:#8BE9FD;font-style:italic">View</span></span>
+<span class="line"><span style="color:#50FA7B;font-style:italic">      accessible</span><span style="color:#FF79C6">={</span><span style="color:#BD93F9">true</span><span style="color:#FF79C6">}</span></span>
+<span class="line"><span style="color:#50FA7B;font-style:italic">      accessibilityActions</span><span style="color:#FF79C6">={</span><span style="color:#F8F8F2">[</span></span>
+<span class="line"><span style="color:#F8F8F2">        { name</span><span style="color:#FF79C6">:</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C">increment</span><span style="color:#E9F284">"</span><span style="color:#F8F8F2">, label</span><span style="color:#FF79C6">:</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C">increase count</span><span style="color:#E9F284">"</span><span style="color:#F8F8F2"> },</span></span>
+<span class="line"><span style="color:#F8F8F2">      ]</span><span style="color:#FF79C6">}</span></span>
+<span class="line"><span style="color:#50FA7B;font-style:italic">      onAccessibilityAction</span><span style="color:#FF79C6">={</span><span style="color:#F8F8F2">(</span><span style="color:#FFB86C;font-style:italic">event</span><span style="color:#F8F8F2">) </span><span style="color:#FF79C6">=></span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#FF79C6">        switch</span><span style="color:#F8F8F2"> (event.nativeEvent.actionName) {</span></span>
+<span class="line"><span style="color:#FF79C6">          case</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C">increment</span><span style="color:#E9F284">"</span><span style="color:#F8F8F2">:</span></span>
+<span class="line"><span style="color:#50FA7B">            onIncrement</span><span style="color:#F8F8F2">();</span></span>
+<span class="line"><span style="color:#FF79C6">            break</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"><span style="color:#F8F8F2">        }</span></span>
+<span class="line"><span style="color:#F8F8F2">      }</span><span style="color:#FF79C6">}</span></span>
+<span class="line"><span style="color:#F8F8F2">    ></span></span>
+<span class="line"><span style="color:#F8F8F2">      &#x3C;</span><span style="color:#8BE9FD;font-style:italic">Text</span><span style="color:#F8F8F2">>Increment Counter: </span><span style="color:#FF79C6">{</span><span style="color:#F8F8F2">count</span><span style="color:#FF79C6">}</span><span style="color:#F8F8F2">&#x3C;/</span><span style="color:#8BE9FD;font-style:italic">Text</span><span style="color:#F8F8F2">></span></span>
+<span class="line"><span style="color:#F8F8F2">    &#x3C;/</span><span style="color:#8BE9FD;font-style:italic">View</span><span style="color:#F8F8F2">></span></span>
+<span class="line"><span style="color:#F8F8F2">  );</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"></span></code></pre>
+<p>Of course, different platforms may have some exclusive accessibility properties, which can be found in the <a href="https://reactnative.dev/docs/accessibility" rel="noopener noreferrer nofollow" target="_blank">official React Native documentation</a>.</p>

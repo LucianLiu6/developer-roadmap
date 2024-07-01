@@ -1,0 +1,39 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/postgresql-dba/content/111-troubleshooting-techniques/index.md"></div> <h1 id="troubleshooting-techniques-for-postgresql">Troubleshooting Techniques for PostgreSQL</h1>
+<p>In this section, we’ll cover some of the essential troubleshooting techniques for PostgreSQL. When working with a complex database management system like PostgreSQL, it’s important to have a good understanding of the tools and methods available to help you diagnose and resolve problems quickly.</p>
+<h2 id="checking-logs">Checking logs</h2>
+<p>PostgreSQL server logs are the primary source of information for identifying and diagnosing issues. When a problem occurs, you should first examine the logs to gather information about the error.</p>
+<p>You can find log files in the <code>pg_log</code> subdirectory of the PostgreSQL data directory, or by checking the <code>log_directory</code> configuration parameter in <code>postgresql.conf</code>. Some log-related configuration parameters that you might find helpful include:</p>
+<ul>
+<li><code>log_destination</code>: Specifies where logs should be sent (e.g., stderr, syslog, eventlog, etc.).</li>
+<li><code>logging_collector</code>: Enables the collection of log files.</li>
+<li><code>log_filename</code>: Defines the name pattern for log files.</li>
+<li><code>log_truncate_on_rotation</code>: Determines if older logs should be truncated rather than appended when a new log file is created.</li>
+</ul>
+<h2 id="monitoring-system-performance-and-resources">Monitoring system performance and resources</h2>
+<p>Monitoring the performance of your PostgreSQL server can help you detect issues related to system resources, such as CPU, memory, and disk usage. Some useful tools for system monitoring include:</p>
+<ul>
+<li><code>pg_stat_activity</code>: A PostgreSQL view that displays information about the current activities of all server processes.</li>
+<li><code>top</code>: A Unix/Linux command that provides an overview of the system’s processes and their resource usage.</li>
+<li><code>iostat</code>: A Unix/Linux command that shows disk I/O statistics.</li>
+<li><code>vmstat</code>: A Unix/Linux command that gives information about system memory, processes, and CPU usage.</li>
+</ul>
+<h2 id="using-the-explain-command">Using the EXPLAIN command</h2>
+<p>The <code>EXPLAIN</code> command in PostgreSQL can help you analyze and optimize SQL queries by providing information about the query execution plan. By using this command, you can identify inefficient queries and make the necessary adjustments to improve performance.</p>
+<p>Usage example:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#F8F8F2">EXPLAIN (ANALYZE, BUFFERS, </span><span style="color:#FF79C6">VERBOSE</span><span style="color:#F8F8F2">) </span><span style="color:#FF79C6">SELECT</span><span style="color:#FF79C6"> *</span><span style="color:#FF79C6"> FROM</span><span style="color:#F8F8F2"> my_table </span><span style="color:#FF79C6">WHERE</span><span style="color:#F8F8F2"> column_1 </span><span style="color:#FF79C6">=</span><span style="color:#E9F284"> '</span><span style="color:#F1FA8C">value</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"></span></code></pre>
+<h2 id="postgresql-specific-tools">PostgreSQL-specific tools</h2>
+<p>PostgreSQL provides some specialized tools for troubleshooting and diagnostics:</p>
+<ul>
+<li><code>pg_stat_*</code> and <code>pg_statio_*</code> views: A collection of views that provide detailed information about various aspects of the system, such as table access statistics, index usage, and more.</li>
+<li><code>pg_diag</code>: A diagnostic tool that collects PostgreSQL information and system data into a single report.</li>
+<li><code>pg_repack</code>: A utility that helps you to perform maintenance tasks like reorganizing tables or cleaning up dead rows.</li>
+</ul>
+<h2 id="debugging-and-profiling">Debugging and profiling</h2>
+<p>If you’re experiencing performance problems or other issues related to the application code, you might need to use debugging and profiling tools. Some examples include:</p>
+<ul>
+<li><code>gdb</code>: A powerful debugger for Unix/Linux systems that can be used to debug the PostgreSQL server.</li>
+<li><code>pg_debugger</code>: A PL/pgSQL debugger that allows you to step through PL/pgSQL functions and identify issues.</li>
+<li><code>pg_stat_statements</code>: A PostgreSQL extension that tracks statistics about individual SQL statements, allowing you to identify slow or problematic queries.</li>
+</ul>
+<p>By understanding and mastering these troubleshooting techniques, you’ll be better equipped to diagnose and resolve issues with your PostgreSQL server efficiently and effectively.</p>

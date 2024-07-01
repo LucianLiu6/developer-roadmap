@@ -1,0 +1,50 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/mongodb/content/108-developer-tools/101-mongodb-connectors/101-spark.md"></div> <h1 id="spark">Spark</h1>
+<p>The <a href="https://docs.mongodb.com/spark-connector/current/" rel="noopener noreferrer nofollow" target="_blank">Spark Connector</a> is a powerful integration tool that allows you to use MongoDB as a data source for your Spark applications. This connector provides seamless integration of the robustness and scalability of MongoDB with the computational power of the Apache Spark framework, allowing you to process large volumes of data quickly and efficiently.</p>
+<h2 id="key-features">Key Features</h2>
+<ul>
+<li><strong>MongoDB as Data Source</strong>: The connector enables loading data from MongoDB into Spark data structures like DataFrames and Datasets.</li>
+<li><strong>Filter Pushdown</strong>: It optimizes performance by pushing down supported filters to execute directly on MongoDB, returning only the relevant data to Spark.</li>
+<li><strong>Aggregation Pipeline</strong>: The connector allows you to execute MongoDB’s aggregation pipeline within Spark, for efficient and powerful transformations.</li>
+</ul>
+<h2 id="installation">Installation</h2>
+<p>To start using the Spark Connector for MongoDB, you simply need to add the Maven dependency to your <code>build.sbt</code> or <code>pom.xml</code> file:</p>
+<p>For SBT:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="scala"><code><span class="line"><span style="color:#F8F8F2">libraryDependencies </span><span style="color:#FF79C6">+=</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C">org.mongodb.spark</span><span style="color:#E9F284">"</span><span style="color:#FF79C6"> %%</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C">mongo-spark-connector</span><span style="color:#E9F284">"</span><span style="color:#FF79C6"> %</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C">3.0.1</span><span style="color:#E9F284">"</span></span>
+<span class="line"></span></code></pre>
+<p>For Maven:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="xml"><code><span class="line"><span style="color:#F8F8F2">&#x3C;</span><span style="color:#FF79C6">dependency</span><span style="color:#F8F8F2">></span></span>
+<span class="line"><span style="color:#F8F8F2">  &#x3C;</span><span style="color:#FF79C6">groupId</span><span style="color:#F8F8F2">>org.mongodb.spark&#x3C;/</span><span style="color:#FF79C6">groupId</span><span style="color:#F8F8F2">></span></span>
+<span class="line"><span style="color:#F8F8F2">  &#x3C;</span><span style="color:#FF79C6">artifactId</span><span style="color:#F8F8F2">>mongo-spark-connector_2.12&#x3C;/</span><span style="color:#FF79C6">artifactId</span><span style="color:#F8F8F2">></span></span>
+<span class="line"><span style="color:#F8F8F2">  &#x3C;</span><span style="color:#FF79C6">version</span><span style="color:#F8F8F2">>3.0.1&#x3C;/</span><span style="color:#FF79C6">version</span><span style="color:#F8F8F2">></span></span>
+<span class="line"><span style="color:#F8F8F2">&#x3C;/</span><span style="color:#FF79C6">dependency</span><span style="color:#F8F8F2">></span></span>
+<span class="line"></span></code></pre>
+<h2 id="usage">Usage</h2>
+<p>Here’s a basic example of how to work with the MongoDB Spark Connector:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="scala"><code><span class="line"><span style="color:#FF79C6">import</span><span style="color:#F8F8F2"> org.apache.spark.sql.</span><span style="color:#8BE9FD">SparkSession</span></span>
+<span class="line"><span style="color:#FF79C6">import</span><span style="color:#F8F8F2"> com.mongodb.spark.</span><span style="color:#8BE9FD">MongoSpark</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">object</span><span style="color:#8BE9FD"> MongoDBwithSpark</span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#FF79C6">  def</span><span style="color:#50FA7B"> main</span><span style="color:#F8F8F2">(</span><span style="color:#FFB86C;font-style:italic">args</span><span style="color:#F8F8F2">: </span><span style="color:#8BE9FD">Array</span><span style="color:#F8F8F2">[</span><span style="color:#8BE9FD">String</span><span style="color:#F8F8F2">])</span><span style="color:#FF79C6">:</span><span style="color:#8BE9FD"> Unit</span><span style="color:#FF79C6"> =</span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#FF79C6">    val</span><span style="color:#F8F8F2"> spark </span><span style="color:#FF79C6">=</span><span style="color:#8BE9FD"> SparkSession</span><span style="color:#F8F8F2">.builder()</span></span>
+<span class="line"><span style="color:#F8F8F2">      .master(</span><span style="color:#E9F284">"</span><span style="color:#F1FA8C">local</span><span style="color:#E9F284">"</span><span style="color:#F8F8F2">)</span></span>
+<span class="line"><span style="color:#F8F8F2">      .appName(</span><span style="color:#E9F284">"</span><span style="color:#F1FA8C">MongoDB Integration</span><span style="color:#E9F284">"</span><span style="color:#F8F8F2">)</span></span>
+<span class="line"><span style="color:#F8F8F2">      .config(</span><span style="color:#E9F284">"</span><span style="color:#F1FA8C">spark.mongodb.input.uri</span><span style="color:#E9F284">"</span><span style="color:#F8F8F2">, </span><span style="color:#E9F284">"</span><span style="color:#F1FA8C">mongodb://username:password@host/database.collection</span><span style="color:#E9F284">"</span><span style="color:#F8F8F2">)</span></span>
+<span class="line"><span style="color:#F8F8F2">      .config(</span><span style="color:#E9F284">"</span><span style="color:#F1FA8C">spark.mongodb.output.uri</span><span style="color:#E9F284">"</span><span style="color:#F8F8F2">, </span><span style="color:#E9F284">"</span><span style="color:#F1FA8C">mongodb://username:password@host/database.collection</span><span style="color:#E9F284">"</span><span style="color:#F8F8F2">)</span></span>
+<span class="line"><span style="color:#F8F8F2">      .getOrCreate()</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6272A4">    // Load data from MongoDB into a DataFrame</span></span>
+<span class="line"><span style="color:#FF79C6">    val</span><span style="color:#F8F8F2"> df </span><span style="color:#FF79C6">=</span><span style="color:#8BE9FD"> MongoSpark</span><span style="color:#F8F8F2">.load(spark)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6272A4">    // Perform operations on DataFrame</span></span>
+<span class="line"><span style="color:#6272A4">    // ...</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6272A4">    // Write the DataFrame back to MongoDB</span></span>
+<span class="line"><span style="color:#8BE9FD">    MongoSpark</span><span style="color:#F8F8F2">.save(df.write.mode(</span><span style="color:#E9F284">"</span><span style="color:#F1FA8C">overwrite</span><span style="color:#E9F284">"</span><span style="color:#F8F8F2">))</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6272A4">    // Stop the Spark session</span></span>
+<span class="line"><span style="color:#F8F8F2">    spark.stop()</span></span>
+<span class="line"><span style="color:#F8F8F2">  }</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"></span></code></pre>
+<p>With the MongoDB Spark Connector, you can leverage the power of Apache Spark to analyze and process your data, making it easier to develop analytics solutions and handle complex data processing tasks.</p>
+<p>For more details, check the <a href="https://docs.mongodb.com/spark-connector/current/" rel="noopener noreferrer nofollow" target="_blank">official documentation</a>.</p>

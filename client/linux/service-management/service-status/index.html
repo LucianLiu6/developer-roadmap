@@ -1,0 +1,8 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/linux/content/108-service-management/100-service-status.md"></div> <h1 id="service-status">Service Status</h1>
+<p>In Linux, service status is a critical part of service management. It is used to understand the current state of any given service running on a Linux-based system. Services can include network processes, backend servers, or any application running in the background.</p>
+<p>The command <code>systemctl</code> is the predominantly used command for controlling the <code>systemd</code> system and service manager. The <code>status</code> command in conjunction with <code>systemctl</code> is particularly useful for checking the state of the service. This command allows administrators to query and control the state of a systemd system and service manager.</p>
+<p>Here’s a simple example of how to use the <code>systemctl</code> command to check the status of a service:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#50FA7B">systemctl</span><span style="color:#F1FA8C"> status</span><span style="color:#F1FA8C"> apache2.service</span></span>
+<span class="line"></span></code></pre>
+<p>This command would give status information about Apache2, the popular web server.
+By managing service statuses efficiently, Linux administrators can diagnose and rectify system problems, maintain optimum performance levels, and prevent service downtimes.</p>

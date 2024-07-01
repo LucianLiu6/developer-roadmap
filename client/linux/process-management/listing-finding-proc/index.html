@@ -1,0 +1,18 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/linux/content/106-process-management/101-listing-finding-proc.md"></div> <h1 id="listing-and-finding-processes-proc">Listing and Finding Processes (proc)</h1>
+<p>In Linux, processes form the backbone of any functioning system - running various tasks and executing different operations. In order to effectively manage your Linux system, it’s crucial to be able to list and find the currently running processes. This aids in monitoring system performance, tracking down any issues, and in controlling resource allocation.</p>
+<p>The <code>proc</code> filesystem is an extremely powerful tool in this respect. Available in all Unix-like operating systems, <code>proc</code> is a virtual file system that provides detailed information about running processes, including its PID, status, and resource consumption.</p>
+<p>With commands like <code>ps</code>, <code>top</code>, and <code>htop</code>, we can quickly list out the running processes on the Linux system. Specifically, the <code>ps</code> command offers an in-depth snapshot of currently running processes, whereas <code>top</code> and <code>htop</code> give real-time views of system performance.</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6272A4"># list all running processes</span></span>
+<span class="line"><span style="color:#50FA7B">ps</span><span style="color:#BD93F9"> -ef</span><span style="color:#F8F8F2"> </span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6272A4"># display ongoing list of running processes </span></span>
+<span class="line"><span style="color:#50FA7B">top</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6272A4"># alternatively, for a more user-friendly interface</span></span>
+<span class="line"><span style="color:#50FA7B">htop</span></span>
+<span class="line"></span></code></pre>
+<p>Exploring the proc directory (<code>/proc</code>), we dive even deeper, enabling us to view the system’s kernel parameters and each process’s specific system details.</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6272A4"># view specifics of a particular PID</span></span>
+<span class="line"><span style="color:#50FA7B">cat</span><span style="color:#F1FA8C"> /proc/{PID}/status</span></span>
+<span class="line"></span></code></pre>
+<p>In short, ‘Finding and Listing Processes (proc)’ in Linux is not just a core aspect of process management, but also a necessary skill for enhancing system performance and resolution of issues.</p>

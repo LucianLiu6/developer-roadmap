@@ -1,0 +1,20 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/docker/content/110-docker-cli/102-networks.md"></div> <h1 id="docker-networks">Docker Networks</h1>
+<p>Docker networks provide an essential way of managing container communication. It allows containers to talk to each other and to the host machine using various network drivers. By understanding and utilizing different types of network drivers, you can design container networks to accommodate specific scenarios or application requirements.</p>
+<h3 id="network-drivers">Network Drivers</h3>
+<p>There are several network drivers available in Docker. Here, we will cover four of the most common ones:</p>
+<ul>
+<li><strong>bridge</strong>: The default network driver for containers. It creates a private network where containers can communicate with each other and the host machine. Containers on this network can access external resources via the host’s network.</li>
+<li><strong>host</strong>: This driver removes network isolation and allows containers to share the host’s network. It is useful for cases where network performance is crucial, as it minimizes the overhead of container networking.</li>
+<li><strong>none</strong>: This network driver disables container networking. Containers using this driver run in an isolated environment without any network access.</li>
+<li><strong>overlay</strong>: This network driver enables containers deployed on different hosts to communicate with each other. It is designed to work with Docker Swarm and is perfect for multi-host or cluster-based container deployments.</li>
+</ul>
+<h2 id="managing-docker-networks">Managing Docker Networks</h2>
+<p>Docker CLI provides various commands to manage the networks. Here are a few useful commands:</p>
+<ul>
+<li>List all networks: <code>docker network ls</code></li>
+<li>Inspect a network: <code>docker network inspect &#x3C;network_name></code></li>
+<li>Create a new network: <code>docker network create --driver &#x3C;driver_type> &#x3C;network_name></code></li>
+<li>Connect containers to a network: <code>docker network connect &#x3C;network_name> &#x3C;container_name></code></li>
+<li>Disconnect containers from a network: <code>docker network disconnect &#x3C;network_name> &#x3C;container_name></code></li>
+<li>Remove a network: <code>docker network rm &#x3C;network_name></code></li>
+</ul>

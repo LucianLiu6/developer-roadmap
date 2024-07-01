@@ -1,0 +1,10 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/linux/content/109-package-management/103-listing-installed-packages.md"></div> <h1 id="listing-installed-packages">Listing Installed Packages</h1>
+<p>Linux, known for its robustness and flexibility, provides several package managers that aid in software management. These package managers help us to install, update, or remove software in a systematic way. Each Linux distribution may come with its own package management system. Examples include <code>apt</code> in Debian-based systems, <code>dnf</code> in Fedora, <code>zypper</code> in OpenSUSE, and <code>pacman</code> in Arch Linux.</p>
+<p>One common task you may often need is listing installed packages in your system. This task can help in various scenarios like auditing installed software, scripting or automating deployment of software on new machines.</p>
+<p>Below is the command for listing installed packages in an <code>apt</code> package manager:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#50FA7B">sudo</span><span style="color:#F1FA8C"> apt</span><span style="color:#F1FA8C"> list</span><span style="color:#BD93F9"> --installed</span></span>
+<span class="line"></span></code></pre>
+<p>For <code>dnf</code> package manager, you would use:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#50FA7B">dnf</span><span style="color:#F1FA8C"> list</span><span style="color:#F1FA8C"> installed</span></span>
+<span class="line"></span></code></pre>
+<p>Remember, different distributions will have their own syntax for this command.</p>

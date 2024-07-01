@@ -1,0 +1,69 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/cpp/content/libraries/103-protobuf.md"></div> <h1 id="protocol-buffers-protobuf">Protocol Buffers (protobuf)</h1>
+<p>Protocol Buffers, or protobuf, is a language and platform-neutral data serialization format developed by Google. It is used to efficiently serialize structured data for use in communications protocols, data storage, and more. It is extensible, as it allows you to define your own custom data structures called “messages” with various scalar and complex field types.</p>
+<p>Here is a brief summary of protobuf and how to use it in C++:</p>
+<ul>
+<li>
+<p><strong>Define your <code>.proto</code> file:</strong> Create a <code>.proto</code> file that defines the structure of your messages.</p>
+<p><em>Example:</em></p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>syntax = "proto3";</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>message Person {</span></span>
+<span class="line"><span>    string name = 1;</span></span>
+<span class="line"><span>    int32 age = 2;</span></span>
+<span class="line"><span>    string email = 3;</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span></code></pre>
+</li>
+<li>
+<p><strong>Compile the <code>.proto</code> file:</strong> You need to compile your <code>.proto</code> file to generate C++ classes for serialization and deserialization.</p>
+<p><em>Example:</em></p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="color:#50FA7B">protoc</span><span style="color:#BD93F9"> --cpp_out=.</span><span style="color:#F1FA8C"> person.proto</span></span>
+<span class="line"></span></code></pre>
+<p>This will generate two files: <code>person.pb.cc</code> and <code>person.pb.h</code> that contains the C++ class definitions.</p>
+</li>
+<li>
+<p><strong>Include protobuf library and generated files into your C++ code:</strong> You’ll need to include the protobuf library and the generated files in your main C++ code.</p>
+<p><em>Example:</em></p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#FF79C6">#include</span><span style="color:#E9F284"> &#x3C;</span><span style="color:#F1FA8C">iostream</span><span style="color:#E9F284">></span></span>
+<span class="line"><span style="color:#FF79C6">#include</span><span style="color:#E9F284"> &#x3C;</span><span style="color:#F1FA8C">fstream</span><span style="color:#E9F284">></span></span>
+<span class="line"><span style="color:#FF79C6">#include</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C">person.pb.h</span><span style="color:#E9F284">"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">int</span><span style="color:#50FA7B"> main</span><span style="color:#F8F8F2"> () {</span></span>
+<span class="line"><span style="color:#F8F8F2">    GOOGLE_PROTOBUF_VERIFY_VERSION;</span><span style="color:#6272A4"> // Verify that protobuf library headers match library version</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6272A4">    // Serialize a Person message</span></span>
+<span class="line"><span style="color:#F8F8F2">    Person person;</span></span>
+<span class="line"><span style="color:#F8F8F2">    person.</span><span style="color:#50FA7B">set_name</span><span style="color:#F8F8F2">(</span><span style="color:#E9F284">"</span><span style="color:#F1FA8C">Sam</span><span style="color:#E9F284">"</span><span style="color:#F8F8F2">);</span></span>
+<span class="line"><span style="color:#F8F8F2">    person.</span><span style="color:#50FA7B">set_age</span><span style="color:#F8F8F2">(</span><span style="color:#BD93F9">35</span><span style="color:#F8F8F2">);</span></span>
+<span class="line"><span style="color:#F8F8F2">    person.</span><span style="color:#50FA7B">set_email</span><span style="color:#F8F8F2">(</span><span style="color:#E9F284">"</span><span style="color:#F1FA8C">sam@example.com</span><span style="color:#E9F284">"</span><span style="color:#F8F8F2">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6272A4">    // Save the data to a file</span></span>
+<span class="line"><span style="color:#F8F8F2">    std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">ofstream </span><span style="color:#50FA7B">output</span><span style="color:#F8F8F2">(</span><span style="color:#E9F284">"</span><span style="color:#F1FA8C">person.bin</span><span style="color:#E9F284">"</span><span style="color:#F8F8F2">, ios</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">binary);</span></span>
+<span class="line"><span style="color:#F8F8F2">    person.</span><span style="color:#50FA7B">SerializeToOstream</span><span style="color:#F8F8F2">(</span><span style="color:#FF79C6">&#x26;</span><span style="color:#F8F8F2">output);</span></span>
+<span class="line"><span style="color:#F8F8F2">    output.</span><span style="color:#50FA7B">close</span><span style="color:#F8F8F2">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6272A4">    // Deserialize the message from the file</span></span>
+<span class="line"><span style="color:#F8F8F2">    Person input_person;</span></span>
+<span class="line"><span style="color:#F8F8F2">    std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">ifstream </span><span style="color:#50FA7B">input</span><span style="color:#F8F8F2">(</span><span style="color:#E9F284">"</span><span style="color:#F1FA8C">person.bin</span><span style="color:#E9F284">"</span><span style="color:#F8F8F2">, ios</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">binary);</span></span>
+<span class="line"><span style="color:#F8F8F2">    input_person.</span><span style="color:#50FA7B">ParseFromIstream</span><span style="color:#F8F8F2">(</span><span style="color:#FF79C6">&#x26;</span><span style="color:#F8F8F2">input);</span></span>
+<span class="line"><span style="color:#F8F8F2">    input.</span><span style="color:#50FA7B">close</span><span style="color:#F8F8F2">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6272A4">    // Print the deserialized message</span></span>
+<span class="line"><span style="color:#F8F8F2">    std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">cout </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C">Name: </span><span style="color:#E9F284">"</span><span style="color:#FF79C6"> &#x3C;&#x3C;</span><span style="color:#F8F8F2"> input_person.</span><span style="color:#50FA7B">name</span><span style="color:#F8F8F2">() </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#F8F8F2"> std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">endl;</span></span>
+<span class="line"><span style="color:#F8F8F2">    std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">cout </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C">Age: </span><span style="color:#E9F284">"</span><span style="color:#FF79C6"> &#x3C;&#x3C;</span><span style="color:#F8F8F2"> input_person.</span><span style="color:#50FA7B">age</span><span style="color:#F8F8F2">() </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#F8F8F2"> std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">endl;</span></span>
+<span class="line"><span style="color:#F8F8F2">    std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">cout </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C">Email: </span><span style="color:#E9F284">"</span><span style="color:#FF79C6"> &#x3C;&#x3C;</span><span style="color:#F8F8F2"> input_person.</span><span style="color:#50FA7B">email</span><span style="color:#F8F8F2">() </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#F8F8F2"> std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">endl;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F8F8F2">    google</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">protobuf</span><span style="color:#FF79C6">::</span><span style="color:#50FA7B">ShutdownProtobufLibrary</span><span style="color:#F8F8F2">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">    return</span><span style="color:#BD93F9"> 0</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"></span></code></pre>
+</li>
+<li>
+<p><strong>Compile and link your C++ code:</strong> Finally, compile your C++ code and link it to the protobuf library.</p>
+<p><em>Example:</em></p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="color:#50FA7B">g++</span><span style="color:#BD93F9"> -std=c++11</span><span style="color:#BD93F9"> -o</span><span style="color:#F1FA8C"> main</span><span style="color:#F1FA8C"> main.cpp</span><span style="color:#F1FA8C"> person.pb.cc</span><span style="color:#BD93F9"> -lprotobuf</span></span>
+<span class="line"></span></code></pre>
+</li>
+</ul>
+<p>For more information and examples, you can refer to the <a href="https://developers.google.com/protocol-buffers/docs/cpptutorial" rel="noopener noreferrer nofollow" target="_blank">official protobuf C++ tutorial</a>.</p>

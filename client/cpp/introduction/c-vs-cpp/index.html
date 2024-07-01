@@ -1,0 +1,68 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/cpp/content/100-introduction/102-c-vs-cpp.md"></div> <h1 id="c-vs-c">C vs C++</h1>
+<p>C and C++ are two popular programming languages with some similarities, but they also have key differences. C++ is an extension of the C programming language, with added features such as object-oriented programming, classes, and exception handling. Although both languages are used for similar tasks, they have their own syntax and semantics, which makes them distinct from each other.</p>
+<h2 id="syntax-and-semantics">Syntax and Semantics</h2>
+<h3 id="c">C</h3>
+<ul>
+<li>C is a procedural programming language.</li>
+<li>Focuses on functions and structured programming.</li>
+<li>Does not support objects or classes.</li>
+<li>Memory management is manual, using functions like <code>malloc</code> and <code>free</code>.</li>
+</ul>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="c"><code><span class="line"><span style="color:#FF79C6">#include</span><span style="color:#E9F284"> &#x3C;</span><span style="color:#F1FA8C">stdio.h</span><span style="color:#E9F284">></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">void</span><span style="color:#50FA7B"> printHello</span><span style="color:#F8F8F2">() {</span></span>
+<span class="line"><span style="color:#50FA7B">    printf</span><span style="color:#F8F8F2">(</span><span style="color:#E9F284">"</span><span style="color:#F1FA8C">Hello, World!</span><span style="color:#FF79C6">\n</span><span style="color:#E9F284">"</span><span style="color:#F8F8F2">);</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">int</span><span style="color:#50FA7B"> main</span><span style="color:#F8F8F2">() {</span></span>
+<span class="line"><span style="color:#50FA7B">    printHello</span><span style="color:#F8F8F2">();</span></span>
+<span class="line"><span style="color:#FF79C6">    return</span><span style="color:#BD93F9"> 0</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"></span></code></pre>
+<h3 id="c-1">C++</h3>
+<ul>
+<li>C++ is both procedural and object-oriented.</li>
+<li>Supports both functions and classes.</li>
+<li>Incorporates different programming paradigms.</li>
+<li>Memory management can be manual (like C) or rely on constructors/destructors and smart pointers.</li>
+</ul>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#FF79C6">#include</span><span style="color:#E9F284"> &#x3C;</span><span style="color:#F1FA8C">iostream</span><span style="color:#E9F284">></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">class</span><span style="color:#8BE9FD"> HelloWorld</span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#FF79C6">public:</span></span>
+<span class="line"><span style="color:#FF79C6">    void</span><span style="color:#50FA7B"> printHello</span><span style="color:#F8F8F2">() {</span></span>
+<span class="line"><span style="color:#F8F8F2">        std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">cout </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C">Hello, World!</span><span style="color:#E9F284">"</span><span style="color:#FF79C6"> &#x3C;&#x3C;</span><span style="color:#F8F8F2"> std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">endl;</span></span>
+<span class="line"><span style="color:#F8F8F2">    }</span></span>
+<span class="line"><span style="color:#F8F8F2">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">int</span><span style="color:#50FA7B"> main</span><span style="color:#F8F8F2">() {</span></span>
+<span class="line"><span style="color:#F8F8F2">    HelloWorld obj;</span></span>
+<span class="line"><span style="color:#F8F8F2">    obj.</span><span style="color:#50FA7B">printHello</span><span style="color:#F8F8F2">();</span></span>
+<span class="line"><span style="color:#FF79C6">    return</span><span style="color:#BD93F9"> 0</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"></span></code></pre>
+<h2 id="code-reusability-and-modularity">Code Reusability and Modularity</h2>
+<h3 id="c-2">C</h3>
+<ul>
+<li>Code reusability is achieved through functions and modular programming.</li>
+<li>High cohesion and low coupling are achieved via structured design.</li>
+<li>Function libraries can be created and included through headers.</li>
+</ul>
+<h3 id="c-3">C++</h3>
+<ul>
+<li>Offers better code reusability with classes, inheritance, and polymorphism.</li>
+<li>Code modularity is enhanced through namespaces and well-designed object-oriented hierarchy.</li>
+</ul>
+<h2 id="error-handling">Error Handling</h2>
+<h3 id="c-4">C</h3>
+<ul>
+<li>Error handling in C is done primarily through return codes.</li>
+<li>Lacks support for exceptions or any built-in error handling mechanism.</li>
+</ul>
+<h3 id="c-5">C++</h3>
+<ul>
+<li>Offers exception handling, which can be used to handle errors that may occur during program execution.</li>
+<li>Enables catching and handling exceptions with <code>try</code>, <code>catch</code>, and <code>throw</code> keywords, providing more control over error handling.</li>
+</ul>
+<h2 id="conclusion">Conclusion</h2>
+<p>Both C and C++ are powerful languages with unique features and capabilities. While C is simpler and focuses on procedural programming, C++ offers the versatility of using different programming paradigms and improved code organization. Understanding the differences between these two languages can help you decide which one is more suitable for your specific needs and programming style.</p>

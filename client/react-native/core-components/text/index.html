@@ -1,0 +1,38 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/react-native/content/104-core-components/100-text.md"></div> <h1 id="text-component">Text Component</h1>
+<p>The <code>Text</code> component is a basic element in React Native used to display text content on the screen. While it has some basic styling properties, you usually nest it inside other components (e.g., <code>View</code>) to create more complex UIs.</p>
+<p>Some common properties of the <code>Text</code> component include:</p>
+<ul>
+<li><code>style</code>: Apply a set of styling rules to the text, such as font size, color, and font family.</li>
+<li><code>numberOfLines</code>: Limit the number of lines shown in the text. This can be especially useful for long paragraphs or truncating a long title.</li>
+<li><code>onPress</code>: Add a function that gets called when the user taps on the text.</li>
+<li><code>allowFontScaling</code>: Specify whether to allow font scaling based on user’s font settings.</li>
+</ul>
+<p>Here’s a simple example using the <code>Text</code> component:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#FF79C6">import</span><span style="color:#F8F8F2"> React </span><span style="color:#FF79C6">from</span><span style="color:#E9F284"> '</span><span style="color:#F1FA8C">react</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"><span style="color:#FF79C6">import</span><span style="color:#F8F8F2"> { Text, StyleSheet } </span><span style="color:#FF79C6">from</span><span style="color:#E9F284"> '</span><span style="color:#F1FA8C">react-native</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">const</span><span style="color:#50FA7B"> SimpleText</span><span style="color:#FF79C6"> =</span><span style="color:#F8F8F2"> () </span><span style="color:#FF79C6">=></span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#FF79C6">  return</span><span style="color:#F8F8F2"> (</span></span>
+<span class="line"><span style="color:#F8F8F2">    &#x3C;</span><span style="color:#8BE9FD;font-style:italic">Text</span><span style="color:#50FA7B;font-style:italic"> style</span><span style="color:#FF79C6">={</span><span style="color:#F8F8F2">styles.text</span><span style="color:#FF79C6">}</span><span style="color:#50FA7B;font-style:italic"> numberOfLines</span><span style="color:#FF79C6">={</span><span style="color:#BD93F9">2</span><span style="color:#FF79C6">}</span><span style="color:#50FA7B;font-style:italic"> onPress</span><span style="color:#FF79C6">={</span><span style="color:#F8F8F2">() </span><span style="color:#FF79C6">=></span><span style="color:#50FA7B"> alert</span><span style="color:#F8F8F2">(</span><span style="color:#E9F284">'</span><span style="color:#F1FA8C">Hello</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">)</span><span style="color:#FF79C6">}</span><span style="color:#F8F8F2">></span></span>
+<span class="line"><span style="color:#F8F8F2">      This is an example of a Text component in React Native. Tap on me!</span></span>
+<span class="line"><span style="color:#F8F8F2">    &#x3C;/</span><span style="color:#8BE9FD;font-style:italic">Text</span><span style="color:#F8F8F2">></span></span>
+<span class="line"><span style="color:#F8F8F2">  );</span></span>
+<span class="line"><span style="color:#F8F8F2">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">const</span><span style="color:#F8F8F2"> styles </span><span style="color:#FF79C6">=</span><span style="color:#F8F8F2"> StyleSheet.</span><span style="color:#50FA7B">create</span><span style="color:#F8F8F2">({</span></span>
+<span class="line"><span style="color:#F8F8F2">  text</span><span style="color:#FF79C6">:</span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#F8F8F2">    fontSize</span><span style="color:#FF79C6">:</span><span style="color:#BD93F9"> 16</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#F8F8F2">    color</span><span style="color:#FF79C6">:</span><span style="color:#E9F284"> '</span><span style="color:#F1FA8C">blue</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#F8F8F2">    textAlign</span><span style="color:#FF79C6">:</span><span style="color:#E9F284"> '</span><span style="color:#F1FA8C">center</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#F8F8F2">    margin</span><span style="color:#FF79C6">:</span><span style="color:#BD93F9"> 10</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#F8F8F2">    fontFamily</span><span style="color:#FF79C6">:</span><span style="color:#E9F284"> '</span><span style="color:#F1FA8C">Arial</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#F8F8F2">  },</span></span>
+<span class="line"><span style="color:#F8F8F2">});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">export</span><span style="color:#FF79C6"> default</span><span style="color:#F8F8F2"> SimpleText;</span></span>
+<span class="line"></span></code></pre>
+<p>In this example, we create a <code>Text</code> element with some text content, apply styling, limit it to two lines, and add an <code>onPress</code> event.</p>
+<p>Visit the following resources to learn more:</p>
+<ul>
+<li><a href="https://reactnative.dev/docs/text" rel="noopener noreferrer nofollow" target="_blank">@article@Text - React Native</a></li>
+</ul>

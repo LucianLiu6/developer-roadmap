@@ -1,0 +1,53 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/postgresql-dba/content/107-postgresql-infrastructure-skills/106-monitoring/100-prometheus.md"></div> <h1 id="prometheus-an-effective-monitoring-tool">Prometheus: An Effective Monitoring Tool</h1>
+<p>Prometheus is an open-source, powerful monitoring and alerting toolkit, designed specifically for time-series data. Originally developed by SoundCloud, it has since become a part of the Cloud Native Computing Foundation. Many businesses around the world rely on Prometheus for monitoring their infrastructure and applications.</p>
+<h2 id="key-features">Key Features</h2>
+<ul>
+<li>
+<p><strong>Multidimensional Data Model</strong>: Prometheus uses a metric-based, multidimensional data model that makes it easy to define and query complex metrics with multiple labels.</p>
+</li>
+<li>
+<p><strong>Flexible Query Language</strong>: The tool offers PromQL (Prometheus Query Language) which is a flexible and efficient query language for slicing and dicing data, enabling precise troubleshooting and real-time analytics.</p>
+</li>
+<li>
+<p><strong>Storage</strong>: Prometheus has an efficient, built-in, local storage mechanism. It also supports external systems such as remote storage adapters and long-term storage solutions.</p>
+</li>
+<li>
+<p><strong>Alerting</strong>: The pluggable alerting system in Prometheus helps to notify users when certain conditions are met, ensuring timely response to potential issues. It integrates seamlessly with Alertmanager for managing alerts and routing them to appropriate receivers.</p>
+</li>
+<li>
+<p><strong>Client Libraries and Exporters</strong>: There are various client libraries available to help instrument your applications and expose custom metrics. These libraries can be used to gather and expose the needed telemetry. Additionally, exporters allow to monitor third-party systems and applications, converting their metrics to a Prometheus format.</p>
+</li>
+<li>
+<p><strong>Visualization</strong>: Prometheus can be integrated with different visualization tools like Grafana to create informative dashboards providing real-time insights.</p>
+</li>
+</ul>
+<h2 id="setting-up-prometheus-with-postgresql">Setting up Prometheus with PostgreSQL</h2>
+<p>Prometheus can be used to monitor PostgreSQL and gather metrics about its performance and health. Here’s a brief guide on how to set up Prometheus for PostgreSQL monitoring:</p>
+<ul>
+<li>
+<p><strong>Install Prometheus</strong>: Follow the official <a href="https://prometheus.io/docs/prometheus/latest/installation/" rel="noopener noreferrer nofollow" target="_blank">Prometheus documentation</a> to install Prometheus on your system.</p>
+</li>
+<li>
+<p><strong>Install PostgreSQL Exporter</strong>: PostgreSQL metrics are not natively supported by Prometheus. Hence, you need to install the <a href="https://github.com/wrouesnel/postgres_exporter" rel="noopener noreferrer nofollow" target="_blank">PostgreSQL Exporter</a>, which exposes PostgreSQL metrics in a format understood by Prometheus.</p>
+</li>
+<li>
+<p><strong>Configure Prometheus</strong>: Update <code>prometheus.yml</code> file with the target PostgreSQL Exporter URL, setting up the scrape configuration. For example:</p>
+</li>
+</ul>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#8BE9FD">scrape_configs</span><span style="color:#FF79C6">:</span></span>
+<span class="line"><span style="color:#FF79C6">  -</span><span style="color:#8BE9FD"> job_name</span><span style="color:#FF79C6">:</span><span style="color:#E9F284"> '</span><span style="color:#F1FA8C">postgresql</span><span style="color:#E9F284">'</span></span>
+<span class="line"><span style="color:#8BE9FD">    static_configs</span><span style="color:#FF79C6">:</span></span>
+<span class="line"><span style="color:#FF79C6">      -</span><span style="color:#8BE9FD"> targets</span><span style="color:#FF79C6">:</span><span style="color:#F8F8F2"> [</span><span style="color:#E9F284">'</span><span style="color:#F1FA8C">localhost:9187</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">]</span></span>
+<span class="line"></span></code></pre>
+<ul>
+<li>
+<p><strong>Run PostgreSQL Exporter</strong>: Start the PostgreSQL Exporter with your PostgreSQL connection string.</p>
+</li>
+<li>
+<p><strong>Start Prometheus</strong>: Run Prometheus with the updated configuration.</p>
+</li>
+<li>
+<p><strong>Visualize Data</strong>: Access the Prometheus Web UI or integrate it with visualization tools like Grafana to analyze and visualize the metrics.</p>
+</li>
+</ul>
+<p>Monitoring your PostgreSQL database using Prometheus provides invaluable insights and helps in optimizing performance, diagnosing issues, and ensuring the overall health of your system.</p>

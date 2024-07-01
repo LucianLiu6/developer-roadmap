@@ -1,0 +1,51 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/postgresql-dba/content/109-application-skills/101-queues/index.md"></div> <h1 id="queues-in-postgresql">Queues in PostgreSQL</h1>
+<p>Queues are an essential component for building scalable applications, allowing you to manage and process tasks asynchronously. In PostgreSQL, you can implement simple-to-advanced queuing systems using various techniques and extensions. In this section, we’ll discuss the basics of implementing queues in PostgreSQL.</p>
+<h2 id="why-use-queues">Why Use Queues?</h2>
+<p>Using queues can improve the performance and user experience of your application by handling intensive tasks more efficiently. They help in:</p>
+<ul>
+<li>Decoupling components: Your application can be modular and easily maintainable by separating the task processing from the task initiation.</li>
+<li>Load balancing: Distribute tasks among different workers or processors, enabling better resource utilization.</li>
+<li>Retry failed tasks: Manage failed tasks more effectively by re-queuing them for retry after a specified duration.</li>
+<li>Prioritization: Prioritize tasks based on their importance or urgency.</li>
+</ul>
+<h2 id="basic-queues-implementation">Basic Queues Implementation</h2>
+<p>At a high level, a basic queue implementation requires:</p>
+<ul>
+<li>A table to store the queue. The table should contain the task information, priority, and status (e.g., pending, processing, completed, etc.)</li>
+<li>Functions to enqueue and dequeue tasks. Enqueue adds a task to the queue while dequeue picks up the next task to process and marks it as “processing.”</li>
+<li>Application code that handles the actual task processing. This part is implemented outside PostgreSQL, in your desired programming language.</li>
+</ul>
+<p>Here is an example of creating a simple queue in PostgreSQL:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#FF79C6">CREATE</span><span style="color:#FF79C6"> TABLE</span><span style="color:#50FA7B"> task_queue</span><span style="color:#F8F8F2"> (</span></span>
+<span class="line"><span style="color:#F8F8F2">  id </span><span style="color:#FF79C6">SERIAL</span><span style="color:#FF79C6"> PRIMARY KEY</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#F8F8F2">  task </span><span style="color:#FF79C6">TEXT</span><span style="color:#FF79C6"> NOT NULL</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#FF79C6">  priority INTEGER</span><span style="color:#FF79C6"> NOT NULL</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#FF79C6">  status</span><span style="color:#FF79C6"> VARCHAR</span><span style="color:#F8F8F2">(</span><span style="color:#BD93F9">32</span><span style="color:#F8F8F2">) </span><span style="color:#FF79C6">NOT NULL</span><span style="color:#FF79C6"> DEFAULT</span><span style="color:#E9F284"> '</span><span style="color:#F1FA8C">pending</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#F8F8F2">  created_at </span><span style="color:#FF79C6">TIMESTAMPTZ</span><span style="color:#FF79C6"> NOT NULL</span><span style="color:#FF79C6"> DEFAULT</span><span style="color:#FF79C6"> NOW</span><span style="color:#F8F8F2">()</span></span>
+<span class="line"><span style="color:#F8F8F2">);</span></span>
+<span class="line"></span></code></pre>
+<p>To enqueue a task:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#FF79C6">INSERT INTO</span><span style="color:#F8F8F2"> task_queue (task, priority) </span><span style="color:#FF79C6">VALUES</span><span style="color:#F8F8F2"> (</span><span style="color:#E9F284">'</span><span style="color:#F1FA8C">Send email</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">, </span><span style="color:#BD93F9">1</span><span style="color:#F8F8F2">);</span></span>
+<span class="line"></span></code></pre>
+<p>To dequeue a task:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#FF79C6">WITH</span><span style="color:#F8F8F2"> next_task </span><span style="color:#FF79C6">AS</span><span style="color:#F8F8F2"> (</span></span>
+<span class="line"><span style="color:#FF79C6">  SELECT</span><span style="color:#F8F8F2"> id </span><span style="color:#FF79C6">FROM</span><span style="color:#F8F8F2"> task_queue</span></span>
+<span class="line"><span style="color:#FF79C6">  WHERE</span><span style="color:#FF79C6"> status</span><span style="color:#FF79C6"> =</span><span style="color:#E9F284"> '</span><span style="color:#F1FA8C">pending</span><span style="color:#E9F284">'</span></span>
+<span class="line"><span style="color:#FF79C6">  ORDER BY</span><span style="color:#F8F8F2"> priority, created_at</span></span>
+<span class="line"><span style="color:#FF79C6">  LIMIT</span><span style="color:#BD93F9"> 1</span></span>
+<span class="line"><span style="color:#FF79C6">  FOR</span><span style="color:#FF79C6"> UPDATE</span><span style="color:#FF79C6"> SKIP</span><span style="color:#F8F8F2"> LOCKED</span></span>
+<span class="line"><span style="color:#F8F8F2">)</span></span>
+<span class="line"><span style="color:#FF79C6">UPDATE</span><span style="color:#F8F8F2"> task_queue</span></span>
+<span class="line"><span style="color:#FF79C6">SET</span><span style="color:#FF79C6"> status</span><span style="color:#FF79C6"> =</span><span style="color:#E9F284"> '</span><span style="color:#F1FA8C">processing</span><span style="color:#E9F284">'</span></span>
+<span class="line"><span style="color:#FF79C6">WHERE</span><span style="color:#F8F8F2"> id </span><span style="color:#FF79C6">IN</span><span style="color:#F8F8F2"> (</span><span style="color:#FF79C6">SELECT</span><span style="color:#F8F8F2"> id </span><span style="color:#FF79C6">FROM</span><span style="color:#F8F8F2"> next_task)</span></span>
+<span class="line"><span style="color:#F8F8F2">RETURNING </span><span style="color:#FF79C6">*</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"></span></code></pre>
+<h2 id="advanced-queuing-mechanisms">Advanced Queuing Mechanisms</h2>
+<p>The simple implementation described above can be further extended to handle more complex requirements, such as:</p>
+<ul>
+<li>Time-based scheduling: Execute tasks based on specific time intervals or after a delay.</li>
+<li>Retry attempts and failure handling: Set a limit to the number of retries before marking a task as permanently failed.</li>
+<li>Dead-letter queues: Store failed tasks separately for further investigation and reprocessing.</li>
+</ul>
+<p>You can also consider using dedicated PostgreSQL extensions like <a href="https://wiki.postgresql.org/wiki/PGQ_Tutorial" rel="noopener noreferrer nofollow" target="_blank">PGQ</a> or third-party queue management systems like <a href="https://www.rabbitmq.com/" rel="noopener noreferrer nofollow" target="_blank">RabbitMQ</a> or <a href="https://kafka.apache.org/" rel="noopener noreferrer nofollow" target="_blank">Apache Kafka</a>, which provide more advanced features like message durability, cluster support, and better scalability.</p>
+<p>In conclusion, adding a queue to your PostgreSQL application can help you manage tasks more effectively, provide a better user experience, and make your application more scalable. Start with a basic implementation and then extend it to meet your application’s specific requirements.</p>

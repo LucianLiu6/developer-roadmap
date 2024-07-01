@@ -1,0 +1,12 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/react-native/content/107-networking/index.md"></div> <h1 id="networking">Networking</h1>
+<p>React Native provides the ability to make network requests and manage data fetched from remote sources. Networking can be accomplished through the following techniques:</p>
+<h2 id="fetch">Fetch</h2>
+<p>The <code>fetch</code> function is a top-level API to make HTTP requests. It is a promise-based API for handling network requests. It allows you to fetch resources (typically JSON data) from a provided URL.</p>
+<h3 id="fetch-example">Fetch Example</h3>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#50FA7B">fetch</span><span style="color:#F8F8F2">(</span><span style="color:#E9F284">'</span><span style="color:#F1FA8C">https://jsonplaceholder.typicode.com/todos/1</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">)</span></span>
+<span class="line"><span style="color:#F8F8F2">  .</span><span style="color:#50FA7B">then</span><span style="color:#F8F8F2">((</span><span style="color:#FFB86C;font-style:italic">response</span><span style="color:#F8F8F2">) </span><span style="color:#FF79C6">=></span><span style="color:#F8F8F2"> response.</span><span style="color:#50FA7B">json</span><span style="color:#F8F8F2">())</span></span>
+<span class="line"><span style="color:#F8F8F2">  .</span><span style="color:#50FA7B">then</span><span style="color:#F8F8F2">((</span><span style="color:#FFB86C;font-style:italic">json</span><span style="color:#F8F8F2">) </span><span style="color:#FF79C6">=></span><span style="color:#F8F8F2"> console.</span><span style="color:#50FA7B">log</span><span style="color:#F8F8F2">(json))</span></span>
+<span class="line"><span style="color:#F8F8F2">  .</span><span style="color:#50FA7B">catch</span><span style="color:#F8F8F2">((</span><span style="color:#FFB86C;font-style:italic">error</span><span style="color:#F8F8F2">) </span><span style="color:#FF79C6">=></span><span style="color:#F8F8F2"> console.</span><span style="color:#50FA7B">error</span><span style="color:#F8F8F2">(error));</span></span>
+<span class="line"></span></code></pre>
+<h2 id="axios">Axios</h2>
+<p>Axios is a popular and widely-used library for making HTTP requests in javascript applications. It’s promise-based and provides a simple-to-use API.</p>

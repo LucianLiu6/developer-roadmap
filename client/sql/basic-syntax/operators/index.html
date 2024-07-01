@@ -1,0 +1,59 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/sql/content/101-basic-syntax/102-operators.md"></div> <h1 id="operators">Operators</h1>
+<p>SQL operators are used to perform operations like comparisons and arithmetic calculations. They are very crucial in
+forming queries. SQL operators are divided into the following types:</p>
+<ol>
+<li>
+<p><strong>Arithmetic Operators</strong>: These are used to perform mathematical operations. Here is a list of these operators:</p>
+<ul>
+<li><code>+</code> : Addition</li>
+<li><code>-</code> : Subtraction</li>
+<li><code>*</code> : Multiplication</li>
+<li><code>/</code> : Division</li>
+<li><code>%</code> : Modulus</li>
+</ul>
+<p>Example:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#FF79C6">SELECT</span><span style="color:#F8F8F2"> product, price, (price </span><span style="color:#FF79C6">*</span><span style="color:#BD93F9"> 0</span><span style="color:#F8F8F2">.</span><span style="color:#BD93F9">18</span><span style="color:#F8F8F2">) </span><span style="color:#FF79C6">as</span><span style="color:#F8F8F2"> tax</span></span>
+<span class="line"><span style="color:#FF79C6">FROM</span><span style="color:#F8F8F2"> products;</span></span>
+<span class="line"></span></code></pre>
+</li>
+<li>
+<p><strong>Comparison Operators</strong>: These are used in the where clause to compare one expression with another. Some of these
+operators are:</p>
+<ul>
+<li><code>=</code> : Equal</li>
+<li><code>!=</code> or <code>&#x3C;></code> : Not equal</li>
+<li><code>></code> : Greater than</li>
+<li><code>&#x3C;</code> : Less than</li>
+<li><code>>=</code>: Greater than or equal</li>
+<li><code>&#x3C;=</code>: Less than or equal</li>
+</ul>
+<p>Example:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#FF79C6">SELECT</span><span style="color:#FF79C6"> name</span><span style="color:#F8F8F2">, age</span></span>
+<span class="line"><span style="color:#FF79C6">FROM</span><span style="color:#F8F8F2"> students</span></span>
+<span class="line"><span style="color:#FF79C6">WHERE</span><span style="color:#F8F8F2"> age </span><span style="color:#FF79C6">></span><span style="color:#BD93F9"> 18</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"></span></code></pre>
+</li>
+<li>
+<p><strong>Logical Operators</strong>: They are used to combine the result set of two different component conditions. These include:</p>
+<ul>
+<li><code>AND</code>: Returns true if both components are true.</li>
+<li><code>OR</code> : Returns true if any one of the component is true.</li>
+<li><code>NOT</code>: Returns the opposite boolean value of the condition.</li>
+</ul>
+<p>Example:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#FF79C6">SELECT</span><span style="color:#FF79C6"> *</span><span style="color:#F8F8F2"> </span></span>
+<span class="line"><span style="color:#FF79C6">FROM</span><span style="color:#F8F8F2"> employees</span></span>
+<span class="line"><span style="color:#FF79C6">WHERE</span><span style="color:#F8F8F2"> salary </span><span style="color:#FF79C6">></span><span style="color:#BD93F9"> 50000</span><span style="color:#FF79C6"> AND</span><span style="color:#F8F8F2"> age </span><span style="color:#FF79C6">&#x3C;</span><span style="color:#BD93F9"> 30</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"></span></code></pre>
+</li>
+<li>
+<p><strong>Bitwise Operators</strong>: These perform bit-level operations on the inputs. Here is a list of these operators:</p>
+<ul>
+<li><code>&#x26;</code> : Bitwise AND</li>
+<li><code>|</code> : Bitwise OR</li>
+<li><code>^</code> : Bitwise XOR</li>
+</ul>
+<p>Bitwise operators are much less commonly used in SQL than the other types of operators.</p>
+</li>
+</ol>
+<p>Remember, the datatype of the result is dependent on the types of the operands.</p>

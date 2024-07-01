@@ -1,0 +1,38 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/sql/content/108-advanced-sql-functions/102-conditional/100-case.md"></div> <h1 id="case">CASE</h1>
+<p><code>CASE</code> is a conditional statement in SQL that performs different actions based on different conditions. It allows you to perform IF-THEN-ELSE logic within SQL queries. It can be used in any statement or clause that allows a valid expression.</p>
+<p>There are two forms of the <code>CASE</code> statement:</p>
+<ol>
+<li><strong>Simple CASE expression</strong> - It compares an expression to a set of simple expressions to return a result.</li>
+</ol>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#FF79C6">SELECT</span><span style="color:#F8F8F2"> column1, column2, </span></span>
+<span class="line"><span style="color:#F8F8F2">(</span><span style="color:#FF79C6">CASE</span><span style="color:#F8F8F2"> </span></span>
+<span class="line"><span style="color:#FF79C6">    WHEN</span><span style="color:#F8F8F2"> condition1 </span><span style="color:#FF79C6">THEN</span><span style="color:#F8F8F2"> result1</span></span>
+<span class="line"><span style="color:#FF79C6">    WHEN</span><span style="color:#F8F8F2"> condition2 </span><span style="color:#FF79C6">THEN</span><span style="color:#F8F8F2"> result2</span></span>
+<span class="line"><span style="color:#F8F8F2">    ...</span></span>
+<span class="line"><span style="color:#FF79C6">    ELSE</span><span style="color:#F8F8F2"> result </span></span>
+<span class="line"><span style="color:#FF79C6">END</span><span style="color:#F8F8F2">) </span></span>
+<span class="line"><span style="color:#FF79C6">FROM</span><span style="color:#F8F8F2"> table_name;</span></span>
+<span class="line"></span></code></pre>
+<ol start="2">
+<li><strong>Searched CASE expression</strong> - It evaluates a set of Boolean expressions to return a result.</li>
+</ol>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#FF79C6">SELECT</span><span style="color:#F8F8F2"> column1, column2,</span></span>
+<span class="line"><span style="color:#F8F8F2">(</span><span style="color:#FF79C6">CASE</span></span>
+<span class="line"><span style="color:#FF79C6">    WHEN</span><span style="color:#F8F8F2"> condition1 </span><span style="color:#FF79C6">THEN</span><span style="color:#F8F8F2"> result1</span></span>
+<span class="line"><span style="color:#FF79C6">    WHEN</span><span style="color:#F8F8F2"> condition2 </span><span style="color:#FF79C6">THEN</span><span style="color:#F8F8F2"> result2</span></span>
+<span class="line"><span style="color:#F8F8F2">    ...</span></span>
+<span class="line"><span style="color:#FF79C6">    ELSE</span><span style="color:#F8F8F2"> result</span></span>
+<span class="line"><span style="color:#FF79C6">END</span><span style="color:#F8F8F2">) </span></span>
+<span class="line"><span style="color:#FF79C6">FROM</span><span style="color:#F8F8F2"> table_name;</span></span>
+<span class="line"></span></code></pre>
+<p>In both forms, <code>CASE</code> returns a result_1, result_2, …, if condition_1, condition_2, … is true. If no conditions are true, it returns the value in the <code>ELSE</code> clause. If the <code>ELSE</code> clause is omitted and no conditions are true, it returns NULL.</p>
+<p>Here’s a concrete example:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#FF79C6">SELECT</span><span style="color:#F8F8F2"> OrderID, Quantity,</span></span>
+<span class="line"><span style="color:#F8F8F2"> (</span><span style="color:#FF79C6">CASE</span></span>
+<span class="line"><span style="color:#FF79C6">     WHEN</span><span style="color:#F8F8F2"> Quantity </span><span style="color:#FF79C6">></span><span style="color:#BD93F9"> 30</span><span style="color:#FF79C6"> THEN</span><span style="color:#E9F284"> '</span><span style="color:#F1FA8C">Over 30</span><span style="color:#E9F284">'</span></span>
+<span class="line"><span style="color:#FF79C6">     WHEN</span><span style="color:#F8F8F2"> Quantity </span><span style="color:#FF79C6">=</span><span style="color:#BD93F9"> 30</span><span style="color:#FF79C6"> THEN</span><span style="color:#E9F284"> '</span><span style="color:#F1FA8C">Equals 30</span><span style="color:#E9F284">'</span></span>
+<span class="line"><span style="color:#FF79C6">     ELSE</span><span style="color:#E9F284"> '</span><span style="color:#F1FA8C">Under 30</span><span style="color:#E9F284">'</span></span>
+<span class="line"><span style="color:#FF79C6"> END</span><span style="color:#F8F8F2">) </span><span style="color:#FF79C6">AS</span><span style="color:#F8F8F2"> QuantityText</span></span>
+<span class="line"><span style="color:#FF79C6">FROM</span><span style="color:#F8F8F2"> OrderDetails;</span></span>
+<span class="line"></span></code></pre>
+<p>From the “OrderDetails” table, the statement lists ‘OrderID’, ‘Quantity’, and a column named ‘QuantityText’ that displays ‘Over 30’ if ‘Quantity > 30’ or ‘Equals 30’ if ‘Quantity = 30’ or ‘Under 30’ if both conditions are false.</p>

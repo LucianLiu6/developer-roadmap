@@ -1,0 +1,9 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/linux/content/110-disks-filesystems/101-filesystems.md"></div> <h1 id="filesystems">Filesystems</h1>
+<p>Linux operating system provides multiple ways to handle the data storage through the concept of filesystems under disks. Filesystems, in essence, is the way how files are stored and organized on the storage disk. It’s a critical component of the system as it ensures the integrity, reliability and efficient access to the data.</p>
+<p>A disk installed in a Linux system can be divided into multiple partitions, each with its own filesystem. Linux supports various types of filesystems, such as EXT4, XFS, BTRFS, etc. Each one of them has their own advantages regarding performance, data integrity and recovery options.</p>
+<p>Configuration of these filesystems relies on a defined hierarchical structure. All the files and directories start from the root directory, presented by ’/‘.</p>
+<p>Understanding the concept and management of filesystems is key for the successful administration of Linux systems, as it involves routine tasks like mounting/unmounting drives, checking disk space, managing file permissions, and repairing corrupted filesystems.</p>
+<p>Code snippet to display the file system in Linux:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#50FA7B">df</span><span style="color:#BD93F9"> -T</span></span>
+<span class="line"></span></code></pre>
+<p>This command will display the type of filesystem, along with the disk usage status.</p>

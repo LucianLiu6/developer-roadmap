@@ -1,0 +1,40 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/sql/content/115-advanced-sql/100-recursive-queries.md"></div> <h1 id="recursive-queries">Recursive Queries</h1>
+<p>Recursive queries are advanced SQL queries used for data analysis, especially when working with hierarchical or tree-structured data. These queries are implemented using Common Table Expressions (CTEs). CTEs have the same structure as a standard SELECT statement but are prefixed with <code>WITH</code>, followed by the CTE name and an optional list of columns.</p>
+<p>CTEs can be recursive and non-recursive. The non-recursive CTE is a query that is executed once and then goes out of scope.</p>
+<h2 id="recursive-cte">Recursive CTE</h2>
+<p>A recursive CTE is a CTE that references itself. Recursive CTEs have a minimum of two queries, an anchor member (runs only once), and a recursive member (runs repeatedly). Include a UNION ALL statement between these queries.</p>
+<p>Here’s a sample of a recursive CTE:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#FF79C6">WITH</span><span style="color:#FF79C6"> RECURSIVE</span><span style="color:#F8F8F2"> ancestors </span><span style="color:#FF79C6">AS</span><span style="color:#F8F8F2"> (</span></span>
+<span class="line"><span style="color:#FF79C6">  SELECT</span><span style="color:#F8F8F2"> employee_id, manager_id, full_name</span></span>
+<span class="line"><span style="color:#FF79C6">  FROM</span><span style="color:#F8F8F2"> employees</span></span>
+<span class="line"><span style="color:#FF79C6">  WHERE</span><span style="color:#F8F8F2"> manager_id </span><span style="color:#FF79C6">IS</span><span style="color:#FF79C6"> NULL</span></span>
+<span class="line"><span style="color:#F8F8F2">  </span></span>
+<span class="line"><span style="color:#FF79C6">  UNION ALL</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">  SELECT</span><span style="color:#BD93F9"> e</span><span style="color:#F8F8F2">.</span><span style="color:#BD93F9">employee_id</span><span style="color:#F8F8F2">, </span><span style="color:#BD93F9">e</span><span style="color:#F8F8F2">.</span><span style="color:#BD93F9">manager_id</span><span style="color:#F8F8F2">, </span><span style="color:#BD93F9">e</span><span style="color:#F8F8F2">.</span><span style="color:#BD93F9">full_name</span></span>
+<span class="line"><span style="color:#FF79C6">  FROM</span><span style="color:#F8F8F2"> employees e</span></span>
+<span class="line"><span style="color:#FF79C6">  INNER JOIN</span><span style="color:#F8F8F2"> ancestors a </span><span style="color:#FF79C6">ON</span><span style="color:#BD93F9"> a</span><span style="color:#F8F8F2">.</span><span style="color:#BD93F9">employee_id</span><span style="color:#FF79C6"> =</span><span style="color:#BD93F9"> e</span><span style="color:#F8F8F2">.</span><span style="color:#BD93F9">manager_id</span></span>
+<span class="line"><span style="color:#F8F8F2">)</span></span>
+<span class="line"><span style="color:#FF79C6">SELECT</span><span style="color:#FF79C6"> *</span><span style="color:#FF79C6"> FROM</span><span style="color:#F8F8F2"> ancestors;</span></span>
+<span class="line"></span></code></pre>
+<p>In this code snippet, the first query is the anchor member that fetches the employees with no manager. The second part is the recursive member, continuously fetching managers until none are left.</p>
+<h2 id="syntax-of-recursive-cte">Syntax of Recursive CTE</h2>
+<p>Here’s the general structure of a recursive CTE:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#FF79C6">WITH</span><span style="color:#FF79C6"> RECURSIVE</span><span style="color:#F8F8F2"> cte_name (column_list) </span><span style="color:#FF79C6">AS</span><span style="color:#F8F8F2"> (</span></span>
+<span class="line"><span style="color:#F8F8F2">  </span></span>
+<span class="line"><span style="color:#6272A4">  -- Anchor member</span></span>
+<span class="line"><span style="color:#FF79C6">  SELECT</span><span style="color:#F8F8F2"> column_list</span></span>
+<span class="line"><span style="color:#FF79C6">  FROM</span><span style="color:#F8F8F2"> table_name</span></span>
+<span class="line"><span style="color:#FF79C6">  WHERE</span><span style="color:#F8F8F2"> condition</span></span>
+<span class="line"><span style="color:#F8F8F2">  </span></span>
+<span class="line"><span style="color:#FF79C6">  UNION ALL</span></span>
+<span class="line"><span style="color:#F8F8F2">  </span></span>
+<span class="line"><span style="color:#6272A4">  -- Recursive member</span></span>
+<span class="line"><span style="color:#FF79C6">  SELECT</span><span style="color:#F8F8F2"> column_list</span></span>
+<span class="line"><span style="color:#FF79C6">  FROM</span><span style="color:#F8F8F2"> table_name</span></span>
+<span class="line"><span style="color:#FF79C6">  INNER JOIN</span><span style="color:#F8F8F2"> cte_name </span><span style="color:#FF79C6">ON</span><span style="color:#F8F8F2"> condition</span></span>
+<span class="line"><span style="color:#F8F8F2">)</span></span>
+<span class="line"><span style="color:#FF79C6">SELECT</span><span style="color:#FF79C6"> *</span><span style="color:#FF79C6"> FROM</span><span style="color:#F8F8F2"> cte_name;</span></span>
+<span class="line"></span></code></pre>
+<p>Note: some database systems such as MySQL, PostgreSQL, and SQLite use <code>WITH RECURSIVE</code> for recursive CTEs. Others like SQL Server, Oracle, and DB2 use just <code>WITH</code>.</p>
+<p>Remember to be careful when setting the conditions for your recursive query to avoid infinite loops.</p>

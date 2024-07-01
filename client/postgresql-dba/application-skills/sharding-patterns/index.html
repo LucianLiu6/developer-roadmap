@@ -1,0 +1,14 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/postgresql-dba/content/109-application-skills/105-sharding-patterns.md"></div> <h1 id="sharding-patterns">Sharding Patterns</h1>
+<p>Sharding is a technique that splits a large dataset across multiple database instances or servers, called shards. Each shard is an independent and self-contained unit that holds a portion of the overall data, and shards can be distributed across different geographical locations or infrastructures.</p>
+<p>In PostgreSQL environment, sharding can be achieved in different ways:</p>
+<ul>
+<li>
+<p><strong>Sharding at the application level:</strong> The application defines the logic to decide which shard will store a specific data record. The application communicates directly with each shard for querying or modifying the data.</p>
+</li>
+<li>
+<p><strong>Sharding using foreign data wrappers:</strong> PostgreSQL provides a feature called foreign data wrappers (FDW) that allows a PostgreSQL server to access data stored in remote servers, treating them as local tables. By using this technique, the data can be sharded across multiple remote servers, and the local PostgreSQL instance acts as a coordinator for accessing these shards.</p>
+</li>
+<li>
+<p><strong>Sharding using 3rd-party tools:</strong> Several 3rd-party tools, such as Pgpool-II, Citus, and PLProxy, can be used for sharding purpose. These tools handle connection pooling, load balancing, and data distribution across multiple PostgreSQL instances. The choice of tools depends on the requirements, complexity, and the desired level of control over the sharding logic.</p>
+</li>
+</ul>

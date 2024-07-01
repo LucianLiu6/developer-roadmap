@@ -1,0 +1,35 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/postgresql-dba/content/107-postgresql-infrastructure-skills/108-anonymization/index.md"></div> <h1 id="anonymization">Anonymization</h1>
+<p>Anonymization is the process of protecting sensitive and personally identifiable information (PII) from being exposed, by replacing or changing the data in a way that it becomes impossible or extremely difficult to trace back to its original source. In the context of PostgreSQL, anonymization techniques are used to ensure the confidentiality and privacy of the data, while still making it available to perform analysis or testing.</p>
+<h3 id="why-is-anonymization-important">Why is anonymization important?</h3>
+<p>Anonymization has become a critical aspect of databasing due to the growing need for data protection and compliance with privacy regulations like GDPR, HIPAA, and CCPA. The consequences of non-compliance can result in fines, damage to brand reputation, and potential legal battles.</p>
+<h3 id="techniques-for-anonymizing-data-in-postgresql">Techniques for anonymizing data in PostgreSQL</h3>
+<ol>
+<li>
+<p><strong>Data Masking</strong>: Replacing sensitive information with random characters or numbers to make it unrecognizable. For example, replacing a person’s name with random letters.</p>
+</li>
+<li>
+<p><strong>Generalization</strong>: Aggregating data to a higher level of abstraction, such as converting exact ages to age groups or locations to regions. This will allow you to analyze the data at a higher level without compromising individual privacy.</p>
+</li>
+<li>
+<p><strong>Pseudonymization</strong>: Replacing sensitive information with synthetic substitutes, while maintaining a mapping of the original data to the pseudonyms. This allows data to still be useful for analysis purposes but protects identifiable information.</p>
+</li>
+<li>
+<p><strong>Data Swapping</strong>: Interchanging some sensitive data between records to create a level of ambiguity on the true data combination. For example, swapping salaries of some employees within a company.</p>
+</li>
+<li>
+<p><strong>Random Noise Addition</strong>: Adding random noise to the data elements in a dataset, thus making it more difficult to identify individual records.</p>
+</li>
+</ol>
+<h3 id="tools-for-anonymizing-data-in-postgresql">Tools for anonymizing data in PostgreSQL</h3>
+<ol>
+<li>
+<p><strong>pg_anonymize</strong>: It’s a PostgreSQL extension that can be used to mask and anonymize data. It can generate fake data, mask existing data or shuffle data between rows.</p>
+</li>
+<li>
+<p><strong>anon</strong>: A PostgreSQL extension that offers built-in anonymization functions, like data masking, randomizing and anonymization with k-anonymity.</p>
+</li>
+<li>
+<p><strong>Data Masker</strong>: A commercial solution that offers tools to mask and pseudonymize sensitive data according to your specific requirements.</p>
+</li>
+</ol>
+<p>In conclusion, anonymization is an essential skill in any PostgreSQL infrastructure, aiming to protect sensitive and personally identifiable information. Implementing anonymization techniques will enable your organization to comply with data protection regulations and maintain the privacy of individuals, while still enabling you to analyze the patterns and trends in your data.</p>

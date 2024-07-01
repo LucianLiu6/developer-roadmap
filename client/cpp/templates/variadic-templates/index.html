@@ -1,0 +1,57 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/cpp/content/111-templates/100-variadic-templates.md"></div> <h1 id="variadic-templates">Variadic Templates</h1>
+<p>Variadic templates are a feature in C++11 that allows you to define a template with a variable number of arguments. This is especially useful when you need to write a function or class that can accept different numbers and types of arguments.</p>
+<h2 id="syntax">Syntax</h2>
+<p>The syntax for variadic templates is very simple. To define a variadic template, use the <code>...</code> (ellipsis) notation:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#FF79C6">template</span><span style="color:#F8F8F2"> &#x3C;</span><span style="color:#FF79C6">typename</span><span style="color:#F8F8F2">... </span><span style="color:#8BE9FD;font-style:italic">Args</span><span style="color:#F8F8F2">></span></span>
+<span class="line"></span></code></pre>
+<p>This notation represents a parameter pack, which can contain zero or more arguments. You can use this parameter pack as a variable list of template parameters in your template definition.</p>
+<h2 id="examples">Examples</h2>
+<h3 id="summing-multiple-arguments-using-variadic-templates">Summing Multiple Arguments Using Variadic Templates</h3>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#FF79C6">#include</span><span style="color:#E9F284"> &#x3C;</span><span style="color:#F1FA8C">iostream</span><span style="color:#E9F284">></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6272A4">// Base case for recursion</span></span>
+<span class="line"><span style="color:#FF79C6">template</span><span style="color:#F8F8F2"> &#x3C;</span><span style="color:#FF79C6">typename</span><span style="color:#8BE9FD;font-style:italic"> T</span><span style="color:#F8F8F2">></span></span>
+<span class="line"><span style="color:#8BE9FD;font-style:italic">T</span><span style="color:#50FA7B"> sum</span><span style="color:#F8F8F2">(</span><span style="color:#8BE9FD;font-style:italic">T</span><span style="color:#FFB86C;font-style:italic"> t</span><span style="color:#F8F8F2">) {</span></span>
+<span class="line"><span style="color:#FF79C6">  return</span><span style="color:#F8F8F2"> t;</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6272A4">// Variadic template</span></span>
+<span class="line"><span style="color:#FF79C6">template</span><span style="color:#F8F8F2"> &#x3C;</span><span style="color:#FF79C6">typename</span><span style="color:#8BE9FD;font-style:italic"> T</span><span style="color:#F8F8F2">, </span><span style="color:#FF79C6">typename</span><span style="color:#F8F8F2">... </span><span style="color:#8BE9FD;font-style:italic">Args</span><span style="color:#F8F8F2">></span></span>
+<span class="line"><span style="color:#8BE9FD;font-style:italic">T</span><span style="color:#50FA7B"> sum</span><span style="color:#F8F8F2">(</span><span style="color:#8BE9FD;font-style:italic">T</span><span style="color:#FFB86C;font-style:italic"> t</span><span style="color:#F8F8F2">, </span><span style="color:#8BE9FD;font-style:italic">Args</span><span style="color:#F8F8F2">... </span><span style="color:#FFB86C;font-style:italic">args</span><span style="color:#F8F8F2">) {</span></span>
+<span class="line"><span style="color:#FF79C6">  return</span><span style="color:#F8F8F2"> t </span><span style="color:#FF79C6">+</span><span style="color:#50FA7B"> sum</span><span style="color:#F8F8F2">(args...);</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">int</span><span style="color:#50FA7B"> main</span><span style="color:#F8F8F2">() {</span></span>
+<span class="line"><span style="color:#FF79C6">  int</span><span style="color:#F8F8F2"> result </span><span style="color:#FF79C6">=</span><span style="color:#50FA7B"> sum</span><span style="color:#F8F8F2">(</span><span style="color:#BD93F9">1</span><span style="color:#F8F8F2">, </span><span style="color:#BD93F9">2</span><span style="color:#F8F8F2">, </span><span style="color:#BD93F9">3</span><span style="color:#F8F8F2">, </span><span style="color:#BD93F9">4</span><span style="color:#F8F8F2">, </span><span style="color:#BD93F9">5</span><span style="color:#F8F8F2">);</span><span style="color:#6272A4">  // expands to 1 + 2 + 3 + 4 + 5</span></span>
+<span class="line"><span style="color:#F8F8F2">  std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">cout </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C">The sum is: </span><span style="color:#E9F284">"</span><span style="color:#FF79C6"> &#x3C;&#x3C;</span><span style="color:#F8F8F2"> result </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#F8F8F2"> std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">endl;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">  return</span><span style="color:#BD93F9"> 0</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"></span></code></pre>
+<h3 id="tuple-class-using-variadic-templates">Tuple Class Using Variadic Templates</h3>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#FF79C6">template</span><span style="color:#F8F8F2"> &#x3C;</span><span style="color:#FF79C6">typename</span><span style="color:#F8F8F2">... </span><span style="color:#8BE9FD;font-style:italic">Types</span><span style="color:#F8F8F2">></span></span>
+<span class="line"><span style="color:#FF79C6">class</span><span style="color:#8BE9FD"> Tuple</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6272A4">// Base case: empty tuple</span></span>
+<span class="line"><span style="color:#FF79C6">template</span><span style="color:#F8F8F2"> &#x3C;></span></span>
+<span class="line"><span style="color:#FF79C6">class</span><span style="color:#8BE9FD"> Tuple</span><span style="color:#F8F8F2">&#x3C;> {};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6272A4">// Recursive case: Tuple with one or more elements</span></span>
+<span class="line"><span style="color:#FF79C6">template</span><span style="color:#F8F8F2"> &#x3C;</span><span style="color:#FF79C6">typename</span><span style="color:#8BE9FD;font-style:italic"> Head</span><span style="color:#F8F8F2">, </span><span style="color:#FF79C6">typename</span><span style="color:#F8F8F2">... </span><span style="color:#8BE9FD;font-style:italic">Tail</span><span style="color:#F8F8F2">></span></span>
+<span class="line"><span style="color:#FF79C6">class</span><span style="color:#8BE9FD"> Tuple</span><span style="color:#F8F8F2">&#x3C;</span><span style="color:#8BE9FD;font-style:italic">Head</span><span style="color:#F8F8F2">, Tail...> : </span><span style="color:#FF79C6">public</span><span style="color:#8BE9FD;font-style:italic"> Tuple</span><span style="color:#F8F8F2">&#x3C;Tail...> {</span></span>
+<span class="line"><span style="color:#FF79C6"> public:</span></span>
+<span class="line"><span style="color:#50FA7B">  Tuple</span><span style="color:#F8F8F2">(</span><span style="color:#8BE9FD;font-style:italic">Head</span><span style="color:#FFB86C;font-style:italic"> head</span><span style="color:#F8F8F2">, </span><span style="color:#8BE9FD;font-style:italic">Tail</span><span style="color:#F8F8F2">... </span><span style="color:#FFB86C;font-style:italic">tail</span><span style="color:#F8F8F2">) : </span><span style="color:#50FA7B">Tuple</span><span style="color:#F8F8F2">&#x3C;Tail...>(tail...), </span><span style="color:#50FA7B">head_</span><span style="color:#F8F8F2">(head) {}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#8BE9FD;font-style:italic">  Head</span><span style="color:#50FA7B"> head</span><span style="color:#F8F8F2">() </span><span style="color:#FF79C6">const</span><span style="color:#F8F8F2"> { </span><span style="color:#FF79C6">return</span><span style="color:#F8F8F2"> head_; }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6"> private:</span></span>
+<span class="line"><span style="color:#F8F8F2">  Head head_;</span></span>
+<span class="line"><span style="color:#F8F8F2">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">int</span><span style="color:#50FA7B"> main</span><span style="color:#F8F8F2">() {</span></span>
+<span class="line"><span style="color:#F8F8F2">  Tuple</span><span style="color:#FF79C6">&#x3C;int</span><span style="color:#F8F8F2">, </span><span style="color:#FF79C6">float</span><span style="color:#F8F8F2">, </span><span style="color:#FF79C6">double></span><span style="color:#50FA7B"> tuple</span><span style="color:#F8F8F2">(</span><span style="color:#BD93F9">1</span><span style="color:#F8F8F2">, </span><span style="color:#BD93F9">2.0</span><span style="color:#FF79C6">f</span><span style="color:#F8F8F2">, </span><span style="color:#BD93F9">3.0</span><span style="color:#F8F8F2">);</span></span>
+<span class="line"><span style="color:#F8F8F2">  std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">cout </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C">First element: </span><span style="color:#E9F284">"</span><span style="color:#FF79C6"> &#x3C;&#x3C;</span><span style="color:#F8F8F2"> tuple.</span><span style="color:#50FA7B">head</span><span style="color:#F8F8F2">() </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#F8F8F2"> std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">endl;</span></span>
+<span class="line"><span style="color:#FF79C6">  return</span><span style="color:#BD93F9"> 0</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"></span></code></pre>
+<p>Please note that the examples shown are for educational purposes and might not be the most efficient or production-ready implementations. With C++17 and onward, there are even more concise ways to handle variadic templates, like using fold expressions.</p>

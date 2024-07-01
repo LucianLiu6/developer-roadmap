@@ -1,0 +1,7 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/rust/content/101-language-basics/101-ownership/index.md"></div> <h1 id="ownership-system">Ownership System</h1>
+<p>In Rust, the concept of <strong>ownership</strong> is a key feature that governs how memory management works. Each value in Rust has its own designated “owner,” and there can be only one owner for a value at a time. When the owner goes out of scope, whatever value it owns is automatically <em>dropped</em> from memory. The three main facets of ownership include ownership rules, borrowing, and slices.</p>
+<ul>
+<li><strong>Ownership rules</strong> play a key role in system performance and prevention of issues, such as null or dangling references.</li>
+<li><strong>Borrowing</strong> is a mechanism where we allow something to <em>reference</em> a value without taking <em>ownership</em>.</li>
+<li><strong>Slices</strong> are a data type that does <em>not</em> have ownership. Specifically, slices help in making a reference to a portion of a collection data type, like a <code>String</code>, <code>Array</code>, or <code>Vec</code>.</li>
+</ul>

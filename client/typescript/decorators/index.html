@@ -1,0 +1,35 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/typescript/content/110-decorators.md"></div> <h1 id="decorators">Decorators</h1>
+<p>Decorators are a feature of TypeScript that allow you to modify the behavior of a class, property, method, or parameter. They are a way to add additional functionality to existing code, and they can be used for a wide range of tasks, including logging, performance optimization, and validation.</p>
+<p>Here’s an example of how you might use a decorator in TypeScript:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="typescript"><code><span class="line"><span style="color:#FF79C6">function</span><span style="color:#50FA7B"> log</span><span style="color:#F8F8F2">(</span></span>
+<span class="line"><span style="color:#FFB86C;font-style:italic">  target</span><span style="color:#FF79C6">:</span><span style="color:#8BE9FD;font-style:italic"> Object</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#FFB86C;font-style:italic">  propertyKey</span><span style="color:#FF79C6">:</span><span style="color:#8BE9FD;font-style:italic"> string</span><span style="color:#FF79C6"> |</span><span style="color:#8BE9FD;font-style:italic"> symbol</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#FFB86C;font-style:italic">  descriptor</span><span style="color:#FF79C6">:</span><span style="color:#8BE9FD;font-style:italic"> PropertyDescriptor</span></span>
+<span class="line"><span style="color:#F8F8F2">) {</span></span>
+<span class="line"><span style="color:#FF79C6">  const</span><span style="color:#F8F8F2"> originalMethod </span><span style="color:#FF79C6">=</span><span style="color:#F8F8F2"> descriptor.value;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F8F8F2">  descriptor.</span><span style="color:#50FA7B">value</span><span style="color:#FF79C6"> =</span><span style="color:#FF79C6"> function</span><span style="color:#F8F8F2"> (</span><span style="color:#FF79C6">...</span><span style="color:#FFB86C;font-style:italic">args</span><span style="color:#FF79C6">:</span><span style="color:#8BE9FD;font-style:italic"> any</span><span style="color:#F8F8F2">[]) {</span></span>
+<span class="line"><span style="color:#F8F8F2">    console.</span><span style="color:#50FA7B">log</span><span style="color:#F8F8F2">(</span><span style="color:#F1FA8C">`Calling </span><span style="color:#FF79C6">${</span><span style="color:#F8F8F2">propertyKey</span><span style="color:#FF79C6">}</span><span style="color:#F1FA8C"> with arguments: </span><span style="color:#FF79C6">${</span><span style="color:#F8F8F2">args</span><span style="color:#FF79C6">}</span><span style="color:#F1FA8C">`</span><span style="color:#F8F8F2">);</span></span>
+<span class="line"><span style="color:#FF79C6">    return</span><span style="color:#F8F8F2"> originalMethod.</span><span style="color:#50FA7B">apply</span><span style="color:#F8F8F2">(</span><span style="color:#BD93F9;font-style:italic">this</span><span style="color:#F8F8F2">, args);</span></span>
+<span class="line"><span style="color:#F8F8F2">  };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">  return</span><span style="color:#F8F8F2"> descriptor;</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">class</span><span style="color:#8BE9FD"> Calculator</span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#F8F8F2">  @</span><span style="color:#50FA7B;font-style:italic">log</span></span>
+<span class="line"><span style="color:#50FA7B">  add</span><span style="color:#F8F8F2">(</span><span style="color:#FFB86C;font-style:italic">a</span><span style="color:#FF79C6">:</span><span style="color:#8BE9FD;font-style:italic"> number</span><span style="color:#F8F8F2">, </span><span style="color:#FFB86C;font-style:italic">b</span><span style="color:#FF79C6">:</span><span style="color:#8BE9FD;font-style:italic"> number</span><span style="color:#F8F8F2">)</span><span style="color:#FF79C6">:</span><span style="color:#8BE9FD;font-style:italic"> number</span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#FF79C6">    return</span><span style="color:#F8F8F2"> a </span><span style="color:#FF79C6">+</span><span style="color:#F8F8F2"> b;</span></span>
+<span class="line"><span style="color:#F8F8F2">  }</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">const</span><span style="color:#F8F8F2"> calculator </span><span style="color:#FF79C6">=</span><span style="color:#FF79C6;font-weight:bold"> new</span><span style="color:#50FA7B"> Calculator</span><span style="color:#F8F8F2">();</span></span>
+<span class="line"><span style="color:#F8F8F2">calculator.</span><span style="color:#50FA7B">add</span><span style="color:#F8F8F2">(</span><span style="color:#BD93F9">1</span><span style="color:#F8F8F2">, </span><span style="color:#BD93F9">2</span><span style="color:#F8F8F2">);</span></span>
+<span class="line"><span style="color:#6272A4">// Output: Calling add with arguments: 1,2</span></span>
+<span class="line"><span style="color:#6272A4">// Output: 3</span></span>
+<span class="line"></span></code></pre>
+<p>In this example, we use the <code>@log</code> decorator to modify the behavior of the <code>add</code> method in the <code>Calculator</code> class. The <code>log</code> decorator logs the arguments passed to the method before calling the original method. This allows us to see what arguments are being passed to the method, without having to modify the method’s code.</p>
+<p>Learn more from the following links:</p>
+<ul>
+<li><a href="https://www.typescriptlang.org/docs/handbook/decorators.html#handbook-content" rel="noopener noreferrer nofollow" target="_blank">@article@Decorators</a></li>
+</ul>

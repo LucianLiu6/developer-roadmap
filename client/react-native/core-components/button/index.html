@@ -1,0 +1,29 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/react-native/content/104-core-components/102-button.md"></div> <h1 id="button">Button</h1>
+<p>A <code>Button</code> is a built-in React Native component used to create clickable buttons. It is a simple, customizable and easy-to-use component that captures touches and triggers an <code>onPress</code> event when pressed.</p>
+<p>Here’s a simple example of how to create a Button in React Native:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#FF79C6">import</span><span style="color:#F8F8F2"> React </span><span style="color:#FF79C6">from</span><span style="color:#E9F284"> '</span><span style="color:#F1FA8C">react</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"><span style="color:#FF79C6">import</span><span style="color:#F8F8F2"> { Button } </span><span style="color:#FF79C6">from</span><span style="color:#E9F284"> '</span><span style="color:#F1FA8C">react-native</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">const</span><span style="color:#50FA7B"> MyButton</span><span style="color:#FF79C6"> =</span><span style="color:#F8F8F2"> () </span><span style="color:#FF79C6">=></span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#FF79C6">  const</span><span style="color:#50FA7B"> onPressHandler</span><span style="color:#FF79C6"> =</span><span style="color:#F8F8F2"> () </span><span style="color:#FF79C6">=></span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#50FA7B">    alert</span><span style="color:#F8F8F2">(</span><span style="color:#E9F284">'</span><span style="color:#F1FA8C">Button Pressed</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">);</span></span>
+<span class="line"><span style="color:#F8F8F2">  };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">  return</span><span style="color:#F8F8F2"> (</span></span>
+<span class="line"><span style="color:#F8F8F2">    &#x3C;</span><span style="color:#8BE9FD;font-style:italic">Button</span></span>
+<span class="line"><span style="color:#50FA7B;font-style:italic">      title</span><span style="color:#FF79C6">=</span><span style="color:#E9F284">"</span><span style="color:#F1FA8C">Click me</span><span style="color:#E9F284">"</span></span>
+<span class="line"><span style="color:#50FA7B;font-style:italic">      color</span><span style="color:#FF79C6">=</span><span style="color:#E9F284">"</span><span style="color:#F1FA8C">#841584</span><span style="color:#E9F284">"</span></span>
+<span class="line"><span style="color:#50FA7B;font-style:italic">      onPress</span><span style="color:#FF79C6">={</span><span style="color:#F8F8F2">onPressHandler</span><span style="color:#FF79C6">}</span></span>
+<span class="line"><span style="color:#F8F8F2">    /></span></span>
+<span class="line"><span style="color:#F8F8F2">  );</span></span>
+<span class="line"><span style="color:#F8F8F2">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">export</span><span style="color:#FF79C6"> default</span><span style="color:#F8F8F2"> MyButton;</span></span>
+<span class="line"></span></code></pre>
+<p>In this example, we import the Button component from ‘react-native’, create a functional component <code>MyButton</code>, and define an <code>onPressHandler</code> function that will be called when the button is pressed. We then use the <code>Button</code> component and pass in the following props:</p>
+<ul>
+<li><code>title</code>: The text to display on the button.</li>
+<li><code>color</code>: The background color of the button.</li>
+<li><code>onPress</code>: The function to call when the button is pressed.</li>
+</ul>
+<p>When the button is pressed, the <code>onPressHandler</code> function will be called, and an alert will pop up saying “Button Pressed”.</p>

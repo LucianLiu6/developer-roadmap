@@ -1,0 +1,82 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/cpp/content/112-idioms/index.md"></div> <h1 id="c-idioms">C++ Idioms</h1>
+<p>C++ idioms are well-established patterns or techniques that are commonly used in C++ programming to achieve a specific outcome. They help make code efficient, maintainable, and less error-prone. Here are some of the common C++ idioms:</p>
+<h2 id="1-resource-acquisition-is-initialization-raii">1. Resource Acquisition is Initialization (RAII)</h2>
+<p>This idiom ensures that resources are always properly acquired and released by tying their lifetime to the lifetime of an object. When the object gets created, it acquires the resources and when it gets destroyed, it releases them.</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#FF79C6">class</span><span style="color:#8BE9FD"> Resource</span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#FF79C6">public:</span></span>
+<span class="line"><span style="color:#50FA7B">    Resource</span><span style="color:#F8F8F2">() {</span><span style="color:#6272A4"> /* Acquire resource */</span><span style="color:#F8F8F2"> }</span></span>
+<span class="line"><span style="color:#50FA7B">    ~Resource</span><span style="color:#F8F8F2">() {</span><span style="color:#6272A4"> /* Release resource */</span><span style="color:#F8F8F2"> }</span></span>
+<span class="line"><span style="color:#F8F8F2">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">void</span><span style="color:#50FA7B"> function</span><span style="color:#F8F8F2">() {</span></span>
+<span class="line"><span style="color:#F8F8F2">    Resource r;</span><span style="color:#6272A4"> // Resource is acquired</span></span>
+<span class="line"><span style="color:#6272A4">    // ...</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span><span style="color:#6272A4"> // Resource is released when r goes out of scope</span></span>
+<span class="line"></span></code></pre>
+<h2 id="2-rule-of-three">2. Rule of Three</h2>
+<p>If a class defines any one of the following, it should define all three: copy constructor, copy assignment operator, and destructor.</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#FF79C6">class</span><span style="color:#8BE9FD"> MyClass</span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#FF79C6">public:</span></span>
+<span class="line"><span style="color:#50FA7B">    MyClass</span><span style="color:#F8F8F2">();</span></span>
+<span class="line"><span style="color:#50FA7B">    MyClass</span><span style="color:#F8F8F2">(</span><span style="color:#FF79C6">const</span><span style="color:#8BE9FD;font-style:italic"> MyClass</span><span style="color:#FF79C6">&#x26;</span><span style="color:#FFB86C;font-style:italic"> other</span><span style="color:#F8F8F2">);</span><span style="color:#6272A4"> // Copy constructor</span></span>
+<span class="line"><span style="color:#8BE9FD;font-style:italic">    MyClass</span><span style="color:#FF79C6">&#x26;</span><span style="color:#FF79C6"> operator</span><span style="color:#F8F8F2">=(</span><span style="color:#FF79C6">const</span><span style="color:#8BE9FD;font-style:italic"> MyClass</span><span style="color:#FF79C6">&#x26;</span><span style="color:#FFB86C;font-style:italic"> other</span><span style="color:#F8F8F2">);</span><span style="color:#6272A4"> // Copy assignment operator</span></span>
+<span class="line"><span style="color:#50FA7B">    ~MyClass</span><span style="color:#F8F8F2">();</span><span style="color:#6272A4"> // Destructor</span></span>
+<span class="line"><span style="color:#F8F8F2">};</span></span>
+<span class="line"></span></code></pre>
+<h2 id="3-rule-of-five">3. Rule of Five</h2>
+<p>With C++11, the rule of three was extended to five, covering move constructor and move assignment operator.</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#FF79C6">class</span><span style="color:#8BE9FD"> MyClass</span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#FF79C6">public:</span></span>
+<span class="line"><span style="color:#50FA7B">    MyClass</span><span style="color:#F8F8F2">();</span></span>
+<span class="line"><span style="color:#50FA7B">    MyClass</span><span style="color:#F8F8F2">(</span><span style="color:#FF79C6">const</span><span style="color:#8BE9FD;font-style:italic"> MyClass</span><span style="color:#FF79C6">&#x26;</span><span style="color:#FFB86C;font-style:italic"> other</span><span style="color:#F8F8F2">);</span><span style="color:#6272A4"> // Copy constructor</span></span>
+<span class="line"><span style="color:#50FA7B">    MyClass</span><span style="color:#F8F8F2">(</span><span style="color:#8BE9FD;font-style:italic">MyClass</span><span style="color:#FF79C6">&#x26;&#x26;</span><span style="color:#FFB86C;font-style:italic"> other</span><span style="color:#F8F8F2">);</span><span style="color:#6272A4"> // Move constructor</span></span>
+<span class="line"><span style="color:#8BE9FD;font-style:italic">    MyClass</span><span style="color:#FF79C6">&#x26;</span><span style="color:#FF79C6"> operator</span><span style="color:#F8F8F2">=(</span><span style="color:#FF79C6">const</span><span style="color:#8BE9FD;font-style:italic"> MyClass</span><span style="color:#FF79C6">&#x26;</span><span style="color:#FFB86C;font-style:italic"> other</span><span style="color:#F8F8F2">);</span><span style="color:#6272A4"> // Copy assignment operator</span></span>
+<span class="line"><span style="color:#8BE9FD;font-style:italic">    MyClass</span><span style="color:#FF79C6">&#x26;</span><span style="color:#FF79C6"> operator</span><span style="color:#F8F8F2">=(</span><span style="color:#8BE9FD;font-style:italic">MyClass</span><span style="color:#FF79C6">&#x26;&#x26;</span><span style="color:#FFB86C;font-style:italic"> other</span><span style="color:#F8F8F2">);</span><span style="color:#6272A4"> // Move assignment operator</span></span>
+<span class="line"><span style="color:#50FA7B">    ~MyClass</span><span style="color:#F8F8F2">();</span><span style="color:#6272A4"> // Destructor</span></span>
+<span class="line"><span style="color:#F8F8F2">};</span></span>
+<span class="line"></span></code></pre>
+<h2 id="4-pimpl-pointer-to-implementation-idiom">4. PImpl (Pointer to Implementation) Idiom</h2>
+<p>This idiom is used to separate the implementation details of a class from its interface, resulting in faster compile times and the ability to change implementation without affecting clients.</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#6272A4">// header file</span></span>
+<span class="line"><span style="color:#FF79C6">class</span><span style="color:#8BE9FD"> MyClass</span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#FF79C6">public:</span></span>
+<span class="line"><span style="color:#50FA7B">    MyClass</span><span style="color:#F8F8F2">();</span></span>
+<span class="line"><span style="color:#50FA7B">    ~MyClass</span><span style="color:#F8F8F2">();</span></span>
+<span class="line"><span style="color:#FF79C6">    void</span><span style="color:#50FA7B"> someMethod</span><span style="color:#F8F8F2">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">private:</span></span>
+<span class="line"><span style="color:#FF79C6">    class</span><span style="color:#8BE9FD"> Impl</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"><span style="color:#F8F8F2">    Impl</span><span style="color:#FF79C6">*</span><span style="color:#F8F8F2"> pImpl;</span></span>
+<span class="line"><span style="color:#F8F8F2">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6272A4">// implementation file</span></span>
+<span class="line"><span style="color:#FF79C6">class</span><span style="color:#8BE9FD"> MyClass</span><span style="color:#F8F8F2">::</span><span style="color:#8BE9FD;font-style:italic">Impl</span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#FF79C6">public:</span></span>
+<span class="line"><span style="color:#FF79C6">    void</span><span style="color:#50FA7B"> someMethod</span><span style="color:#F8F8F2">() {</span><span style="color:#6272A4"> /* Implementation */</span><span style="color:#F8F8F2"> }</span></span>
+<span class="line"><span style="color:#F8F8F2">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F8F8F2">MyClass</span><span style="color:#FF79C6">::</span><span style="color:#50FA7B">MyClass</span><span style="color:#F8F8F2">() : </span><span style="color:#50FA7B">pImpl</span><span style="color:#F8F8F2">(</span><span style="color:#FF79C6;font-weight:bold">new</span><span style="color:#50FA7B"> Impl</span><span style="color:#F8F8F2">()) {}</span></span>
+<span class="line"><span style="color:#F8F8F2">MyClass</span><span style="color:#FF79C6">::~</span><span style="color:#50FA7B">MyClass</span><span style="color:#F8F8F2">() { </span><span style="color:#FF79C6">delete</span><span style="color:#F8F8F2"> pImpl; }</span></span>
+<span class="line"><span style="color:#FF79C6">void</span><span style="color:#F8F8F2"> MyClass</span><span style="color:#FF79C6">::</span><span style="color:#50FA7B">someMethod</span><span style="color:#F8F8F2">() { pImpl</span><span style="color:#FF79C6">-></span><span style="color:#50FA7B">someMethod</span><span style="color:#F8F8F2">(); }</span></span>
+<span class="line"></span></code></pre>
+<h2 id="5-non-virtual-interface-nvi">5. Non-Virtual Interface (NVI)</h2>
+<p>This enforces a fixed public interface and allows subclasses to only override specific private or protected virtual methods.</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#FF79C6">class</span><span style="color:#8BE9FD"> Base</span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#FF79C6">public:</span></span>
+<span class="line"><span style="color:#FF79C6">    void</span><span style="color:#50FA7B"> publicMethod</span><span style="color:#F8F8F2">() {</span></span>
+<span class="line"><span style="color:#6272A4">        // Common behavior</span></span>
+<span class="line"><span style="color:#50FA7B">        privateMethod</span><span style="color:#F8F8F2">();</span><span style="color:#6272A4"> // Calls overridden implementation</span></span>
+<span class="line"><span style="color:#F8F8F2">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">protected:</span></span>
+<span class="line"><span style="color:#FF79C6">    virtual</span><span style="color:#FF79C6"> void</span><span style="color:#50FA7B"> privateMethod</span><span style="color:#F8F8F2">() </span><span style="color:#FF79C6">=</span><span style="color:#BD93F9"> 0</span><span style="color:#F8F8F2">;</span><span style="color:#6272A4"> // Pure virtual method</span></span>
+<span class="line"><span style="color:#F8F8F2">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">class</span><span style="color:#8BE9FD"> Derived</span><span style="color:#F8F8F2"> : </span><span style="color:#FF79C6">public</span><span style="color:#8BE9FD;font-style:italic"> Base</span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#FF79C6">protected:</span></span>
+<span class="line"><span style="color:#FF79C6">    virtual</span><span style="color:#FF79C6"> void</span><span style="color:#50FA7B"> privateMethod</span><span style="color:#F8F8F2">() </span><span style="color:#FF79C6">override</span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#6272A4">        // Derived implementation</span></span>
+<span class="line"><span style="color:#F8F8F2">    }</span></span>
+<span class="line"><span style="color:#F8F8F2">};</span></span>
+<span class="line"></span></code></pre>
+<p>These are just a few examples of the many idioms in C++ programming. They can provide guidance when designing and implementing your code, but it’s essential to understand the underlying concepts to adapt them to different situations.</p>

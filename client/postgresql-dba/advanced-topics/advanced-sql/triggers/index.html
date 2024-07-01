@@ -1,0 +1,55 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/postgresql-dba/content/110-advanced-topics/102-advanced-sql/102-triggers.md"></div> <h1 id="advanced-sql-triggers">Advanced SQL: Triggers</h1>
+<p>Triggers are special user-defined functions that get invoked automatically when an event (like INSERT, UPDATE, DELETE, or TRUNCATE) occurs on a specified table or view. They allow you to perform additional actions when data is modified in the database, helping to maintain the integrity and consistency of your data.</p>
+<h2 id="purpose-of-triggers">Purpose of Triggers</h2>
+<p>Triggers can be used to:</p>
+<ul>
+<li>Enforce referential integrity between related tables</li>
+<li>Validate input data</li>
+<li>Create and maintain an audit history of any changes in the table</li>
+<li>Perform custom actions based on changes in the table (e.g., send notifications, execute business logic)</li>
+</ul>
+<h2 id="creating-triggers">Creating Triggers</h2>
+<p>To create a trigger, you must first define a trigger function, and then bind it to a table or a view. A trigger function can be written in various languages, such as PL/pgSQL, PL/Tcl, or others. The following is an example of creating a simple trigger function and trigger:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#FF79C6">CREATE OR REPLACE</span><span style="color:#FF79C6"> FUNCTION</span><span style="color:#50FA7B"> update_modified_column</span><span style="color:#F8F8F2">()</span></span>
+<span class="line"><span style="color:#FF79C6">RETURNS</span><span style="color:#F8F8F2"> TRIGGER </span><span style="color:#FF79C6">AS</span><span style="color:#F8F8F2"> $$</span></span>
+<span class="line"><span style="color:#FF79C6">BEGIN</span></span>
+<span class="line"><span style="color:#BD93F9">   NEW</span><span style="color:#F8F8F2">.</span><span style="color:#BD93F9">modified</span><span style="color:#FF79C6"> =</span><span style="color:#FF79C6"> NOW</span><span style="color:#F8F8F2">();</span></span>
+<span class="line"><span style="color:#FF79C6">   RETURN</span><span style="color:#F8F8F2"> NEW;</span></span>
+<span class="line"><span style="color:#FF79C6">END</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"><span style="color:#F8F8F2">$$ </span><span style="color:#FF79C6">LANGUAGE</span><span style="color:#F8F8F2"> plpgsql;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">CREATE</span><span style="color:#FF79C6"> TRIGGER</span><span style="color:#50FA7B"> update_modified_trigger</span></span>
+<span class="line"><span style="color:#FF79C6">BEFORE</span><span style="color:#FF79C6"> UPDATE</span><span style="color:#FF79C6"> ON</span><span style="color:#F8F8F2"> your_table</span></span>
+<span class="line"><span style="color:#FF79C6">FOR</span><span style="color:#F8F8F2"> EACH </span><span style="color:#FF79C6">ROW</span></span>
+<span class="line"><span style="color:#FF79C6">EXECUTE</span><span style="color:#FF79C6"> FUNCTION</span><span style="color:#F8F8F2"> update_modified_column();</span></span>
+<span class="line"></span></code></pre>
+<p>In this example, we created a trigger function <code>update_modified_column()</code> which updates the <code>modified</code> column with the current timestamp. We then created a trigger <code>update_modified_trigger</code> which binds this function to the <code>your_table</code> table. The trigger is set to execute <code>BEFORE UPDATE</code> and for <code>EACH ROW</code>.</p>
+<h2 id="trigger-events">Trigger Events</h2>
+<p>There are four events that can be associated with a trigger:</p>
+<ul>
+<li>INSERT</li>
+<li>UPDATE</li>
+<li>DELETE</li>
+<li>TRUNCATE</li>
+</ul>
+<p>You can also associate multiple events with a single trigger by using the <code>OR</code> keyword:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#FF79C6">CREATE</span><span style="color:#FF79C6"> TRIGGER</span><span style="color:#50FA7B"> your_trigger</span></span>
+<span class="line"><span style="color:#FF79C6">BEFORE</span><span style="color:#FF79C6"> INSERT</span><span style="color:#FF79C6"> OR</span><span style="color:#FF79C6"> UPDATE</span><span style="color:#FF79C6"> OR</span><span style="color:#FF79C6"> DELETE</span><span style="color:#FF79C6"> ON</span><span style="color:#F8F8F2"> your_table</span></span>
+<span class="line"><span style="color:#F8F8F2">...</span></span>
+<span class="line"></span></code></pre>
+<h2 id="timing">Timing</h2>
+<p>Triggers can be set to execute at different times:</p>
+<ul>
+<li>BEFORE: The trigger executes before the event occurs.</li>
+<li>AFTER: The trigger executes after the event occurs.</li>
+<li>INSTEAD OF: The trigger executes instead of the event on a view (only applicable for views).</li>
+</ul>
+<h2 id="granularity">Granularity</h2>
+<p>Triggers can be set to execute at different granularity levels:</p>
+<ul>
+<li>FOR EACH ROW: The trigger executes once for each row affected by the event</li>
+<li>FOR EACH STATEMENT: The trigger executes once for each INSERT, UPDATE, DELETE, or TRUNCATE statement</li>
+</ul>
+<h2 id="conclusion">Conclusion</h2>
+<p>Triggers are an invaluable tool for maintaining data integrity and consistency in your PostgreSQL database. By understanding how to create and use triggers, you can effectively automate complex actions and logic in response to changes in your data.</p>
+<p>Remember that triggers can also add complexity to your system, and as such, should be well-documented and carefully managed. Always consider the performance implications of using triggers, and ensure that your trigger functions are optimized for your database architecture.</p>

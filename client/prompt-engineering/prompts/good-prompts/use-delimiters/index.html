@@ -1,0 +1,24 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/prompt-engineering/content/102-prompts/good-prompts/100-use-delimiters.md"></div> <h1 id="use-delimiters">Use Delimiters</h1>
+<p>When crafting prompts for language models, it’s crucial to ensure clear separation between the actual data and the instructions or context provided to the model. This distinction is particularly important when using data-driven prompts, where we want the model to generate responses based on specific input information.</p>
+<p>One effective technique to achieve this separation is by using delimiters to mark the boundaries between the prompt and the data. Delimiters act as clear indicators for the model to understand where the data begins and ends, helping it to generate responses more accurately.</p>
+<p>Here’s how you can use delimiters effectively:</p>
+<ul>
+<li>
+<p><strong>Choose appropriate delimiters:</strong> Select delimiters that are unlikely to appear naturally in the data. Commonly used choices include special characters or token combinations that rarely occur in the given context. For instance, you can use triple curly braces (<code>{{{ }}}</code>) or a special token like <code>&#x3C;|data|></code> as delimiters.</p>
+</li>
+<li>
+<p><strong>Position the delimiters correctly:</strong> Place the delimiters at the beginning and end of the data section, while ensuring a clear separation from the prompt. The prompt portion should precede the delimiter, providing the necessary instructions or context for the model.</p>
+</li>
+<li>
+<p><strong>Use consistent delimiters throughout:</strong> Maintain consistency in using the chosen delimiters across all prompts. This ensures uniformity in the data format, making it easier for the model to understand and process the information consistently.</p>
+</li>
+</ul>
+<h2 id="examples">Examples</h2>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Summarize the text delimited by triple curly braces into a single sentence.</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>{{{put_your_text_here}}}</span></span>
+<span class="line"><span></span></span></code></pre>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Translate the text delimited by tripple quotes into Arabic</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>"""How are you?"""</span></span>
+<span class="line"><span></span></span></code></pre>

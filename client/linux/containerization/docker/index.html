@@ -1,0 +1,11 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/linux/content/116-containerization/103-docker.md"></div> <h1 id="docker-under-containerization">Docker Under Containerization</h1>
+<p>Docker is a widely-used open-source platform that utilizes OS-level virtualization, typically referred to as “containerization”, to develop, ship, and run applications effectively. Docker and containerization, especially within the Linux ecosystem, have revolutionized software development workflows by providing lightweight and isolated operational environments, known as containers, for applications and their dependencies. Docker allows development teams to package an application with all the parts it needs, such as libraries and other dependencies, and deploy it as a single package.</p>
+<p>In Linux, each Docker container interacts directly with the Linux kernel. Due to the clever use of Linux Kernel features like namespaces and cgroups, these containers provide isolated spaces to run processes while sharing the same OS, leading to less overhead than traditional virtual machines.</p>
+<p>Here’s a basic example of running an application (for example, hello-world) with Docker on Linux:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6272A4"># Pull the Docker image from Docker Hub</span></span>
+<span class="line"><span style="color:#50FA7B">sudo</span><span style="color:#F1FA8C"> docker</span><span style="color:#F1FA8C"> pull</span><span style="color:#F1FA8C"> hello-world</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6272A4"># Run the Docker container</span></span>
+<span class="line"><span style="color:#50FA7B">sudo</span><span style="color:#F1FA8C"> docker</span><span style="color:#F1FA8C"> run</span><span style="color:#F1FA8C"> hello-world</span></span>
+<span class="line"></span></code></pre>
+<p>The above commands allow you to download a Docker image and run it on your Linux system, providing the foundation for deploying containers in development, testing, and production environments.</p>

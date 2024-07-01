@@ -1,0 +1,71 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/cpp/content/frameworks/100-gtest.md"></div> <h1 id="google-test-gtest">Google Test (gtest)</h1>
+<p>Google Test, also known as gtest or googletest, is a C++ testing framework developed by Google. It provides a user-friendly API for writing test cases and is designed for use in a range of applications, from simple unit tests to complex system-level tests.</p>
+<h2 id="getting-started-with-google-test">Getting Started with Google Test</h2>
+<p>To use Google Test in your project, follow these steps:</p>
+<ul>
+<li>Download the source code from the <a href="https://github.com/google/googletest" rel="noopener noreferrer nofollow" target="_blank">GoogleTest GitHub repository</a>.</li>
+<li>Build and install Google Test on your system. Instructions for various platforms can be found in the <a href="https://github.com/google/googletest/blob/main/googletest/README.md" rel="noopener noreferrer nofollow" target="_blank">README</a> file.</li>
+<li>Include the necessary headers and link against the Google Test library in your project.</li>
+</ul>
+<h2 id="writing-a-test-with-google-test">Writing a Test with Google Test</h2>
+<p>Here’s an example of how to write a simple test using Google Test:</p>
+<ul>
+<li>
+<p><strong>Include the necessary headers</strong></p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#FF79C6">#include</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C">gtest/gtest.h</span><span style="color:#E9F284">"</span></span>
+<span class="line"></span></code></pre>
+</li>
+<li>
+<p><strong>Write the functions you want to test</strong></p>
+<p>Suppose we have a simple function to test:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#FF79C6">int</span><span style="color:#50FA7B"> add</span><span style="color:#F8F8F2">(</span><span style="color:#FF79C6">int</span><span style="color:#FFB86C;font-style:italic"> a</span><span style="color:#F8F8F2">, </span><span style="color:#FF79C6">int</span><span style="color:#FFB86C;font-style:italic"> b</span><span style="color:#F8F8F2">) {</span></span>
+<span class="line"><span style="color:#FF79C6">   return</span><span style="color:#F8F8F2"> a </span><span style="color:#FF79C6">+</span><span style="color:#F8F8F2"> b;</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"></span></code></pre>
+</li>
+<li>
+<p><strong>Write the test cases</strong></p>
+<p>To create a test case, use the <code>TEST()</code> macro, which takes two arguments: the test suite name and the test case name.</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#6272A4">// Test the 'add' function.</span></span>
+<span class="line"><span style="color:#50FA7B">TEST</span><span style="color:#F8F8F2">(AdditionTest, PositiveNumbers) {</span></span>
+<span class="line"><span style="color:#50FA7B">   EXPECT_EQ</span><span style="color:#F8F8F2">(</span><span style="color:#BD93F9">3</span><span style="color:#F8F8F2">, </span><span style="color:#50FA7B">add</span><span style="color:#F8F8F2">(</span><span style="color:#BD93F9">1</span><span style="color:#F8F8F2">, </span><span style="color:#BD93F9">2</span><span style="color:#F8F8F2">));</span></span>
+<span class="line"><span style="color:#50FA7B">   EXPECT_EQ</span><span style="color:#F8F8F2">(</span><span style="color:#BD93F9">5</span><span style="color:#F8F8F2">, </span><span style="color:#50FA7B">add</span><span style="color:#F8F8F2">(</span><span style="color:#BD93F9">2</span><span style="color:#F8F8F2">, </span><span style="color:#BD93F9">3</span><span style="color:#F8F8F2">));</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#50FA7B">TEST</span><span style="color:#F8F8F2">(AdditionTest, NegativeNumbers) {</span></span>
+<span class="line"><span style="color:#50FA7B">   EXPECT_EQ</span><span style="color:#F8F8F2">(</span><span style="color:#FF79C6">-</span><span style="color:#BD93F9">3</span><span style="color:#F8F8F2">, </span><span style="color:#50FA7B">add</span><span style="color:#F8F8F2">(</span><span style="color:#FF79C6">-</span><span style="color:#BD93F9">1</span><span style="color:#F8F8F2">, </span><span style="color:#FF79C6">-</span><span style="color:#BD93F9">2</span><span style="color:#F8F8F2">));</span></span>
+<span class="line"><span style="color:#50FA7B">   EXPECT_EQ</span><span style="color:#F8F8F2">(</span><span style="color:#FF79C6">-</span><span style="color:#BD93F9">5</span><span style="color:#F8F8F2">, </span><span style="color:#50FA7B">add</span><span style="color:#F8F8F2">(</span><span style="color:#FF79C6">-</span><span style="color:#BD93F9">2</span><span style="color:#F8F8F2">, </span><span style="color:#FF79C6">-</span><span style="color:#BD93F9">3</span><span style="color:#F8F8F2">));</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"></span></code></pre>
+</li>
+<li>
+<p><strong>Write a <code>main()</code> function</strong></p>
+<p>In order to run the tests, include a <code>main()</code> function that initializes Google Test and runs the tests.</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#FF79C6">int</span><span style="color:#50FA7B"> main</span><span style="color:#F8F8F2">(</span><span style="color:#FF79C6">int</span><span style="color:#FFB86C;font-style:italic"> argc</span><span style="color:#F8F8F2">, </span><span style="color:#FF79C6">char</span><span style="color:#FF79C6"> **</span><span style="color:#FFB86C;font-style:italic">argv</span><span style="color:#F8F8F2">) {</span></span>
+<span class="line"><span style="color:#F8F8F2">   ::testing</span><span style="color:#FF79C6">::</span><span style="color:#50FA7B">InitGoogleTest</span><span style="color:#F8F8F2">(</span><span style="color:#FF79C6">&#x26;</span><span style="color:#F8F8F2">argc, argv);</span></span>
+<span class="line"><span style="color:#FF79C6">   return</span><span style="color:#50FA7B"> RUN_ALL_TESTS</span><span style="color:#F8F8F2">();</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"></span></code></pre>
+</li>
+<li>
+<p><strong>Compile and run the tests</strong></p>
+<p>Compile your test program with the Google Test library and run the test executable.</p>
+</li>
+</ul>
+<h2 id="more-features">More Features</h2>
+<p>Google Test offers a wide range of features to make testing easier, such as:</p>
+<ul>
+<li>
+<p><strong>Test Fixtures</strong>: Test fixtures allow you to reuse the same set of objects for multiple tests. You can define a test fixture by creating a class that inherits from <code>::testing::Test</code> and writing setup and teardown methods.</p>
+</li>
+<li>
+<p><strong>Assertions</strong>: Google Test provides a variety of assertion macros to help you verify your code’s behavior. Some common ones include <code>EXPECT_EQ</code>, <code>EXPECT_TRUE</code>, <code>EXPECT_FALSE</code>, <code>ASSERT_EQ</code>, <code>ASSERT_TRUE</code>, and <code>ASSERT_FALSE</code>.</p>
+</li>
+<li>
+<p><strong>Parameterized Tests</strong>: Google Test supports parameterized tests, allowing you to run the same test with different inputs easily.</p>
+</li>
+<li>
+<p><strong>Death Tests</strong>: Google Test allows you to write tests that verify if your code terminates correctly or with the expected error message.</p>
+</li>
+</ul>
+<p>For more information about Google Test and its features, refer to the <a href="https://github.com/google/googletest/blob/main/docs/primer.md" rel="noopener noreferrer nofollow" target="_blank">official documentation</a>.</p>

@@ -1,0 +1,28 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/postgresql-dba/content/107-postgresql-infrastructure-skills/106-monitoring/104-check-pgbackrest.md"></div> <h1 id="check_pgbackrest">check_pgbackrest</h1>
+<h2 id="check-pgbackrest">Check pgBackRest</h2>
+<p>In this section, we’ll discuss the importance of monitoring your PostgreSQL backup and recovery solution, specifically focusing on <code>check pgBackRest</code>. <code>pgBackRest</code> is a widely-used backup tool for PostgreSQL databases, providing features like full, differential, incremental and archive backups, support for multiple repositories and threaded backup/restore processes.</p>
+<h3 id="why-should-you-monitor-pgbackrest">Why should you monitor pgBackRest?</h3>
+<p>Monitoring <code>pgBackRest</code> helps ensure that your PostgreSQL backups are consistent, up-to-date, and free from any potential issues. By regularly checking your backups, you’ll be able to maintain a reliable and efficient backup-restore process for your PostgreSQL database.</p>
+<h3 id="how-to-check-pgbackrest">How to check pgBackRest?</h3>
+<p><code>pgBackRest</code> provides a built-in command called <code>check</code> which performs various checks to validate your repository and configuration settings. The command is executed as follows:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="color:#50FA7B">pgbackrest</span><span style="color:#BD93F9"> --stanza=</span><span style="color:#FF79C6">&#x3C;</span><span style="color:#BD93F9">stanza_name</span><span style="color:#FF79C6">></span><span style="color:#F1FA8C"> check</span></span>
+<span class="line"></span></code></pre>
+<p><code>&#x3C;stanza_name></code> should be replaced with the name of the stanza for which you want to verify the repository and configuration settings.</p>
+<h3 id="what-does-the-check-command-do">What does the check command do?</h3>
+<p>When you run <code>check pgBackRest</code>, it performs the following tasks:</p>
+<ol>
+<li>
+<p><strong>Configuration validation</strong>: It verifies if the configuration file (<code>pgbackrest.conf</code>) contains valid settings and if the runtime parameters are properly set.</p>
+</li>
+<li>
+<p><strong>Backup consistency</strong>: It checks the consistency of backup files within the stanza, ensuring that there are no missing or incomplete backups.</p>
+</li>
+<li>
+<p><strong>Archive validation</strong>: It examines the state of WAL archive files, ensuring that they are present and retrievable as per the minimum and maximum settings specified in the configuration.</p>
+</li>
+<li>
+<p><strong>Remote connectivity</strong>: If any remote repositories are configured, it checks the connectivity to remote hosts and verifies that the repository paths are accessible.</p>
+</li>
+</ol>
+<h3 id="conclusion">Conclusion</h3>
+<p>Regularly monitoring and checking <code>pgBackRest</code> is essential for maintaining a reliable backup and recovery solution for your PostgreSQL database. By using the built-in <code>check</code> command, you can ensure that your repository and configuration settings are validated, backups are consistent, and archives are available, providing you with peace of mind and making it easier to recover your database in case of any disaster.</p>

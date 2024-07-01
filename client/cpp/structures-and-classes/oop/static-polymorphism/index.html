@@ -1,0 +1,47 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/cpp/content/107-structures-and-classes/101-oop/100-static-polymorphism/index.md"></div> <h1 id="static-polymorphism">Static Polymorphism</h1>
+<p>Static polymorphism, also known as compile-time polymorphism, is a type of polymorphism that resolves the types and method calls at compile time rather than at runtime. This is commonly achieved through the use of function overloading and templates in C++.</p>
+<h2 id="function-overloading">Function Overloading</h2>
+<p>Function overloading is a way to create multiple functions with the same name but different parameter lists. The compiler determines the correct function to call based on the types and number of arguments used when the function is called.</p>
+<p>Example:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#FF79C6">#include</span><span style="color:#E9F284"> &#x3C;</span><span style="color:#F1FA8C">iostream</span><span style="color:#E9F284">></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">void</span><span style="color:#50FA7B"> print</span><span style="color:#F8F8F2">(</span><span style="color:#FF79C6">int</span><span style="color:#FFB86C;font-style:italic"> i</span><span style="color:#F8F8F2">) {</span></span>
+<span class="line"><span style="color:#F8F8F2">    std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">cout </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C">Printing int: </span><span style="color:#E9F284">"</span><span style="color:#FF79C6"> &#x3C;&#x3C;</span><span style="color:#F8F8F2"> i </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#F8F8F2"> std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">endl;</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">void</span><span style="color:#50FA7B"> print</span><span style="color:#F8F8F2">(</span><span style="color:#FF79C6">double</span><span style="color:#FFB86C;font-style:italic"> d</span><span style="color:#F8F8F2">) {</span></span>
+<span class="line"><span style="color:#F8F8F2">    std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">cout </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C">Printing double: </span><span style="color:#E9F284">"</span><span style="color:#FF79C6"> &#x3C;&#x3C;</span><span style="color:#F8F8F2"> d </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#F8F8F2"> std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">endl;</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">void</span><span style="color:#50FA7B"> print</span><span style="color:#F8F8F2">(</span><span style="color:#FF79C6">const</span><span style="color:#FF79C6"> char*</span><span style="color:#FFB86C;font-style:italic"> s</span><span style="color:#F8F8F2">) {</span></span>
+<span class="line"><span style="color:#F8F8F2">    std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">cout </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C">Printing string: </span><span style="color:#E9F284">"</span><span style="color:#FF79C6"> &#x3C;&#x3C;</span><span style="color:#F8F8F2"> s </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#F8F8F2"> std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">endl;</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">int</span><span style="color:#50FA7B"> main</span><span style="color:#F8F8F2">() {</span></span>
+<span class="line"><span style="color:#50FA7B">    print</span><span style="color:#F8F8F2">(</span><span style="color:#BD93F9">5</span><span style="color:#F8F8F2">);</span><span style="color:#6272A4">          // Calls print(int i)</span></span>
+<span class="line"><span style="color:#50FA7B">    print</span><span style="color:#F8F8F2">(</span><span style="color:#BD93F9">3.14</span><span style="color:#F8F8F2">);</span><span style="color:#6272A4">       // Calls print(double d)</span></span>
+<span class="line"><span style="color:#50FA7B">    print</span><span style="color:#F8F8F2">(</span><span style="color:#E9F284">"</span><span style="color:#F1FA8C">Hello</span><span style="color:#E9F284">"</span><span style="color:#F8F8F2">);</span><span style="color:#6272A4">    // Calls print(const char* s)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">    return</span><span style="color:#BD93F9"> 0</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"></span></code></pre>
+<h2 id="templates">Templates</h2>
+<p>Templates are a powerful feature in C++ that allows you to create generic functions or classes. The actual code for specific types is generated at compile time, which avoids the overhead of runtime polymorphism. The use of templates is the main technique to achieve static polymorphism in C++.</p>
+<p>Example:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#FF79C6">#include</span><span style="color:#E9F284"> &#x3C;</span><span style="color:#F1FA8C">iostream</span><span style="color:#E9F284">></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6272A4">// Template function to print any type</span></span>
+<span class="line"><span style="color:#FF79C6">template</span><span style="color:#F8F8F2">&#x3C;</span><span style="color:#FF79C6">typename</span><span style="color:#8BE9FD;font-style:italic"> T</span><span style="color:#F8F8F2">></span></span>
+<span class="line"><span style="color:#FF79C6">void</span><span style="color:#50FA7B"> print</span><span style="color:#F8F8F2">(</span><span style="color:#FF79C6">const</span><span style="color:#8BE9FD;font-style:italic"> T</span><span style="color:#FF79C6">&#x26;</span><span style="color:#FFB86C;font-style:italic"> value</span><span style="color:#F8F8F2">) {</span></span>
+<span class="line"><span style="color:#F8F8F2">    std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">cout </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C">Printing value: </span><span style="color:#E9F284">"</span><span style="color:#FF79C6"> &#x3C;&#x3C;</span><span style="color:#F8F8F2"> value </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#F8F8F2"> std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">endl;</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">int</span><span style="color:#50FA7B"> main</span><span style="color:#F8F8F2">() {</span></span>
+<span class="line"><span style="color:#50FA7B">    print</span><span style="color:#F8F8F2">(</span><span style="color:#BD93F9">42</span><span style="color:#F8F8F2">);</span><span style="color:#6272A4">           // int</span></span>
+<span class="line"><span style="color:#50FA7B">    print</span><span style="color:#F8F8F2">(</span><span style="color:#BD93F9">3.14159</span><span style="color:#F8F8F2">);</span><span style="color:#6272A4">      // double</span></span>
+<span class="line"><span style="color:#50FA7B">    print</span><span style="color:#F8F8F2">(</span><span style="color:#E9F284">"</span><span style="color:#F1FA8C">Hello</span><span style="color:#E9F284">"</span><span style="color:#F8F8F2">);</span><span style="color:#6272A4">      // const char*</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">    return</span><span style="color:#BD93F9"> 0</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"></span></code></pre>
+<p>In conclusion, static polymorphism achieves polymorphic behavior during compile time using function overloading and templates, instead of relying on runtime information like dynamic polymorphism does. This can result in more efficient code since method calls are resolved at compile time.</p>

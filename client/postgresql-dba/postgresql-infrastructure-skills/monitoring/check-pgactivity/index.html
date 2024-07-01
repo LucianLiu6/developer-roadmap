@@ -1,0 +1,35 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/postgresql-dba/content/107-postgresql-infrastructure-skills/106-monitoring/102-check-pgactivity.md"></div> <h1 id="check_pgactivity">check_pgactivity</h1>
+<h2 id="check_pgactivity-1">Check_pgactivity</h2>
+<p>Check_pgactivity is a popular monitoring tool designed specifically for PostgreSQL. It is an efficient and flexible solution to monitor various aspects of a PostgreSQL database such as connectivity, queries, locks, and other key performance indicators. This tool provides an easy-to-use interface to collect and store PostgreSQL performance data, which makes it a helpful resource for database administrators and developers to keep their databases running efficiently.</p>
+<h3 id="features">Features</h3>
+<ul>
+<li>
+<p><strong>Wide range of monitors:</strong> Check_pgactivity offers numerous service checks, including database connections, query durations, transactions, WAL files, Bloat, and much more. This enables users to gain insights on virtually every important aspect of their PostgreSQL environment.</p>
+</li>
+<li>
+<p><strong>Nagios Integration:</strong> The tool seamlessly integrates with Nagios, a widely-used open-source monitoring solution, allowing administrators to include PostgreSQL monitoring into their existing monitoring setup with ease.</p>
+</li>
+<li>
+<p><strong>Flexible output:</strong> Check_pgactivity generates output that is compatible with various monitoring solutions, making it flexible enough to adapt to different systems’ requirements.</p>
+</li>
+<li>
+<p><strong>Custom thresholds and alerts:</strong> Users can set specific thresholds and alerts for certain metrics, allowing them to detect potential issues early on and take appropriate action.</p>
+</li>
+<li>
+<p><strong>Perl-based:</strong> Being a Perl script, check_pgactivity is lightweight and easy to integrate into existing tools and workflows.</p>
+</li>
+</ul>
+<h3 id="usage">Usage</h3>
+<p>To use check_pgactivity, you will first need to install it on your system. You can download the latest version from the <a href="https://github.com/OPMDG/check_pgactivity/releases" rel="noopener noreferrer nofollow" target="_blank">official repository</a>. Ensure that you have the required Perl modules (DBD::Pg and DBI) installed.</p>
+<p>Once installed, you can execute the script to perform different monitoring tasks:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>check_pgactivity -s &#x3C;SERVICE_NAME> -h &#x3C;HOSTNAME> -U &#x3C;USERNAME> -p &#x3C;PORT> -d &#x3C;DB_NAME></span></span>
+<span class="line"><span></span></span></code></pre>
+<p>Replace the placeholders with appropriate connection details, and choose the desired service check as per your monitoring requirements. For a full list of supported services, refer to the <a href="https://github.com/OPMDG/check_pgactivity/blob/master/doc/check_pgactivity.pod" rel="noopener noreferrer nofollow" target="_blank">official documentation</a>.</p>
+<h3 id="examples">Examples</h3>
+<p>To monitor the number of connections in a PostgreSQL database:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>check_pgactivity -s connections -h localhost -U postgres -p 5432 -d my_database</span></span>
+<span class="line"><span></span></span></code></pre>
+<p>To check the oldest transaction:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>check_pgactivity -s oldest_2pc -h localhost -U postgres -p 5432 -d my_database</span></span>
+<span class="line"><span></span></span></code></pre>
+<p>In conclusion, check_pgactivity is a powerful and versatile tool that can help you effectively monitor your PostgreSQL databases. By tracking various performance metrics and integrating with other monitoring solutions like Nagios, it provides comprehensive insights into your PostgreSQL environment and allows you to fine-tune and optimize its performance.</p>

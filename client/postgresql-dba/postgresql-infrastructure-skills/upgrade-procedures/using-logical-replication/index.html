@@ -1,0 +1,65 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/postgresql-dba/content/107-postgresql-infrastructure-skills/103-upgrade-procedures/101-using-logical-replication.md"></div> <h1 id="42-using-logical-replication">4.2 Using Logical Replication</h1>
+<p>In this section, we’ll discuss using <strong>Logical Replication</strong> for upgrading your PostgreSQL database. Logical replication is an asynchronous feature that allows data modification to be transferred from a source (publisher) to a target system (subscriber) across different PostgreSQL database versions. It provides more granular control over the data copied and is useful during an upgrade.</p>
+<p>###2.1 Advantages of Logical Replication</p>
+<ul>
+<li>It allows you to replicate only specific tables, rather than the entire database.</li>
+<li>You can create replicas with different database schemas by using a transformation layer between publisher and subscriber.</li>
+<li>It allows you to perform a live upgrade, avoiding the downtime of your database.</li>
+</ul>
+<p>###2.2 Setting up Logical Replication</p>
+<p>Follow these steps to set up logical replication during an upgrade:</p>
+<ul>
+<li>
+<p>Install and configure the newer version of the PostgreSQL database on your target system.</p>
+</li>
+<li>
+<p>Set up your source (publisher) and target (subscriber) systems. You’ll need to modify the <code>postgresql.conf</code> file on both systems to enable logical replication by adding or updating these parameters:</p>
+</li>
+</ul>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>wal_level = logical</span></span>
+<span class="line"><span>max_replication_slots = &#x3C;desired_number_of_slots></span></span>
+<span class="line"><span>max_wal_senders = &#x3C;desired number_of_senders></span></span>
+<span class="line"><span></span></span></code></pre>
+<ul>
+<li>You’ll also need to configure the <code>pg_hba.conf</code> file on the publisher system to allow connections from the subscriber. Add an entry like the following:</li>
+</ul>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#50FA7B">host</span><span style="color:#FF79C6"> &#x3C;</span><span style="color:#F1FA8C">replication_databas</span><span style="color:#F8F8F2">e</span><span style="color:#FF79C6">></span><span style="color:#FF79C6"> &#x3C;</span><span style="color:#F1FA8C">replication_use</span><span style="color:#F8F8F2">r</span><span style="color:#FF79C6">></span><span style="color:#FF79C6"> &#x3C;</span><span style="color:#F1FA8C">subscriber_I</span><span style="color:#F8F8F2">P</span><span style="color:#FF79C6">></span><span style="color:#F1FA8C">/32</span><span style="color:#F1FA8C"> md5</span></span>
+<span class="line"></span></code></pre>
+<ul>
+<li>
+<p>Restart both source and target PostgreSQL services to apply the configuration changes.</p>
+</li>
+<li>
+<p>Create a publication on the source system using the following SQL command:</p>
+</li>
+</ul>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#FF79C6">CREATE</span><span style="color:#F8F8F2"> PUBLICATION my_publication </span><span style="color:#FF79C6">FOR</span><span style="color:#FF79C6"> TABLE</span><span style="color:#FF79C6"> &#x3C;</span><span style="color:#F8F8F2">table_name1</span><span style="color:#FF79C6">></span><span style="color:#F8F8F2">, </span><span style="color:#FF79C6">&#x3C;</span><span style="color:#F8F8F2">table_name2</span><span style="color:#FF79C6">></span><span style="color:#F8F8F2">, ...;</span></span>
+<span class="line"></span></code></pre>
+<ul>
+<li>On the target system, create a subscription to the publication:</li>
+</ul>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#FF79C6">CREATE</span><span style="color:#F8F8F2"> SUBSCRIPTION my_subscription</span></span>
+<span class="line"><span style="color:#FF79C6">    CONNECTION</span><span style="color:#E9F284"> '</span><span style="color:#F1FA8C">host=&#x3C;publisher_IP> port=&#x3C;publisher_port> dbname=&#x3C;database_name> user=&#x3C;replication_user> password=&#x3C;password></span><span style="color:#E9F284">'</span></span>
+<span class="line"><span style="color:#F8F8F2">    PUBLICATION my_publication;</span></span>
+<span class="line"></span></code></pre>
+<p>###2.3 Monitoring and Managing Logical Replication</p>
+<p>You can monitor the replication status using the following views:</p>
+<ul>
+<li><code>pg_stat_replication</code> on the publisher system.</li>
+<li><code>pg_subscription</code>, <code>pg_publication</code> and <code>pg_replication_origin_status</code> on the subscriber system.</li>
+</ul>
+<p>Here are a few management commands for logical replication:</p>
+<ul>
+<li>To refresh the already copied data and schema from the publisher to the subscriber:</li>
+</ul>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#FF79C6">ALTER</span><span style="color:#F8F8F2"> SUBSCRIPTION my_subscription REFRESH PUBLICATION;</span></span>
+<span class="line"></span></code></pre>
+<ul>
+<li>To remove a subscription or a publication:</li>
+</ul>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#FF79C6">DROP</span><span style="color:#F8F8F2"> SUBSCRIPTION my_subscription;</span></span>
+<span class="line"><span style="color:#FF79C6">DROP</span><span style="color:#F8F8F2"> PUBLICATION my_publication;</span></span>
+<span class="line"></span></code></pre>
+<p>###2.4 Finalizing the upgrade</p>
+<p>Once the replication is complete and you’re satisfied with the upgrade, you can switch the application to the target system (the newer PostgreSQL version). When you’re ready, you can stop the publisher system and remove it.</p>
+<p>In conclusion, logical replication is a powerful feature that allows for more flexible upgrades of your PostgreSQL database. By carefully following these steps, you can minimize downtime and ensure a smooth transition between database versions.</p>

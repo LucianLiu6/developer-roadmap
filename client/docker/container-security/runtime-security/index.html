@@ -1,0 +1,34 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/docker/content/109-container-security/101-runtime-security.md"></div> <h1 id="runtime-security">Runtime Security</h1>
+<p>Runtime security focuses on ensuring the security of Docker containers while they are running in production. This is a critical aspect of container security, as threats may arrive or be discovered after your containers have been deployed. Proper runtime security measures help to minimize the damage that can be done if a vulnerability is exploited.</p>
+<h2 id="least-privilege-principle">Least Privilege Principle</h2>
+<p>Ensure that your containers follow the principle of least privilege, meaning they should only have the minimum permissions necessary to perform their intended functions. This can help to limit the potential damage if a container is compromised.</p>
+<ul>
+<li>Run your containers as a non-root user whenever possible.</li>
+<li>Avoid running privileged containers, which have access to all of the host’s resources.</li>
+<li>Use Linux capabilities to strip away unnecessary permissions from your containers.</li>
+</ul>
+<h2 id="read-only-filesystems">Read-only Filesystems</h2>
+<p>By setting your containers’ filesystems to read-only, you can prevent attackers from modifying critical files or planting malware inside your containers.</p>
+<ul>
+<li>Use the <code>--read-only</code> flag when starting your containers to make their filesystems read-only.</li>
+<li>Implement volume mounts or <code>tmpfs</code> mounts for locations that require write access.</li>
+</ul>
+<h2 id="security-scanning-and-monitoring">Security Scanning and Monitoring</h2>
+<p>Ensure that your containers are regularly scanned for vulnerabilities, both in the images themselves and in the runtime environment.</p>
+<ul>
+<li>Use container scanning tools to detect and patch vulnerabilities in your images.</li>
+<li>Implement runtime monitoring to detect and respond to security events, such as unauthorized access attempts or unexpected process launches.</li>
+</ul>
+<h2 id="resource-isolation">Resource Isolation</h2>
+<p>Isolate your containers’ resources, such as CPU, memory, and network, to prevent a single compromised container from affecting other containers or the host system.</p>
+<ul>
+<li>Use Docker’s built-in resource constraints to limit the resources your containers can consume.</li>
+<li>Use network segmentation and firewalls to isolate your containers and limit their communication.</li>
+</ul>
+<h2 id="audit-logs">Audit Logs</h2>
+<p>Maintain audit logs of container activity to help with incident response, troubleshooting, and compliance.</p>
+<ul>
+<li>Use Docker’s logging capabilities to capture container logs, outputting them to a centralized logging solution.</li>
+<li>Implement log analysis tools to monitor for suspicious activity and automatically alert if a potential incident is detected.</li>
+</ul>
+<p>By focusing on runtime security, you can help ensure that your Docker containers continue to be secure even after they have been deployed in your environment. Aim to minimize the potential attack surface and continuously monitor for threats to help protect your critical applications and data.</p>

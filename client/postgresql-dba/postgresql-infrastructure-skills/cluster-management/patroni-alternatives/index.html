@@ -1,0 +1,38 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/postgresql-dba/content/107-postgresql-infrastructure-skills/104-cluster-management/101-patroni-alternatives.md"></div> <h1 id="alternatives-to-patroni-for-postgresql-cluster-management">Alternatives to Patroni for PostgreSQL Cluster Management</h1>
+<p>While Patroni is a popular choice for managing PostgreSQL clusters, there are several other tools and frameworks available that you might consider as alternatives to Patroni. Each of these has its unique set of features and benefits, and some may be better suited to your specific requirements or use-cases.</p>
+<p>Listed below are some of the noteworthy alternatives to Patroni:</p>
+<h2 id="stolon">Stolon</h2>
+<p><a href="https://github.com/sorintlab/stolon" rel="noopener noreferrer nofollow" target="_blank">Stolon</a> is a cloud-native PostgreSQL manager that automatically ensures high availability and, if required, can seamlessly scale instances. It was developed by the team at Sorint.lab and is written in Go. Some of the main features that differentiate Stolon from other solutions are:</p>
+<ul>
+<li>Automatic cluster formation</li>
+<li>Support for runtime topology changes</li>
+<li>Durable and consistent state</li>
+<li>Self-hosted proxy for powerful discovery and load-balancing</li>
+</ul>
+<h2 id="pgpool-ii">Pgpool-II</h2>
+<p><a href="https://www.pgpool.net/mediawiki/index.php/Main_Page" rel="noopener noreferrer nofollow" target="_blank">Pgpool-II</a> is an advanced and powerful PostgreSQL management and load balancing solution, developed by the Pgpool Global Development Group. Pgpool-II not only provides high availability and connection pooling, but also offers a myriad of other features, such as:</p>
+<ul>
+<li>Query caching</li>
+<li>Connection load balancing</li>
+<li>Multiple authentication methods</li>
+<li>Support for replication-based and query-based distributed databases</li>
+<li>Automated failover and online recovery</li>
+</ul>
+<h2 id="repmgr">Repmgr</h2>
+<p><a href="https://repmgr.org/" rel="noopener noreferrer nofollow" target="_blank">Repmgr</a> is an open-source replication management tool for PostgreSQL that has been fully integrated and supported by 2ndQuadrant. It simplifies administration and daily management, providing a robust and easy-to-use solution. The main features of Repmgr include:</p>
+<ul>
+<li>Real-time monitoring of the replication process</li>
+<li>Simplifies administration and deployment of replication servers</li>
+<li>Supports PostgreSQL’s streaming and logical replication</li>
+<li>Provides automated and manual failover strategies</li>
+<li>Extensive monitoring and diagnostics</li>
+</ul>
+<h2 id="paf-postgresql-automatic-failover">PAF (PostgreSQL Automatic Failover)</h2>
+<p><a href="https://github.com/dalibo/PAF" rel="noopener noreferrer nofollow" target="_blank">PAF (PostgreSQL Automatic Failover)</a> is an HA (high-availability) resource agent for the Pacemaker and Corosync cluster manager, designed for the PostgreSQL’s built-in streaming replication. It was developed by the team at Dalibo and is quite lightweight compared to other alternatives. Key features of PAF include:</p>
+<ul>
+<li>Simple configuration and deployment</li>
+<li>Support for complex and multi-master replication schemes</li>
+<li>Built-in support for administrative tasks</li>
+<li>Capability to manage and monitor an entire PostgreSQL cluster</li>
+</ul>
+<p>Each of these alternatives to Patroni offers something unique and caters to specific needs. You should choose the one that best fits your requirements, considering factors such as ease of use, performance, scalability, and compatibility with your existing infrastructure.</p>

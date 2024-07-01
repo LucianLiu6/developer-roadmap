@@ -1,0 +1,35 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/sql/content/103-dml/101-insert.md"></div> <h1 id="insert">INSERT</h1>
+<p>The “INSERT” statement is used to add new rows of data to a table in a database. There are two main forms of the INSERT command: <code>INSERT INTO</code> which, if columns are not named, expects a full set of columns, and <code>INSERT INTO table_name (column1, column2, ...)</code> where only named columns will be filled with data.</p>
+<h2 id="usage">Usage</h2>
+<ol>
+<li><strong>Insert full set of columns:</strong></li>
+</ol>
+<p>Code example:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#FF79C6">INSERT INTO</span><span style="color:#F8F8F2"> table_name </span></span>
+<span class="line"><span style="color:#FF79C6">VALUES</span><span style="color:#F8F8F2"> (value1, value2, ..., valueN);</span></span>
+<span class="line"></span></code></pre>
+<p>In the example above, you need to provide values for all columns available in the table.</p>
+<ol start="2">
+<li><strong>Selectively insert data:</strong></li>
+</ol>
+<p>Code example:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#FF79C6">INSERT INTO</span><span style="color:#F8F8F2"> table_name (column1, column2, ..., columnN)  </span></span>
+<span class="line"><span style="color:#FF79C6">VALUES</span><span style="color:#F8F8F2"> (value1, value2, ..., valueN);</span></span>
+<span class="line"></span></code></pre>
+<p>Here, you only provide values for certain columns of the table. Other columns will take on their default values (if any).</p>
+<ol start="3">
+<li><strong>Insert data from another table:</strong></li>
+</ol>
+<p>Another useful form of the <code>INSERT</code> command is <code>INSERT INTO SELECT</code>, which allows you to copy data from one table and add it into another table.</p>
+<p>Code example:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#FF79C6">INSERT INTO</span><span style="color:#F8F8F2"> table1 (column1, column2, ... , columnN)</span></span>
+<span class="line"><span style="color:#FF79C6">SELECT</span><span style="color:#F8F8F2"> column1, column2, ... , columnN </span></span>
+<span class="line"><span style="color:#FF79C6">FROM</span><span style="color:#F8F8F2"> table2 </span></span>
+<span class="line"><span style="color:#FF79C6">WHERE</span><span style="color:#F8F8F2"> condition;</span></span>
+<span class="line"></span></code></pre>
+<p>In this scenario, <code>table2</code> should already have the data we need and the WHERE clause can be used to select only those rows that satisfy certain conditions.</p>
+<blockquote>
+<p>Note: The crucial point is that your columns in both SELECT and INSERT INTO command must be in same order and their datatypes must be compatible.</p>
+<p>Kindly ensure that database table has enough space to hold inserted data, else it will resulting in OVERFLOW error.</p>
+</blockquote>
+<p><strong>Note</strong>: Always make sure to provide correct and compatible data types for the columns. The SQL engine won’t allow you to add data that doesn’t match the column’s declared data type.</p>

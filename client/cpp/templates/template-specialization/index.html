@@ -1,0 +1,75 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/cpp/content/111-templates/101-template-specialization/index.md"></div> <h1 id="template-specialization">Template Specialization</h1>
+<p>Template specialization is a way to customize or modify the behavior of a template for a specific type or a set of types. This can be useful when you want to optimize the behavior or provide specific implementation for a certain type, without affecting the overall behavior of the template for other types.</p>
+<p>There are two main ways you can specialize a template:</p>
+<ul>
+<li>
+<p><strong>Full specialization:</strong> This occurs when you provide a specific implementation for a specific type or set of types.</p>
+</li>
+<li>
+<p><strong>Partial specialization:</strong> This occurs when you provide a more general implementation for a subset of types that match a certain pattern or condition.</p>
+</li>
+</ul>
+<h2 id="full-template-specialization">Full Template Specialization</h2>
+<p>Full specialization is used when you want to create a separate implementation of a template for a specific type. To do this, you need to use keyword <code>template&#x3C;></code> followed by the function template with the desired specialized type.</p>
+<p>Here is an example:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#FF79C6">#include</span><span style="color:#E9F284"> &#x3C;</span><span style="color:#F1FA8C">iostream</span><span style="color:#E9F284">></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">template</span><span style="color:#F8F8F2"> &#x3C;</span><span style="color:#FF79C6">typename</span><span style="color:#8BE9FD;font-style:italic"> T</span><span style="color:#F8F8F2">></span></span>
+<span class="line"><span style="color:#FF79C6">void</span><span style="color:#50FA7B"> printData</span><span style="color:#F8F8F2">(</span><span style="color:#FF79C6">const</span><span style="color:#8BE9FD;font-style:italic"> T</span><span style="color:#FF79C6">&#x26;</span><span style="color:#FFB86C;font-style:italic"> data</span><span style="color:#F8F8F2">) {</span></span>
+<span class="line"><span style="color:#F8F8F2">    std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">cout </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C">General template: </span><span style="color:#E9F284">"</span><span style="color:#FF79C6"> &#x3C;&#x3C;</span><span style="color:#F8F8F2"> data </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#F8F8F2"> std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">endl;</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">template</span><span style="color:#F8F8F2"> &#x3C;></span></span>
+<span class="line"><span style="color:#FF79C6">void</span><span style="color:#50FA7B"> printData</span><span style="color:#F8F8F2">(</span><span style="color:#FF79C6">const</span><span style="color:#FF79C6"> char*</span><span style="color:#FF79C6"> const</span><span style="color:#FF79C6"> &#x26;</span><span style="color:#FFB86C;font-style:italic"> data</span><span style="color:#F8F8F2">) {</span></span>
+<span class="line"><span style="color:#F8F8F2">    std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">cout </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C">Specialized template for const char*: </span><span style="color:#E9F284">"</span><span style="color:#FF79C6"> &#x3C;&#x3C;</span><span style="color:#F8F8F2"> data </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#F8F8F2"> std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">endl;</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">int</span><span style="color:#50FA7B"> main</span><span style="color:#F8F8F2">() {</span></span>
+<span class="line"><span style="color:#FF79C6">    int</span><span style="color:#F8F8F2"> a </span><span style="color:#FF79C6">=</span><span style="color:#BD93F9"> 5</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"><span style="color:#FF79C6">    const</span><span style="color:#FF79C6"> char*</span><span style="color:#F8F8F2"> str </span><span style="color:#FF79C6">=</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C">Hello, world!</span><span style="color:#E9F284">"</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"><span style="color:#50FA7B">    printData</span><span style="color:#F8F8F2">(a);</span><span style="color:#6272A4"> // General template: 5</span></span>
+<span class="line"><span style="color:#50FA7B">    printData</span><span style="color:#F8F8F2">(str);</span><span style="color:#6272A4"> // Specialized template for const char*: Hello, world!</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"></span></code></pre>
+<h2 id="partial-template-specialization">Partial Template Specialization</h2>
+<p>Partial specialization is used when you want to create a separate implementation of a template for a subset of types that match a certain pattern or condition.</p>
+<p>Here is an example of how you can partially specialize a template class:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#FF79C6">#include</span><span style="color:#E9F284"> &#x3C;</span><span style="color:#F1FA8C">iostream</span><span style="color:#E9F284">></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">template</span><span style="color:#F8F8F2"> &#x3C;</span><span style="color:#FF79C6">typename</span><span style="color:#8BE9FD;font-style:italic"> K</span><span style="color:#F8F8F2">, </span><span style="color:#FF79C6">typename</span><span style="color:#8BE9FD;font-style:italic"> V</span><span style="color:#F8F8F2">></span></span>
+<span class="line"><span style="color:#FF79C6">class</span><span style="color:#8BE9FD"> MyPair</span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#FF79C6">public:</span></span>
+<span class="line"><span style="color:#50FA7B">    MyPair</span><span style="color:#F8F8F2">(</span><span style="color:#8BE9FD;font-style:italic">K</span><span style="color:#FFB86C;font-style:italic"> k</span><span style="color:#F8F8F2">, </span><span style="color:#8BE9FD;font-style:italic">V</span><span style="color:#FFB86C;font-style:italic"> v</span><span style="color:#F8F8F2">) : </span><span style="color:#50FA7B">key</span><span style="color:#F8F8F2">(k), </span><span style="color:#50FA7B">value</span><span style="color:#F8F8F2">(v) {}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">    void</span><span style="color:#50FA7B"> print</span><span style="color:#F8F8F2">() </span><span style="color:#FF79C6">const</span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#F8F8F2">        std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">cout </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C">General template: key = </span><span style="color:#E9F284">"</span><span style="color:#FF79C6"> &#x3C;&#x3C;</span><span style="color:#F8F8F2"> key </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C">, value = </span><span style="color:#E9F284">"</span><span style="color:#FF79C6"> &#x3C;&#x3C;</span><span style="color:#F8F8F2"> value </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#F8F8F2"> std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">endl;</span></span>
+<span class="line"><span style="color:#F8F8F2">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">private:</span></span>
+<span class="line"><span style="color:#F8F8F2">    K key;</span></span>
+<span class="line"><span style="color:#F8F8F2">    V value;</span></span>
+<span class="line"><span style="color:#F8F8F2">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">template</span><span style="color:#F8F8F2"> &#x3C;</span><span style="color:#FF79C6">typename</span><span style="color:#8BE9FD;font-style:italic"> T</span><span style="color:#F8F8F2">></span></span>
+<span class="line"><span style="color:#FF79C6">class</span><span style="color:#8BE9FD"> MyPair</span><span style="color:#F8F8F2">&#x3C;</span><span style="color:#8BE9FD;font-style:italic">T</span><span style="color:#F8F8F2">, </span><span style="color:#FF79C6">int</span><span style="color:#F8F8F2">> {</span></span>
+<span class="line"><span style="color:#FF79C6">public:</span></span>
+<span class="line"><span style="color:#50FA7B">    MyPair</span><span style="color:#F8F8F2">(</span><span style="color:#8BE9FD;font-style:italic">T</span><span style="color:#FFB86C;font-style:italic"> k</span><span style="color:#F8F8F2">, </span><span style="color:#FF79C6">int</span><span style="color:#FFB86C;font-style:italic"> v</span><span style="color:#F8F8F2">) : </span><span style="color:#50FA7B">key</span><span style="color:#F8F8F2">(k), </span><span style="color:#50FA7B">value</span><span style="color:#F8F8F2">(v) {}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">    void</span><span style="color:#50FA7B"> print</span><span style="color:#F8F8F2">() </span><span style="color:#FF79C6">const</span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#F8F8F2">        std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">cout </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C">Partial specialization for int values: key = </span><span style="color:#E9F284">"</span><span style="color:#FF79C6"> &#x3C;&#x3C;</span><span style="color:#F8F8F2"> key</span></span>
+<span class="line"><span style="color:#FF79C6">                  &#x3C;&#x3C;</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C">, value = </span><span style="color:#E9F284">"</span><span style="color:#FF79C6"> &#x3C;&#x3C;</span><span style="color:#F8F8F2"> value </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#F8F8F2"> std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">endl;</span></span>
+<span class="line"><span style="color:#F8F8F2">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">private:</span></span>
+<span class="line"><span style="color:#F8F8F2">    T key;</span></span>
+<span class="line"><span style="color:#FF79C6">    int</span><span style="color:#F8F8F2"> value;</span></span>
+<span class="line"><span style="color:#F8F8F2">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">int</span><span style="color:#50FA7B"> main</span><span style="color:#F8F8F2">() {</span></span>
+<span class="line"><span style="color:#F8F8F2">    MyPair</span><span style="color:#FF79C6">&#x3C;double</span><span style="color:#F8F8F2">, std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">string</span><span style="color:#FF79C6">></span><span style="color:#50FA7B"> p1</span><span style="color:#F8F8F2">(</span><span style="color:#BD93F9">3.2</span><span style="color:#F8F8F2">, </span><span style="color:#E9F284">"</span><span style="color:#F1FA8C">example</span><span style="color:#E9F284">"</span><span style="color:#F8F8F2">);</span></span>
+<span class="line"><span style="color:#F8F8F2">    MyPair</span><span style="color:#FF79C6">&#x3C;char</span><span style="color:#F8F8F2">, </span><span style="color:#FF79C6">int></span><span style="color:#50FA7B"> p2</span><span style="color:#F8F8F2">(</span><span style="color:#E9F284">'</span><span style="color:#F1FA8C">A</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">, </span><span style="color:#BD93F9">65</span><span style="color:#F8F8F2">);</span></span>
+<span class="line"><span style="color:#F8F8F2">    p1.</span><span style="color:#50FA7B">print</span><span style="color:#F8F8F2">();</span><span style="color:#6272A4"> // General template: key = 3.2, value = example</span></span>
+<span class="line"><span style="color:#F8F8F2">    p2.</span><span style="color:#50FA7B">print</span><span style="color:#F8F8F2">();</span><span style="color:#6272A4"> // Partial specialization for int values: key = A, value = 65</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"></span></code></pre>
+<p>In this example, the <code>MyPair</code> template class is partially specialized to provide a different behavior when the second template parameter is of type <code>int</code>.</p>

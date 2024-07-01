@@ -1,0 +1,64 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/cpp/content/113-standards/101-cpp17.md"></div> <h1 id="c17">C++17</h1>
+<p>C++17, also known as C++1z, is the version of the C++ programming language published in December 2017. It builds upon the previous standard, C++14, and adds various new features and enhancements to improve the language’s expressiveness, performance, and usability.</p>
+<h2 id="key-features">Key Features:</h2>
+<ul>
+<li>If-init-statement: Introduces a new syntax for writing conditions with scope inside if and switch statements.</li>
+</ul>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#FF79C6">if</span><span style="color:#F8F8F2">(</span><span style="color:#FF79C6">auto</span><span style="color:#F8F8F2"> it </span><span style="color:#FF79C6">=</span><span style="color:#F8F8F2"> map.</span><span style="color:#50FA7B">find</span><span style="color:#F8F8F2">(key); it </span><span style="color:#FF79C6">!=</span><span style="color:#F8F8F2"> map.</span><span style="color:#50FA7B">end</span><span style="color:#F8F8F2">())</span></span>
+<span class="line"><span style="color:#F8F8F2">{</span></span>
+<span class="line"><span style="color:#6272A4">    // Use it</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"></span></code></pre>
+<ul>
+<li>Structured Binding Declarations: Simplify the process of unpacking a tuple, pair, or other aggregate types.</li>
+</ul>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#F8F8F2">map</span><span style="color:#FF79C6">&#x3C;</span><span style="color:#F8F8F2">string, </span><span style="color:#FF79C6">int></span><span style="color:#F8F8F2"> data;</span></span>
+<span class="line"><span style="color:#FF79C6">auto</span><span style="color:#F8F8F2"> [iter, success] </span><span style="color:#FF79C6">=</span><span style="color:#F8F8F2"> data.</span><span style="color:#50FA7B">emplace</span><span style="color:#F8F8F2">(</span><span style="color:#E9F284">"</span><span style="color:#F1FA8C">example</span><span style="color:#E9F284">"</span><span style="color:#F8F8F2">, </span><span style="color:#BD93F9">42</span><span style="color:#F8F8F2">);</span></span>
+<span class="line"></span></code></pre>
+<ul>
+<li>Inline variables: Enables <code>inline</code> keyword for variables and allows single definition of global and class static variables in header files.</li>
+</ul>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#FF79C6">inline</span><span style="color:#FF79C6"> int</span><span style="color:#F8F8F2"> globalVar </span><span style="color:#FF79C6">=</span><span style="color:#BD93F9"> 0</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"></span></code></pre>
+<ul>
+<li>Folds expressions: Introduce fold expressions for variadic templates.</li>
+</ul>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#FF79C6">template</span><span style="color:#F8F8F2"> &#x3C;</span><span style="color:#FF79C6">typename</span><span style="color:#F8F8F2">... </span><span style="color:#8BE9FD;font-style:italic">Ts</span><span style="color:#F8F8F2">></span></span>
+<span class="line"><span style="color:#FF79C6">auto</span><span style="color:#50FA7B"> sum</span><span style="color:#F8F8F2">(</span><span style="color:#8BE9FD;font-style:italic">Ts</span><span style="color:#F8F8F2">... </span><span style="color:#FFB86C;font-style:italic">ts</span><span style="color:#F8F8F2">)</span></span>
+<span class="line"><span style="color:#F8F8F2">{</span></span>
+<span class="line"><span style="color:#FF79C6">    return</span><span style="color:#F8F8F2"> (ts </span><span style="color:#FF79C6">+</span><span style="color:#F8F8F2"> ...);</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"></span></code></pre>
+<ul>
+<li>constexpr if statement: Allows conditional compilation during compile time.</li>
+</ul>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#FF79C6">template</span><span style="color:#F8F8F2"> &#x3C;</span><span style="color:#FF79C6">typename</span><span style="color:#8BE9FD;font-style:italic"> T</span><span style="color:#F8F8F2">></span></span>
+<span class="line"><span style="color:#FF79C6">auto</span><span style="color:#50FA7B"> get_value</span><span style="color:#F8F8F2">(</span><span style="color:#8BE9FD;font-style:italic">T</span><span style="color:#FFB86C;font-style:italic"> t</span><span style="color:#F8F8F2">)</span></span>
+<span class="line"><span style="color:#F8F8F2">{</span></span>
+<span class="line"><span style="color:#FF79C6">    if</span><span style="color:#FF79C6"> constexpr</span><span style="color:#F8F8F2"> (std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">is_pointer_v</span><span style="color:#FF79C6">&#x3C;</span><span style="color:#F8F8F2">T</span><span style="color:#FF79C6">></span><span style="color:#F8F8F2">)</span></span>
+<span class="line"><span style="color:#F8F8F2">    {</span></span>
+<span class="line"><span style="color:#FF79C6">        return</span><span style="color:#FF79C6"> *</span><span style="color:#F8F8F2">t;</span></span>
+<span class="line"><span style="color:#F8F8F2">    }</span></span>
+<span class="line"><span style="color:#FF79C6">    else</span></span>
+<span class="line"><span style="color:#F8F8F2">    {</span></span>
+<span class="line"><span style="color:#FF79C6">        return</span><span style="color:#F8F8F2"> t;</span></span>
+<span class="line"><span style="color:#F8F8F2">    }</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"></span></code></pre>
+<ul>
+<li>Improved lambda expression: Allows lambda to capture a single object without changing its type or constness.</li>
+</ul>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#FF79C6">auto</span><span style="color:#F8F8F2"> func </span><span style="color:#FF79C6">=</span><span style="color:#F8F8F2"> [</span><span style="color:#FFB86C;font-style:italic">x</span><span style="color:#FF79C6"> =</span><span style="color:#F8F8F2"> std</span><span style="color:#FF79C6">::</span><span style="color:#50FA7B">move</span><span style="color:#F8F8F2">(obj)] {</span><span style="color:#6272A4"> /* use x */</span><span style="color:#F8F8F2"> };</span></span>
+<span class="line"></span></code></pre>
+<ul>
+<li>
+<p>Standard file system library: <code>std::filesystem</code> as a standardized way to manipulate paths, directories, and files.</p>
+</li>
+<li>
+<p>New Standard Library additions: <code>&#x3C;string_view></code> (non-owning string reference), <code>&#x3C;any></code> (type-safe discrimination union), <code>&#x3C;optional></code> (optional value wrapper), <code>&#x3C;variant></code> (type-safe sum type), and <code>&#x3C;memory_resource></code> (library for polymorphic allocators).</p>
+</li>
+<li>
+<p>Parallel Algorithms: Adds support for parallel execution of Standard Library algorithms.</p>
+</li>
+</ul>
+<p>This is a brief summary of the key features of C++17; it includes more features and library updates. For a complete list, you can refer to the <a href="https://en.cppreference.com/w/cpp/17" rel="noopener noreferrer nofollow" target="_blank">full list of C++17 features and changes</a>.</p>

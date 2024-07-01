@@ -1,0 +1,42 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/postgresql-dba/content/111-troubleshooting-techniques/102-operating-system-tools/102-iotop.md"></div> <h1 id="iotop">iotop</h1>
+<p><code>iotop</code> is an essential command-line utility that provides real-time insights into the input/output (I/O) activities of processes running on your system. This tool is particularly useful when monitoring and managing your PostgreSQL database’s performance, as it helps system administrators or database developers to identify processes with high I/O, leading to potential bottlenecks or server optimization opportunities.</p>
+<h2 id="overview">Overview</h2>
+<p><code>iotop</code> operates on the principle of monitoring I/O operations by various processes in real-time. Key features of <code>iotop</code> are:</p>
+<ul>
+<li>Displaying statistics for read, write, and swap operations of each process</li>
+<li>Filtering processes based on user or I/O activity</li>
+<li>Sorting processes based on various criteria (e.g., read, write, or total I/O)</li>
+<li>Interactive user interface for controlling columns, sorting criteria, and filter options</li>
+</ul>
+<h2 id="installation">Installation</h2>
+<p>To install <code>iotop</code> on your system, use the following commands depending on your package manager:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="color:#6272A4"># Debian/Ubuntu</span></span>
+<span class="line"><span style="color:#50FA7B">sudo</span><span style="color:#F1FA8C"> apt-get</span><span style="color:#F1FA8C"> install</span><span style="color:#F1FA8C"> iotop</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6272A4"># Fedora</span></span>
+<span class="line"><span style="color:#50FA7B">sudo</span><span style="color:#F1FA8C"> dnf</span><span style="color:#F1FA8C"> install</span><span style="color:#F1FA8C"> iotop</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6272A4"># CentOS/RHEL</span></span>
+<span class="line"><span style="color:#50FA7B">sudo</span><span style="color:#F1FA8C"> yum</span><span style="color:#F1FA8C"> install</span><span style="color:#F1FA8C"> iotop</span></span>
+<span class="line"></span></code></pre>
+<h2 id="usage">Usage</h2>
+<p>To start using <code>iotop</code>, simply run the following command:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="color:#50FA7B">sudo</span><span style="color:#F1FA8C"> iotop</span></span>
+<span class="line"></span></code></pre>
+<p>By default, <code>iotop</code> will display the top I/O-consuming processes sorted by their current disk usage. The output will include process ID, user, disk read &#x26; write speeds, swapin speed, IO %, and command details.</p>
+<p>You can control the output using various options like:</p>
+<ul>
+<li><code>-o</code>: Show only processes with I/O activities</li>
+<li><code>-b</code>: Run <code>iotop</code> in batch mode (non-interactive)</li>
+<li><code>-n &#x3C;count></code>: Number of iterations before exiting</li>
+<li><code>-d &#x3C;seconds></code>: Time interval between updates</li>
+</ul>
+<p>For example, you can use the following command to display only processes with I/O activities and exit after five iterations with a delay of 3 seconds between each update:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="color:#50FA7B">sudo</span><span style="color:#F1FA8C"> iotop</span><span style="color:#BD93F9"> -o</span><span style="color:#BD93F9"> -n</span><span style="color:#BD93F9"> 5</span><span style="color:#BD93F9"> -d</span><span style="color:#BD93F9"> 3</span></span>
+<span class="line"></span></code></pre>
+<h2 id="additional-resources">Additional Resources</h2>
+<ul>
+<li>iotop’s official website: <a href="http://guichaz.free.fr/iotop/" rel="noopener noreferrer nofollow" target="_blank">http://guichaz.free.fr/iotop/</a></li>
+<li>Manual page: <code>man iotop</code></li>
+</ul>
+<p>In summary, <code>iotop</code> is a valuable tool in monitoring and managing I/O activities within your PostgreSQL setup. By using <code>iotop</code>, you can make informed decisions about system and database optimizations, ensuring the smooth functioning of your applications.</p>

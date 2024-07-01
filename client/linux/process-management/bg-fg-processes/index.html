@@ -1,0 +1,14 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/linux/content/106-process-management/100-bg-fg-processes.md"></div> <h1 id="managing-bg-background-and-fg-foreground-processes">Managing bg (background) and fg (foreground) Processes</h1>
+<p>In Linux environment, a process can be run in either the foreground (fg) or the background (bg). The foreground process takes input directly from the user, displaying output and errors to the user’s terminal. On the other hand, a background process runs independently of the user’s actions, freeing up the terminal for other tasks.</p>
+<p>Typically, a process starts in the foreground. However, you can send it to the background by appending an ampersand (&#x26;) to the command or by using the <code>bg</code> command. Conversely, the <code>fg</code> command brings a background process to the foreground.</p>
+<p>Here’s how you can send a running process to background:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#8BE9FD">command</span><span style="color:#F8F8F2"> &#x26;</span></span>
+<span class="line"></span></code></pre>
+<p>Or if a process is already running:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#50FA7B">CTRL</span><span style="color:#F1FA8C"> +</span><span style="color:#F1FA8C"> Z</span><span style="color:#6272A4">       # This will pause the process</span></span>
+<span class="line"><span style="color:#8BE9FD">bg</span><span style="color:#6272A4">             # This resumes the paused process in the background</span></span>
+<span class="line"></span></code></pre>
+<p>And to bring it back to the foreground:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#8BE9FD">fg</span></span>
+<span class="line"></span></code></pre>
+<p>These commands, <code>bg</code> and <code>fg</code> are part of job control in Unix-like operating systems, which lets you manage multiple tasks simultaneously from a single terminal.</p>

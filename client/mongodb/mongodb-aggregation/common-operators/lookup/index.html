@@ -1,0 +1,48 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/mongodb/content/106-mongodb-aggregation/101-common-operators/107-lookup.md"></div> <h1 id="lookup">$lookup</h1>
+<p>The <code>$lookup</code> stage in MongoDB is a powerful aggregation pipeline operator that allows you to perform left outer join between two collections. It is used for combining data from multiple collections in a single aggregation pipeline operation.</p>
+<p>Here’s a brief summary of <code>$lookup</code> operator:</p>
+<h2 id="syntax">Syntax</h2>
+<p>The <code>$lookup</code> operator uses the following syntax:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="json"><code><span class="line"><span style="color:#F8F8F2">{</span></span>
+<span class="line"><span style="color:#8BE9FE">  "</span><span style="color:#8BE9FD">$lookup</span><span style="color:#8BE9FE">"</span><span style="color:#FF79C6">:</span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#8BE9FE">    "</span><span style="color:#8BE9FD">from</span><span style="color:#8BE9FE">"</span><span style="color:#FF79C6">:</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C">&#x3C;collection_name></span><span style="color:#E9F284">"</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#8BE9FE">    "</span><span style="color:#8BE9FD">localField</span><span style="color:#8BE9FE">"</span><span style="color:#FF79C6">:</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C">&#x3C;field_from_input_documents></span><span style="color:#E9F284">"</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#8BE9FE">    "</span><span style="color:#8BE9FD">foreignField</span><span style="color:#8BE9FE">"</span><span style="color:#FF79C6">:</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C">&#x3C;field_from_documents_of_the_from_collection></span><span style="color:#E9F284">"</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#8BE9FE">    "</span><span style="color:#8BE9FD">as</span><span style="color:#8BE9FE">"</span><span style="color:#FF79C6">:</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C">&#x3C;output_array_field></span><span style="color:#E9F284">"</span></span>
+<span class="line"><span style="color:#F8F8F2">  }</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"></span></code></pre>
+<h2 id="parameters">Parameters</h2>
+<ul>
+<li><code>from</code>: The target collection to perform the join operation with.</li>
+<li><code>localField</code>: The field from the input collection (i.e., the collection on which the <code>$lookup</code> is applied).</li>
+<li><code>foreignField</code>: The field from the target collection (i.e., the <code>from</code> collection).</li>
+<li><code>as</code>: The name of the output array field that will store the joined documents.</li>
+</ul>
+<h2 id="example">Example</h2>
+<p>Suppose you have two collections, <code>orders</code> and <code>products</code>. The <code>orders</code> collection contains documents with following fields: <code>orderId</code>, <code>productId</code>, and <code>quantity</code>. The <code>products</code> collection contains documents with fields: <code>productId</code>, <code>productName</code>, and <code>price</code>.</p>
+<p>To calculate the total amount of each order, you can use the <code>$lookup</code> operator along with other aggregation stages:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F8F8F2">db.orders.</span><span style="color:#50FA7B">aggregate</span><span style="color:#F8F8F2">([</span></span>
+<span class="line"><span style="color:#F8F8F2">  {</span></span>
+<span class="line"><span style="color:#F8F8F2">    $lookup</span><span style="color:#FF79C6">:</span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#F8F8F2">      from</span><span style="color:#FF79C6">:</span><span style="color:#E9F284"> '</span><span style="color:#F1FA8C">products</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#F8F8F2">      localField</span><span style="color:#FF79C6">:</span><span style="color:#E9F284"> '</span><span style="color:#F1FA8C">productId</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#F8F8F2">      foreignField</span><span style="color:#FF79C6">:</span><span style="color:#E9F284"> '</span><span style="color:#F1FA8C">productId</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#F8F8F2">      as</span><span style="color:#FF79C6">:</span><span style="color:#E9F284"> '</span><span style="color:#F1FA8C">productDetails</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#F8F8F2">    },</span></span>
+<span class="line"><span style="color:#F8F8F2">  },</span></span>
+<span class="line"><span style="color:#F8F8F2">  {</span></span>
+<span class="line"><span style="color:#F8F8F2">    $unwind</span><span style="color:#FF79C6">:</span><span style="color:#E9F284"> '</span><span style="color:#F1FA8C">$productDetails</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#F8F8F2">  },</span></span>
+<span class="line"><span style="color:#F8F8F2">  {</span></span>
+<span class="line"><span style="color:#F8F8F2">    $project</span><span style="color:#FF79C6">:</span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#F8F8F2">      orderId</span><span style="color:#FF79C6">:</span><span style="color:#BD93F9"> 1</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#F8F8F2">      totalAmount</span><span style="color:#FF79C6">:</span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#F8F8F2">        $multiply</span><span style="color:#FF79C6">:</span><span style="color:#F8F8F2"> [</span><span style="color:#E9F284">'</span><span style="color:#F1FA8C">$quantity</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">, </span><span style="color:#E9F284">'</span><span style="color:#F1FA8C">$productDetails.price</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">],</span></span>
+<span class="line"><span style="color:#F8F8F2">      },</span></span>
+<span class="line"><span style="color:#F8F8F2">    },</span></span>
+<span class="line"><span style="color:#F8F8F2">  },</span></span>
+<span class="line"><span style="color:#F8F8F2">]);</span></span>
+<span class="line"></span></code></pre>
+<p>In this example, <code>$lookup</code> will join the <code>orders</code> and <code>products</code> collections based on <code>productId</code>. The joined data will be stored in the new <code>productDetails</code> array field. Additional aggregation stages (<code>$unwind</code> and <code>$project</code>) are used to calculate and display the total amount of each order.</p>
+<p>So, the <code>$lookup</code> operator becomes an essential tool when you need to work with data from multiple collections and perform complex data processing tasks in MongoDB.</p>

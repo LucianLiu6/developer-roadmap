@@ -1,0 +1,6 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/rust/content/101-language-basics/103-data-structures/116-rc.md"></div> <h1 id="rc">Rc</h1>
+<p><code>Rc</code> stands for Reference Counting, a data type in Rust that allows multiple owners for the same data on the heap while keeping track of the number of references to that data. If there are zero references to data, the value can be cleaned up without any references becoming invalid. Avoiding these problems comes at the cost of some memory overhead, because <code>Rc</code> keeps track of the total number of references which means it needs to allocate memory to keep the count.</p>
+<p>Learn more from the following links:</p>
+<ul>
+<li><a href="https://doc.rust-lang.org/book/ch15-04-rc.html#rct-the-reference-counted-smart-pointer" rel="noopener noreferrer nofollow" target="_blank">@article@rct - The Reference Counted Smart Pointer</a></li>
+</ul>

@@ -1,0 +1,59 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/cpp/content/117-package-managers/100-vcpkg.md"></div> <h1 id="vcpkg">vcpkg</h1>
+<p><code>vcpkg</code> is a cross-platform, open-source package manager for C and C++ libraries. Developed by Microsoft, it simplifies the process of acquiring and building open-source libraries for your projects. <code>vcpkg</code> supports various platforms including Windows, Linux, and macOS, enabling you to easily manage and integrate external libraries into your projects.</p>
+<h2 id="installation">Installation</h2>
+<p>To install <code>vcpkg</code>, follow these steps:</p>
+<ul>
+<li>
+<p>Clone the repository:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>git clone https://github.com/Microsoft/vcpkg.git</span></span>
+<span class="line"><span></span></span></code></pre>
+</li>
+<li>
+<p>Change to the <code>vcpkg</code> directory and run the bootstrap script:</p>
+<ul>
+<li>
+<p>On Windows:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>.\bootstrap-vcpkg.bat</span></span>
+<span class="line"><span></span></span></code></pre>
+</li>
+<li>
+<p>On Linux/macOS:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>./bootstrap-vcpkg.sh</span></span>
+<span class="line"><span></span></span></code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>(Optional) Add the <code>vcpkg</code> executable to your <code>PATH</code> environment variable for easy access.</p>
+</li>
+</ul>
+<h2 id="basic-usage">Basic usage</h2>
+<p>Here are some basic examples of using <code>vcpkg</code>:</p>
+<ul>
+<li>
+<p>Search for a package:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>vcpkg search &#x3C;package_name></span></span>
+<span class="line"><span></span></span></code></pre>
+</li>
+<li>
+<p>Install a package:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>vcpkg install &#x3C;package_name></span></span>
+<span class="line"><span></span></span></code></pre>
+</li>
+<li>
+<p>Remove a package:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>vcpkg remove &#x3C;package_name></span></span>
+<span class="line"><span></span></span></code></pre>
+</li>
+<li>
+<p>List installed packages:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>vcpkg list</span></span>
+<span class="line"><span></span></span></code></pre>
+</li>
+<li>
+<p>Integrate <code>vcpkg</code> with Visual Studio (Windows only):</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>vcpkg integrate install</span></span>
+<span class="line"><span></span></span></code></pre>
+</li>
+</ul>
+<p>For additional documentation and advanced usage, you can refer to the <a href="https://github.com/microsoft/vcpkg" rel="noopener noreferrer nofollow" target="_blank">official GitHub repository</a>.</p>

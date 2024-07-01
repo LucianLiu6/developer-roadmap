@@ -1,0 +1,40 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/postgresql-dba/content/110-advanced-topics/101-fine-grained-tuning/100-per-user-per-database-settings.md"></div> <h1 id="per-user-per-database-settings-in-postgresql">Per-User Per-Database Settings in PostgreSQL</h1>
+<p>PostgreSQL allows you to apply configuration settings on a per-user and per-database basis, providing fine-grained control to optimize performance and stability. This is particularly useful when you have multiple databases or users with different workloads and requirements. In this section, we’ll dive into per-user per-database settings and provide examples of how to configure them.</p>
+<h2 id="configuration">Configuration</h2>
+<p>You can set per-user per-database configurations by modifying the <code>postgresql.conf</code> file or using the <code>ALTER DATABASE</code> and <code>ALTER ROLE</code> SQL commands.</p>
+<h3 id="postgresqlconf">postgresql.conf</h3>
+<p>To set per-database and per-user configurations in <code>postgresql.conf</code>, use the following syntax:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span># For a specific database:</span></span>
+<span class="line"><span>dbname.key = value</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span># For a specific user:</span></span>
+<span class="line"><span>username.key = value</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span># For a specific user and database:</span></span>
+<span class="line"><span>username@dbname.key = value</span></span>
+<span class="line"><span></span></span></code></pre>
+<p>Here, <code>dbname</code> refers to the database name, <code>username</code> to the user name, and <code>key</code> to the configuration parameter.</p>
+<p>For example, if you want to set <code>shared_buffers</code> for the database <code>app_db</code> and user <code>app_user</code>, you can do so by adding the following lines to <code>postgresql.conf</code>:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>app_db.shared_buffers = 128MB</span></span>
+<span class="line"><span>app_user.app_db.shared_buffers = 64MB</span></span>
+<span class="line"><span></span></span></code></pre>
+<h3 id="alter-database-and-alter-role">ALTER DATABASE and ALTER ROLE</h3>
+<p>You can also set per-user per-database configuration parameters using the <code>ALTER DATABASE</code> and <code>ALTER ROLE</code> SQL commands.</p>
+<p>For example, to set the <code>temp_buffers</code> configuration parameter for the database <code>app_db</code>, you can run:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#FF79C6">ALTER</span><span style="color:#FF79C6"> DATABASE</span><span style="color:#F8F8F2"> app_db </span><span style="color:#FF79C6">SET</span><span style="color:#F8F8F2"> temp_buffers </span><span style="color:#FF79C6">=</span><span style="color:#E9F284"> '</span><span style="color:#F1FA8C">64MB</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"></span></code></pre>
+<p>And to set the <code>work_mem</code> configuration parameter for the user <code>app_user</code> in <code>app_db</code>, you can run:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#FF79C6">ALTER</span><span style="color:#FF79C6"> ROLE</span><span style="color:#F8F8F2"> app_user </span><span style="color:#FF79C6">IN</span><span style="color:#FF79C6"> DATABASE</span><span style="color:#F8F8F2"> app_db </span><span style="color:#FF79C6">SET</span><span style="color:#F8F8F2"> work_mem </span><span style="color:#FF79C6">=</span><span style="color:#E9F284"> '</span><span style="color:#F1FA8C">32MB</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"></span></code></pre>
+<p><strong>Note</strong>: The <code>ALTER DATABASE</code> and <code>ALTER ROLE</code> SQL commands store the configuration settings in the <code>pg_db_role_setting</code> system catalog table. You can query this table to view the current settings.</p>
+<h2 id="precedence">Precedence</h2>
+<p>PostgreSQL has several levels of configuration setting precedence, which are applied in the following order:</p>
+<ul>
+<li>Settings in the <code>postgresql.conf</code> file</li>
+<li>Settings made with the <code>ALTER DATABASE</code> statement</li>
+<li>Settings made with the <code>ALTER ROLE</code> statement</li>
+<li>Settings made with the <code>ALTER ROLE IN DATABASE</code> statement</li>
+</ul>
+<p>Keep this precedence order in mind when configuring per-user and per-database settings to ensure the expected settings take effect.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Per-user per-database settings in PostgreSQL offer an extra layer of control to fine-tune your database performance and resource allocation. By leveraging the <code>postgresql.conf</code> file or using SQL commands such as <code>ALTER DATABASE</code> and <code>ALTER ROLE</code>, you can configure different settings for different use cases and workloads, optimizing your PostgreSQL environment for your specific requirements.</p>

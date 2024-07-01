@@ -1,0 +1,12 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/linux/content/109-package-management/102-finding-installing-packages.md"></div> <h1 id="finding-and-installing-packages">Finding and Installing Packages</h1>
+<p>The ability to efficiently find and install software packages is a fundamental skill when working with Linux based systems. Linux package management tools such as <code>apt</code>, <code>yum</code>, or <code>dnf</code> are used to automate the process of installing, upgrading, configuring, and removing software packages in a consistent manner.</p>
+<p>It’s important to understand how package management works in Linux, because it significantly simplifies the process of software management, eliminating the need to manually download, compile, and install software from source code.</p>
+<p>For example, on a Debian-based system like Ubuntu you would use <code>apt</code> or <code>apt-get</code> to install a new package like so:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>sudo apt-get update</span></span>
+<span class="line"><span>sudo apt-get install package-name</span></span>
+<span class="line"><span></span></span></code></pre>
+<p>While in a Fedora or CentOS you would use <code>dnf</code> or <code>yum</code>:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>sudo dnf update</span></span>
+<span class="line"><span>sudo dnf install package-name</span></span>
+<span class="line"><span></span></span></code></pre>
+<p>Note that you should replace <code>package-name</code> with the name of the package you want to install. Remember that you will need appropriate permissions (often root) to install packages in a Linux system.</p>

@@ -1,0 +1,35 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/cpp/content/109-language-concepts/101-type-casting/102-dynamic-cast.md"></div> <h1 id="dynamic-cast">Dynamic Cast</h1>
+<p><code>dynamic_cast</code> is a type of casting operator in C++ that is used specifically for polymorphism. It safely converts pointers and references of a base class to its derived class and checks the validity of the conversion during runtime. If the conversion is not valid (i.e., the object is not of the target type), it returns a null pointer instead of producing undefined behavior. Therefore, <code>dynamic_cast</code> can prevent potential crashes and errors when using polymorphism.</p>
+<p>Here is a basic example of how <code>dynamic_cast</code> can be used:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#FF79C6">#include</span><span style="color:#E9F284"> &#x3C;</span><span style="color:#F1FA8C">iostream</span><span style="color:#E9F284">></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">class</span><span style="color:#8BE9FD"> BaseClass</span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#FF79C6">   public:</span></span>
+<span class="line"><span style="color:#FF79C6">    virtual</span><span style="color:#FF79C6"> void</span><span style="color:#50FA7B"> display</span><span style="color:#F8F8F2">() {</span></span>
+<span class="line"><span style="color:#F8F8F2">        std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">cout </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C">BaseClass</span><span style="color:#E9F284">"</span><span style="color:#FF79C6"> &#x3C;&#x3C;</span><span style="color:#F8F8F2"> std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">endl;</span></span>
+<span class="line"><span style="color:#F8F8F2">    }</span></span>
+<span class="line"><span style="color:#F8F8F2">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">class</span><span style="color:#8BE9FD"> DerivedClass</span><span style="color:#F8F8F2"> : </span><span style="color:#FF79C6">public</span><span style="color:#8BE9FD;font-style:italic"> BaseClass</span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#FF79C6">   public:</span></span>
+<span class="line"><span style="color:#FF79C6">    void</span><span style="color:#50FA7B"> display</span><span style="color:#F8F8F2">() {</span></span>
+<span class="line"><span style="color:#F8F8F2">        std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">cout </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C">DerivedClass</span><span style="color:#E9F284">"</span><span style="color:#FF79C6"> &#x3C;&#x3C;</span><span style="color:#F8F8F2"> std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">endl;</span></span>
+<span class="line"><span style="color:#F8F8F2">    }</span></span>
+<span class="line"><span style="color:#F8F8F2">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">int</span><span style="color:#50FA7B"> main</span><span style="color:#F8F8F2">() {</span></span>
+<span class="line"><span style="color:#F8F8F2">    BaseClass </span><span style="color:#FF79C6">*</span><span style="color:#F8F8F2">basePtr </span><span style="color:#FF79C6">=</span><span style="color:#FF79C6;font-weight:bold"> new</span><span style="color:#50FA7B"> DerivedClass</span><span style="color:#F8F8F2">();</span><span style="color:#6272A4">  // Upcasting</span></span>
+<span class="line"><span style="color:#F8F8F2">    DerivedClass </span><span style="color:#FF79C6">*</span><span style="color:#F8F8F2">derivedPtr;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F8F8F2">    derivedPtr </span><span style="color:#FF79C6">=</span><span style="color:#FF79C6"> dynamic_cast&#x3C;</span><span style="color:#F8F8F2">DerivedClass </span><span style="color:#FF79C6">*></span><span style="color:#F8F8F2">(basePtr);</span><span style="color:#6272A4">  // Downcasting</span></span>
+<span class="line"><span style="color:#FF79C6">    if</span><span style="color:#F8F8F2"> (derivedPtr) {</span></span>
+<span class="line"><span style="color:#F8F8F2">        derivedPtr</span><span style="color:#FF79C6">-></span><span style="color:#50FA7B">display</span><span style="color:#F8F8F2">();</span><span style="color:#6272A4">  // Output: DerivedClass</span></span>
+<span class="line"><span style="color:#F8F8F2">    } </span><span style="color:#FF79C6">else</span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#F8F8F2">        std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">cout </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C">Invalid type conversion.</span><span style="color:#E9F284">"</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"><span style="color:#F8F8F2">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">    delete</span><span style="color:#F8F8F2"> basePtr;</span></span>
+<span class="line"><span style="color:#FF79C6">    return</span><span style="color:#BD93F9"> 0</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"></span></code></pre>
+<p>In this example, a pointer to a <code>DerivedClass</code> object is assigned to a <code>BaseClass</code> pointer (<code>basePtr</code>). Then, we attempt to downcast it back to a <code>DerivedClass</code> pointer using <code>dynamic_cast</code>. If the casting is successful, we can access the <code>DerivedClass</code> functionality through the new pointer (<code>derivedPtr</code>).</p>

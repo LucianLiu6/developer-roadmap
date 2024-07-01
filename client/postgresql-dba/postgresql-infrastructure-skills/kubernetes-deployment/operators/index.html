@@ -1,0 +1,28 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/postgresql-dba/content/107-postgresql-infrastructure-skills/105-kubernetes-deployment/102-operators.md"></div> <h1 id="operators-in-kubernetes-deployment">Operators in Kubernetes Deployment</h1>
+<p>In the context of Kubernetes, operators are extensions that automate and manage your applications’ deployments. They are intended to fill the gap between the built-in Kubernetes resources and the custom requirements of your application. PostgreSQL has several operators that can be used for managing its deployment on Kubernetes.</p>
+<h2 id="what-are-operators">What are Operators?</h2>
+<p>Operators are a Kubernetes-native way to extend its functionality, allowing you to create and manage custom resources that work exactly like the built-in resources. They are programs/frameworks that run inside the cluster and automate repetitive tasks, like managing databases, updates, and backups. Deploying an operator for PostgreSQL on Kubernetes can help in achieving higher reliability and easier management.</p>
+<h2 id="why-use-operators-for-postgresql">Why use Operators for PostgreSQL?</h2>
+<p>Using a PostgreSQL operator in a Kubernetes deployment provides several advantages:</p>
+<ul>
+<li><strong>Automation</strong>: Operators can handle critical tasks such as automated failover, backup, and recovery, ensuring the health and stability of your PostgreSQL deployment.</li>
+<li><strong>Simplification</strong>: Creating and managing PostgreSQL clusters becomes as simple as defining custom resources in your cluster, just like built-in resources.</li>
+<li><strong>Scalability</strong>: With operators, you can easily scale your read and write workloads independently by managing replicas or partitioning your data.</li>
+<li><strong>Monitoring</strong>: Operators can provide built-in monitoring and alerting capabilities to keep track of the performance, health, and availability of your PostgreSQL clusters.</li>
+</ul>
+<h2 id="available-postgresql-operators">Available PostgreSQL Operators</h2>
+<p>Here are some popular PostgreSQL operators you can consider for your Kubernetes deployment:</p>
+<ul>
+<li><strong>Crunchy Data PostgreSQL Operator</strong>: A feature-rich operator that automates database management tasks, including provisioning, high availability, disaster recovery, and backup/restore.</li>
+<li><strong>Zalando’s Postgres Operator</strong>: A Kubernetes-native operator that transforms your Kubernetes cluster into a full-featured PostgreSQL High Availability database cluster, handling operational tasks like replication, backups, and failover.</li>
+<li><strong>Stolon</strong>: An advanced PostgreSQL cloud-native HA manager that implements an operator to handle the deployment and management of a PostgreSQL cluster on Kubernetes.</li>
+</ul>
+<h2 id="implementing-postgresql-operators">Implementing PostgreSQL Operators</h2>
+<p>To get started with using PostgreSQL operators in your Kubernetes deployment, you need to follow these steps:</p>
+<ul>
+<li>Choose a PostgreSQL operator that best suits your requirements and is compatible with your cluster configuration.</li>
+<li>Deploy the operator in your Kubernetes cluster, following the documentation and guidelines provided by the chosen operator.</li>
+<li>Create and configure custom resources for your PostgreSQL clusters, following the operator’s specifications and guidelines.</li>
+<li>Monitor and manage your PostgreSQL clusters, just like you would any other Kubernetes resource.</li>
+</ul>
+<p>By implementing a PostgreSQL operator in your Kubernetes deployment, you can automate essential operational tasks and achieve higher reliability and easier management for your database instances.</p>

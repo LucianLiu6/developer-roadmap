@@ -1,0 +1,37 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/cpp/content/109-language-concepts/100-auto.md"></div> <h1 id="auto-automatic-type-deduction">auto (Automatic Type Deduction)</h1>
+<p><strong>Auto</strong></p>
+<p><code>auto</code> is a keyword in C++ language introduced in C++11, which is used for automatic type deduction. It automatically deduces the type of a variable from the type of its initializer expression at compile time.</p>
+<p>The <code>auto</code> keyword is useful when you are dealing with complex types or when the type of a variable is hard to predict. It can help in writing cleaner and less error-prone code.</p>
+<p>Here’s a simple example of using <code>auto</code> for type deduction:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#FF79C6">#include</span><span style="color:#E9F284"> &#x3C;</span><span style="color:#F1FA8C">iostream</span><span style="color:#E9F284">></span></span>
+<span class="line"><span style="color:#FF79C6">#include</span><span style="color:#E9F284"> &#x3C;</span><span style="color:#F1FA8C">vector</span><span style="color:#E9F284">></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">int</span><span style="color:#50FA7B"> main</span><span style="color:#F8F8F2">() {</span></span>
+<span class="line"><span style="color:#6272A4">    // Traditional way of declaring a variable:</span></span>
+<span class="line"><span style="color:#FF79C6">    int</span><span style="color:#F8F8F2"> myInt </span><span style="color:#FF79C6">=</span><span style="color:#BD93F9"> 5</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6272A4">    // Using auto for type deduction:</span></span>
+<span class="line"><span style="color:#FF79C6">    auto</span><span style="color:#F8F8F2"> myAutoInt </span><span style="color:#FF79C6">=</span><span style="color:#BD93F9"> 5</span><span style="color:#F8F8F2">;</span><span style="color:#6272A4"> // Automatically deduces the type as 'int'</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6272A4">    // Example with more complex types:</span></span>
+<span class="line"><span style="color:#F8F8F2">    std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">vector</span><span style="color:#FF79C6">&#x3C;int></span><span style="color:#F8F8F2"> myVector </span><span style="color:#FF79C6">=</span><span style="color:#F8F8F2"> {</span><span style="color:#BD93F9">1</span><span style="color:#F8F8F2">, </span><span style="color:#BD93F9">2</span><span style="color:#F8F8F2">, </span><span style="color:#BD93F9">3</span><span style="color:#F8F8F2">, </span><span style="color:#BD93F9">4</span><span style="color:#F8F8F2">, </span><span style="color:#BD93F9">5</span><span style="color:#F8F8F2">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6272A4">    // Without auto, iterating the vector would look like this:</span></span>
+<span class="line"><span style="color:#FF79C6">    for</span><span style="color:#F8F8F2"> (std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">vector&#x3C;</span><span style="color:#FF79C6">int</span><span style="color:#F8F8F2">></span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">iterator it </span><span style="color:#FF79C6">=</span><span style="color:#F8F8F2"> myVector.</span><span style="color:#50FA7B">begin</span><span style="color:#F8F8F2">(); it </span><span style="color:#FF79C6">!=</span><span style="color:#F8F8F2"> myVector.</span><span style="color:#50FA7B">end</span><span style="color:#F8F8F2">(); </span><span style="color:#FF79C6">++</span><span style="color:#F8F8F2">it) {</span></span>
+<span class="line"><span style="color:#F8F8F2">        std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">cout </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#FF79C6"> *</span><span style="color:#F8F8F2">it </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#F8F8F2"> std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">endl;</span></span>
+<span class="line"><span style="color:#F8F8F2">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6272A4">    // With auto, the iterator declaration becomes simpler:</span></span>
+<span class="line"><span style="color:#FF79C6">    for</span><span style="color:#F8F8F2"> (</span><span style="color:#FF79C6">auto</span><span style="color:#F8F8F2"> it </span><span style="color:#FF79C6">=</span><span style="color:#F8F8F2"> myVector.</span><span style="color:#50FA7B">begin</span><span style="color:#F8F8F2">(); it </span><span style="color:#FF79C6">!=</span><span style="color:#F8F8F2"> myVector.</span><span style="color:#50FA7B">end</span><span style="color:#F8F8F2">(); </span><span style="color:#FF79C6">++</span><span style="color:#F8F8F2">it) {</span></span>
+<span class="line"><span style="color:#F8F8F2">        std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">cout </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#FF79C6"> *</span><span style="color:#F8F8F2">it </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#F8F8F2"> std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">endl;</span></span>
+<span class="line"><span style="color:#F8F8F2">    }</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"></span></code></pre>
+<p>Keep in mind that <code>auto</code> deduces the type based on the initializer expression, so if you don’t provide an initial value, you will get a compile-time error:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#FF79C6">auto</span><span style="color:#F8F8F2"> myVar;</span><span style="color:#6272A4"> // Error: Cannot deduce the type without initializer</span></span>
+<span class="line"></span></code></pre>
+<p>In C++14, you can also use <code>auto</code> with function return types to let the compiler automatically deduce the return type based on the returned expression:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#FF79C6">auto</span><span style="color:#50FA7B"> add</span><span style="color:#F8F8F2">(</span><span style="color:#FF79C6">int</span><span style="color:#FFB86C;font-style:italic"> x</span><span style="color:#F8F8F2">, </span><span style="color:#FF79C6">int</span><span style="color:#FFB86C;font-style:italic"> y</span><span style="color:#F8F8F2">) {</span></span>
+<span class="line"><span style="color:#FF79C6">    return</span><span style="color:#F8F8F2"> x </span><span style="color:#FF79C6">+</span><span style="color:#F8F8F2"> y;</span><span style="color:#6272A4"> // The compiler deduces the return type as 'int'</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"></span></code></pre>

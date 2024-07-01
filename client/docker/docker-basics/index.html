@@ -1,0 +1,23 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/docker/content/103-docker-basics.md"></div> <h1 id="docker-basics">Docker Basics</h1>
+<p>Docker is a platform that simplifies the process of building, packaging, and deploying applications in lightweight, portable containers. In this section, we’ll cover the basics of Docker, its components, and key commands you’ll need to get started.</p>
+<h2 id="what-is-a-container">What is a Container?</h2>
+<p>A container is a lightweight, standalone, and executable software package that includes all the dependencies (libraries, binaries, and configuration files) required to run an application. Containers isolate applications from their environment, ensuring they work consistently across different systems.</p>
+<h2 id="docker-components">Docker Components</h2>
+<p>There are three key components in the Docker ecosystem:</p>
+<ul>
+<li><strong>Dockerfile</strong>: A text file containing instructions (commands) to build a Docker image.</li>
+<li><strong>Docker Image</strong>: A snapshot of a container, created from a Dockerfile. Images are stored in a registry, like Docker Hub, and can be pulled or pushed to the registry.</li>
+<li><strong>Docker Container</strong>: A running instance of a Docker image.</li>
+</ul>
+<h2 id="docker-commands">Docker Commands</h2>
+<p>Below are some essential Docker commands you’ll use frequently:</p>
+<ul>
+<li><code>docker pull &#x3C;image></code>: Download an image from a registry, like Docker Hub.</li>
+<li><code>docker build -t &#x3C;image_name> &#x3C;path></code>: Build an image from a Dockerfile, where <code>&#x3C;path></code> is the directory containing the Dockerfile.</li>
+<li><code>docker image ls</code>: List all images available on your local machine.</li>
+<li><code>docker run -d -p &#x3C;host_port>:&#x3C;container_port> --name &#x3C;container_name> &#x3C;image></code>: Run a container from an image, mapping host ports to container ports.</li>
+<li><code>docker container ls</code>: List all running containers.</li>
+<li><code>docker container stop &#x3C;container></code>: Stop a running container.</li>
+<li><code>docker container rm &#x3C;container></code>: Remove a stopped container.</li>
+<li><code>docker image rm &#x3C;image></code>: Remove an image from your local machine.</li>
+</ul>

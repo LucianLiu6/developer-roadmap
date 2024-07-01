@@ -1,0 +1,10 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/linux/content/114-shell-programming/100-debugging.md"></div> <h1 id="debugging-in-shell-programming-under-linux">Debugging in Shell Programming Under Linux</h1>
+<p>Linux is a robust and flexible operating system that many developers and systems administrators prefer for its versatility and power. In particular, shell programming in Linux allows you to automate tasks and manage systems with high efficiency. However, given the intricate nature of shell scripts, debugging is an essential skill to handle errors and improve code performance.</p>
+<p>When encountering an issue in a shell script, you have several debugging tools at your disposal in a Linux environment. These aid in detecting, tracing, and fixing errors or bugs in your shell scripts. Some of these debugging tools include the bash shell’s <code>-x</code> (or <code>-v</code>) options, which allow for execution traces. Other tools like <code>trap</code>, <code>set</code> command, or even leveraging external debugging tools such as <code>shellcheck</code> can also be highly effective.</p>
+<p>Consider opening your shell script with the -x option for execution tracing, like so:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6272A4">#!/bin/bash -x</span></span>
+<span class="line"></span></code></pre>
+<p>Or, you can run a script in debug mode directly from the command line.</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#50FA7B">bash</span><span style="color:#BD93F9"> -x</span><span style="color:#F1FA8C"> script.sh</span></span>
+<span class="line"></span></code></pre>
+<p>These debugging tools and options can drastically help you in making your scripts more error-proof and efficient.</p>

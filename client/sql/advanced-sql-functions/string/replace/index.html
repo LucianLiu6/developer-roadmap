@@ -1,0 +1,77 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/sql/content/108-advanced-sql-functions/101-string/103-replace.md"></div> <h1 id="replace">REPLACE</h1>
+<p>You can use the <code>REPLACE()</code> function in SQL to substitute all occurrences of a specified string.</p>
+<p><strong>Synopsis</strong></p>
+<p><code>REPLACE(input_string, string_to_replace, replacement_string)</code></p>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>input_string</code>: This is the original string where you want to replace some characters.</li>
+<li><code>string_to_replace</code>: This is the string that will be searched for in the original string.</li>
+<li><code>replacement_string</code>: This is the string that will replace the <code>string_to_replace</code> in the original string.</li>
+</ul>
+<p>The <code>REPLACE()</code> function is handy when it comes to manipulating and modifying data in various ways, particularly when used in combination with other SQL data-manipulation functions.</p>
+<p><strong>Examples</strong></p>
+<p>Suppose we have the following table, <code>Employees</code>:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>EmpId</th><th>EmpName</th></tr></thead><tbody><tr><td>1</td><td>John Doe</td></tr><tr><td>2</td><td>Jane Doe</td></tr><tr><td>3</td><td>Jim Smith Doe</td></tr><tr><td>4</td><td>Jennifer Doe Smith</td></tr></tbody></table>
+<p>Here’s how you can use the <code>REPLACE()</code> function:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#FF79C6">SELECT</span><span style="color:#F8F8F2"> EmpId, EmpName,</span></span>
+<span class="line"><span style="color:#8BE9FD">REPLACE</span><span style="color:#F8F8F2">(EmpName, </span><span style="color:#E9F284">'</span><span style="color:#F1FA8C">Doe</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">, </span><span style="color:#E9F284">'</span><span style="color:#F1FA8C">Roe</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">) </span><span style="color:#FF79C6">as</span><span style="color:#F8F8F2"> ModifiedName</span></span>
+<span class="line"><span style="color:#FF79C6">FROM</span><span style="color:#F8F8F2"> Employees;</span></span>
+<span class="line"></span></code></pre>
+<p>After the execution of the above SQL, we will receive:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>EmpId</th><th>EmpName</th><th>ModifiedName</th></tr></thead><tbody><tr><td>1</td><td>John Doe</td><td>John Roe</td></tr><tr><td>2</td><td>Jane Doe</td><td>Jane Roe</td></tr><tr><td>3</td><td>Jim Smith Doe</td><td>Jim Smith Roe</td></tr><tr><td>4</td><td>Jennifer Doe Smith</td><td>Jennifer Roe Smith</td></tr></tbody></table>
+<p>You can see that all occurrences of ‘Doe’ are replaced with ‘Roe’.</p>

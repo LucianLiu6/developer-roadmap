@@ -1,0 +1,9 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/linux/content/110-disks-filesystems/102-mounts.md"></div> <h1 id="mounts">Mounts</h1>
+<p>In Linux environments, a very crucial concept related to disk management is the “mounting” of filesystems. Fundamentally, mounting in Linux refers to the process that allows the operating system to access data stored on underlying storage devices, such as hard drives or SSDs. This process attaches a filesystem (available on some storage medium) to a specific directory (also known as a mount point) in the Linux directory tree.</p>
+<p>The beauty of this approach lies in the unified and seamless manner in which Linux treats all files, irrespective of whether they reside on a local disk, network location, or any other kind of storage device.</p>
+<p>The <code>mount</code> command in Linux is used for mounting filesystems. When a specific filesystem is ‘mounted’ at a particular directory, the system can begin reading data from the device and interpreting it according to the filesystem’s rules.</p>
+<p>It’s worth noting that Linux has a special directory, <code>/mnt</code>, that is conventionally used as a temporary mount point for manual mounting and unmounting operations.</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="color:#50FA7B">mount</span><span style="color:#F1FA8C"> /dev/sdb1</span><span style="color:#F1FA8C"> /mnt</span></span>
+<span class="line"></span></code></pre>
+<p>The above command will mount the filesystem (assuming it’s a valid one) on the second partition of a second hard drive at the <code>/mnt</code> directory. After the partition is mounted, you can access the files using the <code>/mnt</code> directory.</p>
+<p>Understanding and managing mounts is crucial for effective Linux disk and filesystem management.</p>

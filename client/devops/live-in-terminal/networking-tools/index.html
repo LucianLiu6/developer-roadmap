@@ -1,0 +1,70 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/devops/content/102-live-in-terminal/105-networking-tools.md"></div> <h1 id="networking-tools">Networking Tools</h1>
+<p>Networking tools are used to troubleshoot network issues. They are also used to monitor network traffic and to test network connectivity. Some of the most common networking tools are:</p>
+<ul>
+<li><code>traceroute</code> - Traces the route taken by packets over an IP network.</li>
+<li><code>ping</code> - sends echo request packets to a host to test the Internet connection.</li>
+<li><code>mtr</code> - Combines the functionality of <code>traceroute</code> and <code>ping</code> into a single diagnostic tool.</li>
+<li><code>nmap</code> - Scans hosts for open ports.</li>
+<li><code>netstat</code> - Displays network connections, routing tables, interface statistics, masquerade connections, and multicast memberships.</li>
+<li><code>ufw</code> and <code>firewalld</code> - Firewall management tools.</li>
+<li><code>iptables</code> and <code>nftables</code> - Firewall management tools.</li>
+<li><code>tcpdump</code> - Dumps traffic on a network.</li>
+<li><code>dig</code> - DNS lookup utility.</li>
+<li><code>scp</code> - Secure copy.</li>
+</ul>
+<p><code>traceroute</code> command is a command in Linux that prints the route a network packet takes from its source (e.g. your computer) to the destination host (e.g., roadmap.sh). It is quite valuable in investigating slow network connections as it can help us spot the slow leg of the network packet journey through the internet.</p>
+<ul>
+<li><a href="https://linuxhint.com/run_traceroute_linux/" rel="noopener noreferrer nofollow" target="_blank">@article@How to Run Traceroute in Linux</a></li>
+</ul>
+<p><code>ping</code> (<strong>P</strong>acket <strong>In</strong>ternet <strong>G</strong>roper) command is used to check the network connectivity between host and server/host. This command takes as input the IP address or the URL and sends a data packet to the specified address with the message “PING” and get a response from the server/host this time is recorded which is called latency.</p>
+<ul>
+<li><a href="https://linuxize.com/post/linux-ping-command/" rel="noopener noreferrer nofollow" target="_blank">@article@What is ping command?</a></li>
+</ul>
+<p><code>mtr</code> combines the functionality of the traceroute and ping programs in a single network diagnostic tool.</p>
+<ul>
+<li><a href="https://www.javatpoint.com/linux-mtr" rel="noopener noreferrer nofollow" target="_blank">@article@Javatpoint: Linux mtr Command</a></li>
+<li><a href="https://www.tutorialspoint.com/unix_commands/mtr.htm" rel="noopener noreferrer nofollow" target="_blank">@article@mtr Linux command</a></li>
+<li><a href="https://www.devopsroles.com/how-to-traceroute-use-mtr-command-in-linux/" rel="noopener noreferrer nofollow" target="_blank">@article@How to traceroute use mtr command in Linux</a></li>
+</ul>
+<p>NMAP stands for Network Mapper and is an open-source tool used to explore and audit the network’s security, such as checking firewalls and scanning ports.</p>
+<ul>
+<li><a href="https://nmap.org/book/man.html" rel="noopener noreferrer nofollow" target="_blank">@article@NMAP Official Manual Book</a></li>
+<li><a href="https://www.freecodecamp.org/news/what-is-nmap-and-how-to-use-it-a-tutorial-for-the-greatest-scanning-tool-of-all-time/" rel="noopener noreferrer nofollow" target="_blank">@article@What is Nmap and How to Use it</a></li>
+</ul>
+<p>Netstat is a command line utility to display all the network connections on a system. It displays all the tcp, udp and unix socket connections. Apart from connected sockets it also displays listening sockets that are waiting for incoming connections.</p>
+<ul>
+<li><a href="https://www.tutorialspoint.com/unix_commands/netstat.htm" rel="noopener noreferrer nofollow" target="_blank">@article@netstat command in Linux with Examples</a></li>
+<li><a href="http://www.c-jump.com/CIS24/Slides/Networking/html_utils/netstat.html" rel="noopener noreferrer nofollow" target="_blank">@article@Netstat Tutorial</a></li>
+<li><a href="https://www.youtube.com/watch?v=bxFwpm4IobU" rel="noopener noreferrer nofollow" target="_blank">@video@Netstat Commands - Network Administration Tutorial</a></li>
+<li><a href="https://www.youtube.com/watch?v=zGNcvBaN5wE" rel="noopener noreferrer nofollow" target="_blank">@video@Linux Command Line Tutorial For Beginners - netstat command</a></li>
+</ul>
+<p>UFW, or <em>uncomplicated firewall</em>, is command-line based utility for managing firewall rules in Arch Linux, Debian and Ubuntu. It’s aim is to make firewall configuration as simple as possible. It is a frontend for the <code>iptables</code> firewalling tool.</p>
+<ul>
+<li><a href="https://manpages.ubuntu.com/manpages/trusty/man8/ufw.8.html" rel="noopener noreferrer nofollow" target="_blank">@article@ufw Documentation</a></li>
+<li><a href="https://www.linux.com/training-tutorials/introduction-uncomplicated-firewall-ufw/" rel="noopener noreferrer nofollow" target="_blank">@article@Basic Introduction to UFW</a></li>
+<li><a href="https://www.digitalocean.com/community/tutorials/ufw-essentials-common-firewall-rules-and-commands" rel="noopener noreferrer nofollow" target="_blank">@article@UFW Essentials</a></li>
+</ul>
+<p>IPtables is a command-line firewall utility that uses policy chains to allow or block traffic that will be enforced by the linux kernel’s netfilter framework. Iptables packet filtering mechanism is organized into three different kinds of structures: tables, chains and targets.</p>
+<ul>
+<li><a href="https://www.hostinger.in/tutorials/iptables-tutorial" rel="noopener noreferrer nofollow" target="_blank">@article@Iptables tutorial</a></li>
+<li><a href="https://erravindrapawadia.medium.com/iptables-tutorial-beginners-to-advanced-guide-to-linux-firewall-839e10501759" rel="noopener noreferrer nofollow" target="_blank">@article@Beginners to Advanced Guide Iptables</a></li>
+</ul>
+<p><code>tcpdump</code> is a command line tool used for analysing network traffic passing through your system. It can be used to capture and filter packets and display them in a human-readable format. The captured information can be analysed at a later date as well.</p>
+<ul>
+<li><a href="https://www.tcpdump.org/manpages/tcpdump.1.html" rel="noopener noreferrer nofollow" target="_blank">@article@tcpdump Documentation</a></li>
+<li><a href="https://opensource.com/article/18/10/introduction-tcpdump" rel="noopener noreferrer nofollow" target="_blank">@article@Basic Introduction to Tcpdump</a></li>
+<li><a href="https://danielmiessler.com/study/tcpdump/" rel="noopener noreferrer nofollow" target="_blank">@article@50 ways to isolate traffic with Tcpdump</a></li>
+<li><a href="https://www.youtube.com/watch?v=7bsQP9sKHrs" rel="noopener noreferrer nofollow" target="_blank">@video@Interpreting Tcpdump output and data</a></li>
+</ul>
+<p><code>dig</code> command stands for <strong>D</strong>omain <strong>I</strong>nformation <strong>G</strong>roper. It is used for retrieving information about DNS name servers. It is mostly used by network administrators for verifying and troubleshooting DNS problems and to perform DNS lookups. It replaces older tools such as <code>nslookup</code> and the <code>host</code>.</p>
+<ul>
+<li><a href="https://linuxize.com/post/how-to-use-dig-command-to-query-dns-in-linux/" rel="noopener noreferrer nofollow" target="_blank">@article@More on dig</a></li>
+<li><a href="https://www.cloudflare.com/en-gb/learning/dns/what-is-dns/" rel="noopener noreferrer nofollow" target="_blank">@article@What is DNS?</a></li>
+</ul>
+<p><code>SCP</code> is an acronym for Secure Copy Protocol.It is a command line utility that allows the user to securely copy files and directories between two locations usually between unix or linux systems.The protocol ensures the transmission of files is encrypted to prevent anyone with suspicious intentions from getting sensitive information.<code>SCP</code> uses encryption over an <code>SSH</code> (Secure Shell) connection, this ensures that the data being transferred is protected from suspicious attacks.</p>
+<ul>
+<li><a href="https://www.freecodecamp.org/news/scp-linux-command-example-how-to-ssh-file-transfer-from-remote-to-local/" rel="noopener noreferrer nofollow" target="_blank">@article@SCP Linux Command</a></li>
+<li><a href="https://www.tecmint.com/scp-commands-examples/" rel="noopener noreferrer nofollow" target="_blank">@article@10 SCP command examples</a></li>
+<li><a href="https://phoenixnap.com/kb/linux-scp-command" rel="noopener noreferrer nofollow" target="_blank">@article@SCP command explained</a></li>
+<li><a href="https://app.daily.dev/tags/networking?ref=roadmapsh" rel="noopener noreferrer nofollow" target="_blank">@feed@Explore top posts about Networking</a></li>
+</ul>

@@ -1,0 +1,43 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/sql/content/102-ddl/index.md"></div> <h1 id="data-definition-language-ddl">Data Definition Language (DDL)</h1>
+<p>Data Definition Language (DDL) is a subset of SQL. Its primary function is to create, modify, and delete database structures but not data. The commands in DDL are:</p>
+<ol>
+<li>
+<p><code>CREATE</code>: This command is used to create the database or its objects (like table, index, function, views, store procedure, and triggers).</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#FF79C6">CREATE</span><span style="color:#FF79C6"> TABLE</span><span style="color:#50FA7B"> table_name</span><span style="color:#F8F8F2"> (</span></span>
+<span class="line"><span style="color:#F8F8F2">column1 data_type(</span><span style="color:#FF79C6">size</span><span style="color:#F8F8F2">),</span></span>
+<span class="line"><span style="color:#F8F8F2">column2 data_type(</span><span style="color:#FF79C6">size</span><span style="color:#F8F8F2">),</span></span>
+<span class="line"><span style="color:#F8F8F2">...</span></span>
+<span class="line"><span style="color:#F8F8F2">);</span></span>
+<span class="line"></span></code></pre>
+</li>
+<li>
+<p><code>DROP</code>: This command is used to delete an existing database or table.</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#FF79C6">DROP</span><span style="color:#FF79C6"> TABLE</span><span style="color:#F8F8F2"> table_name;</span></span>
+<span class="line"></span></code></pre>
+</li>
+<li>
+<p><code>ALTER</code>: This is used to alter the structure of the database. It is used to add, delete/drop or modify columns in an existing table.</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#FF79C6">ALTER</span><span style="color:#FF79C6"> TABLE</span><span style="color:#F8F8F2"> table_name </span><span style="color:#FF79C6">ADD</span><span style="color:#F8F8F2"> column_name datatype;</span></span>
+<span class="line"><span style="color:#FF79C6">ALTER</span><span style="color:#FF79C6"> TABLE</span><span style="color:#F8F8F2"> table_name </span><span style="color:#FF79C6">DROP</span><span style="color:#F8F8F2"> COLUMN column_name;</span></span>
+<span class="line"><span style="color:#FF79C6">ALTER</span><span style="color:#FF79C6"> TABLE</span><span style="color:#F8F8F2"> table_name </span><span style="color:#FF79C6">MODIFY</span><span style="color:#F8F8F2"> COLUMN column_name datatype(</span><span style="color:#FF79C6">size</span><span style="color:#F8F8F2">);</span></span>
+<span class="line"></span></code></pre>
+</li>
+<li>
+<p><code>TRUNCATE</code>: This is used to remove all records from a table, including all spaces allocated for the records which are removed.</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#FF79C6">TRUNCATE</span><span style="color:#FF79C6"> TABLE</span><span style="color:#F8F8F2"> table_name;</span></span>
+<span class="line"></span></code></pre>
+</li>
+<li>
+<p><code>RENAME</code>: This is used to rename an object in the database.</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#6272A4">-- To rename a table</span></span>
+<span class="line"><span style="color:#FF79C6">ALTER</span><span style="color:#FF79C6"> TABLE</span><span style="color:#F8F8F2"> table_name</span></span>
+<span class="line"><span style="color:#F8F8F2">RENAME </span><span style="color:#FF79C6">TO</span><span style="color:#F8F8F2"> new_table_name;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6272A4">-- To rename a column</span></span>
+<span class="line"><span style="color:#FF79C6">ALTER</span><span style="color:#FF79C6"> TABLE</span><span style="color:#F8F8F2"> table_name</span></span>
+<span class="line"><span style="color:#F8F8F2">RENAME COLUMN old_column_name </span><span style="color:#FF79C6">TO</span><span style="color:#F8F8F2"> new_column_name;</span></span>
+<span class="line"></span></code></pre>
+</li>
+</ol>
+<p>Remember: In DDL operations, <code>COMMIT</code> and <code>ROLLBACK</code> statement cannot be performed because the MySQL engine automatically commits the changes.</p>
+<p>Remember to replace <code>table_name</code>, <code>column_name</code>, <code>datatype(size)</code>, <code>old_table_name</code>, and <code>new_table_name</code> in the examples above with your actual table names, column names, data types and sizes, and the old or new table names you want to specify.</p>

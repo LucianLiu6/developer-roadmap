@@ -1,0 +1,44 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/docker/content/109-container-security/100-image-security.md"></div> <h1 id="image-security">Image Security</h1>
+<p>Image security is a crucial aspect of deploying Docker containers in your environment. Ensuring the images you use are secure, up to date, and free of vulnerabilities is essential. In this section, we will review best practices and tools for securing and managing your Docker images.</p>
+<h2 id="use-trusted-image-sources">Use Trusted Image Sources</h2>
+<p>When pulling images from public repositories, always use trusted, official images as a starting point for your containerized applications. Official images are vetted by Docker and are regularly updated with security fixes. You can find these images on the Docker Hub or other trusted registries.</p>
+<ul>
+<li>Official Images: <a href="https://hub.docker.com/explore/" rel="noopener noreferrer nofollow" target="_blank">https://hub.docker.com/explore/</a></li>
+</ul>
+<p>When downloading images from other users or creating your own, always verify the source, and inspect the Dockerfile and other provided files to ensure they follow best practices and don’t introduce vulnerabilities.</p>
+<h2 id="keep-images-up-to-date">Keep Images Up-to-Date</h2>
+<p>Continuously monitor your images and update them regularly. This helps to minimize exposure to known vulnerabilities, as updates often contain security patches.</p>
+<p>You can use the following tools to scan and check for updates to your images:</p>
+<ul>
+<li>Docker Hub: <a href="https://hub.docker.com/" rel="noopener noreferrer nofollow" target="_blank">https://hub.docker.com/</a></li>
+<li>Anchore: <a href="https://anchore.com/" rel="noopener noreferrer nofollow" target="_blank">https://anchore.com/</a></li>
+<li>Clair: <a href="https://github.com/quay/clair" rel="noopener noreferrer nofollow" target="_blank">https://github.com/quay/clair</a></li>
+</ul>
+<h2 id="use-minimal-base-images">Use Minimal Base Images</h2>
+<p>A minimal base image contains only the bare essentials required to run a containerized application. The fewer components present in the base image, the smaller the attack surface for potential vulnerabilities.</p>
+<p>An example of a minimal base image is the Alpine Linux distribution, which is commonly used in Docker images due to its small footprint and security features.</p>
+<ul>
+<li>Alpine Linux: <a href="https://alpinelinux.org/" rel="noopener noreferrer nofollow" target="_blank">https://alpinelinux.org/</a></li>
+</ul>
+<h2 id="scan-images-for-vulnerabilities">Scan Images for Vulnerabilities</h2>
+<p>Regularly scan your images for known vulnerabilities using tools like Clair or Anchore. These tools can detect potential risks in your images and container configurations, allowing you to address them before pushing images to a registry or deploying them in production.</p>
+<h2 id="sign-and-verify-images">Sign and Verify Images</h2>
+<p>To ensure the integrity and authenticity of your images, always sign them using Docker Content Trust (DCT). DCT uses digital signatures to guarantee that the images you pull or push are the ones you expect and haven’t been tampered with in transit.</p>
+<p>Enable DCT for your Docker environment by setting the following environment variable:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#FF79C6">export</span><span style="color:#BD93F9"> DOCKER_CONTENT_TRUST</span><span style="color:#FF79C6">=</span><span style="color:#BD93F9">1</span></span>
+<span class="line"></span></code></pre>
+<h2 id="utilize-multi-stage-builds">Utilize Multi-Stage Builds</h2>
+<p>Multi-stage builds allow you to use multiple <code>FROM</code> instructions within the same Dockerfile. Each stage can have a different base image or set of instructions, but only the final stage determines the final image’s content. By using multi-stage builds, you can minimize the size and complexity of your final image, reducing the risk of vulnerabilities.</p>
+<p>Here’s an example Dockerfile using multi-stage builds:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="dockerfile"><code><span class="line"><span style="color:#6272A4"># Build stage</span></span>
+<span class="line"><span style="color:#FF79C6">FROM</span><span style="color:#F8F8F2"> node:12-alpine </span><span style="color:#FF79C6">AS</span><span style="color:#F8F8F2"> build</span></span>
+<span class="line"><span style="color:#FF79C6">WORKDIR</span><span style="color:#F8F8F2"> /app</span></span>
+<span class="line"><span style="color:#FF79C6">COPY</span><span style="color:#F8F8F2"> . .</span></span>
+<span class="line"><span style="color:#FF79C6">RUN</span><span style="color:#F8F8F2"> npm ci --production</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6272A4"># Final stage</span></span>
+<span class="line"><span style="color:#FF79C6">FROM</span><span style="color:#F8F8F2"> node:12-alpine</span></span>
+<span class="line"><span style="color:#FF79C6">COPY</span><span style="color:#F8F8F2"> --from=build /app /app</span></span>
+<span class="line"><span style="color:#FF79C6">CMD</span><span style="color:#F8F8F2"> [</span><span style="color:#F1FA8C">"npm"</span><span style="color:#F8F8F2">, </span><span style="color:#F1FA8C">"start"</span><span style="color:#F8F8F2">]</span></span>
+<span class="line"></span></code></pre>
+<p>By following these best practices for image security, you can minimize the risk of vulnerabilities and ensure the safety of your containerized applications.</p>

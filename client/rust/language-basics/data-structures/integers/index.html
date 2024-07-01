@@ -1,0 +1,107 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/rust/content/101-language-basics/103-data-structures/100-integers.md"></div> <h1 id="integers">Integers</h1>
+<p>In Rust, integers are a primitive data type that hold whole number values, both positive and negative. Integer types in Rust can be divided into signed and unsigned ones:</p>
+<ul>
+<li>Signed integers, denoted by “i”, are those that can hold negative, zero, and positive values.</li>
+<li>Unsigned integers, denoted by “u”, only hold zero and positive values.</li>
+</ul>
+<p>Each denotation is followed by a number which represents the number of bits they occupy in memory. The available integer types are:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Minimum</th><th>Maximum</th></tr></thead><tbody><tr><td>i8</td><td>-(2^7)</td><td>(2^7)-1</td></tr><tr><td>i16</td><td>-(2^15)</td><td>(2^15)-1</td></tr><tr><td>i32</td><td>-(2^31)</td><td>(2^31)-1</td></tr><tr><td>i64</td><td>-(2^63)</td><td>(2^63)-1</td></tr><tr><td>i128</td><td>-(2^127)</td><td>(2^127)-1)</td></tr><tr><td>isize</td><td>-(2^31) or -(2^63)</td><td>(2^31)-1 or (2^63)-1</td></tr></tbody></table>
+<p>The unsigned integer types consist of:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Minimum</th><th>Maximum</th></tr></thead><tbody><tr><td>u8</td><td>0</td><td>(2^8)-1</td></tr><tr><td>u16</td><td>0</td><td>(2^16)-1</td></tr><tr><td>u32</td><td>0</td><td>(2^32)-1</td></tr><tr><td>u64</td><td>0</td><td>(2^64)-1</td></tr><tr><td>u128</td><td>0</td><td>(2^128)-1</td></tr><tr><td>usize</td><td>0</td><td>(2^32)-1 or (2^64)-1</td></tr></tbody></table>
+<p>In these types, the number after “i” or “u” denotes the size of the integer type in bits.</p>
+<p>There’s also the <code>isize</code> and <code>usize</code> integer types. The sizes of these primitive are taken from the computer architecture (32/64 bits). When one of these types is declared, the compiler calculates, so to speak, how many bytes it takes to reference any location in memory. For example, on a 32-bit target, this is 4 bytes, and on a 64-bit target, this is 8 bytes.</p>
+<ul>
+<li>
+<p><a href="https://doc.rust-lang.org/book/ch03-02-data-types.html#integer-types" rel="noopener noreferrer nofollow" target="_blank">@article@Integer Data Type in Rust</a></p>
+</li>
+<li>
+<p><a href="https://www.programiz.com/rust/data-types#integer-type" rel="noopener noreferrer nofollow" target="_blank">@article@Rust Data Types (With Examples)</a></p>
+</li>
+<li>
+<p><a href="https://doc.rust-lang.org/reference/types/numeric.html#machine-dependent-integer-types" rel="noopener noreferrer nofollow" target="_blank">@article@Machine-dependent Integer Types</a></p>
+</li>
+</ul>
+<p>Learn more from the following links:</p>
+<ul>
+<li><a href="https://rust-book.cs.brown.edu/ch03-02-data-types.html#integer-types" rel="noopener noreferrer nofollow" target="_blank">@article@Integer Types</a></li>
+</ul>

@@ -1,0 +1,18 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/linux/content/108-service-management/103-creating-services.md"></div> <h1 id="creating-services">Creating Services</h1>
+<p>In Linux, service management refers to starting, stopping, enabling, and managing software services. Understanding how to control services is crucial for controlling a Linux server or desktop.</p>
+<p>Typically, a service is an application that runs in the background waiting to be used, or carrying out essential tasks. Common kinds of services include web servers, database servers, and mail servers.</p>
+<p>Creating services in Linux would thus refer to the process of setting up these background applications to run and perform the desired tasks. This process often includes writing service files (script) that specify how to start, stop, and restart the service using a service management system.</p>
+<p>The most common service management system in modern Linux distributions is systemd. With systemd, services are defined by placing service unit files in specific directories.</p>
+<p>For instance, we could create a simple <code>my_service.service</code> file:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>[Unit]</span></span>
+<span class="line"><span>Description=My Custom Service</span></span>
+<span class="line"><span>After=network.target</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>[Service]</span></span>
+<span class="line"><span>ExecStart=/path/to/your/executable</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>[Install]</span></span>
+<span class="line"><span>WantedBy=multi-user.target</span></span>
+<span class="line"><span></span></span></code></pre>
+<p>This service file can be placed under <code>/etc/systemd/system/</code> to make systemd recognize it. You would then control the service using <code>systemctl</code>, systemd’s command tool.</p>
+<p>Note that best practices in Linux dictate that we should not run services as root whenever possible, for security reasons. Instead, we should create a new user to run the service.</p>

@@ -1,0 +1,12 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/linux/content/103-working-with-files/103-soft-hard-links.md"></div> <h1 id="soft-and-hard-links">Soft and Hard Links</h1>
+<p>In Unix-like operating systems like Linux, soft (symbolic) and hard links are simply references to existing files that allow users to create shortcuts and duplication effects within their file system.</p>
+<p>A hard link is a mirror reflection of the original file, sharing the same file data but displaying a different name and inode number. It’s vital to note that if the original file is deleted, the hard link still retains the file data.</p>
+<p>On the other hand, a soft link, also known as a symbolic link, is more like a shortcut to the original file. It has a different inode number and the file data resides only in the original file. If the original file is removed, the symbolic link breaks and will not work until the original file is restored.</p>
+<p>Below is an example of how to create a soft link and a hard link in Linux:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6272A4"># Create a hard link</span></span>
+<span class="line"><span style="color:#50FA7B">ln</span><span style="color:#F1FA8C"> source_file.txt</span><span style="color:#F1FA8C"> hard_link.txt</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6272A4"># Create a soft link</span></span>
+<span class="line"><span style="color:#50FA7B">ln</span><span style="color:#BD93F9"> -s</span><span style="color:#F1FA8C"> source_file.txt</span><span style="color:#F1FA8C"> soft_link.txt</span></span>
+<span class="line"></span></code></pre>
+<p>Please, understand that <code>source_file.txt</code> is the original file and <code>hard_link.txt</code> &#x26; <code>soft_link.txt</code> are the hard and soft links respectively.</p>

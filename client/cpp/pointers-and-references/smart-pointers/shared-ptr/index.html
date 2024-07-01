@@ -1,0 +1,40 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/cpp/content/105-pointers-and-references/smart-pointers/101-shared-ptr.md"></div> <h1 id="shared-pointer">Shared Pointer</h1>
+<p>A <code>shared_ptr</code> is a type of smart pointer in C++ that allows multiple pointers to share ownership of a dynamically allocated object. The object will be automatically deallocated only when the last <code>shared_ptr</code> that points to it is destroyed.</p>
+<p>When using a <code>shared_ptr</code>, the reference counter is automatically incremented every time a new pointer is created, and decremented when each pointer goes out of scope. Once the reference counter reaches zero, the system will clean up the memory.</p>
+<h2 id="code-example">Code Example</h2>
+<p>Here’s an example of how to use <code>shared_ptr</code>:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#FF79C6">#include</span><span style="color:#E9F284"> &#x3C;</span><span style="color:#F1FA8C">iostream</span><span style="color:#E9F284">></span></span>
+<span class="line"><span style="color:#FF79C6">#include</span><span style="color:#E9F284"> &#x3C;</span><span style="color:#F1FA8C">memory</span><span style="color:#E9F284">></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">class</span><span style="color:#8BE9FD"> MyClass</span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#FF79C6">public:</span></span>
+<span class="line"><span style="color:#50FA7B">    MyClass</span><span style="color:#F8F8F2">() { std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">cout </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C">Constructor is called.</span><span style="color:#E9F284">"</span><span style="color:#FF79C6"> &#x3C;&#x3C;</span><span style="color:#F8F8F2"> std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">endl; }</span></span>
+<span class="line"><span style="color:#50FA7B">    ~MyClass</span><span style="color:#F8F8F2">() { std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">cout </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C">Destructor is called.</span><span style="color:#E9F284">"</span><span style="color:#FF79C6"> &#x3C;&#x3C;</span><span style="color:#F8F8F2"> std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">endl; }</span></span>
+<span class="line"><span style="color:#F8F8F2">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">int</span><span style="color:#50FA7B"> main</span><span style="color:#F8F8F2">() {</span></span>
+<span class="line"><span style="color:#6272A4">    // create a shared pointer to manage the MyClass object</span></span>
+<span class="line"><span style="color:#F8F8F2">    std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">shared_ptr</span><span style="color:#FF79C6">&#x3C;</span><span style="color:#F8F8F2">MyClass</span><span style="color:#FF79C6">></span><span style="color:#50FA7B"> ptr1</span><span style="color:#F8F8F2">(</span><span style="color:#FF79C6;font-weight:bold">new</span><span style="color:#50FA7B"> MyClass</span><span style="color:#F8F8F2">());</span></span>
+<span class="line"><span style="color:#F8F8F2">    </span></span>
+<span class="line"><span style="color:#F8F8F2">    {</span></span>
+<span class="line"><span style="color:#6272A4">        // create another shared pointer and initialize it with the previously created pointer</span></span>
+<span class="line"><span style="color:#F8F8F2">        std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">shared_ptr</span><span style="color:#FF79C6">&#x3C;</span><span style="color:#F8F8F2">MyClass</span><span style="color:#FF79C6">></span><span style="color:#F8F8F2"> ptr2 </span><span style="color:#FF79C6">=</span><span style="color:#F8F8F2"> ptr1;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F8F8F2">        std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">cout </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C">Inside the inner scope.</span><span style="color:#E9F284">"</span><span style="color:#FF79C6"> &#x3C;&#x3C;</span><span style="color:#F8F8F2"> std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">endl;</span></span>
+<span class="line"><span style="color:#6272A4">        // both pointers share the same object, and the reference counter has been increased to 2</span></span>
+<span class="line"><span style="color:#F8F8F2">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F8F8F2">    std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">cout </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C">Outside the inner scope.</span><span style="color:#E9F284">"</span><span style="color:#FF79C6"> &#x3C;&#x3C;</span><span style="color:#F8F8F2"> std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">endl;</span></span>
+<span class="line"><span style="color:#6272A4">    // leaving the inner scope will destroy ptr2, and the reference counter is decremented to 1</span></span>
+<span class="line"><span style="color:#F8F8F2">    </span></span>
+<span class="line"><span style="color:#6272A4">    // the main function returns, ptr1 goes out of scope, and the reference counter becomes 0</span></span>
+<span class="line"><span style="color:#6272A4">    // this causes the MyClass object to be deleted and the destructor is called</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"></span></code></pre>
+<p>Output:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Constructor is called.</span></span>
+<span class="line"><span>Inside the inner scope.</span></span>
+<span class="line"><span>Outside the inner scope.</span></span>
+<span class="line"><span>Destructor is called.</span></span>
+<span class="line"><span></span></span></code></pre>
+<p>In this example, <code>ptr1</code> and <code>ptr2</code> share ownership of the same object. The object is only destroyed when both pointers go out of scope and the reference counter becomes zero.</p>

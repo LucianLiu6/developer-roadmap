@@ -1,0 +1,25 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/typescript/content/113-modules/index.md"></div> <h1 id="modules">Modules</h1>
+<p>In TypeScript, modules are used to organize and reuse code. There are two types of modules in TypeScript:</p>
+<ul>
+<li>Internal</li>
+<li>External</li>
+</ul>
+<p>Internal modules are used to organize code within a file and are also referred to as namespaces. They are defined using the “namespace” keyword.</p>
+<p>External modules are used to organize code across multiple files. They are defined using the “export” keyword in one file and the “import” keyword in another file. External modules in TypeScript follow the CommonJS or ES modules standards.</p>
+<p>Here is an example of how you can use internal modules in TypeScript:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="typescript"><code><span class="line"><span style="color:#6272A4">// myModule.ts</span></span>
+<span class="line"><span style="color:#FF79C6">namespace</span><span style="color:#8BE9FD;font-style:italic"> MyModule</span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#FF79C6">  export</span><span style="color:#FF79C6"> function</span><span style="color:#50FA7B"> doSomething</span><span style="color:#F8F8F2">() {</span></span>
+<span class="line"><span style="color:#F8F8F2">    console.</span><span style="color:#50FA7B">log</span><span style="color:#F8F8F2">(</span><span style="color:#E9F284">'</span><span style="color:#F1FA8C">Doing something...</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">);</span></span>
+<span class="line"><span style="color:#F8F8F2">  }</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6272A4">// main.ts</span></span>
+<span class="line"><span style="color:#6272A4">/// &#x3C;</span><span style="color:#FF79C6">reference</span><span style="color:#50FA7B;font-style:italic"> path</span><span style="color:#FF79C6">=</span><span style="color:#E9F284">"</span><span style="color:#F1FA8C">myModule.ts</span><span style="color:#E9F284">"</span><span style="color:#6272A4"> /></span></span>
+<span class="line"><span style="color:#F8F8F2">MyModule.</span><span style="color:#50FA7B">doSomething</span><span style="color:#F8F8F2">(); </span><span style="color:#6272A4">// Output: "Doing something..."</span></span>
+<span class="line"></span></code></pre>
+<p>Learn more from the following links:</p>
+<ul>
+<li><a href="https://www.typescriptlang.org/docs/handbook/modules.html#handbook-content" rel="noopener noreferrer nofollow" target="_blank">@article@Modules</a></li>
+<li><a href="https://www.youtube.com/watch?v=EpOPR03z4Vw" rel="noopener noreferrer nofollow" target="_blank">@video@TypeScript - Modules</a></li>
+</ul>

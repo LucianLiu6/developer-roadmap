@@ -1,0 +1,50 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/cpp/content/libraries/107-spdlog.md"></div> <h1 id="spdlog">Spdlog</h1>
+<p><code>spdlog</code> is a fast, header-only, C++ logging library. It provides a simple and efficient way to add diagnostic logging to your C++ application.</p>
+<h2 id="features">Features:</h2>
+<ul>
+<li>Header-only, no need to build or link a library</li>
+<li>Highly configurable, including support for custom log sinks (e.g. writing to a file or a database)</li>
+<li>Asynchronous and synchronous logging modes</li>
+<li>Preprocessor-based format string checks to catch bugs at compile-time</li>
+<li>Easy to extend with custom formatters, sinks, and levels</li>
+</ul>
+<h2 id="usage-example">Usage example:</h2>
+<p>Include the <code>spdlog</code> header, create a logger object, and use it to log messages:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#FF79C6">#include</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C">spdlog/spdlog.h</span><span style="color:#E9F284">"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">int</span><span style="color:#50FA7B"> main</span><span style="color:#F8F8F2">() {</span></span>
+<span class="line"><span style="color:#6272A4">    // Create a logger with the name "example_logger"</span></span>
+<span class="line"><span style="color:#FF79C6">    auto</span><span style="color:#F8F8F2"> logger </span><span style="color:#FF79C6">=</span><span style="color:#F8F8F2"> spdlog</span><span style="color:#FF79C6">::</span><span style="color:#50FA7B">stdout_color_mt</span><span style="color:#F8F8F2">(</span><span style="color:#E9F284">"</span><span style="color:#F1FA8C">example_logger</span><span style="color:#E9F284">"</span><span style="color:#F8F8F2">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6272A4">    // Log messages with various severity levels</span></span>
+<span class="line"><span style="color:#F8F8F2">    logger</span><span style="color:#FF79C6">-></span><span style="color:#50FA7B">info</span><span style="color:#F8F8F2">(</span><span style="color:#E9F284">"</span><span style="color:#F1FA8C">Welcome to spdlog!</span><span style="color:#E9F284">"</span><span style="color:#F8F8F2">);</span></span>
+<span class="line"><span style="color:#F8F8F2">    logger</span><span style="color:#FF79C6">-></span><span style="color:#50FA7B">warn</span><span style="color:#F8F8F2">(</span><span style="color:#E9F284">"</span><span style="color:#F1FA8C">Warning message</span><span style="color:#E9F284">"</span><span style="color:#F8F8F2">);</span></span>
+<span class="line"><span style="color:#F8F8F2">    logger</span><span style="color:#FF79C6">-></span><span style="color:#50FA7B">error</span><span style="color:#F8F8F2">(</span><span style="color:#E9F284">"</span><span style="color:#F1FA8C">Error message</span><span style="color:#E9F284">"</span><span style="color:#F8F8F2">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">    return</span><span style="color:#BD93F9"> 0</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"></span></code></pre>
+<h2 id="custom-sink-example">Custom sink example:</h2>
+<p>Here’s an example of creating a logger with a custom sink that writes to a text file:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#FF79C6">#include</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C">spdlog/spdlog.h</span><span style="color:#E9F284">"</span></span>
+<span class="line"><span style="color:#FF79C6">#include</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C">spdlog/sinks/basic_file_sink.h</span><span style="color:#E9F284">"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">int</span><span style="color:#50FA7B"> main</span><span style="color:#F8F8F2">() {</span></span>
+<span class="line"><span style="color:#6272A4">    // Create a file sink to write logs to "logs.txt"</span></span>
+<span class="line"><span style="color:#FF79C6">    auto</span><span style="color:#F8F8F2"> file_sink </span><span style="color:#FF79C6">=</span><span style="color:#F8F8F2"> std</span><span style="color:#FF79C6">::</span><span style="color:#50FA7B">make_shared</span><span style="color:#F8F8F2">&#x3C;spdlog</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">sinks</span><span style="color:#FF79C6">::</span><span style="color:#8BE9FD;font-style:italic">basic_file_sink_mt</span><span style="color:#F8F8F2">>(</span><span style="color:#E9F284">"</span><span style="color:#F1FA8C">logs.txt</span><span style="color:#E9F284">"</span><span style="color:#F8F8F2">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6272A4">    // Create a logger with the file sink and the name "example_logger"</span></span>
+<span class="line"><span style="color:#FF79C6">    auto</span><span style="color:#F8F8F2"> logger </span><span style="color:#FF79C6">=</span><span style="color:#F8F8F2"> std</span><span style="color:#FF79C6">::</span><span style="color:#50FA7B">make_shared</span><span style="color:#F8F8F2">&#x3C;spdlog</span><span style="color:#FF79C6">::</span><span style="color:#8BE9FD;font-style:italic">logger</span><span style="color:#F8F8F2">>(</span><span style="color:#E9F284">"</span><span style="color:#F1FA8C">example_logger</span><span style="color:#E9F284">"</span><span style="color:#F8F8F2">, file_sink);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6272A4">    // Register the logger</span></span>
+<span class="line"><span style="color:#F8F8F2">    spdlog</span><span style="color:#FF79C6">::</span><span style="color:#50FA7B">register_logger</span><span style="color:#F8F8F2">(logger);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6272A4">    // Log messages</span></span>
+<span class="line"><span style="color:#F8F8F2">    logger</span><span style="color:#FF79C6">-></span><span style="color:#50FA7B">info</span><span style="color:#F8F8F2">(</span><span style="color:#E9F284">"</span><span style="color:#F1FA8C">Welcome to spdlog!</span><span style="color:#E9F284">"</span><span style="color:#F8F8F2">);</span></span>
+<span class="line"><span style="color:#F8F8F2">    logger</span><span style="color:#FF79C6">-></span><span style="color:#50FA7B">warn</span><span style="color:#F8F8F2">(</span><span style="color:#E9F284">"</span><span style="color:#F1FA8C">Warning message</span><span style="color:#E9F284">"</span><span style="color:#F8F8F2">);</span></span>
+<span class="line"><span style="color:#F8F8F2">    logger</span><span style="color:#FF79C6">-></span><span style="color:#50FA7B">error</span><span style="color:#F8F8F2">(</span><span style="color:#E9F284">"</span><span style="color:#F1FA8C">Error message</span><span style="color:#E9F284">"</span><span style="color:#F8F8F2">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">    return</span><span style="color:#BD93F9"> 0</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"></span></code></pre>
+<p>For more examples and detailed documentation, visit the <a href="https://github.com/gabime/spdlog" rel="noopener noreferrer nofollow" target="_blank">spdlog GitHub repository</a>.</p>

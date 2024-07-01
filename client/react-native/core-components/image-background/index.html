@@ -1,0 +1,37 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/react-native/content/104-core-components/104-image-background.md"></div> <h1 id="imagebackground">ImageBackground</h1>
+<p><code>ImageBackground</code> is a React Native core component that allows you to display an image as a background while still being able to place content inside the component. This helps in creating beautiful layouts with images and text or other content on top.</p>
+<p>To use <code>ImageBackground</code>, you need to import it from the <code>react-native</code> package and then include it in your JSX.</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#FF79C6">import</span><span style="color:#F8F8F2"> React </span><span style="color:#FF79C6">from</span><span style="color:#E9F284"> '</span><span style="color:#F1FA8C">react</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"><span style="color:#FF79C6">import</span><span style="color:#F8F8F2"> { View, Text, ImageBackground, StyleSheet } </span><span style="color:#FF79C6">from</span><span style="color:#E9F284"> '</span><span style="color:#F1FA8C">react-native</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">const</span><span style="color:#50FA7B"> App</span><span style="color:#FF79C6"> =</span><span style="color:#F8F8F2"> () </span><span style="color:#FF79C6">=></span><span style="color:#F8F8F2"> (</span></span>
+<span class="line"><span style="color:#F8F8F2">  &#x3C;</span><span style="color:#8BE9FD;font-style:italic">ImageBackground</span></span>
+<span class="line"><span style="color:#50FA7B;font-style:italic">    source</span><span style="color:#FF79C6">={</span><span style="color:#F8F8F2">{ uri</span><span style="color:#FF79C6">:</span><span style="color:#E9F284"> '</span><span style="color:#F1FA8C">https://some-image-url.com/background.jpg</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2"> }</span><span style="color:#FF79C6">}</span></span>
+<span class="line"><span style="color:#50FA7B;font-style:italic">    style</span><span style="color:#FF79C6">={</span><span style="color:#F8F8F2">styles.background</span><span style="color:#FF79C6">}</span></span>
+<span class="line"><span style="color:#50FA7B;font-style:italic">    resizeMode</span><span style="color:#FF79C6">=</span><span style="color:#E9F284">"</span><span style="color:#F1FA8C">cover</span><span style="color:#E9F284">"</span></span>
+<span class="line"><span style="color:#F8F8F2">  ></span></span>
+<span class="line"><span style="color:#F8F8F2">    &#x3C;</span><span style="color:#8BE9FD;font-style:italic">Text</span><span style="color:#50FA7B;font-style:italic"> style</span><span style="color:#FF79C6">={</span><span style="color:#F8F8F2">styles.text</span><span style="color:#FF79C6">}</span><span style="color:#F8F8F2">>Hello, World!&#x3C;/</span><span style="color:#8BE9FD;font-style:italic">Text</span><span style="color:#F8F8F2">></span></span>
+<span class="line"><span style="color:#F8F8F2">  &#x3C;/</span><span style="color:#8BE9FD;font-style:italic">ImageBackground</span><span style="color:#F8F8F2">></span></span>
+<span class="line"><span style="color:#F8F8F2">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">const</span><span style="color:#F8F8F2"> styles </span><span style="color:#FF79C6">=</span><span style="color:#F8F8F2"> StyleSheet.</span><span style="color:#50FA7B">create</span><span style="color:#F8F8F2">({</span></span>
+<span class="line"><span style="color:#F8F8F2">  background</span><span style="color:#FF79C6">:</span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#F8F8F2">    flex</span><span style="color:#FF79C6">:</span><span style="color:#BD93F9"> 1</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#F8F8F2">    justifyContent</span><span style="color:#FF79C6">:</span><span style="color:#E9F284"> '</span><span style="color:#F1FA8C">center</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#F8F8F2">  },</span></span>
+<span class="line"><span style="color:#F8F8F2">  text</span><span style="color:#FF79C6">:</span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#F8F8F2">    color</span><span style="color:#FF79C6">:</span><span style="color:#E9F284"> '</span><span style="color:#F1FA8C">white</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#F8F8F2">    fontSize</span><span style="color:#FF79C6">:</span><span style="color:#BD93F9"> 42</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#F8F8F2">    lineHeight</span><span style="color:#FF79C6">:</span><span style="color:#BD93F9"> 84</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#F8F8F2">    fontWeight</span><span style="color:#FF79C6">:</span><span style="color:#E9F284"> '</span><span style="color:#F1FA8C">bold</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#F8F8F2">    textAlign</span><span style="color:#FF79C6">:</span><span style="color:#E9F284"> '</span><span style="color:#F1FA8C">center</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#F8F8F2">  },</span></span>
+<span class="line"><span style="color:#F8F8F2">});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">export</span><span style="color:#FF79C6"> default</span><span style="color:#F8F8F2"> App;</span></span>
+<span class="line"></span></code></pre>
+<p>In the above example, <code>source</code> prop is used to add the image URL, <code>style</code> prop for adding some custom styling, and <code>resizeMode</code> to define how the image should stretch to fill the available space. The <code>Text</code> component inside the <code>ImageBackground</code> is then rendered on top of the image.</p>
+<p>For more information and details, you can refer to the React Native docs:</p>
+<ul>
+<li><a href="https://reactnative.dev/docs/imagebackground" rel="noopener noreferrer nofollow" target="_blank">@article@Image Background - React Native</a></li>
+</ul>

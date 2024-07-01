@@ -1,0 +1,56 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/mongodb/content/102-collections/101-insert-methods.md"></div> <h1 id="insert-and-relevant">insert() and relevant</h1>
+<p>In MongoDB, collections are used to store documents. To add data into these collections, MongoDB provides two primary insertion methods: <code>insertOne()</code> and <code>insertMany()</code>. In this section, we’ll explore the usage and syntax of these methods, along with their options and some basic examples.</p>
+<h2 id="insertone">insertOne()</h2>
+<p>The <code>insertOne()</code> method is used to insert a single document into a collection. This method returns an <code>InsertOneResult</code> object, that shows the outcome of the operation.</p>
+<p><strong>Syntax:</strong></p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F8F8F2">db.collection.</span><span style="color:#50FA7B">insertOne</span><span style="color:#F8F8F2">(</span></span>
+<span class="line"><span style="color:#F8F8F2">   &#x3C;</span><span style="color:#FF79C6">document</span><span style="color:#F8F8F2">>,</span></span>
+<span class="line"><span style="color:#FF79C6">   {</span></span>
+<span class="line"><span style="color:#F8F8F2">      writeConcern: &#x3C;</span><span style="color:#FF79C6">document</span><span style="color:#F8F8F2">>,</span></span>
+<span class="line"><span style="color:#F8F8F2">      ordered: &#x3C;</span><span style="color:#FF79C6">boolean</span><span style="color:#F8F8F2">>,</span></span>
+<span class="line"><span style="color:#F8F8F2">      bypassDocumentValidation: &#x3C;</span><span style="color:#FF79C6">boolean</span><span style="color:#F8F8F2">>,</span></span>
+<span class="line"><span style="color:#F8F8F2">      comment: &#x3C;</span><span style="color:#FF79C6">any</span><span style="color:#F8F8F2">></span></span>
+<span class="line"><span style="color:#F8F8F2">   }</span></span>
+<span class="line"><span style="color:#F8F8F2">)</span></span>
+<span class="line"></span></code></pre>
+<p><strong>Options:</strong></p>
+<ul>
+<li><code>writeConcern:</code> An optional document specifying the level of acknowledgment requested from MongoDB for the write operation.</li>
+<li><code>ordered:</code> An optional boolean flag. When set to <code>true</code>, MongoDB will return an error if it encounters a duplicate document in the operation. Default is also <code>true</code>.</li>
+<li><code>bypassDocumentValidation:</code> Optional boolean flag. To validate or not to validate the document against the collection’s validation rules. Default is <code>false</code>.</li>
+<li><code>comment:</code> An optional string or BSON that can be used for descriptive purposes when profiling operations.</li>
+</ul>
+<p><strong>Example:</strong></p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F8F8F2">db.inventory.</span><span style="color:#50FA7B">insertOne</span><span style="color:#F8F8F2">({</span></span>
+<span class="line"><span style="color:#F8F8F2">  item</span><span style="color:#FF79C6">:</span><span style="color:#E9F284"> '</span><span style="color:#F1FA8C">book</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#F8F8F2">  qty</span><span style="color:#FF79C6">:</span><span style="color:#BD93F9"> 1</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#F8F8F2">});</span></span>
+<span class="line"></span></code></pre>
+<h2 id="insertmany">insertMany()</h2>
+<p>The <code>insertMany()</code> method is used to insert multiple documents into a collection at once. It returns an <code>InsertManyResult</code> object, displaying the status of the operation.</p>
+<p><strong>Syntax:</strong></p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F8F8F2">db.collection.</span><span style="color:#50FA7B">insertMany</span><span style="color:#F8F8F2">(</span></span>
+<span class="line"><span style="color:#F8F8F2">   [ &#x3C;</span><span style="color:#8BE9FD;font-style:italic">document_1</span><span style="color:#F8F8F2">>, &#x3C;</span><span style="color:#8BE9FD;font-style:italic">document_2</span><span style="color:#F8F8F2">>, ... ],</span></span>
+<span class="line"><span style="color:#FF79C6">   {</span></span>
+<span class="line"><span style="color:#F8F8F2">      writeConcern: &#x3C;</span><span style="color:#FF79C6">document</span><span style="color:#F8F8F2">>,</span></span>
+<span class="line"><span style="color:#F8F8F2">      ordered: &#x3C;</span><span style="color:#FF79C6">boolean</span><span style="color:#F8F8F2">>,</span></span>
+<span class="line"><span style="color:#F8F8F2">      bypassDocumentValidation: &#x3C;</span><span style="color:#FF79C6">boolean</span><span style="color:#F8F8F2">>,</span></span>
+<span class="line"><span style="color:#F8F8F2">      comment: &#x3C;</span><span style="color:#FF79C6">any</span><span style="color:#F8F8F2">></span></span>
+<span class="line"><span style="color:#F8F8F2">   }</span></span>
+<span class="line"><span style="color:#F8F8F2">)</span></span>
+<span class="line"></span></code></pre>
+<p><strong>Options:</strong></p>
+<ul>
+<li><code>writeConcern:</code> Same as mentioned in <code>insertOne()</code> method.</li>
+<li><code>ordered:</code> Same as mentioned in <code>insertOne()</code> method. When set to <code>true</code>, MongoDB will insert the documents in the array’s order. If a fail occurs, it will stop further processing of the documents. Default is <code>true</code>.</li>
+<li><code>bypassDocumentValidation:</code> Same as mentioned in <code>insertOne()</code> method.</li>
+<li><code>comment:</code> Same as mentioned in <code>insertOne()</code> method.</li>
+</ul>
+<p><strong>Example:</strong></p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F8F8F2">db.inventory.</span><span style="color:#50FA7B">insertMany</span><span style="color:#F8F8F2">([</span></span>
+<span class="line"><span style="color:#F8F8F2">  { item</span><span style="color:#FF79C6">:</span><span style="color:#E9F284"> '</span><span style="color:#F1FA8C">pen</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">, qty</span><span style="color:#FF79C6">:</span><span style="color:#BD93F9"> 5</span><span style="color:#F8F8F2"> },</span></span>
+<span class="line"><span style="color:#F8F8F2">  { item</span><span style="color:#FF79C6">:</span><span style="color:#E9F284"> '</span><span style="color:#F1FA8C">pencil</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">, qty</span><span style="color:#FF79C6">:</span><span style="color:#BD93F9"> 10</span><span style="color:#F8F8F2"> },</span></span>
+<span class="line"><span style="color:#F8F8F2">  { item</span><span style="color:#FF79C6">:</span><span style="color:#E9F284"> '</span><span style="color:#F1FA8C">notebook</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">, qty</span><span style="color:#FF79C6">:</span><span style="color:#BD93F9"> 25</span><span style="color:#F8F8F2"> },</span></span>
+<span class="line"><span style="color:#F8F8F2">]);</span></span>
+<span class="line"></span></code></pre>
+<p>In conclusion, insert methods in MongoDB allow users to add documents to a collection with a few simple commands. By understanding the syntax and options available for <code>insertOne()</code> and <code>insertMany()</code>, we can efficiently store and manage data within MongoDB collections.</p>

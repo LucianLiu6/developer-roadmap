@@ -1,0 +1,82 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/sql/content/115-advanced-sql/102-window-functions/104-lag.md"></div> <h1 id="lag">lag</h1>
+<p><code>LAG</code> is a window function provided by SQL that allows us to fetch data from a previous row in the same result set without using a self-join. This function is commonly used in data analysis, for instance, comparing sales in a certain period with sales in a previous period.</p>
+<p>The general syntax for using the <code>LAG</code> function is as follows:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#8BE9FD">LAG</span><span style="color:#F8F8F2"> (expression [, offset [, default]])</span></span>
+<span class="line"><span style="color:#FF79C6">OVER</span><span style="color:#F8F8F2"> (</span></span>
+<span class="line"><span style="color:#F8F8F2">    [PARTITION BY partition_expression, ... ]</span></span>
+<span class="line"><span style="color:#FF79C6">    ORDER BY</span><span style="color:#F8F8F2"> sort_expression [ASC | DESC], ...</span></span>
+<span class="line"><span style="color:#F8F8F2">)</span></span>
+<span class="line"></span></code></pre>
+<p>Let’s break down this syntax:</p>
+<ul>
+<li><code>expression</code>: This is the value to return from a previous row. If you specify multiple expressions, <code>LAG</code> treats them as a single compound expression.</li>
+<li><code>offset</code>: This is an optional section where you specify the number of steps to reachback. By default, the <code>offset</code> is 1, meaning that it gets the value from a previous row.</li>
+<li><code>default</code>: This is another optional section where you define a value to return if the <code>LAG</code> function accesses beyond the scope of partition. By default, it returns NULL.</li>
+</ul>
+<h2 id="example">Example</h2>
+<p>Suppose we have the following ‘sales’ table:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Year</th><th>Sales</th></tr></thead><tbody><tr><td>2017</td><td>200</td></tr><tr><td>2018</td><td>250</td></tr><tr><td>2019</td><td>300</td></tr><tr><td>2020</td><td>350</td></tr></tbody></table>
+<p>You’d like to compare the sales of each year to the sales of the previous year. Here’s how you can do it using the <code>LAG</code> function:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#FF79C6">SELECT</span><span style="color:#FF79C6"> Year</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#F8F8F2">       Sales,</span></span>
+<span class="line"><span style="color:#8BE9FD">       LAG</span><span style="color:#F8F8F2">(Sales) </span><span style="color:#FF79C6">OVER</span><span style="color:#F8F8F2"> (</span><span style="color:#FF79C6">ORDER BY</span><span style="color:#FF79C6"> Year</span><span style="color:#F8F8F2">) </span><span style="color:#FF79C6">AS</span><span style="color:#F8F8F2"> PrevYearSales</span></span>
+<span class="line"><span style="color:#FF79C6">FROM</span><span style="color:#F8F8F2"> sales;</span></span>
+<span class="line"></span></code></pre>
+<p>This should produce:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Year</th><th>Sales</th><th>PrevYearSales</th></tr></thead><tbody><tr><td>2017</td><td>200</td><td>NULL</td></tr><tr><td>2018</td><td>250</td><td>200</td></tr><tr><td>2019</td><td>300</td><td>250</td></tr><tr><td>2020</td><td>350</td><td>300</td></tr></tbody></table>
+<p>In this example, <code>LAG</code> fetched the sales of the previous year ordered by the ‘Year’ column. The sales in 2017 do not have a previous year, so <code>LAG</code> returns NULL.</p>

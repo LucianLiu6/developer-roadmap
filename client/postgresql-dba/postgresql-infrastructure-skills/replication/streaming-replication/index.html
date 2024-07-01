@@ -1,0 +1,28 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/postgresql-dba/content/107-postgresql-infrastructure-skills/100-replication/101-streaming-replication.md"></div> <h1 id="streaming-replication-in-postgresql">Streaming Replication in PostgreSQL</h1>
+<p>Streaming Replication is a powerful feature in PostgreSQL that allows efficient real-time replication of data across multiple servers. It is a type of asynchronous replication, meaning that the replication process occurs continuously in the background without waiting for transactions to be committed. The primary purpose of streaming replication is to ensure high availability and fault tolerance, as well as to facilitate load balancing for read-heavy workloads.</p>
+<h2 id="how-streaming-replication-works">How Streaming Replication Works</h2>
+<p>In the context of PostgreSQL, streaming replication involves a <em>primary</em> server and one or more <em>standby</em> servers. The primary server processes write operations and then streams the changes (or write-ahead logs, also known as WAL) to the standby servers, which apply the changes to their local copies of the database. The replication is unidirectional – data flows only from the primary server to the standby servers.</p>
+<h2 id="requirements-for-streaming-replication">Requirements for Streaming Replication</h2>
+<p>To set up streaming replication in a PostgreSQL cluster, you need to:</p>
+<ul>
+<li>Configure the <code>primary_conninfo</code> setting in the <code>postgresql.conf</code> file on the standby servers, specifying the connection information for the primary server.</li>
+<li>Set up authentication and permissions on the primary server to allow the standby servers to connect and receive WAL changes.</li>
+<li>Configure the primary server’s <code>wal_level</code> to <code>replica</code> (PostgreSQL 9.6 and later) or <code>hot_standby</code> (PostgreSQL 9.5 and earlier), which controls the amount of information logged for replication purposes.</li>
+<li>Specify the <code>max_wal_senders</code> setting in the <code>postgresql.conf</code> file on the primary server to determine the maximum number of concurrent WAL sender processes. This should be set to at least the number of standby servers in your setup.</li>
+</ul>
+<h2 id="benefits-of-streaming-replication">Benefits of Streaming Replication</h2>
+<p>Streaming replication has several advantages, such as:</p>
+<ul>
+<li><strong>High availability</strong>: If the primary server fails, one of the standby servers can be promoted to become the new primary server, ensuring minimal downtime and data loss.</li>
+<li><strong>Read scalability</strong>: Because read-only queries can be offloaded to the standby servers, streaming replication can improve performance for read-heavy workloads.</li>
+<li><strong>Failover and switchover</strong>: If you need to perform maintenance on the primary server or switch to another server, streaming replication allows for graceful failover or switchover, minimizing disruption to your applications.</li>
+<li><strong>Backup management</strong>: Standby servers can be used to perform backups, reducing the load on the primary server and simplifying backup scheduling.</li>
+</ul>
+<h2 id="limitations-of-streaming-replication">Limitations of Streaming Replication</h2>
+<p>While streaming replication is beneficial in many scenarios, it has some limitations:</p>
+<ul>
+<li><strong>Write scalability</strong>: Write-heavy workloads may still be bottlenecked by the primary server’s capacity, as all write operations must be performed on the primary server.</li>
+<li><strong>Query consistency</strong>: Due to the asynchronous nature of streaming replication, there can be a slight delay in propagating changes to the standby servers. This means that queries executed on standby servers may not always return the latest data available on the primary server.</li>
+<li><strong>DDL changes</strong>: Any changes to the database schema (e.g., CREATE, ALTER, or DROP statements) must be executed on the primary server and might cause replication conflicts or delays.</li>
+</ul>
+<p>In conclusion, streaming replication in PostgreSQL is a powerful technique for achieving high availability, fault tolerance, and read scalability. Understanding its benefits, limitations, and requirements will help you design and maintain a robust PostgreSQL infrastructure.</p>

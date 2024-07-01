@@ -1,0 +1,39 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/postgresql-dba/content/110-advanced-topics/100-low-level-internals/105-system-catalog.md"></div> <h1 id="system-catalog">System Catalog</h1>
+<p>The <strong>System Catalog</strong> is a crucial component of PostgreSQL’s low-level internals. It is a set of tables and indices that store essential metadata about the database objects. These objects include tables, indices, columns, views, functions, operators, data types, and more.</p>
+<h2 id="key-concepts">Key Concepts</h2>
+<ul>
+<li>System Catalog serves as a central repository for information about the database schema and its contents.</li>
+<li>It maintains critical information about database objects, including definitions, constraints, access privileges, and more.</li>
+<li>PostgreSQL automatically updates the System Catalog when database objects are created, modified, or dropped.</li>
+<li>The System Catalog is used by the PostgreSQL server for query optimization, access control, and object resolution.</li>
+</ul>
+<h2 id="table-structure">Table Structure</h2>
+<p>In PostgreSQL, System Catalog tables have names that begin with <code>pg_</code>. These tables are stored in the <code>pg_catalog</code> schema. Some of the primary tables in the System Catalog are:</p>
+<ul>
+<li><code>pg_class</code>: Contains information about database tables, indices, sequences, and other relations.</li>
+<li><code>pg_attribute</code>: Stores the details about the columns of the tables and other relation types.</li>
+<li><code>pg_index</code>: Records information about indices and theindexed columns within the relation.</li>
+<li><code>pg_namespace</code>: Keeps track of the PostgreSQL schemas.</li>
+<li><code>pg_type</code>: Stores the details about the data types defined in the database.</li>
+<li><code>pg_constraint</code>: Contains information about table constraints, such as primary key, foreign key, unique, and check constraints.</li>
+<li><code>pg_proc</code>: Maintains information about the stored procedures and functions.</li>
+</ul>
+<h2 id="accessing-system-catalog-information">Accessing System Catalog Information</h2>
+<p>You can access the System Catalog information directly using SQL queries. However, PostgreSQL also provides a more convenient set of functions and views that expose the system catalog information in a user-friendly manner. For example:</p>
+<ul>
+<li><code>pg_tables</code>: A view that shows information about user-created tables.</li>
+<li><code>pg_indexes</code>: A view that lists all available indices in the database.</li>
+<li><code>pg_description</code>: Stores descriptions (or comments) on database objects.</li>
+<li><code>information_schema</code>: A standard PostgreSQL schema that provides ANSI SQL-compliant views on the system catalog tables.</li>
+</ul>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>-- List all the tables in the current database</span></span>
+<span class="line"><span>SELECT tablename FROM pg_tables WHERE schemaname = 'public';</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>-- List all the indices and their details in the current database</span></span>
+<span class="line"><span>SELECT * FROM pg_indexes;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>-- Retrieve column information for a specific table</span></span>
+<span class="line"><span>SELECT * FROM information_schema.columns WHERE table_name = 'your_table_name';</span></span>
+<span class="line"><span></span></span></code></pre>
+<h2 id="conclusion">Conclusion</h2>
+<p>Understanding the System Catalog is essential for anyone working with PostgreSQL internals, as it plays a crucial role in managing the database objects and their metadata. By learning to access and interpret the information stored within the System Catalog, you can effectively examine and manage database objects such as tables, indices, and columns, and gain insights into the structure, relationships, and optimization opportunities within your database.</p>

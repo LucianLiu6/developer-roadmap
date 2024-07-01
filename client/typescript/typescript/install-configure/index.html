@@ -1,0 +1,40 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/typescript/content/100-typescript/102-install-configure/index.md"></div> <h1 id="install-and-configure">Install and Configure</h1>
+<p>To install and configure TypeScript in your project, you need to perform the following steps:</p>
+<ul>
+<li>Initialize npm in your project directory by running the following command:</li>
+</ul>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#50FA7B">npm</span><span style="color:#F1FA8C"> init</span></span>
+<span class="line"></span></code></pre>
+<ul>
+<li>Install TypeScript as a project dependency by running the following command:</li>
+</ul>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#50FA7B">npm</span><span style="color:#F1FA8C"> install</span><span style="color:#BD93F9"> --save-dev</span><span style="color:#F1FA8C"> typescript</span></span>
+<span class="line"></span></code></pre>
+<ul>
+<li>Create a <code>tsconfig.json</code> file in your project directory to specify the compiler options for building your project. For example:</li>
+</ul>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="json"><code><span class="line"><span style="color:#F8F8F2">{</span></span>
+<span class="line"><span style="color:#8BE9FE">  "</span><span style="color:#8BE9FD">compilerOptions</span><span style="color:#8BE9FE">"</span><span style="color:#FF79C6">:</span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#8BE9FE">    "</span><span style="color:#8BE9FD">target</span><span style="color:#8BE9FE">"</span><span style="color:#FF79C6">:</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C">es5</span><span style="color:#E9F284">"</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#8BE9FE">    "</span><span style="color:#8BE9FD">module</span><span style="color:#8BE9FE">"</span><span style="color:#FF79C6">:</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C">commonjs</span><span style="color:#E9F284">"</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#8BE9FE">    "</span><span style="color:#8BE9FD">strict</span><span style="color:#8BE9FE">"</span><span style="color:#FF79C6">:</span><span style="color:#BD93F9"> true</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#8BE9FE">    "</span><span style="color:#8BE9FD">outDir</span><span style="color:#8BE9FE">"</span><span style="color:#FF79C6">:</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C">./dist</span><span style="color:#E9F284">"</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#8BE9FE">    "</span><span style="color:#8BE9FD">rootDir</span><span style="color:#8BE9FE">"</span><span style="color:#FF79C6">:</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C">./src</span><span style="color:#E9F284">"</span></span>
+<span class="line"><span style="color:#F8F8F2">  },</span></span>
+<span class="line"><span style="color:#8BE9FE">  "</span><span style="color:#8BE9FD">exclude</span><span style="color:#8BE9FE">"</span><span style="color:#FF79C6">:</span><span style="color:#F8F8F2"> [</span><span style="color:#E9F284">"</span><span style="color:#F1FA8C">node_modules</span><span style="color:#E9F284">"</span><span style="color:#F8F8F2">]</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"></span></code></pre>
+<ul>
+<li>Compile your TypeScript code using the following command:</li>
+</ul>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#50FA7B">npx</span><span style="color:#F1FA8C"> tsc</span></span>
+<span class="line"></span></code></pre>
+<p>Note: You can also compile individual TypeScript files by specifying the file path after the tsc command. For example:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#50FA7B">npx</span><span style="color:#F1FA8C"> tsc</span><span style="color:#F1FA8C"> ./src/index.ts</span></span>
+<span class="line"></span></code></pre>
+<p>And you’re all set! You can now start writing TypeScript code in your project.</p>
+<p>Learn more from the following links:</p>
+<ul>
+<li><a href="https://www.typescriptlang.org/download" rel="noopener noreferrer nofollow" target="_blank">@article@Install and Configure TypeScript</a></li>
+<li><a href="https://thenewstack.io/typescript-tutorial-a-guide-to-using-the-programming-language/" target="_blank">@article@TypeScript Getting Started</a></li>
+</ul>

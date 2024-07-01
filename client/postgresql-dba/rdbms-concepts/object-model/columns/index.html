@@ -1,0 +1,46 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/postgresql-dba/content/102-rdbms-concepts/100-object-model/104-columns.md"></div> <h1 id="columns-in-postgresql">Columns in PostgreSQL</h1>
+<p>Columns are a fundamental component of PostgreSQL’s object model. They are used to store the actual data within a table and define their attributes such as data type, constraints, and other properties.</p>
+<h2 id="defining-columns">Defining Columns</h2>
+<p>When creating a table, you specify the columns along with their data types and additional properties, if applicable. The general syntax for defining columns is as follows:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>CREATE TABLE table_name (</span></span>
+<span class="line"><span>  column_name data_type [additional_properties],</span></span>
+<span class="line"><span>  ...,</span></span>
+<span class="line"><span>);</span></span>
+<span class="line"><span></span></span></code></pre>
+<p>For example, to create a table called “employees” with columns “id”, “name”, and “salary”, you would execute the following SQL command:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>CREATE TABLE employees (</span></span>
+<span class="line"><span>  id SERIAL PRIMARY KEY,</span></span>
+<span class="line"><span>  name VARCHAR(100) NOT NULL,</span></span>
+<span class="line"><span>  salary NUMERIC(10, 2) NOT NULL</span></span>
+<span class="line"><span>);</span></span>
+<span class="line"><span></span></span></code></pre>
+<h2 id="data-types">Data Types</h2>
+<p>PostgreSQL supports a variety of data types that can be associated with columns. Here are some common data types:</p>
+<ul>
+<li><code>INTEGER</code>: Represents whole numbers.</li>
+<li><code>SERIAL</code>: Auto-incrementing integer, mainly used for primary keys.</li>
+<li><code>NUMERIC</code>: Represents a fixed-point number.</li>
+<li><code>VARCHAR(n)</code>: Represents variable-length character strings with a maximum length of <code>n</code> characters.</li>
+<li><code>TEXT</code>: Represents variable-length character strings without a specified maximum length.</li>
+<li><code>DATE</code>: Represents dates (YYYY-MM-DD).</li>
+<li><code>TIMESTAMP</code>: Represents date and time (YYYY-MM-DD HH:MI:SS).</li>
+</ul>
+<p>Refer to the <a href="https://www.postgresql.org/docs/current/datatype.html" rel="noopener noreferrer nofollow" target="_blank">official documentation</a> for a complete list of supported data types.</p>
+<h2 id="column-constraints">Column Constraints</h2>
+<p>Constraints provide a way to enforce rules on the data stored in columns. Here are some common constraints:</p>
+<ul>
+<li><code>NOT NULL</code>: The column must have a value, and NULL values will not be allowed.</li>
+<li><code>UNIQUE</code>: All values in the column must be unique.</li>
+<li><code>PRIMARY KEY</code>: The column uniquely identifies a row in the table. It automatically applies <code>NOT NULL</code> and <code>UNIQUE</code> constraints.</li>
+<li><code>FOREIGN KEY</code>: The column value must exist in another table column, creating a relationship between tables.</li>
+<li><code>CHECK</code>: The column value must meet a specific condition.</li>
+</ul>
+<p>For example, to create a table “orders” where “customer_id” is a foreign key, you can use the following SQL command:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>CREATE TABLE orders (</span></span>
+<span class="line"><span>  id SERIAL PRIMARY KEY,</span></span>
+<span class="line"><span>  customer_id INTEGER NOT NULL,</span></span>
+<span class="line"><span>  order_date DATE NOT NULL,</span></span>
+<span class="line"><span>  FOREIGN KEY (customer_id) REFERENCES customers(id)</span></span>
+<span class="line"><span>);</span></span>
+<span class="line"><span></span></span></code></pre>
+<p>Be sure to refer to the PostgreSQL documentation for more advanced column properties as you dive deeper into PostgreSQL’s object model.</p>

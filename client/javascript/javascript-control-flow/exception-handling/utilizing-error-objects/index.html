@@ -1,0 +1,30 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/javascript/content/107-javascript-control-flow/100-exception-handling/102-utilizing-error-objects.md"></div> <h1 id="utilizing-error-objects">Utilizing error objects</h1>
+<p>When a runtime error occurs, a new <code>Error</code> object is created and thrown. With this <code>Error</code> object, we can determine the type of the Error and handle it according to its type.</p>
+<h2 id="types-of-errors">Types of Errors:</h2>
+<p>Besides error constructors, Javascript also has other core Error constructors.</p>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/AggregateError" rel="noopener noreferrer nofollow" target="_blank">@article@AggregateError</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/EvalError" rel="noopener noreferrer nofollow" target="_blank">@article@EvalError</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/InternalError" rel="noopener noreferrer nofollow" target="_blank">@article@InternalError</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RangeError" rel="noopener noreferrer nofollow" target="_blank">@article@RangeError</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ReferenceError" rel="noopener noreferrer nofollow" target="_blank">@article@ReferenceError</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SyntaxError" rel="noopener noreferrer nofollow" target="_blank">@article@SyntaxError</a></li>
+</ul>
+<h2 id="example">Example</h2>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#FF79C6">try</span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#50FA7B">  willGiveErrorSometime</span><span style="color:#F8F8F2">();</span></span>
+<span class="line"><span style="color:#F8F8F2">} </span><span style="color:#FF79C6">catch</span><span style="color:#F8F8F2"> (error) {</span></span>
+<span class="line"><span style="color:#FF79C6">  if</span><span style="color:#F8F8F2"> (error </span><span style="color:#FF79C6">instanceof</span><span style="color:#8BE9FD;font-style:italic"> RangeError</span><span style="color:#F8F8F2">) {</span></span>
+<span class="line"><span style="color:#50FA7B">    rangeErrorHandler</span><span style="color:#F8F8F2">(error);</span></span>
+<span class="line"><span style="color:#F8F8F2">  } </span><span style="color:#FF79C6">else</span><span style="color:#FF79C6"> if</span><span style="color:#F8F8F2"> (error </span><span style="color:#FF79C6">instanceof</span><span style="color:#8BE9FD;font-style:italic"> ReferenceError</span><span style="color:#F8F8F2">) {</span></span>
+<span class="line"><span style="color:#50FA7B">    referenceErrorHandle</span><span style="color:#F8F8F2">(error);</span></span>
+<span class="line"><span style="color:#F8F8F2">  } </span><span style="color:#FF79C6">else</span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#50FA7B">    errorHandler</span><span style="color:#F8F8F2">(error);</span></span>
+<span class="line"><span style="color:#F8F8F2">  }</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"></span></code></pre>
+<p>Visit the following resources to learn more:</p>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error" rel="noopener noreferrer nofollow" target="_blank">@article@Error Object - MDN</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Control_flow_and_error_handling" rel="noopener noreferrer nofollow" target="_blank">@article@Control flow &#x26; Error handling - MDN</a></li>
+</ul>

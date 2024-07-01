@@ -1,0 +1,31 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/docker/content/112-deploying-containers/101-kubernetes.md"></div> <h1 id="kubernetes">Kubernetes</h1>
+<p>Kubernetes (K8s) is an open-source orchestration platform used for automating the deployment, scaling, and management of containerized applications. While Docker provides the container runtime environment, Kubernetes extends that functionality with a powerful and flexible management framework.</p>
+<h2 id="key-concepts">Key Concepts</h2>
+<ul>
+<li>
+<p><strong>Cluster</strong>: A set of machines, called nodes, that run containerized applications in Kubernetes. A cluster can have multiple nodes for load balancing and fault tolerance.</p>
+</li>
+<li>
+<p><strong>Node</strong>: A worker machine (physical, virtual, or cloud-based) that runs containers as part of the Kubernetes cluster. Each node is managed by the Kubernetes master.</p>
+</li>
+<li>
+<p><strong>Pod</strong>: The smallest and simplest unit in the Kubernetes object model. A pod represents a single instance of a running process and typically wraps one or more containers (e.g., a Docker container).</p>
+</li>
+<li>
+<p><strong>Service</strong>: An abstraction that defines a logical set of pods and a policy for accessing them. Services provide load balancing, monitoring, and networking capabilities for the underlying pods.</p>
+</li>
+<li>
+<p><strong>Deployment</strong>: A high-level object that describes the desired state of a containerized application. Deployments manage the process of creating, updating, and scaling pods based on a specified container image.</p>
+</li>
+</ul>
+<h2 id="why-use-kubernetes">Why Use Kubernetes?</h2>
+<p>Kubernetes plays a crucial role in managing containerized applications at scale, offering several advantages over traditional deployment mechanisms:</p>
+<ul>
+<li><strong>Scalability</strong>: By automatically scaling the number of running containers based on resource usage and application demands, Kubernetes ensures optimal resource utilization and consistent app performance.</li>
+<li><strong>Self-healing</strong>: Kubernetes continuously monitors the health of your containers and replaces failed pods to maintain the desired application state.</li>
+<li><strong>Rolling updates &#x26; rollbacks</strong>: Kubernetes makes it easy to update your applications by incrementally rolling out new versions of container images, without any downtime.</li>
+<li><strong>Load balancing</strong>: Services in Kubernetes distribute network traffic among container instances, offering a load balancing solution for your applications.</li>
+</ul>
+<h2 id="kubernetes-vs-docker-swarm">Kubernetes vs. Docker Swarm</h2>
+<p>While both Kubernetes and Docker Swarm are orchestration platforms, they differ in terms of complexity, scalability, and ease of use. Kubernetes provides more advanced features, better scalability, and higher fault tolerance, but has a steeper learning curve. Docker Swarm, on the other hand, is simpler and more straightforward but lacks some advanced functionality.</p>
+<p>In the context of these differences, selecting the right orchestration platform depends on the needs and requirements of your project.</p>

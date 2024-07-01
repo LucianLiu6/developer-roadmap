@@ -1,0 +1,64 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/cpp/content/110-stl/102-algorithms.md"></div> <h1 id="stl-algorithms">STL Algorithms</h1>
+<p>The Standard Template Library (STL) in C++ provides a collection of generic algorithms that are designed to work with various container classes. These algorithms are implemented as functions and can be applied to different data structures, such as arrays, vectors, lists, and others. The primary header file for algorithms is <code>&#x3C;algorithm></code>.</p>
+<h2 id="key-concepts">Key Concepts</h2>
+<h2 id="sorting">Sorting</h2>
+<p>Sorting refers to arranging a sequence of elements in a specific order. The STL provides several sorting algorithms, such as <code>std::sort</code>, <code>std::stable_sort</code>, and <code>std::partial_sort</code>.</p>
+<h3 id="stdsort">std::sort</h3>
+<p><code>std::sort</code> is used to sort a range of elements [first, last) in non-descending order (by default). You can also use custom comparison functions or lambda expressions to change the sorting order.</p>
+<p>Example:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#FF79C6">#include</span><span style="color:#E9F284"> &#x3C;</span><span style="color:#F1FA8C">algorithm</span><span style="color:#E9F284">></span></span>
+<span class="line"><span style="color:#FF79C6">#include</span><span style="color:#E9F284"> &#x3C;</span><span style="color:#F1FA8C">vector</span><span style="color:#E9F284">></span></span>
+<span class="line"><span style="color:#FF79C6">#include</span><span style="color:#E9F284"> &#x3C;</span><span style="color:#F1FA8C">iostream</span><span style="color:#E9F284">></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">int</span><span style="color:#50FA7B"> main</span><span style="color:#F8F8F2">() {</span></span>
+<span class="line"><span style="color:#F8F8F2">    std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">vector</span><span style="color:#FF79C6">&#x3C;int></span><span style="color:#F8F8F2"> nums </span><span style="color:#FF79C6">=</span><span style="color:#F8F8F2"> {</span><span style="color:#BD93F9">10</span><span style="color:#F8F8F2">, </span><span style="color:#BD93F9">9</span><span style="color:#F8F8F2">, </span><span style="color:#BD93F9">8</span><span style="color:#F8F8F2">, </span><span style="color:#BD93F9">7</span><span style="color:#F8F8F2">, </span><span style="color:#BD93F9">6</span><span style="color:#F8F8F2">, </span><span style="color:#BD93F9">5</span><span style="color:#F8F8F2">};</span></span>
+<span class="line"><span style="color:#F8F8F2">    std</span><span style="color:#FF79C6">::</span><span style="color:#50FA7B">sort</span><span style="color:#F8F8F2">(nums.</span><span style="color:#50FA7B">begin</span><span style="color:#F8F8F2">(), nums.</span><span style="color:#50FA7B">end</span><span style="color:#F8F8F2">());</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">    for</span><span style="color:#F8F8F2"> (</span><span style="color:#FF79C6">int</span><span style="color:#F8F8F2"> num : nums) {</span></span>
+<span class="line"><span style="color:#F8F8F2">        std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">cout </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#F8F8F2"> num </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#E9F284"> '</span><span style="color:#E9F284"> '</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"><span style="color:#F8F8F2">    }</span></span>
+<span class="line"><span style="color:#6272A4">    // Output: 5 6 7 8 9 10</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"></span></code></pre>
+<h2 id="searching">Searching</h2>
+<p>Searching refers to finding if a particular element is present within a given range of elements. STL provides various searching algorithms, such as <code>std::find</code>, <code>std::binary_search</code>, and <code>std::find_if</code>.</p>
+<h3 id="stdfind">std::find</h3>
+<p><code>std::find</code> is used to find the iterator of the first occurrence of a given value within the range [first, last).</p>
+<p>Example:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#FF79C6">#include</span><span style="color:#E9F284"> &#x3C;</span><span style="color:#F1FA8C">algorithm</span><span style="color:#E9F284">></span></span>
+<span class="line"><span style="color:#FF79C6">#include</span><span style="color:#E9F284"> &#x3C;</span><span style="color:#F1FA8C">vector</span><span style="color:#E9F284">></span></span>
+<span class="line"><span style="color:#FF79C6">#include</span><span style="color:#E9F284"> &#x3C;</span><span style="color:#F1FA8C">iostream</span><span style="color:#E9F284">></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">int</span><span style="color:#50FA7B"> main</span><span style="color:#F8F8F2">() {</span></span>
+<span class="line"><span style="color:#F8F8F2">    std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">vector</span><span style="color:#FF79C6">&#x3C;int></span><span style="color:#F8F8F2"> nums </span><span style="color:#FF79C6">=</span><span style="color:#F8F8F2"> {</span><span style="color:#BD93F9">5</span><span style="color:#F8F8F2">, </span><span style="color:#BD93F9">6</span><span style="color:#F8F8F2">, </span><span style="color:#BD93F9">7</span><span style="color:#F8F8F2">, </span><span style="color:#BD93F9">8</span><span style="color:#F8F8F2">, </span><span style="color:#BD93F9">9</span><span style="color:#F8F8F2">, </span><span style="color:#BD93F9">10</span><span style="color:#F8F8F2">};</span></span>
+<span class="line"><span style="color:#FF79C6">    auto</span><span style="color:#F8F8F2"> it </span><span style="color:#FF79C6">=</span><span style="color:#F8F8F2"> std</span><span style="color:#FF79C6">::</span><span style="color:#50FA7B">find</span><span style="color:#F8F8F2">(nums.</span><span style="color:#50FA7B">begin</span><span style="color:#F8F8F2">(), nums.</span><span style="color:#50FA7B">end</span><span style="color:#F8F8F2">(), </span><span style="color:#BD93F9">9</span><span style="color:#F8F8F2">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">    if</span><span style="color:#F8F8F2"> (it </span><span style="color:#FF79C6">!=</span><span style="color:#F8F8F2"> nums.</span><span style="color:#50FA7B">end</span><span style="color:#F8F8F2">()) {</span></span>
+<span class="line"><span style="color:#F8F8F2">        std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">cout </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C">Found 9 at position: </span><span style="color:#E9F284">"</span><span style="color:#FF79C6"> &#x3C;&#x3C;</span><span style="color:#F8F8F2"> (it </span><span style="color:#FF79C6">-</span><span style="color:#F8F8F2"> nums.</span><span style="color:#50FA7B">begin</span><span style="color:#F8F8F2">());</span></span>
+<span class="line"><span style="color:#F8F8F2">    } </span><span style="color:#FF79C6">else</span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#F8F8F2">        std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">cout </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C">9 not found</span><span style="color:#E9F284">"</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"><span style="color:#F8F8F2">    }</span></span>
+<span class="line"><span style="color:#6272A4">    // Output: Found 9 at position: 4</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"></span></code></pre>
+<h2 id="modifying-sequences">Modifying Sequences</h2>
+<p>The STL also provides algorithms for modifying sequences, such as <code>std::remove</code>, <code>std::replace</code>, and <code>std::unique</code>.</p>
+<h3 id="stdremove">std::remove</h3>
+<p><code>std::remove</code> is used to remove all instances of a value from a container within the given range [first, last). Note that the function does not resize the container after removing elements.</p>
+<p>Example:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#FF79C6">#include</span><span style="color:#E9F284"> &#x3C;</span><span style="color:#F1FA8C">algorithm</span><span style="color:#E9F284">></span></span>
+<span class="line"><span style="color:#FF79C6">#include</span><span style="color:#E9F284"> &#x3C;</span><span style="color:#F1FA8C">vector</span><span style="color:#E9F284">></span></span>
+<span class="line"><span style="color:#FF79C6">#include</span><span style="color:#E9F284"> &#x3C;</span><span style="color:#F1FA8C">iostream</span><span style="color:#E9F284">></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">int</span><span style="color:#50FA7B"> main</span><span style="color:#F8F8F2">() {</span></span>
+<span class="line"><span style="color:#F8F8F2">    std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">vector</span><span style="color:#FF79C6">&#x3C;int></span><span style="color:#F8F8F2"> nums </span><span style="color:#FF79C6">=</span><span style="color:#F8F8F2"> {</span><span style="color:#BD93F9">5</span><span style="color:#F8F8F2">, </span><span style="color:#BD93F9">6</span><span style="color:#F8F8F2">, </span><span style="color:#BD93F9">7</span><span style="color:#F8F8F2">, </span><span style="color:#BD93F9">6</span><span style="color:#F8F8F2">, </span><span style="color:#BD93F9">8</span><span style="color:#F8F8F2">, </span><span style="color:#BD93F9">6</span><span style="color:#F8F8F2">, </span><span style="color:#BD93F9">9</span><span style="color:#F8F8F2">, </span><span style="color:#BD93F9">6</span><span style="color:#F8F8F2">, </span><span style="color:#BD93F9">10</span><span style="color:#F8F8F2">};</span></span>
+<span class="line"><span style="color:#F8F8F2">    nums.</span><span style="color:#50FA7B">erase</span><span style="color:#F8F8F2">(std</span><span style="color:#FF79C6">::</span><span style="color:#50FA7B">remove</span><span style="color:#F8F8F2">(nums.</span><span style="color:#50FA7B">begin</span><span style="color:#F8F8F2">(), nums.</span><span style="color:#50FA7B">end</span><span style="color:#F8F8F2">(), </span><span style="color:#BD93F9">6</span><span style="color:#F8F8F2">), nums.</span><span style="color:#50FA7B">end</span><span style="color:#F8F8F2">());</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">    for</span><span style="color:#F8F8F2"> (</span><span style="color:#FF79C6">int</span><span style="color:#F8F8F2"> num : nums) {</span></span>
+<span class="line"><span style="color:#F8F8F2">        std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">cout </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#F8F8F2"> num </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#E9F284"> '</span><span style="color:#E9F284"> '</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"><span style="color:#F8F8F2">    }</span></span>
+<span class="line"><span style="color:#6272A4">    // Output: 5 7 8 9 10</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"></span></code></pre>
+<h2 id="summary">Summary</h2>
+<p>STL algorithms in C++ provide a set of useful functions for key operations such as sorting, searching, and modifying sequences. The algorithms can be used with a variety of container classes, making them highly versatile and an essential part of C++ programming.</p>

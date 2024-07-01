@@ -1,0 +1,15 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/linux/content/106-process-management/index.md"></div> <h1 id="process-management">Process Management</h1>
+<p>Process management is integral part of any operating system and Linux is no different. Every program running on Linux, be it an application or a system operation, is treated as a process. These processes perform different tasks but work together to provide a seamless operating experience.</p>
+<p>In Linux, users can interact and manage these processes by using different commands for various process management tasks such as viewing the currently running processes, killing processes, changing the priority of a process, and so on. Understanding these commands and how to use them effectively is essential to Linux process management.</p>
+<p>The ps command for example, provides information about the currently running processes:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#50FA7B">ps</span><span style="color:#F1FA8C"> aux</span></span>
+<span class="line"></span></code></pre>
+<p>This will list out all the currently running processes with information such as the process ID, the user running that process, the CPU and memory it’s consuming, the command that started the process, and more.</p>
+<p><code>top</code> is another common command. It provides a live, updating view of the current state of the system including processes:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#50FA7B">top</span></span>
+<span class="line"></span></code></pre>
+<p>Yet another powerful tool is <code>kill</code>, which can send specific signals to processes. For example, you can gracefully stop a process with <code>SIGTERM</code> (15) or forcefully stop one with <code>SIGKILL</code> (9):</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#8BE9FD">kill</span><span style="color:#BD93F9"> -SIGTERM</span><span style="color:#F1FA8C"> pid</span></span>
+<span class="line"><span style="color:#8BE9FD">kill</span><span style="color:#BD93F9"> -SIGKILL</span><span style="color:#F1FA8C"> pid</span></span>
+<span class="line"></span></code></pre>
+<p>(note: you replace <code>pid</code> with the process ID you want to stop)</p>

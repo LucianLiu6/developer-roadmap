@@ -1,0 +1,10 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/linux/content/100-navigation-basics/102-creating-files.md"></div> <h1 id="creating-files">Creating Files</h1>
+<p>Linux provides a versatile and powerful command-line interface (CLI) that helps users perform various tasks including file creation and navigation. Learning how to create files is among the fundamental skills for novices venturing into the Linux world. One of the simplest ways to create a file in Linux is with the <code>touch</code> command. This command, when supplied with the name of a file as a parameter, either creates a new file with the given name or, if a file with such name is already present, updates the last modified time of the file.</p>
+<p>Another useful command for creating files is <code>cat >filename</code>. This command creates a new file with the specified name and waits for user input. Hence, the process ends when you press <code>Ctrl+D</code> to send <code>EOF</code> (End-Of-File) to the <code>cat</code> command.</p>
+<p>Here’s an example of file creation with the <code>touch</code> command:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#50FA7B">touch</span><span style="color:#F1FA8C"> newfile.txt</span></span>
+<span class="line"></span></code></pre>
+<p>and with <code>cat</code> command:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#50FA7B">cat</span><span style="color:#FF79C6"> ></span><span style="color:#F1FA8C"> newfile.txt</span></span>
+<span class="line"></span></code></pre>
+<p>Both these commands create a new “newfile.txt” if it does not already exist.</p>

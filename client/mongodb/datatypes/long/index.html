@@ -1,0 +1,32 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/mongodb/content/101-datatypes/116-long.md"></div> <h1 id="int64--long">Int64 / Long</h1>
+<p>The <code>Long</code> data type in MongoDB is a 64-bit integer, which is useful when you need to store large integral values beyond the range of the standard <code>int</code> (32-bit integer) data type. The range for the <code>Long</code> data type is from <code>-2^63</code> to <code>2^63 - 1</code>. This data type is suitable for applications that require high-precision numerical data, such as analytics and scientific calculations.</p>
+<h2 id="syntax">Syntax</h2>
+<p>To define a field with the <code>Long</code> data type in MongoDB, you can use the <code>$numberLong</code> keyword. Here’s an example of a document with a field named <code>largeValue</code> defined as a <code>Long</code> data type:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="json"><code><span class="line"><span style="color:#F8F8F2">{</span></span>
+<span class="line"><span style="color:#8BE9FE">  "</span><span style="color:#8BE9FD">largeValue</span><span style="color:#8BE9FE">"</span><span style="color:#FF79C6">:</span><span style="color:#F8F8F2"> { </span><span style="color:#8BE9FE">"</span><span style="color:#8BE9FD">$numberLong</span><span style="color:#8BE9FE">"</span><span style="color:#FF79C6">:</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C">1234567890123456789</span><span style="color:#E9F284">"</span><span style="color:#F8F8F2"> }</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"></span></code></pre>
+<h2 id="usage">Usage</h2>
+<p>You can use the <code>Long</code> data type to store and query large integral values in your MongoDB collections. To insert a document with a <code>Long</code> field, you can use the following syntax:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F8F8F2">db.collection.</span><span style="color:#50FA7B">insert</span><span style="color:#F8F8F2">({</span></span>
+<span class="line"><span style="color:#F8F8F2">  largeValue</span><span style="color:#FF79C6">:</span><span style="color:#50FA7B"> NumberLong</span><span style="color:#F8F8F2">(</span><span style="color:#E9F284">'</span><span style="color:#F1FA8C">1234567890123456789</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">),</span></span>
+<span class="line"><span style="color:#F8F8F2">});</span></span>
+<span class="line"></span></code></pre>
+<p>To query documents that have a <code>Long</code> field with a specific value, you can use the following syntax:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F8F8F2">db.collection.</span><span style="color:#50FA7B">find</span><span style="color:#F8F8F2">({</span></span>
+<span class="line"><span style="color:#F8F8F2">  largeValue</span><span style="color:#FF79C6">:</span><span style="color:#50FA7B"> NumberLong</span><span style="color:#F8F8F2">(</span><span style="color:#E9F284">'</span><span style="color:#F1FA8C">1234567890123456789</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">),</span></span>
+<span class="line"><span style="color:#F8F8F2">});</span></span>
+<span class="line"></span></code></pre>
+<h2 id="considerations">Considerations</h2>
+<p>When using the <code>Long</code> data type in MongoDB, keep the following considerations in mind:</p>
+<ul>
+<li>
+<p>JavaScript uses the <a href="https://en.wikipedia.org/wiki/Double-precision_floating-point_format" rel="noopener noreferrer nofollow" target="_blank">IEEE 754 floating-point</a> representation for numbers, which may cause a loss of precision when storing and manipulating large integral values. To avoid this, always manipulate <code>Long</code> values using MongoDB’s built-in <code>NumberLong()</code> function, as shown in the examples above.</p>
+</li>
+<li>
+<p>When using the <code>Long</code> data type, be aware of the performance trade-offs. Operations on 64-bit integers typically require more processing power and storage space compared to 32-bit integers. If you don’t need the extra range provided by the <code>Long</code> data type, consider using the <code>int</code> data type instead.</p>
+</li>
+<li>
+<p>If you need to store extremely large numbers that exceed the range of the <code>Long</code> data type, you may want to consider using the <a href="https://docs.mongodb.com/manual/reference/bson-types/#decimal128" rel="noopener noreferrer nofollow" target="_blank"><code>Decimal128</code></a> data type, which provides 128-bit decimal-based floating-point numbers with 34 decimal digits of precision.</p>
+</li>
+</ul>

@@ -1,0 +1,83 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/sql/content/100-introduction/100-what-are-relational-databases.md"></div> <h1 id="what-are-relational-databases">What Are Relational Databases?</h1>
+<p>A <strong>relational database</strong> is a type of database that stores and organizes data in a structured way. It uses a structure
+that allows data to be identified and accessed in relation to other data in the database. Data in a relational database
+is stored in various data tables, each of which has a unique key identifying every row.</p>
+<p>Relational databases are made up of a set of tables with data that fits into a predefined category. Each table has at
+least one data category in a column, and each row contains a certain data instance for the categories defined in the
+columns.</p>
+<p>For example, consider an ‘Employees’ table:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>EmployeeId</th><th>FirstName</th><th>LastName</th><th>Email</th></tr></thead><tbody><tr><td>1</td><td>John</td><td>Doe</td><td><a href="mailto:john.doe@example.com">john.doe@example.com</a></td></tr><tr><td>2</td><td>Jane</td><td>Doe</td><td><a href="mailto:jane.doe@example.com">jane.doe@example.com</a></td></tr><tr><td>3</td><td>Bob</td><td>Smith</td><td><a href="mailto:bob.smith@example.com">bob.smith@example.com</a></td></tr></tbody></table>
+<p>In this table, ‘EmployeeId’, ‘FirstName’, ‘LastName’ and ‘Email’ are categories, and each row represents a specific
+employee.</p>
+<h2 id="relationships">Relationships</h2>
+<p>The term “relational database” comes from the concept of a relation—a set of tuples that the database organizes into
+rows and columns. Each row in a table represents a relationship among a set of values.</p>
+<p>Relational databases use <code>keys</code> to create links between tables. A <code>primary key</code> is a unique identifier for a row of
+data. A <code>foreign key</code> is a column or combination of columns used to establish and enforce a link between the data in two
+tables.</p>
+<p>Consider an additional ‘Orders’ table:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>OrderId</th><th>EmployeeId</th><th>Product</th></tr></thead><tbody><tr><td>1</td><td>3</td><td>Apples</td></tr><tr><td>2</td><td>1</td><td>Bananas</td></tr><tr><td>3</td><td>2</td><td>Cherries</td></tr></tbody></table>
+<p>In the ‘Orders’ table, ‘EmployeeId’ serves as the foreign key creating a relationship between ‘Orders’ and ‘Employees’.
+This allows queries that involve data in both tables, like “Find all orders placed by John Doe”.</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#FF79C6">SELECT</span><span style="color:#BD93F9"> Orders</span><span style="color:#F8F8F2">.</span><span style="color:#BD93F9">OrderId</span><span style="color:#F8F8F2">, </span><span style="color:#BD93F9">Orders</span><span style="color:#F8F8F2">.</span><span style="color:#BD93F9">Product</span><span style="color:#F8F8F2">, </span><span style="color:#BD93F9">Employees</span><span style="color:#F8F8F2">.</span><span style="color:#BD93F9">FirstName</span><span style="color:#F8F8F2">, </span><span style="color:#BD93F9">Employees</span><span style="color:#F8F8F2">.</span><span style="color:#BD93F9">LastName</span></span>
+<span class="line"><span style="color:#FF79C6">FROM</span><span style="color:#F8F8F2"> Orders</span></span>
+<span class="line"><span style="color:#FF79C6">INNER JOIN</span><span style="color:#F8F8F2"> Employees </span><span style="color:#FF79C6">ON</span><span style="color:#BD93F9"> Orders</span><span style="color:#F8F8F2">.</span><span style="color:#BD93F9">EmployeeId</span><span style="color:#FF79C6"> =</span><span style="color:#BD93F9"> Employees</span><span style="color:#F8F8F2">.</span><span style="color:#BD93F9">EmployeeId</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"></span></code></pre>
+<p>The above SQL code is an example of how to retrieve data from a relational database using a <code>JOIN</code> clause to combine
+rows from two or more tables.</p>
+<p>Overall, relational databases provide a powerful mechanism for defining relationships within data and enabling efficient
+data retrieval.</p>

@@ -1,0 +1,16 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/linux/content/114-shell-programming/103-literals.md"></div> <h1 id="literals-in-shell-programming-on-linux">Literals in Shell Programming on Linux</h1>
+<p>In a Linux environment, shell scripting is an essential part of system operation and application development. One key aspect of shell scripting is the use of literals. The term ‘literal’, in computer science and shell programming, refers to a notation for representing a fixed value in source code. In shell scripts, these fixed values can include string literals, numeric literals or a boolean. When reading and understanding existing scripts or writing new ones, it’s crucial to understand how and when to use these literals. Some basic shell script literals under Linux are listed below:</p>
+<p>String Literals: They can be defined by enclosing the text between either single or double quotes. For instance, ‘Hello, world!’ or “Hello, world!“.</p>
+<p>Numeric Literals: They represent a sequence of digits. For example, 25, 100, or 1234.</p>
+<p>Boolean Literals: In most of the Linux shell scripts, 1 represents true, and 0 represents false.</p>
+<p>Be mindful of the type of literal you’re using as it can significantly influence your scripting, your code’s readability, and its overall functionality.</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6272A4">#!/bin/bash</span></span>
+<span class="line"><span style="color:#6272A4"># Example of literals in shell script</span></span>
+<span class="line"><span style="color:#F8F8F2"> </span></span>
+<span class="line"><span style="color:#BD93F9">StringLiteral</span><span style="color:#FF79C6">=</span><span style="color:#E9F284">"</span><span style="color:#F1FA8C">This is a string literal</span><span style="color:#E9F284">"</span></span>
+<span class="line"><span style="color:#BD93F9">NumericLiteral</span><span style="color:#FF79C6">=</span><span style="color:#F1FA8C">125</span></span>
+<span class="line"><span style="color:#8BE9FD">echo</span><span style="color:#BD93F9"> $StringLiteral</span></span>
+<span class="line"><span style="color:#8BE9FD">echo</span><span style="color:#BD93F9"> $NumericLiteral</span></span>
+<span class="line"></span></code></pre>
+<p>In this example, <code>StringLiteral</code> and <code>NumericLiteral</code> are literals and <code>echo</code> is used to print them.</p>
+<p>Always remember, a good understanding of literals is fundamental when it comes to shell scripting in Linux.</p>

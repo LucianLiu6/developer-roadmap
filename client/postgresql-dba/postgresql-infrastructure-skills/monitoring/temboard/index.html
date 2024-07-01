@@ -1,0 +1,63 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/postgresql-dba/content/107-postgresql-infrastructure-skills/106-monitoring/103-temboard.md"></div> <h1 id="temboard">temBoard</h1>
+<h2 id="monitoring-with-temboard">Monitoring with temBoard</h2>
+<p>In this section, we’ll explore a powerful management and monitoring tool for PostgreSQL: <code>temBoard</code>. It’s a user-friendly, highly adaptable, and open-source web application designed to monitor and manage your database instances efficiently.</p>
+<h3 id="what-is-temboard">What is temBoard?</h3>
+<p><code>temBoard</code> is a comprehensive management and monitoring solution for PostgreSQL instances. It provides a real-time, detail-oriented view of databases and their current status allowing administrators to oversee their system efficiently. Key features of temBoard include:</p>
+<ul>
+<li>Real-time monitoring of Key Performance Indicators (KPIs).</li>
+<li>Historical data analysis with a built-in data retention mechanism.</li>
+<li>An intuitive and customizable web interface.</li>
+<li>High-level security with role-based access control and SSL/TLS support.</li>
+<li>Management of multiple PostgreSQL clusters from one central location.</li>
+<li>Extensibility through plugins for specific tasks.</li>
+</ul>
+<h3 id="installing-temboard">Installing temBoard</h3>
+<p>You can install temBoard using <code>pip</code>, Python’s standard package manager. Before installation, you need to install the following dependencies:</p>
+<ol>
+<li>Python 3.6 or higher: You can install Python from the official website or through your package manager.</li>
+<li>PostgreSQL server 9.4 or higher: Your PostgreSQL instance should be compatible with temBoard for full feature support.</li>
+</ol>
+<p>Use the following command to install temBoard using <code>pip</code>:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>pip install temboard</span></span>
+<span class="line"><span></span></span></code></pre>
+<h3 id="configuring-and-running-temboard">Configuring and Running temBoard</h3>
+<p>After installation, temBoard needs to be configured properly to start monitoring the PostgreSQL database. Follow these steps to configure temBoard:</p>
+<ol>
+<li>
+<p>Create the temBoard configuration file: The default location is <code>/etc/temboard/temboard.conf</code>. You can use the following command to create and edit the file:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>sudo mkdir /etc/temboard</span></span>
+<span class="line"><span>sudo touch /etc/temboard/temboard.conf</span></span>
+<span class="line"><span>sudo nano /etc/temboard/temboard.conf</span></span>
+<span class="line"><span></span></span></code></pre>
+</li>
+<li>
+<p>Add the following contents to the configuration file and modify the values as needed:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>[temboard]</span></span>
+<span class="line"><span>address = 0.0.0.0</span></span>
+<span class="line"><span>port = 8888</span></span>
+<span class="line"><span>ssl_cert_file = /etc/temboard/temboard_SERVER_NAME_chained.pem</span></span>
+<span class="line"><span>ssl_key_file = /etc/temboard/temboard_SERVER_NAME.key</span></span>
+<span class="line"><span>[repository]</span></span>
+<span class="line"><span>host = localhost</span></span>
+<span class="line"><span>port = 5432</span></span>
+<span class="line"><span>user = temboard</span></span>
+<span class="line"><span>password = temboard_password</span></span>
+<span class="line"><span>dbname = temboard</span></span>
+<span class="line"><span>[logging]</span></span>
+<span class="line"><span>method = stderr</span></span>
+<span class="line"><span>level = INFO</span></span>
+<span class="line"><span>format = %(asctime)s [%(levelname)s] %(message)s</span></span>
+<span class="line"><span></span></span></code></pre>
+</li>
+<li>
+<p>Initialize the temBoard repository: Use the following command to initialize the database for temBoard:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>temboard-admin -c /etc/temboard/temboard.conf initialize</span></span>
+<span class="line"><span></span></span></code></pre>
+</li>
+<li>
+<p>Start temBoard as a service: You can start temBoard using the following command:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>temboard -c /etc/temboard/temboard.conf</span></span>
+<span class="line"><span></span></span></code></pre>
+</li>
+</ol>
+<p>After running temBoard, access the web interface using your browser at <code>https://&#x3C;your_server_name>:8888/</code>. You can now monitor and manage your PostgreSQL instances using the temBoard web interface.</p>

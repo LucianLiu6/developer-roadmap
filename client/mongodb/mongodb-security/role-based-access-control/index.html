@@ -1,0 +1,44 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/mongodb/content/110-mongodb-security/100-role-based-access-control.md"></div> <h1 id="role-based-access-control">Role-based access control</h1>
+<p>Role-Based Access Control (RBAC) is an approach to restricting the access of users to perform certain tasks, view data, or execute specific commands. In MongoDB, RBAC is an essential aspect to ensure security within the database.</p>
+<p>Each role in MongoDB consists of a set of privileges that determine the user’s abilities within the system. MongoDB has several built-in roles, and you also have the option to create custom roles as needed. By assigning the appropriate roles to users, you can limit their access to various parts of the database and protect sensitive information.</p>
+<h2 id="built-in-roles">Built-in Roles</h2>
+<p>MongoDB provides several built-in roles that have predefined sets of privileges:</p>
+<ul>
+<li><strong>Read</strong>: Allows read operations on the specified database.</li>
+<li><strong>ReadWrite</strong>: Allows read and write operations on the specified database.</li>
+<li><strong>dbAdmin</strong>: Allows administrative tasks, such as managing indexes and user-defined roles, for the specified database.</li>
+<li><strong>userAdmin</strong>: Allows managing user access for the specified database.</li>
+<li><strong>ClusterAdmin</strong>: Allows administrative tasks for the entire cluster, such as configuring replica sets and sharding.</li>
+<li><strong>ReadAnyDatabase</strong>: Allows read operations on all databases except for the <code>local</code> and <code>config</code> databases.</li>
+<li><strong>ReadWriteAnyDatabase</strong>: Allows read and write operations on all databases except for the <code>local</code> and <code>config</code> databases.</li>
+<li><strong>userAdminAnyDatabase</strong>: Allows managing user access for all databases except for the <code>local</code> and <code>config</code> databases.</li>
+<li><strong>dbAdminAnyDatabase</strong>: Allows administrative tasks for all databases except for the <code>local</code> and <code>config</code> databases.</li>
+</ul>
+<h2 id="custom-roles">Custom Roles</h2>
+<p>In addition to the built-in roles, you can create custom roles to cater to specific requirements of your application. Custom roles can have any combination of built-in roles’ privileges and user-defined actions.</p>
+<p>To create a custom role, you can use the <code>db.createRole()</code> method. Here’s an example:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F8F8F2">db.</span><span style="color:#50FA7B">createRole</span><span style="color:#F8F8F2">({</span></span>
+<span class="line"><span style="color:#F8F8F2">  role</span><span style="color:#FF79C6">:</span><span style="color:#E9F284"> '</span><span style="color:#F1FA8C">customRole</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#F8F8F2">  privileges</span><span style="color:#FF79C6">:</span><span style="color:#F8F8F2"> [</span></span>
+<span class="line"><span style="color:#F8F8F2">    {</span></span>
+<span class="line"><span style="color:#F8F8F2">      resource</span><span style="color:#FF79C6">:</span><span style="color:#F8F8F2"> { db</span><span style="color:#FF79C6">:</span><span style="color:#E9F284"> '</span><span style="color:#F1FA8C">exampleDB</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">, collection</span><span style="color:#FF79C6">:</span><span style="color:#E9F284"> ''</span><span style="color:#F8F8F2"> },</span></span>
+<span class="line"><span style="color:#F8F8F2">      actions</span><span style="color:#FF79C6">:</span><span style="color:#F8F8F2"> [</span><span style="color:#E9F284">'</span><span style="color:#F1FA8C">find</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">, </span><span style="color:#E9F284">'</span><span style="color:#F1FA8C">insert</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">, </span><span style="color:#E9F284">'</span><span style="color:#F1FA8C">update</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">, </span><span style="color:#E9F284">'</span><span style="color:#F1FA8C">remove</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">],</span></span>
+<span class="line"><span style="color:#F8F8F2">    },</span></span>
+<span class="line"><span style="color:#F8F8F2">  ],</span></span>
+<span class="line"><span style="color:#F8F8F2">  roles</span><span style="color:#FF79C6">:</span><span style="color:#F8F8F2"> [],</span></span>
+<span class="line"><span style="color:#F8F8F2">});</span></span>
+<span class="line"></span></code></pre>
+<p>In the example above, we created a custom role <code>customRole</code> with privileges that allow users with this role to perform <code>find</code>, <code>insert</code>, <code>update</code>, and <code>remove</code> operations on all collections within the <code>exampleDB</code> database.</p>
+<h2 id="assigning-roles-to-users">Assigning Roles to Users</h2>
+<p>To ensure that users have the appropriate level of access and permissions, you assign specific roles to them. When creating a new user, you can assign roles using the <code>db.createUser()</code> method. Here’s an example:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F8F8F2">db.</span><span style="color:#50FA7B">createUser</span><span style="color:#F8F8F2">({</span></span>
+<span class="line"><span style="color:#F8F8F2">  user</span><span style="color:#FF79C6">:</span><span style="color:#E9F284"> '</span><span style="color:#F1FA8C">exampleUser</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#F8F8F2">  pwd</span><span style="color:#FF79C6">:</span><span style="color:#E9F284"> '</span><span style="color:#F1FA8C">examplePassword</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#F8F8F2">  roles</span><span style="color:#FF79C6">:</span><span style="color:#F8F8F2"> [</span></span>
+<span class="line"><span style="color:#F8F8F2">    { role</span><span style="color:#FF79C6">:</span><span style="color:#E9F284"> '</span><span style="color:#F1FA8C">read</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">, db</span><span style="color:#FF79C6">:</span><span style="color:#E9F284"> '</span><span style="color:#F1FA8C">exampleDB</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2"> },</span></span>
+<span class="line"><span style="color:#F8F8F2">    { role</span><span style="color:#FF79C6">:</span><span style="color:#E9F284"> '</span><span style="color:#F1FA8C">customRole</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">, db</span><span style="color:#FF79C6">:</span><span style="color:#E9F284"> '</span><span style="color:#F1FA8C">exampleDB</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2"> },</span></span>
+<span class="line"><span style="color:#F8F8F2">  ],</span></span>
+<span class="line"><span style="color:#F8F8F2">});</span></span>
+<span class="line"></span></code></pre>
+<p>In this example, we created a new user <code>exampleUser</code> and assigned the built-in <code>read</code> role and a custom <code>customRole</code> role.</p>
+<p>By effectively using role-based access control, you can strengthen the security of your MongoDB database and protect sensitive data from unauthorized access.</p>

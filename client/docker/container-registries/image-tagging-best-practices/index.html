@@ -1,0 +1,19 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/docker/content/107-container-registries/102-image-tagging-best-practices.md"></div> <h1 id="image-tagging-best-practices">Image Tagging Best Practices</h1>
+<p>Properly tagging your Docker images is crucial for efficient container management and deployment. In this section, we will discuss some best practices for image tagging.</p>
+<h2 id="use-semantic-versioning">Use Semantic Versioning</h2>
+<p>When tagging your image, it is recommended to follow <a href="https://semver.org/" rel="noopener noreferrer nofollow" target="_blank">Semantic Versioning guidelines</a>. Semantic versioning is a widely recognized method that can help better maintain your application. Docker image tags should have the following structure <code>&#x3C;major_version>.&#x3C;minor_version>.&#x3C;patch></code>. Example: <code>3.2.1</code>.</p>
+<h2 id="tag-the-latest-version">Tag the Latest Version</h2>
+<p>Docker allows you to tag an image as ‘latest’ in addition to a version number. It is a common practice to tag the most recent stable version of your image as ‘latest’ so that users can quickly access it without having to specify a version number. However, it is important to keep this tag updated as the new versions are released.</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="color:#50FA7B">docker</span><span style="color:#F1FA8C"> build</span><span style="color:#BD93F9"> -t</span><span style="color:#F1FA8C"> your-username/app-name:latest</span><span style="color:#F1FA8C"> .</span></span>
+<span class="line"></span></code></pre>
+<h2 id="be-descriptive-and-consistent">Be Descriptive and Consistent</h2>
+<p>Choose clear and descriptive tag names that convey the purpose of the image or changes from the previous version. Your tags should also be consistent across your images and repositories for better organization and ease of use.</p>
+<h2 id="include-build-and-git-information-optional">Include Build and Git Information (Optional)</h2>
+<p>In some situations, it might be helpful to include information about the build and Git commit in the image tag. This can help identify the source code and environment used for building the image. Example: <code>app-name-1.2.3-b567-d1234efg</code>.</p>
+<h2 id="use-environment-and-architecture-specific-tags">Use Environment and Architecture-Specific Tags</h2>
+<p>If your application is deployed in different environments (production, staging, development) or has multiple architectures (amd64, arm64), you can use tags that specify these variations. Example: <code>your-username/app-name:1.2.3-production-amd64</code>.</p>
+<h2 id="retag-images-when-needed">Retag Images When Needed</h2>
+<p>Sometimes, you may need to retag an image after it has been pushed to the registry. For example, if you have released a patch for your application, you may want to retag the new patched version with the same tag as the previous version. This allows for smoother application updates and less manual work for users who need to apply the patch.</p>
+<h2 id="use-automated-build-and-tagging-tools">Use Automated Build and Tagging Tools</h2>
+<p>Consider using CI/CD tools (Jenkins, GitLab CI, Travis-CI) to automate image builds and tagging based on commits, branches, or other rules. This ensures consistency and reduces the likelihood of errors caused by manual intervention.</p>
+<p>By following these best practices for image tagging, you can ensure a more organized, maintainable, and user-friendly container registry for your Docker images.</p>

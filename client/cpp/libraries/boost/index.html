@@ -1,0 +1,39 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/cpp/content/libraries/100-boost.md"></div> <h1 id="boost-c-libraries">Boost C++ Libraries</h1>
+<p>Boost is a collection of high-quality and widely-used C++ libraries that are designed to help developers write efficient and portable code. They are modular and can be included in your projects as needed. Boost libraries provide various functionalities, including support for parallelism, multithreading, memory management, string manipulation, and advanced data structures.</p>
+<h2 id="notable-components">Notable Components</h2>
+<p>Here’s a list of some popular Boost libraries:</p>
+<ul>
+<li><strong>Boost.Asio</strong>: Provides network and low-level I/O services.</li>
+<li><strong>Boost.Bimap</strong>: A bidirectional map data structure.</li>
+<li><strong>Boost.Filesystem</strong>: Offers portable file system operations.</li>
+<li><strong>Boost.Graph</strong>: Implements various graph algorithms and data structures.</li>
+<li><strong>Boost.Multithreading</strong>: Offers multithreading, synchronization, and thread management tools.</li>
+</ul>
+<h2 id="usage">Usage</h2>
+<ul>
+<li>First, download and install the Boost libraries according to the <a href="https://www.boost.org/doc/libs/1_76_0/more/getting_started/index.html" rel="noopener noreferrer nofollow" target="_blank">documentation</a>.</li>
+<li>After installation, include necessary headers in your C++ code and start using Boost facilities.</li>
+</ul>
+<p>Here’s an example using <code>boost::filesystem</code> (<em>NOTE: Boost.Filesystem is now part of the C++17 standard library</em>):</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#FF79C6">#include</span><span style="color:#E9F284"> &#x3C;</span><span style="color:#F1FA8C">iostream</span><span style="color:#E9F284">></span></span>
+<span class="line"><span style="color:#FF79C6">#include</span><span style="color:#E9F284"> &#x3C;</span><span style="color:#F1FA8C">boost/filesystem.hpp</span><span style="color:#E9F284">></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">int</span><span style="color:#50FA7B"> main</span><span style="color:#F8F8F2">() {</span></span>
+<span class="line"><span style="color:#F8F8F2">    boost</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">filesystem</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">path </span><span style="color:#50FA7B">path</span><span style="color:#F8F8F2">(</span><span style="color:#E9F284">"</span><span style="color:#F1FA8C">directory_path</span><span style="color:#E9F284">"</span><span style="color:#F8F8F2">);</span></span>
+<span class="line"><span style="color:#F8F8F2">  </span></span>
+<span class="line"><span style="color:#FF79C6">    if</span><span style="color:#F8F8F2"> (boost</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">filesystem</span><span style="color:#FF79C6">::</span><span style="color:#50FA7B">exists</span><span style="color:#F8F8F2">(path)) {</span></span>
+<span class="line"><span style="color:#F8F8F2">        std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">cout </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C">Path: </span><span style="color:#E9F284">"</span><span style="color:#FF79C6"> &#x3C;&#x3C;</span><span style="color:#F8F8F2"> path </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C"> exists!</span><span style="color:#E9F284">"</span><span style="color:#FF79C6"> &#x3C;&#x3C;</span><span style="color:#F8F8F2"> std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">endl;</span></span>
+<span class="line"><span style="color:#F8F8F2">      </span></span>
+<span class="line"><span style="color:#FF79C6">        if</span><span style="color:#F8F8F2"> (boost</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">filesystem</span><span style="color:#FF79C6">::</span><span style="color:#50FA7B">is_directory</span><span style="color:#F8F8F2">(path)) {</span></span>
+<span class="line"><span style="color:#F8F8F2">            std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">cout </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C">Path: </span><span style="color:#E9F284">"</span><span style="color:#FF79C6"> &#x3C;&#x3C;</span><span style="color:#F8F8F2"> path </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C"> is a directory.</span><span style="color:#E9F284">"</span><span style="color:#FF79C6"> &#x3C;&#x3C;</span><span style="color:#F8F8F2"> std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">endl;</span></span>
+<span class="line"><span style="color:#F8F8F2">        } </span><span style="color:#FF79C6">else</span><span style="color:#FF79C6"> if</span><span style="color:#F8F8F2"> (boost</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">filesystem</span><span style="color:#FF79C6">::</span><span style="color:#50FA7B">is_regular_file</span><span style="color:#F8F8F2">(path)) {</span></span>
+<span class="line"><span style="color:#F8F8F2">            std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">cout </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C">Path: </span><span style="color:#E9F284">"</span><span style="color:#FF79C6"> &#x3C;&#x3C;</span><span style="color:#F8F8F2"> path </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C"> is a regular file.</span><span style="color:#E9F284">"</span><span style="color:#FF79C6"> &#x3C;&#x3C;</span><span style="color:#F8F8F2"> std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">endl;</span></span>
+<span class="line"><span style="color:#F8F8F2">        }</span></span>
+<span class="line"><span style="color:#F8F8F2">    } </span><span style="color:#FF79C6">else</span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#F8F8F2">        std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">cout </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C">Path: </span><span style="color:#E9F284">"</span><span style="color:#FF79C6"> &#x3C;&#x3C;</span><span style="color:#F8F8F2"> path </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C"> does not exist!</span><span style="color:#E9F284">"</span><span style="color:#FF79C6"> &#x3C;&#x3C;</span><span style="color:#F8F8F2"> std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">endl;</span></span>
+<span class="line"><span style="color:#F8F8F2">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">    return</span><span style="color:#BD93F9"> 0</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"></span></code></pre>
+<p>For a more detailed guide, refer to the <a href="https://www.boost.org/doc/libs/" rel="noopener noreferrer nofollow" target="_blank">official Boost documentation</a>.</p>

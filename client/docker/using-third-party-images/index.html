@@ -1,0 +1,15 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/docker/content/105-using-third-party-images/index.md"></div> <h1 id="using-third-party-images">Using Third Party Images</h1>
+<p>Third-party images are pre-built Docker container images that are available on Docker Hub or other container registries. These images are created and maintained by individuals or organizations and can be used as a starting point for your containerized applications.</p>
+<h2 id="finding-third-party-images">Finding Third-Party Images</h2>
+<p><a href="https://hub.docker.com" rel="noopener noreferrer nofollow" target="_blank">Docker Hub</a> is the largest and most popular container image registry containing both official and community-maintained images. You can search for images based on the name or the technology you want to use.</p>
+<p>For example: If you’re looking for a <code>Node.js</code> image, you can search for “node” on Docker Hub and you’ll find the official Node.js image along with many other community-maintained images.</p>
+<h2 id="using-an-image-in-your-dockerfile">Using an Image in Your Dockerfile</h2>
+<p>To use a third-party image in your Dockerfile, simply set the image name as the base image using the <code>FROM</code> directive. Here’s an example using the official Node.js image:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="dockerfile"><code><span class="line"><span style="color:#FF79C6">FROM</span><span style="color:#F8F8F2"> node:14</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6272A4"># The rest of your Dockerfile...</span></span>
+<span class="line"></span></code></pre>
+<h2 id="be-aware-of-security-concerns">Be Aware of Security Concerns</h2>
+<p>Keep in mind that third-party images can potentially have security vulnerabilities or misconfigurations. Always verify the source of the image and check its reputation before using it in production. Prefer using official images or well-maintained community images.</p>
+<h2 id="maintaining-your-images">Maintaining Your Images</h2>
+<p>When using third-party images, it’s essential to keep them updated to incorporate the latest security updates and dependency changes. Regularly check for updates in your base images and rebuild your application containers accordingly.</p>

@@ -1,0 +1,19 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/linux/content/114-shell-programming/101-conditionals.md"></div> <h1 id="conditionals-in-shell-programming">Conditionals in Shell Programming</h1>
+<p>Conditional statements in Linux Shell Programming allow scripts to make decisions based on conditions. These are integral part of any programming language and just like other languages such as C, Python, JavaScript, Linux Shell also provides conditional statements. A conditional statement can be defined as an integral part of the shell script which guides the interpreter into the correct path of execution depending on the given conditions.</p>
+<p>In shell, the main commands that are used for conditionals statements are <code>if</code>, <code>elif</code> (else if), and <code>else</code>. These commands are used for process control based on the results of conditional tests which can evaluate the value of string variables, arithmetic tests, or the status of a process.</p>
+<p>Here’s a simple illustration of how they work:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6272A4">#!/bin/sh</span></span>
+<span class="line"><span style="color:#BD93F9">a</span><span style="color:#FF79C6">=</span><span style="color:#F1FA8C">10</span></span>
+<span class="line"><span style="color:#BD93F9">b</span><span style="color:#FF79C6">=</span><span style="color:#F1FA8C">20</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">if</span><span style="color:#F8F8F2"> [ </span><span style="color:#BD93F9">$a</span><span style="color:#FF79C6"> -lt</span><span style="color:#BD93F9"> 20</span><span style="color:#F8F8F2"> ]</span></span>
+<span class="line"><span style="color:#FF79C6">then</span></span>
+<span class="line"><span style="color:#8BE9FD">   echo</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C">a is less than b</span><span style="color:#E9F284">"</span></span>
+<span class="line"><span style="color:#FF79C6">elif</span><span style="color:#F8F8F2"> [ </span><span style="color:#BD93F9">$a</span><span style="color:#FF79C6"> -gt</span><span style="color:#BD93F9"> 20</span><span style="color:#F8F8F2"> ]</span></span>
+<span class="line"><span style="color:#FF79C6">then</span></span>
+<span class="line"><span style="color:#8BE9FD">   echo</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C">a is greater than b</span><span style="color:#E9F284">"</span></span>
+<span class="line"><span style="color:#FF79C6">else</span></span>
+<span class="line"><span style="color:#8BE9FD">   echo</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C">a is equal to b</span><span style="color:#E9F284">"</span></span>
+<span class="line"><span style="color:#FF79C6">fi</span></span>
+<span class="line"></span></code></pre>
+<p>In the above script, the condition inside the <code>if</code> statement is being checked. If the condition is <code>true</code>, then the code block inside the <code>if</code> statement gets executed, otherwise, it moves to the <code>elif</code> condition and so on. If none of those conditions is satisfied, then the code block inside the <code>else</code> statement will be executed.</p>

@@ -1,0 +1,23 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/computer-science/content/103-asymptotic-notation/103-common-runtimes/105-factorial.md"></div> <h1 id="factorial">Factorial</h1>
+<p>Factorial complexity algorithms have a runtime of <code>O(n!)</code>. This is the worst case scenario for an algorithm. Factorial complexity algorithms are very inefficient and should be avoided.</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#FF79C6">def</span><span style="color:#50FA7B"> generate_permutations</span><span style="color:#F8F8F2">(</span><span style="color:#FFB86C;font-style:italic">s</span><span style="color:#F8F8F2">):</span></span>
+<span class="line"><span style="color:#6272A4">    # Base case: If the string length is 1, return a list containing the string</span></span>
+<span class="line"><span style="color:#FF79C6">    if</span><span style="color:#8BE9FD"> len</span><span style="color:#F8F8F2">(s) </span><span style="color:#FF79C6">==</span><span style="color:#BD93F9"> 1</span><span style="color:#F8F8F2">:</span></span>
+<span class="line"><span style="color:#FF79C6">        return</span><span style="color:#F8F8F2"> [s]</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6272A4">    # Initialize the result list</span></span>
+<span class="line"><span style="color:#F8F8F2">    permutations </span><span style="color:#FF79C6">=</span><span style="color:#F8F8F2"> []</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6272A4">    # Recursively generate all permutations</span></span>
+<span class="line"><span style="color:#FF79C6">    for</span><span style="color:#F8F8F2"> i </span><span style="color:#FF79C6">in</span><span style="color:#8BE9FD"> range</span><span style="color:#F8F8F2">(</span><span style="color:#8BE9FD">len</span><span style="color:#F8F8F2">(s)):</span></span>
+<span class="line"><span style="color:#6272A4">        # Current character</span></span>
+<span class="line"><span style="color:#F8F8F2">        current_char </span><span style="color:#FF79C6">=</span><span style="color:#F8F8F2"> s[i]</span></span>
+<span class="line"><span style="color:#6272A4">        # Remaining characters</span></span>
+<span class="line"><span style="color:#F8F8F2">        remaining_chars </span><span style="color:#FF79C6">=</span><span style="color:#F8F8F2"> s[</span><span style="color:#FF79C6">:</span><span style="color:#F8F8F2">i] </span><span style="color:#FF79C6">+</span><span style="color:#F8F8F2"> s[i</span><span style="color:#FF79C6">+</span><span style="color:#BD93F9">1</span><span style="color:#FF79C6">:</span><span style="color:#F8F8F2">]</span></span>
+<span class="line"><span style="color:#6272A4">        # Generate all permutations of the remaining characters</span></span>
+<span class="line"><span style="color:#FF79C6">        for</span><span style="color:#F8F8F2"> perm </span><span style="color:#FF79C6">in</span><span style="color:#F8F8F2"> generate_permutations(remaining_chars):</span></span>
+<span class="line"><span style="color:#6272A4">            # Add the current character to the front of each generated permutation</span></span>
+<span class="line"><span style="color:#F8F8F2">            permutations.append(current_char </span><span style="color:#FF79C6">+</span><span style="color:#F8F8F2"> perm)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">    return</span><span style="color:#F8F8F2"> permutations</span></span>
+<span class="line"></span></code></pre>

@@ -1,0 +1,43 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/sql/content/114-perf-optimization/100-query-optimization/102-reducing-subqueries.md"></div> <h1 id="reducing-subqueries">Reducing Subqueries</h1>
+<p>SQL subqueries allow you to nest a SELECT statement inside another query. However, while this can sometimes simplify the code, the drawback is they can result in long-running queries and reduced performance. Therefore, optimizing queries often involves reducing subqueries. Two common ways to achieve this include using JOINS and ‘EXISTS’ clause.</p>
+<ol>
+<li><strong>JOIN:</strong> A JOIN clause combines rows from two or more tables based on a related column. In many cases, a JOIN can replace a subquery with equivalent logic, but with improved performance.</li>
+</ol>
+<p>An example would be a scenario where you have two tables <code>Orders</code> and <code>Customers</code>, and you want to find orders made by a specific customer:</p>
+<p>Subquery could be:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#FF79C6">SELECT</span><span style="color:#F8F8F2"> OrderNumber </span></span>
+<span class="line"><span style="color:#FF79C6">FROM</span><span style="color:#F8F8F2"> Orders </span></span>
+<span class="line"><span style="color:#FF79C6">WHERE</span><span style="color:#F8F8F2"> CustomerID </span><span style="color:#FF79C6">IN</span><span style="color:#F8F8F2"> (</span></span>
+<span class="line"><span style="color:#FF79C6">  SELECT</span><span style="color:#F8F8F2"> CustomerID </span></span>
+<span class="line"><span style="color:#FF79C6">  FROM</span><span style="color:#F8F8F2"> Customers </span></span>
+<span class="line"><span style="color:#FF79C6">  WHERE</span><span style="color:#F8F8F2"> CustomerName </span><span style="color:#FF79C6">=</span><span style="color:#E9F284"> '</span><span style="color:#F1FA8C">John Doe</span><span style="color:#E9F284">'</span></span>
+<span class="line"><span style="color:#F8F8F2">  );</span></span>
+<span class="line"></span></code></pre>
+<p>Equivalent JOIN:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#FF79C6">SELECT</span><span style="color:#BD93F9"> o</span><span style="color:#F8F8F2">.</span><span style="color:#BD93F9">OrderNumber</span><span style="color:#F8F8F2"> </span></span>
+<span class="line"><span style="color:#FF79C6">FROM</span><span style="color:#F8F8F2"> Orders o </span></span>
+<span class="line"><span style="color:#FF79C6">JOIN</span><span style="color:#F8F8F2"> Customers c </span><span style="color:#FF79C6">ON</span><span style="color:#BD93F9"> o</span><span style="color:#F8F8F2">.</span><span style="color:#BD93F9">CustomerID</span><span style="color:#FF79C6"> =</span><span style="color:#BD93F9"> c</span><span style="color:#F8F8F2">.</span><span style="color:#BD93F9">CustomerID</span><span style="color:#F8F8F2"> </span></span>
+<span class="line"><span style="color:#FF79C6">WHERE</span><span style="color:#BD93F9"> c</span><span style="color:#F8F8F2">.</span><span style="color:#BD93F9">CustomerName</span><span style="color:#FF79C6"> =</span><span style="color:#E9F284"> '</span><span style="color:#F1FA8C">John Doe</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"></span></code></pre>
+<ol start="2">
+<li><strong>EXISTS:</strong> The EXISTS operator checks for the existence of rows returned by the subquery. Many times, a subquery can be replaced with an EXISTS clause which would greatly increase performance as EXISTS will stop processing once it hits a true condition and does not need to check all results like IN would.</li>
+</ol>
+<p>Consider you want to find all customers who have placed at least one order:</p>
+<p>Subquery might be:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#FF79C6">SELECT</span><span style="color:#FF79C6"> *</span><span style="color:#F8F8F2"> </span></span>
+<span class="line"><span style="color:#FF79C6">FROM</span><span style="color:#F8F8F2"> Customers </span></span>
+<span class="line"><span style="color:#FF79C6">WHERE</span><span style="color:#F8F8F2"> CustomerID </span><span style="color:#FF79C6">IN</span><span style="color:#F8F8F2"> (</span></span>
+<span class="line"><span style="color:#FF79C6">  SELECT</span><span style="color:#F8F8F2"> CustomerID </span></span>
+<span class="line"><span style="color:#FF79C6">  FROM</span><span style="color:#F8F8F2"> Orders</span></span>
+<span class="line"><span style="color:#F8F8F2">  );</span></span>
+<span class="line"></span></code></pre>
+<p>Equivalent EXISTS use case:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#FF79C6">SELECT</span><span style="color:#FF79C6"> *</span></span>
+<span class="line"><span style="color:#FF79C6">FROM</span><span style="color:#F8F8F2"> Customers c</span></span>
+<span class="line"><span style="color:#FF79C6">WHERE</span><span style="color:#FF79C6"> EXISTS</span><span style="color:#F8F8F2"> (</span></span>
+<span class="line"><span style="color:#FF79C6">  SELECT</span><span style="color:#BD93F9"> 1</span></span>
+<span class="line"><span style="color:#FF79C6">  FROM</span><span style="color:#F8F8F2"> Orders o</span></span>
+<span class="line"><span style="color:#FF79C6">  WHERE</span><span style="color:#BD93F9"> c</span><span style="color:#F8F8F2">.</span><span style="color:#BD93F9">CustomerID</span><span style="color:#FF79C6"> =</span><span style="color:#BD93F9"> o</span><span style="color:#F8F8F2">.</span><span style="color:#BD93F9">CustomerID</span></span>
+<span class="line"><span style="color:#F8F8F2">  );</span></span>
+<span class="line"></span></code></pre>
+<p>While it’s important to minimize subqueries whenever possible, there may be cases where you cannot replace a subquery, especially when dealing with correlated subqueries or complex queries where rewriting might be nontrivial or not feasible.</p>

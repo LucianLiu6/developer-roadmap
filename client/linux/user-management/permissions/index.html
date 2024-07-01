@@ -1,0 +1,32 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/linux/content/107-user-management/102-permissions.md"></div> <h1 id="linux-permissions-under-user-management">Linux: Permissions Under User Management</h1>
+<p>Linux, like all Unix-like systems, is a multi-user system, meaning it can be used by multiple users at one time. As such, it has a comprehensive system for managing permissions for these users. These Linux permissions dictate who can access, modify, and execute files and directories.</p>
+<p>Permissions are categorized into three types:</p>
+<ol>
+<li>
+<p><strong>Read permission</strong>: Users with read permissions can view the contents of the file.</p>
+</li>
+<li>
+<p><strong>Write permission</strong>: Users with write permissions can modify the contents of the file or directory.</p>
+</li>
+<li>
+<p><strong>Execute permission</strong>: Users with execute permissions can run a file or traverse a directory.</p>
+</li>
+</ol>
+<p>These permissions can be set for three kinds of entities:</p>
+<ol>
+<li>
+<p><strong>User</strong>: The owner of the file or directory.</p>
+</li>
+<li>
+<p><strong>Group</strong>: The user group that owns the file or directory.</p>
+</li>
+<li>
+<p><strong>Others</strong>: Other users who are neither the owner of the file, nor belong to the group that owns the file.</p>
+</li>
+</ol>
+<p>To set these permissions, Linux uses a system of permission bits. This information can be viewed and manipulated using commands such as <code>chmod</code>, <code>chown</code>, and <code>chgrp</code>.</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#50FA7B">chmod</span><span style="color:#BD93F9"> 755</span><span style="color:#F1FA8C"> my_file</span></span>
+<span class="line"><span style="color:#50FA7B">chown</span><span style="color:#F1FA8C"> new_owner</span><span style="color:#F1FA8C"> my_file</span></span>
+<span class="line"><span style="color:#50FA7B">chgrp</span><span style="color:#F1FA8C"> new_group</span><span style="color:#F1FA8C"> my_file</span></span>
+<span class="line"></span></code></pre>
+<p>In the example above, <code>chmod 755 my_file</code> sets permissions so that the user can read, write, and execute (7), while the group and others can read and execute (5). The <code>chown</code> and <code>chgrp</code> commands change the owner and group of <code>my_file</code>, respectively.</p>

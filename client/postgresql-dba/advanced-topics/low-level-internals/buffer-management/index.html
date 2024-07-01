@@ -1,0 +1,39 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/postgresql-dba/content/110-advanced-topics/100-low-level-internals/102-buffer-management.md"></div> <h1 id="buffer-management">Buffer Management</h1>
+<p>In this section, we will delve into the low-level internals of PostgreSQL, specifically focusing on buffer management. Buffer management plays a crucial role in a database system, as it affects performance and overall efficiency.</p>
+<h2 id="introduction">Introduction</h2>
+<p>PostgreSQL uses a buffer pool to efficiently cache frequently accessed data pages in memory. The buffer pool is a fixed-size, shared memory area where database blocks are stored while they are being used, modified or read by the server. Buffer management is the process of efficiently handling these data pages to optimize performance.</p>
+<h2 id="main-components">Main Components</h2>
+<p>There are three main components in PostgreSQL’s buffer management system:</p>
+<ul>
+<li>
+<p><strong>Shared Buffer Cache</strong>: This is a global cache that stores frequently accessed data pages. It is shared amongst all backends and is managed by a least-recently-used (LRU) algorithm to automatically keep popular pages in memory.</p>
+</li>
+<li>
+<p><strong>Buffer Descriptors</strong>: These are metadata entries that store information about each buffer in the shared buffer cache, such as the buffer’s location, the state of its contents (clean or dirty), and any associated locks.</p>
+</li>
+<li>
+<p><strong>Buffer Manager</strong>: This is the core component that controls access to the buffers, managing their lifecycle by fetching, pinning, and releasing them as needed. It also coordinates writing dirty buffers back to disk through a technique called “Write-Ahead Logging” (WAL).</p>
+</li>
+</ul>
+<h2 id="read-and-write-process">Read and Write Process</h2>
+<p>The buffer manager handles read and write requests from PostgreSQL’s query executor as follows:</p>
+<ul>
+<li>
+<p><strong>Read</strong>: When the query executor needs to read a data page, it requests the buffer manager to provide the related buffer in the shared buffer cache. If the page is not in cache, the buffer manager fetches the page from disk, loads it into an available buffer or replaces an old one, and returns its location.</p>
+</li>
+<li>
+<p><strong>Write</strong>: When the query executor needs to modify a data page, it sends the modification request to the buffer manager. The modification is done in memory within the corresponding buffer, marking it “dirty”. Dirty buffers are periodically written back to their corresponding block on disk, in a process known as “flushing”.</p>
+</li>
+</ul>
+<h2 id="write-ahead-logging-wal">Write-Ahead Logging (WAL)</h2>
+<p>WAL is an essential part of PostgreSQL’s buffer management system, as it ensures data consistency and durability. When a buffer is modified, PostgreSQL records the change in the WAL before it is applied to the buffer. This allows the system to recover in the case of a crash by “redoing” the modifications from the WAL. Additionally, WAL can be used to improve performance by reducing the frequency of flushing dirty buffers to disk, as changes can be safely kept in memory until a more optimal point in time.</p>
+<h2 id="tuning-buffer-management">Tuning Buffer Management</h2>
+<p>PostgreSQL offers several configuration parameters that can be adjusted to optimize buffer management:</p>
+<ul>
+<li><code>shared_buffers</code>: Defines the size of the shared buffer cache. By increasing its size, PostgreSQL can cache more data pages in memory, potentially improving performance.</li>
+<li><code>work_mem</code>: The size of memory used by query operations, such as sorting and hash tables. By allocating more memory, PostgreSQL can avoid using temp files on disk.</li>
+<li><code>maintenance_work_mem</code>: The amount of memory allocated for maintenance and bulk loading operations.</li>
+<li><code>checkpoint_segments</code>: Determines the amount of WAL data generated between checkpoints, affecting the frequency of flushing dirty buffers to disk.</li>
+</ul>
+<p>Adjusting these parameters can have a significant impact on the performance of a PostgreSQL installation, but it’s essential to find the correct balance based on your system resources and workloads.</p>
+<p>In summary, buffer management is a crucial aspect of PostgreSQL’s low-level internals that directly impacts database performance. By understanding its core components and mechanisms, you can better tune and optimize your PostgreSQL installation for better results.</p>

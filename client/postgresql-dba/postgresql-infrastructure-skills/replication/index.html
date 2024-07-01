@@ -1,0 +1,72 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/postgresql-dba/content/107-postgresql-infrastructure-skills/100-replication/index.md"></div> <h1 id="replication-in-postgresql">Replication in PostgreSQL</h1>
+<p>Replication is an essential aspect of PostgreSQL infrastructure skills as it plays a crucial role in ensuring data redundancy and high availability. Replication is the process of copying data changes made on one database (the primary) to another database (the replica). This sync happens in real-time or as close to it as possible. Replication is highly useful in disaster recovery, read-scaling, and backup scenarios.</p>
+<h2 id="types-of-replication">Types of Replication</h2>
+<p>There are two main types of replication in PostgreSQL:</p>
+<ul>
+<li>
+<p><strong>Physical Replication</strong>: In physical replication, the changes at the block level (i.e., binary data) of the primary database are copied to the replica. The replica is an identical copy of the primary, including the structure and data.</p>
+</li>
+<li>
+<p><strong>Logical Replication</strong>: In logical replication, a specific set of changes (INSERT, UPDATE, DELETE or TRUNCATE) at the row level of the primary database are replicated to the replica. It provides more flexibility as it allows replicating changes to specific tables, or even selective columns, which may differ in their structure compared to the primary.</p>
+</li>
+</ul>
+<h2 id="replication-methods">Replication Methods</h2>
+<p>PostgreSQL offers various replication methods, including:</p>
+<ul>
+<li>
+<p><strong>Streaming Replication</strong>: This method uses primary’s write-ahead logs (WALs) to keep the replica up-to-date. WALs consist of every change made to the primary’s data. The primary sends WALs to the replica, which applies the changes to stay in sync. You can configure streaming replication as synchronous or asynchronous.</p>
+</li>
+<li>
+<p><strong>Logical Decoding</strong>: This method is responsible for generating a sequence of logical changes by decoding the primary’s WALs. Logical decoding can be used in logical replication for capturing specific data changes and replicating them to the replica.</p>
+</li>
+<li>
+<p><strong>Trigger-Based Replication</strong>: This method involves using triggers on the primary database to record changes into specific tables. Third-party tools like Slony and Londiste use trigger-based replication.</p>
+</li>
+</ul>
+<h2 id="setting-up-replication">Setting up Replication</h2>
+<p>To set up replication in PostgreSQL, you will need to follow these steps:</p>
+<ul>
+<li>
+<p><strong>Primary Server Configuration</strong>: Set the following parameters in the <code>postgresql.conf</code> on the primary server.</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>wal_level = 'replica'</span></span>
+<span class="line"><span>max_wal_senders = 3</span></span>
+<span class="line"><span>max_replication_slots = 3</span></span>
+<span class="line"><span>wal_keep_segments = 64</span></span>
+<span class="line"><span>listen_addresses = '*'</span></span>
+<span class="line"><span></span></span></code></pre>
+</li>
+<li>
+<p><strong>Replica Server Configuration</strong>: Set the following parameters in the <code>postgresql.conf</code> on the replica server.</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>hot_standby = on</span></span>
+<span class="line"><span></span></span></code></pre>
+</li>
+<li>
+<p><strong>Authentication</strong>: Add an entry in the <code>pg_hba.conf</code> file on the primary server to allow the replica to connect.</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>host replication &#x3C;replica_user> &#x3C;replica_ip>/32 md5</span></span>
+<span class="line"><span></span></span></code></pre>
+</li>
+<li>
+<p><strong>Create Replication User</strong>: Create a replication user on the primary server with the REPLICATION attribute.</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>CREATE USER &#x3C;replica_user> WITH REPLICATION ENCRYPTED PASSWORD '&#x3C;password>';</span></span>
+<span class="line"><span></span></span></code></pre>
+</li>
+<li>
+<p><strong>Create Base Backup</strong>: Create a base backup of the primary server using <code>pg_basebackup</code> tool, specifying the destination directory (<code>&#x3C;destination></code>) on the replica server.</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>pg_basebackup -h &#x3C;primary_ip> -D &#x3C;destination> -U &#x3C;replica_user> -vP --wal-method=fetch</span></span>
+<span class="line"><span></span></span></code></pre>
+</li>
+<li>
+<p><strong>Configure Recovery</strong>: On the replica server, create a <code>recovery.conf</code> file in the data directory to configure it to connect to the primary server for streaming replication.</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>standby_mode = 'on'</span></span>
+<span class="line"><span>primary_conninfo = 'host=&#x3C;primary_ip> port=5432 user=&#x3C;replica_user> password=&#x3C;password>'</span></span>
+<span class="line"><span>trigger_file = '/tmp/replica_trigger' # This can be any custom path of your choice</span></span>
+<span class="line"><span></span></span></code></pre>
+</li>
+<li>
+<p><strong>Start Replica</strong>: Start the replica server, and it will begin syncing the data from the primary server.</p>
+</li>
+</ul>
+<h2 id="failover-and-monitoring">Failover and Monitoring</h2>
+<p>You can monitor the replication status using the <code>pg_stat_replication</code> view, which contains information about the replication sessions and progress.</p>
+<p>In case of a primary server failure, you can switch to the replica server by creating a trigger file, as specified in the <code>recovery.conf</code>. The replica server will promote to a primary server, accepting read and write connections.</p>
+<p>Remember to thoroughly understand replication in PostgreSQL, as it is a critical aspect of maintaining a successful database infrastructure.</p>

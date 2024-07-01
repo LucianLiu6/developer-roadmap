@@ -1,0 +1,12 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/linux/content/102-shell-basics/103-redirects.md"></div> <h1 id="redirects-in-shell-basics">Redirects In Shell Basics</h1>
+<p>The shell in Linux provides a robust way of managing input and output streams of a command or program, this mechanism is known as Redirection. Linux being a multi-user and multi-tasking operating system, every process typically has 3 streams opened:</p>
+<ul>
+<li>Standard Input (stdin) - This is where the process reads its input from. The default is the keyboard.</li>
+<li>Standard Output (stdout) - The process writes its output to stdout. By default, this means the terminal.</li>
+<li>Standard Error (stderr) - The process writes error messages to stderr. This also goes to the terminal by default.</li>
+</ul>
+<p>Redirection in Linux allows us to manipulate these streams, advancing the flexibility with which commands or programs are run. Besides the default devices (keyboard for input and terminal for output), the I/O streams can be redirected to files or other devices.</p>
+<p>For example, if you want to store the output of a command into a file instead of printing it to the console, we can use the ’>’ operator.</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#50FA7B">ls</span><span style="color:#BD93F9"> -al</span><span style="color:#FF79C6"> ></span><span style="color:#F1FA8C"> file_list.txt</span></span>
+<span class="line"></span></code></pre>
+<p>This command will write the output of ‘ls -al’ into ‘file_list.txt’, whether or not the file initially existed. It will be created if necessary, and if it already exists – it will be overwritten.</p>

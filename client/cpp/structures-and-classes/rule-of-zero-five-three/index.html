@@ -1,0 +1,89 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/cpp/content/107-structures-and-classes/100-rule-of-zero-five-three.md"></div> <h1 id="rule-of-zero-five-three">Rule of Zero, Five, Three</h1>
+<p><strong>Rule of Zero, Three, and Five in C++</strong></p>
+<p>The Rule of Zero, Three, and Five is a set of guidelines for managing object resources in modern C++, related to structures and classes. These rules deal with the default behavior of constructors, destructors, and other special member functions that are necessary for proper resource management.</p>
+<p><strong>Rule of Zero</strong></p>
+<p>The Rule of Zero states that if a class or structure does not explicitly manage resources, it should not define any of the special member functions, i.e., destructor, copy constructor, copy assignment operator, move constructor, and move assignment operator. The compiler will automatically generate these functions, and the behavior will be correct for managing resources like memory and file handles.</p>
+<p><em>Example:</em></p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#FF79C6">struct</span><span style="color:#8BE9FD;font-style:italic"> MyResource</span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#F8F8F2">    std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">string name;</span></span>
+<span class="line"><span style="color:#FF79C6">    int</span><span style="color:#F8F8F2"> value;</span></span>
+<span class="line"><span style="color:#F8F8F2">};</span></span>
+<span class="line"></span></code></pre>
+<p>In this example, MyResource is a simple structure that does not manage any resources, so it does not define any special member functions. The compiler will generate them automatically, and the behavior will be correct.</p>
+<p><strong>Rule of Three</strong></p>
+<p>The Rule of Three states that a class or structure that manages resources should define the following three special member functions:</p>
+<ul>
+<li>Destructor</li>
+<li>Copy constructor</li>
+<li>Copy assignment operator</li>
+</ul>
+<p>These functions are necessary for proper resource management, such as releasing memory or correctly handling deep copies.</p>
+<p><em>Example:</em></p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#FF79C6">class</span><span style="color:#8BE9FD"> MyResource</span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#FF79C6">public:</span></span>
+<span class="line"><span style="color:#6272A4">    // Constructor and destructor</span></span>
+<span class="line"><span style="color:#50FA7B">    MyResource</span><span style="color:#F8F8F2">() : </span><span style="color:#50FA7B">data</span><span style="color:#F8F8F2">(</span><span style="color:#FF79C6;font-weight:bold">new</span><span style="color:#FF79C6"> int</span><span style="color:#F8F8F2">[</span><span style="color:#BD93F9">100</span><span style="color:#F8F8F2">]) {} </span></span>
+<span class="line"><span style="color:#50FA7B">    ~MyResource</span><span style="color:#F8F8F2">() { </span><span style="color:#FF79C6">delete[]</span><span style="color:#F8F8F2"> data; } </span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6272A4">    // Copy constructor</span></span>
+<span class="line"><span style="color:#50FA7B">    MyResource</span><span style="color:#F8F8F2">(</span><span style="color:#FF79C6">const</span><span style="color:#8BE9FD;font-style:italic"> MyResource</span><span style="color:#FF79C6">&#x26;</span><span style="color:#FFB86C;font-style:italic"> other</span><span style="color:#F8F8F2">) : </span><span style="color:#50FA7B">data</span><span style="color:#F8F8F2">(</span><span style="color:#FF79C6;font-weight:bold">new</span><span style="color:#FF79C6"> int</span><span style="color:#F8F8F2">[</span><span style="color:#BD93F9">100</span><span style="color:#F8F8F2">]) {</span></span>
+<span class="line"><span style="color:#F8F8F2">        std</span><span style="color:#FF79C6">::</span><span style="color:#50FA7B">copy</span><span style="color:#F8F8F2">(other.data, other.data </span><span style="color:#FF79C6">+</span><span style="color:#BD93F9"> 100</span><span style="color:#F8F8F2">, data);</span></span>
+<span class="line"><span style="color:#F8F8F2">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6272A4">    // Copy assignment operator</span></span>
+<span class="line"><span style="color:#8BE9FD;font-style:italic">    MyResource</span><span style="color:#FF79C6">&#x26;</span><span style="color:#FF79C6"> operator</span><span style="color:#F8F8F2">=(</span><span style="color:#FF79C6">const</span><span style="color:#8BE9FD;font-style:italic"> MyResource</span><span style="color:#FF79C6">&#x26;</span><span style="color:#FFB86C;font-style:italic"> other</span><span style="color:#F8F8F2">) {</span></span>
+<span class="line"><span style="color:#FF79C6">        if</span><span style="color:#F8F8F2"> (</span><span style="color:#FF79C6">&#x26;</span><span style="color:#F8F8F2">other </span><span style="color:#FF79C6">==</span><span style="color:#BD93F9;font-style:italic"> this</span><span style="color:#F8F8F2">) { </span><span style="color:#FF79C6">return</span><span style="color:#FF79C6"> *</span><span style="color:#BD93F9;font-style:italic">this</span><span style="color:#F8F8F2">; }</span></span>
+<span class="line"><span style="color:#F8F8F2">        std</span><span style="color:#FF79C6">::</span><span style="color:#50FA7B">copy</span><span style="color:#F8F8F2">(other.data, other.data </span><span style="color:#FF79C6">+</span><span style="color:#BD93F9"> 100</span><span style="color:#F8F8F2">, data);</span></span>
+<span class="line"><span style="color:#FF79C6">        return</span><span style="color:#FF79C6"> *</span><span style="color:#BD93F9;font-style:italic">this</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"><span style="color:#F8F8F2">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">private:</span></span>
+<span class="line"><span style="color:#FF79C6">    int*</span><span style="color:#F8F8F2"> data;</span></span>
+<span class="line"><span style="color:#F8F8F2">};</span></span>
+<span class="line"></span></code></pre>
+<p>In this example, MyResource is a class that manages a resource (an array of integers), so it defines the destructor, copy constructor, and copy assignment operator.</p>
+<p><strong>Rule of Five</strong></p>
+<p>The Rule of Five extends the Rule of Three to include two additional special member functions:</p>
+<ul>
+<li>Move constructor</li>
+<li>Move assignment operator</li>
+</ul>
+<p>Modern C++ introduces move semantics, which allows for more efficient handling of resources by transferring ownership without necessarily copying all the data.</p>
+<p><em>Example:</em></p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#FF79C6">class</span><span style="color:#8BE9FD"> MyResource</span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#FF79C6">public:</span></span>
+<span class="line"><span style="color:#6272A4">    // Constructors and destructor</span></span>
+<span class="line"><span style="color:#50FA7B">    MyResource</span><span style="color:#F8F8F2">() : </span><span style="color:#50FA7B">data</span><span style="color:#F8F8F2">(</span><span style="color:#FF79C6;font-weight:bold">new</span><span style="color:#FF79C6"> int</span><span style="color:#F8F8F2">[</span><span style="color:#BD93F9">100</span><span style="color:#F8F8F2">]) {}</span></span>
+<span class="line"><span style="color:#50FA7B">    ~MyResource</span><span style="color:#F8F8F2">() { </span><span style="color:#FF79C6">delete[]</span><span style="color:#F8F8F2"> data; }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6272A4">    // Copy constructor</span></span>
+<span class="line"><span style="color:#50FA7B">    MyResource</span><span style="color:#F8F8F2">(</span><span style="color:#FF79C6">const</span><span style="color:#8BE9FD;font-style:italic"> MyResource</span><span style="color:#FF79C6">&#x26;</span><span style="color:#FFB86C;font-style:italic"> other</span><span style="color:#F8F8F2">) : </span><span style="color:#50FA7B">data</span><span style="color:#F8F8F2">(</span><span style="color:#FF79C6;font-weight:bold">new</span><span style="color:#FF79C6"> int</span><span style="color:#F8F8F2">[</span><span style="color:#BD93F9">100</span><span style="color:#F8F8F2">]) {</span></span>
+<span class="line"><span style="color:#F8F8F2">        std</span><span style="color:#FF79C6">::</span><span style="color:#50FA7B">copy</span><span style="color:#F8F8F2">(other.data, other.data </span><span style="color:#FF79C6">+</span><span style="color:#BD93F9"> 100</span><span style="color:#F8F8F2">, data);</span></span>
+<span class="line"><span style="color:#F8F8F2">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6272A4">    // Copy assignment operator</span></span>
+<span class="line"><span style="color:#8BE9FD;font-style:italic">    MyResource</span><span style="color:#FF79C6">&#x26;</span><span style="color:#FF79C6"> operator</span><span style="color:#F8F8F2">=(</span><span style="color:#FF79C6">const</span><span style="color:#8BE9FD;font-style:italic"> MyResource</span><span style="color:#FF79C6">&#x26;</span><span style="color:#FFB86C;font-style:italic"> other</span><span style="color:#F8F8F2">) {</span></span>
+<span class="line"><span style="color:#FF79C6">        if</span><span style="color:#F8F8F2"> (</span><span style="color:#FF79C6">&#x26;</span><span style="color:#F8F8F2">other </span><span style="color:#FF79C6">==</span><span style="color:#BD93F9;font-style:italic"> this</span><span style="color:#F8F8F2">) { </span><span style="color:#FF79C6">return</span><span style="color:#FF79C6"> *</span><span style="color:#BD93F9;font-style:italic">this</span><span style="color:#F8F8F2">; }</span></span>
+<span class="line"><span style="color:#F8F8F2">        std</span><span style="color:#FF79C6">::</span><span style="color:#50FA7B">copy</span><span style="color:#F8F8F2">(other.data, other.data </span><span style="color:#FF79C6">+</span><span style="color:#BD93F9"> 100</span><span style="color:#F8F8F2">, data);</span></span>
+<span class="line"><span style="color:#FF79C6">        return</span><span style="color:#FF79C6"> *</span><span style="color:#BD93F9;font-style:italic">this</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"><span style="color:#F8F8F2">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6272A4">    // Move constructor</span></span>
+<span class="line"><span style="color:#50FA7B">    MyResource</span><span style="color:#F8F8F2">(</span><span style="color:#8BE9FD;font-style:italic">MyResource</span><span style="color:#FF79C6">&#x26;&#x26;</span><span style="color:#FFB86C;font-style:italic"> other</span><span style="color:#F8F8F2">) </span><span style="color:#FF79C6">noexcept</span><span style="color:#F8F8F2"> : </span><span style="color:#50FA7B">data</span><span style="color:#F8F8F2">(other.data) {</span></span>
+<span class="line"><span style="color:#F8F8F2">        other.data </span><span style="color:#FF79C6">=</span><span style="color:#BD93F9"> nullptr</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"><span style="color:#F8F8F2">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6272A4">    // Move assignment operator</span></span>
+<span class="line"><span style="color:#8BE9FD;font-style:italic">    MyResource</span><span style="color:#FF79C6">&#x26;</span><span style="color:#FF79C6"> operator</span><span style="color:#F8F8F2">=(</span><span style="color:#8BE9FD;font-style:italic">MyResource</span><span style="color:#FF79C6">&#x26;&#x26;</span><span style="color:#FFB86C;font-style:italic"> other</span><span style="color:#F8F8F2">) </span><span style="color:#FF79C6">noexcept</span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#FF79C6">        if</span><span style="color:#F8F8F2"> (</span><span style="color:#FF79C6">&#x26;</span><span style="color:#F8F8F2">other </span><span style="color:#FF79C6">==</span><span style="color:#BD93F9;font-style:italic"> this</span><span style="color:#F8F8F2">) { </span><span style="color:#FF79C6">return</span><span style="color:#FF79C6"> *</span><span style="color:#BD93F9;font-style:italic">this</span><span style="color:#F8F8F2">; }</span></span>
+<span class="line"><span style="color:#FF79C6">        delete[]</span><span style="color:#F8F8F2"> data;</span></span>
+<span class="line"><span style="color:#F8F8F2">        data </span><span style="color:#FF79C6">=</span><span style="color:#F8F8F2"> other.data;</span></span>
+<span class="line"><span style="color:#F8F8F2">        other.data </span><span style="color:#FF79C6">=</span><span style="color:#BD93F9"> nullptr</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"><span style="color:#FF79C6">        return</span><span style="color:#FF79C6"> *</span><span style="color:#BD93F9;font-style:italic">this</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"><span style="color:#F8F8F2">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">private:</span></span>
+<span class="line"><span style="color:#FF79C6">    int*</span><span style="color:#F8F8F2"> data;</span></span>
+<span class="line"><span style="color:#F8F8F2">};</span></span>
+<span class="line"></span></code></pre>
+<p>In this example, MyResource is a class that manages a resource (an array of integers), so it defines all five special member functions for proper resource management and move semantics.</p>

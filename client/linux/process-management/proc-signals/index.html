@@ -1,0 +1,8 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/linux/content/106-process-management/102-proc-signals.md"></div> <h1 id="proc-signals-under-process-management">Proc Signals under Process Management</h1>
+<p>In Linux, process management is a fundamental part of the system which involves creating, scheduling, terminating and coordinating the execution of processes. One crucial aspect of this is proc signals or process signals.</p>
+<p>Process signals are a form of communication mechanism in Unix and Linux systems. They provide a means to notify a process of synchronous or asynchronous events. There are a variety of signals like SIGINT, SIGSTOP, SIGKILL, etc. available which can be sent to a running process to interrupt, pause or terminate it.</p>
+<p>For instance, to send a SIGSTOP signal to a process with a PID of 12345 you would use <code>kill</code> command in terminal as follows:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#8BE9FD">kill</span><span style="color:#BD93F9"> -SIGSTOP</span><span style="color:#BD93F9"> 12345</span></span>
+<span class="line"></span></code></pre>
+<p>This will suspend the execution of the process until a SIGCONT signal is received.</p>
+<p>Understanding proc signals is essential for comprehensive process management and resource allocation in Linux.</p>

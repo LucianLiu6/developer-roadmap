@@ -1,0 +1,16 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/prompt-engineering/content/106-llm-settings/101-top-p.md"></div> <h1 id="top-p-sampling">Top P Sampling</h1>
+<p>Top P, also known as “nucleus sampling,” is a method that provides a more dynamic way to control the randomness of a model’s generated output. It improves the trade-off between quality and diversity in text generation.</p>
+<h2 id="how-top-p-works">How Top P Works?</h2>
+<p>Instead of picking the top K tokens with the highest probability like in Top K sampling, Top P sampling picks a number of tokens whose cumulative probability adds up to the given value of P. P is a probability mass with a range between 0 and 1. This means that the number of tokens picked will vary, automatically adapting to the distribution in a more granular way.</p>
+<h2 id="advantages-of-top-p">Advantages of Top P</h2>
+<ol>
+<li><strong>More diverse and coherent outputs</strong>: Top P sampling strikes a balance between overly conservative and highly random text. This creates more diverse and coherent outputs compared to Top K sampling.</li>
+<li><strong>Adaptive threshold</strong>: The dynamic nature of Top P sampling allows it to adapt to the token probability distribution, unlike Top K sampling which requires manual tuning of K.</li>
+<li><strong>Prevents OOV tokens</strong>: By gathering the tokens based on a cumulative probability threshold, Top P sampling effectively prevents selecting out-of-vocabulary (OOV) tokens.</li>
+</ol>
+<h2 id="adjusting-top-p-value">Adjusting Top P Value</h2>
+<ul>
+<li><strong>Lower values</strong>: Decreasing the value of P will result in more focused outputs, potentially at the expense of diversity.</li>
+<li><strong>Higher values</strong>: Increasing the value of P will encourage the model to explore more diverse responses, possibly at the cost of coherence.</li>
+</ul>
+<p>In practice, a commonly used Top P value is 0.9, but you should experiment with different values for P depending on your specific use-case and desired balance between diversity and coherence.</p>

@@ -1,0 +1,69 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/cpp/content/libraries/102-poco.md"></div> <h1 id="poco">Poco</h1>
+<p>Poco (also known as POCO C++ Libraries) is a collection of open-source class libraries, which simplifies the creation of network-centric, portable, and maintainable software in C++.</p>
+<h2 id="overview">Overview</h2>
+<p>Poco library provides functionality for various areas, such as:</p>
+<ul>
+<li>Networking: HTTP, FTP, SMTP, POP3, and other internet protocols</li>
+<li>File handling: FileSystem, Path, File, and Directory classes</li>
+<li>XML processing: XML parsing and DOM manipulation</li>
+<li>Logging: Loggers, levels, channels, patterns, etc.</li>
+<li>Data manipulation: Stream, ByteBuffer, Buffer, etc.</li>
+<li>Multithreading and synchronization: Threads, Mutex, Event, and Condition</li>
+</ul>
+<h2 id="code-example">Code Example</h2>
+<p>Here’s an example demonstrating an HTTP client using the Poco library:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#FF79C6">#include</span><span style="color:#E9F284"> &#x3C;</span><span style="color:#F1FA8C">Poco/Net/HTTPClientSession.h</span><span style="color:#E9F284">></span></span>
+<span class="line"><span style="color:#FF79C6">#include</span><span style="color:#E9F284"> &#x3C;</span><span style="color:#F1FA8C">Poco/Net/HTTPRequest.h</span><span style="color:#E9F284">></span></span>
+<span class="line"><span style="color:#FF79C6">#include</span><span style="color:#E9F284"> &#x3C;</span><span style="color:#F1FA8C">Poco/Net/HTTPResponse.h</span><span style="color:#E9F284">></span></span>
+<span class="line"><span style="color:#FF79C6">#include</span><span style="color:#E9F284"> &#x3C;</span><span style="color:#F1FA8C">Poco/Net/HTTPMessage.h</span><span style="color:#E9F284">></span></span>
+<span class="line"><span style="color:#FF79C6">#include</span><span style="color:#E9F284"> &#x3C;</span><span style="color:#F1FA8C">Poco/StreamCopier.h</span><span style="color:#E9F284">></span></span>
+<span class="line"><span style="color:#FF79C6">#include</span><span style="color:#E9F284"> &#x3C;</span><span style="color:#F1FA8C">iostream</span><span style="color:#E9F284">></span></span>
+<span class="line"><span style="color:#FF79C6">#include</span><span style="color:#E9F284"> &#x3C;</span><span style="color:#F1FA8C">string</span><span style="color:#E9F284">></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">using</span><span style="color:#FF79C6"> namespace</span><span style="color:#F8F8F2"> Poco</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">Net;</span></span>
+<span class="line"><span style="color:#FF79C6">using</span><span style="color:#FF79C6"> namespace</span><span style="color:#F8F8F2"> Poco;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">int</span><span style="color:#50FA7B"> main</span><span style="color:#F8F8F2">()</span></span>
+<span class="line"><span style="color:#F8F8F2">{</span></span>
+<span class="line"><span style="color:#FF79C6">  try</span></span>
+<span class="line"><span style="color:#F8F8F2">  {</span></span>
+<span class="line"><span style="color:#6272A4">    // Prepare the request</span></span>
+<span class="line"><span style="color:#F8F8F2">    URI </span><span style="color:#50FA7B">uri</span><span style="color:#F8F8F2">(</span><span style="color:#E9F284">"</span><span style="color:#F1FA8C">http://example.com</span><span style="color:#E9F284">"</span><span style="color:#F8F8F2">);</span></span>
+<span class="line"><span style="color:#F8F8F2">    HTTPClientSession </span><span style="color:#50FA7B">session</span><span style="color:#F8F8F2">(uri.</span><span style="color:#50FA7B">getHost</span><span style="color:#F8F8F2">(), uri.</span><span style="color:#50FA7B">getPort</span><span style="color:#F8F8F2">());</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F8F8F2">    HTTPRequest </span><span style="color:#50FA7B">request</span><span style="color:#F8F8F2">(HTTPRequest</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">HTTP_GET, uri.</span><span style="color:#50FA7B">getPath</span><span style="color:#F8F8F2">(), HTTPMessage</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">HTTP_1_1);</span></span>
+<span class="line"><span style="color:#F8F8F2">    request.</span><span style="color:#50FA7B">setContentType</span><span style="color:#F8F8F2">(</span><span style="color:#E9F284">"</span><span style="color:#F1FA8C">application/json</span><span style="color:#E9F284">"</span><span style="color:#F8F8F2">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F8F8F2">    session.</span><span style="color:#50FA7B">sendRequest</span><span style="color:#F8F8F2">(request);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6272A4">    // Process the response</span></span>
+<span class="line"><span style="color:#F8F8F2">    HTTPResponse response;</span></span>
+<span class="line"><span style="color:#F8F8F2">    std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">istream</span><span style="color:#FF79C6">&#x26;</span><span style="color:#F8F8F2"> responseStream </span><span style="color:#FF79C6">=</span><span style="color:#F8F8F2"> session.</span><span style="color:#50FA7B">receiveResponse</span><span style="color:#F8F8F2">(response);</span></span>
+<span class="line"><span style="color:#FF79C6">    if</span><span style="color:#F8F8F2"> (response.</span><span style="color:#50FA7B">getStatus</span><span style="color:#F8F8F2">() </span><span style="color:#FF79C6">==</span><span style="color:#F8F8F2"> HTTPResponse</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">HTTP_OK)</span></span>
+<span class="line"><span style="color:#F8F8F2">    {</span></span>
+<span class="line"><span style="color:#6272A4">      // Successful</span></span>
+<span class="line"><span style="color:#F8F8F2">      std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">string responseBody;</span></span>
+<span class="line"><span style="color:#F8F8F2">      StreamCopier</span><span style="color:#FF79C6">::</span><span style="color:#50FA7B">copyToString</span><span style="color:#F8F8F2">(responseStream, responseBody);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F8F8F2">      std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">cout </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C">Response: </span><span style="color:#E9F284">"</span><span style="color:#FF79C6"> &#x3C;&#x3C;</span><span style="color:#F8F8F2"> responseBody </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#F8F8F2"> std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">endl;</span></span>
+<span class="line"><span style="color:#F8F8F2">    }</span></span>
+<span class="line"><span style="color:#FF79C6">    else</span></span>
+<span class="line"><span style="color:#F8F8F2">    {</span></span>
+<span class="line"><span style="color:#6272A4">      // Error</span></span>
+<span class="line"><span style="color:#F8F8F2">      std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">cout </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C">Error: </span><span style="color:#E9F284">"</span><span style="color:#FF79C6"> &#x3C;&#x3C;</span><span style="color:#F8F8F2"> response.</span><span style="color:#50FA7B">getStatus</span><span style="color:#F8F8F2">() </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#E9F284"> "</span><span style="color:#E9F284"> "</span><span style="color:#FF79C6"> &#x3C;&#x3C;</span><span style="color:#F8F8F2"> response.</span><span style="color:#50FA7B">getReason</span><span style="color:#F8F8F2">() </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#F8F8F2"> std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">endl;</span></span>
+<span class="line"><span style="color:#F8F8F2">    }</span></span>
+<span class="line"><span style="color:#F8F8F2">  }</span></span>
+<span class="line"><span style="color:#FF79C6">  catch</span><span style="color:#F8F8F2">(</span><span style="color:#FF79C6">const</span><span style="color:#F8F8F2"> Exception</span><span style="color:#FF79C6">&#x26;</span><span style="color:#F8F8F2"> e)</span></span>
+<span class="line"><span style="color:#F8F8F2">  {</span></span>
+<span class="line"><span style="color:#F8F8F2">    std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">cerr </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C">Error: </span><span style="color:#E9F284">"</span><span style="color:#FF79C6"> &#x3C;&#x3C;</span><span style="color:#F8F8F2"> e.</span><span style="color:#50FA7B">displayText</span><span style="color:#F8F8F2">() </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#F8F8F2"> std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">endl;</span></span>
+<span class="line"><span style="color:#FF79C6">    return</span><span style="color:#FF79C6"> -</span><span style="color:#BD93F9">1</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"><span style="color:#F8F8F2">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">  return</span><span style="color:#BD93F9"> 0</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"></span></code></pre>
+<p>In the above example, Poco is used to send an HTTP GET request and process the response. It manages tasks like connecting to the server, handling exceptions, and managing HTTP headers.</p>
+<p>Learn more from the following resources:</p>
+<ul>
+<li><a href="https://docs.pocoproject.org/" rel="noopener noreferrer nofollow" target="_blank">@article@Official Docs for Poco Library</a></li>
+</ul>

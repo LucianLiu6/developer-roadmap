@@ -1,0 +1,21 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/typescript/content/113-modules/100-namespaces.md"></div> <h1 id="namespaces">Namespaces</h1>
+<p>In TypeScript, namespaces are used to organize and share code across multiple files. Namespaces allow you to group related functionality into a single unit and prevent naming conflicts.</p>
+<p>Here’s an example of how you can use namespaces in TypeScript:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="typescript"><code><span class="line"><span style="color:#6272A4">// myNamespace.ts</span></span>
+<span class="line"><span style="color:#FF79C6">namespace</span><span style="color:#8BE9FD;font-style:italic"> MyNamespace</span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#FF79C6">  export</span><span style="color:#FF79C6"> function</span><span style="color:#50FA7B"> doSomething</span><span style="color:#F8F8F2">() {</span></span>
+<span class="line"><span style="color:#F8F8F2">    console.</span><span style="color:#50FA7B">log</span><span style="color:#F8F8F2">(</span><span style="color:#E9F284">'</span><span style="color:#F1FA8C">Doing something...</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">);</span></span>
+<span class="line"><span style="color:#F8F8F2">  }</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6272A4">// main.ts</span></span>
+<span class="line"><span style="color:#6272A4">/// &#x3C;</span><span style="color:#FF79C6">reference</span><span style="color:#50FA7B;font-style:italic"> path</span><span style="color:#FF79C6">=</span><span style="color:#E9F284">"</span><span style="color:#F1FA8C">myNamespace.ts</span><span style="color:#E9F284">"</span><span style="color:#6272A4"> /></span></span>
+<span class="line"><span style="color:#F8F8F2">MyNamespace.</span><span style="color:#50FA7B">doSomething</span><span style="color:#F8F8F2">(); </span><span style="color:#6272A4">// Output: "Doing something..."</span></span>
+<span class="line"></span></code></pre>
+<p>In this example, we use the <code>namespace</code> keyword in the “myNamespace.ts” file to define a namespace “MyNamespace”. Within the namespace, we export a function “doSomething”.</p>
+<p>Learn more from the following resources:</p>
+<ul>
+<li><a href="https://www.typescriptlang.org/docs/handbook/namespaces.html" rel="noopener noreferrer nofollow" target="_blank">@article@Overview of Namespaces</a></li>
+<li><a href="https://www.typescriptlang.org/docs/handbook/namespaces-and-modules.html" rel="noopener noreferrer nofollow" target="_blank">@article@Namespaces and Modules</a></li>
+<li><a href="https://typescriptlang.org/docs/handbook/namespaces-and-modules.html#using-namespaces" rel="noopener noreferrer nofollow" target="_blank">@article@TypeScript - Using Namespaces</a></li>
+</ul>

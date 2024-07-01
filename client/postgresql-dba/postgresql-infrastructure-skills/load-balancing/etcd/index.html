@@ -1,0 +1,19 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/postgresql-dba/content/107-postgresql-infrastructure-skills/107-load-balancing/103-etcd.md"></div> <h1 id="etcd">Etcd</h1>
+<p><em>Etcd</em> is a distributed key-value store that provides an efficient and reliable means for storing crucial data across clustered environments. It has become popular as a fundamental component for storing configuration data and service discovery in distributed systems.</p>
+<h2 id="key-features">Key Features</h2>
+<ul>
+<li><strong>High-availability</strong>: Etcd replicates its records across multiple nodes in a cluster, ensuring data persists even if some nodes fail.</li>
+<li><strong>Simple API</strong>: Etcd offers a simple <a href="https://grpc.io/" rel="noopener noreferrer nofollow" target="_blank">gRPC API</a> that can be used to manage the store, which can be accessed programmatically via client libraries or directly using tools like <code>curl</code>.</li>
+<li><strong>Watch Mechanism</strong>: Applications can listen for changes to specific keys in the store, enabling real-time updates for device monitoring or coordinating distributed workloads.</li>
+<li><strong>Transactional Operations</strong>: With atomic operations like compare-and-swap (CAS), Etcd ensures that multiple changes can be performed safely in a distributed environment.</li>
+<li><strong>Consistency</strong>: Etcd uses the <a href="https://raft.github.io/" rel="noopener noreferrer nofollow" target="_blank">Raft consensus algorithm</a> to ensure strong consistency of its key-value store.</li>
+</ul>
+<h2 id="integrating-etcd-with-postgresql-load-balancing">Integrating Etcd with PostgreSQL Load Balancing</h2>
+<p>Etcd can be utilized in conjunction with <em>connection poolers</em> such as PgBouncer or HAProxy to improve PostgreSQL load balancing. By maintaining a list of active PostgreSQL servers’ IP addresses and ports as keys in the store, connection poolers can fetch this information periodically to route client connections to the right servers. Additionally, transactional operations on the store can simplify the process of adding or removing nodes from the load balancer configuration while maintaining consistency.</p>
+<p>To leverage Etcd for PostgreSQL load balancing:</p>
+<ul>
+<li><strong>Install and configure Etcd</strong>: Follow the <a href="https://etcd.io/docs/" rel="noopener noreferrer nofollow" target="_blank">official documentation</a> to get started with installing and configuring an Etcd cluster on your systems.</li>
+<li><strong>Integrate Etcd in the PostgreSQL Environment</strong>: You’ll need to update the client libraries and connection poolers to fetch information about PostgreSQL servers from Etcd, making changes in the infrastructure as needed.</li>
+<li><strong>Monitoring and Management</strong>: Ensure your cluster is monitored and maintained properly to guarantee its reliability. This may include using a monitoring tool like Prometheus and setting up alerts for timely incident response.</li>
+</ul>
+<p>Overall, integrating Etcd into your PostgreSQL load-balancing architecture is a powerful approach when it comes to maintaining service availability and dynamic scaling in a distributed environment.</p>

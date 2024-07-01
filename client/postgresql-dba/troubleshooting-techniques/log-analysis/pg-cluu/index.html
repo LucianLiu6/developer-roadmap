@@ -1,0 +1,34 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/postgresql-dba/content/111-troubleshooting-techniques/106-log-analysis/104-pg-cluu.md"></div> <h1 id="pgcluu">pgCluu</h1>
+<p>PgCluu is a powerful and easy-to-use PostgreSQL performance monitoring and tuning tool. This open-source program collects statistics and provides various metrics in order to analyze PostgreSQL databases, helping you discover performance bottlenecks and optimize your cluster’s performance.</p>
+<h2 id="key-features">Key Features</h2>
+<ul>
+<li>Collects and analyzes PostgreSQL log files and system statistics.</li>
+<li>Provides real-time monitoring and reports with insights into various aspects, such as queries, locks, indexes, tablespaces, connections, and more.</li>
+<li>Offers customizable graphs for visualizing performance data.</li>
+</ul>
+<h2 id="installation-and-usage">Installation and Usage</h2>
+<p>To install PgCluu, follow these steps:</p>
+<ul>
+<li>Install the required dependencies:
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#50FA7B">sudo</span><span style="color:#F1FA8C"> apt-get</span><span style="color:#F1FA8C"> install</span><span style="color:#F1FA8C"> perl</span><span style="color:#F1FA8C"> libdbi-perl</span><span style="color:#F1FA8C"> libdbd-pg-perl</span><span style="color:#F1FA8C"> libpg-perl</span><span style="color:#F1FA8C"> libjson-perl</span><span style="color:#F1FA8C"> rrdtool</span><span style="color:#F1FA8C"> librrds-perl</span></span>
+<span class="line"></span></code></pre>
+</li>
+<li>Download and extract the latest PgCluu release from <a href="https://github.com/darold/pgcluu/releases" rel="noopener noreferrer nofollow" target="_blank">the official GitHub repository</a>:
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#50FA7B">wget</span><span style="color:#F1FA8C"> https://github.com/darold/pgcluu/archive/refs/tags/v3.1.tar.gz</span></span>
+<span class="line"><span style="color:#50FA7B">tar</span><span style="color:#F1FA8C"> xzf</span><span style="color:#F1FA8C"> v3.1.tar.gz</span></span>
+<span class="line"></span></code></pre>
+</li>
+<li>Run the PgCluu collector to collect statistics:
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#8BE9FD">cd</span><span style="color:#F1FA8C"> pgcluu-3.1/bin</span></span>
+<span class="line"><span style="color:#50FA7B">./pgcluu_collectd</span><span style="color:#BD93F9"> -D</span><span style="color:#F1FA8C"> /path/to/output_directory</span><span style="color:#BD93F9"> -S</span><span style="color:#F8F8F2"> [interval_seconds] -W [history_days] -C /path/to/pgcluu.conf</span></span>
+<span class="line"></span></code></pre>
+</li>
+<li>Generate the report using the collected data:
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#50FA7B">./pgcluu</span><span style="color:#BD93F9"> -o</span><span style="color:#F1FA8C"> /path/to/report_directory</span><span style="color:#F1FA8C"> /path/to/output_directory</span></span>
+<span class="line"></span></code></pre>
+</li>
+<li>Serve the report using a web server or browse the generated HTML files directly.</li>
+</ul>
+<h2 id="configuration">Configuration</h2>
+<p>Before running the PgCluu collector (<code>pgcluu_collectd</code>), you can configure the <code>pgcluu.conf</code> file by providing the appropriate values for your PostgreSQL cluster, such as hostname, port number, database name, and login credentials.</p>
+<p>Apart from PostgreSQL-specific settings, you can also tweak other options, such as the RRDtool’s data file format (JPG or SVG), time range for graphs, and more.</p>

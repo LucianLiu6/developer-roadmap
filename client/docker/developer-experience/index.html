@@ -1,0 +1,15 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/docker/content/111-developer-experience/index.md"></div> <h1 id="developer-experience">Developer Experience</h1>
+<p>So far we have only discussed using docker for deploying applications. However, docker is also a great tool for developing applications. There are a few different recommendations that you can adopt to improve your development experience.</p>
+<ul>
+<li>Use <code>docker-compose</code> in your application for ease of development.</li>
+<li>Use bind mounts to mount the code from your local into the container filesystem to avoid having to rebuild the container image with every single change.</li>
+<li>For auto-reloading, you can use tools like <a href="https://vitejs.dev/" rel="noopener noreferrer nofollow" target="_blank">vite</a> for client side, <a href="https://nodemon.io/" rel="noopener noreferrer nofollow" target="_blank">nodemon</a> for nodejs or <a href="https://github.com/cosmtrek/air" rel="noopener noreferrer nofollow" target="_blank">air</a> for golang.</li>
+<li>You should also provide a way to debug your applications. For example, look into <a href="https://github.com/go-delve/delve" rel="noopener noreferrer nofollow" target="_blank">delve</a> for Go, enable debugging in node.js using —inspect flag etc. It doesn’t matter what you use, but the point is that you should have a way to debug your application running inside the container.</li>
+<li>You should have a way to run tests inside the container. For example, you could have a separate docker-compose file for running tests.</li>
+<li>You should have a CI pipeline for production images.</li>
+<li>Ephemeral environment for each pull request</li>
+</ul>
+<p>For more details and practical examples:</p>
+<ul>
+<li><a href="https://courses.devopsdirective.com/docker-beginner-to-pro/lessons/11-development-workflow/00-devx-wishlist#key-devx-features" rel="noopener noreferrer nofollow" target="_blank">@article@Developer Experience Wishlist - Docker</a></li>
+</ul>

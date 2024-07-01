@@ -1,0 +1,49 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/postgresql-dba/content/107-postgresql-infrastructure-skills/102-backup-recovery-tools/102-pgbackrest.md"></div> <h1 id="pgbackrest-a-comprehensive-backup-and-recovery-solution">pgBackRest: A Comprehensive Backup and Recovery Solution</h1>
+<p><code>pgBackRest</code> is a widely-used, robust backup and recovery solution that aims to secure your PostgreSQL database data. It not only simplifies tasks like managing and scheduling backups, but also provides advanced features like parallel backups, compression, and point-in-time recovery support.</p>
+<h2 id="key-features">Key Features</h2>
+<ul>
+<li>
+<p><strong>Parallel Backup and Restore</strong>: pgBackRest allows parallel processing of backups and restores, significantly speeding up the process and reducing the overall time taken to ensure that your data is secure and quickly accessible.</p>
+</li>
+<li>
+<p><strong>Local and Remote Backups</strong>: By supporting both local and remote modes, pgBackRest ensures that you can maintain your backups either on your local server or in a remote location, providing you with flexibility and options for backup storage.</p>
+</li>
+<li>
+<p><strong>Backup Rotation and Retention</strong>: In order to save storage space and maintain an efficient backup repository, pgBackRest can be configured to retain a certain number of full and differential backups, automatically removing the oldest ones.</p>
+</li>
+<li>
+<p><strong>Compression</strong>: pgBackRest uses LZ4 or Gzip, which are well-known compression algorithms, to reduce the size of your backup files, saving you storage space and making it more manageable.</p>
+</li>
+<li>
+<p><strong>Encryption</strong>: Data security is of utmost importance, and pgBackRest offers built-in support for encrypting and decrypting your backup data using OpenSSL or GnuTLS.</p>
+</li>
+<li>
+<p><strong>Point-in-Time Recovery (PITR)</strong>: In case of a database issue, pgBackRest helps you recover your database to a specific point in time by applying archived Write Ahead Logs (WAL) up to the desired timestamp.</p>
+</li>
+<li>
+<p><strong>Incremental and Differential Backups</strong>: By offering both incremental and differential backups, pgBackRest minimizes the time taken and the storage needed for backups. Incremental backups save only changes since the last backup, while differential backups save changes since the last full backup.</p>
+</li>
+</ul>
+<h2 id="installation-and-configuration">Installation and Configuration</h2>
+<p>To get started with pgBackRest, you need to:</p>
+<ul>
+<li>
+<p><strong>Install pgBackRest</strong>: You can download the <a href="https://pgbackrest.org/" rel="noopener noreferrer nofollow" target="_blank">official package</a> for your Operating System or install using the package manager (e.g., apt, yum).</p>
+</li>
+<li>
+<p><strong>Configure pgBackRest</strong>: Set up your <code>pgbackrest.conf</code> file with the required configuration options, such as repositories, compression settings, and encryption settings. Make sure to point pgBackRest to the correct PostgreSQL data directory and archive directory.</p>
+</li>
+<li>
+<p><strong>Create a Full Backup</strong>: Run your first full backup using the <code>pgbackrest backup</code> command, specifying the type as “full”.</p>
+</li>
+<li>
+<p><strong>Set up Archive Management</strong>: Configure PostgreSQL to manage WAL archives with pgBackRest. Add or modify the <code>archive_mode</code> and <code>archive_command</code> parameters in your <code>postgresql.conf</code> file.</p>
+</li>
+<li>
+<p><strong>Schedule Regular Backups</strong>: Schedule regular full, differential, and incremental backups using your preferred scheduler, such as <code>cron</code> on Unix/Linux systems.</p>
+</li>
+<li>
+<p><strong>Test Recovery</strong>: Ensure your backup and recovery processes are working by periodically testing your backups by restoring them to a test environment.</p>
+</li>
+</ul>
+<p>By incorporating pgBackRest into your database management workflow, you can ensure that your valuable data is always safe, up-to-date, and swiftly recoverable should an issue arise.</p>

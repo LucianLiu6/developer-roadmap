@@ -1,0 +1,28 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/cpp/content/frameworks/101-qt.md"></div> <h1 id="qt-framework">Qt Framework</h1>
+<p>Qt is an open-source, cross-platform framework for creating high-performance applications with interactive user interfaces. It is mainly used for developing GUI applications but can also be used for creating non-GUI applications like console tools and servers.</p>
+<p>Qt provides a wide range of C++ libraries and seamless integration with popular IDEs, making it easier for developers to create feature-rich applications. It offers a comprehensive development environment, including tools for designing, coding, debugging, and profiling applications.</p>
+<h2 id="key-features">Key Features</h2>
+<ul>
+<li><strong>Cross-platform</strong>: Qt can create applications that run on different platforms (e.g., Windows, macOS, Linux, Android, iOS) without any platform-specific code.</li>
+<li><strong>Modular Libraries</strong>: Qt consists of several modular libraries, including QtCore (core non-GUI functionality), QtGui (GUI-related classes), QtWidgets (GUI widgets), and QtNetwork (networking support).</li>
+<li><strong>Signals and Slots</strong>: Qt provides a unique mechanism to handle events called “signals and slots”, which allows safe and flexible inter-object communication.</li>
+<li><strong>OpenGL Integration</strong>: Qt supports rendering 2D and 3D graphics using OpenGL, making it suitable for game development and other graphical applications.</li>
+</ul>
+<h2 id="code-example">Code Example</h2>
+<p>Here’s a simple example of a “Hello, World!” application using Qt:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#FF79C6">#include</span><span style="color:#E9F284"> &#x3C;</span><span style="color:#F1FA8C">QApplication</span><span style="color:#E9F284">></span></span>
+<span class="line"><span style="color:#FF79C6">#include</span><span style="color:#E9F284"> &#x3C;</span><span style="color:#F1FA8C">QLabel</span><span style="color:#E9F284">></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">int</span><span style="color:#50FA7B"> main</span><span style="color:#F8F8F2">(</span><span style="color:#FF79C6">int</span><span style="color:#FFB86C;font-style:italic"> argc</span><span style="color:#F8F8F2">, </span><span style="color:#FF79C6">char</span><span style="color:#FF79C6"> *</span><span style="color:#FFB86C;font-style:italic">argv</span><span style="color:#F8F8F2">[])</span></span>
+<span class="line"><span style="color:#F8F8F2">{</span></span>
+<span class="line"><span style="color:#F8F8F2">    QApplication </span><span style="color:#50FA7B">app</span><span style="color:#F8F8F2">(argc, argv);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F8F8F2">    QLabel </span><span style="color:#50FA7B">label</span><span style="color:#F8F8F2">(</span><span style="color:#E9F284">"</span><span style="color:#F1FA8C">Hello, World!</span><span style="color:#E9F284">"</span><span style="color:#F8F8F2">);</span></span>
+<span class="line"><span style="color:#F8F8F2">    label.</span><span style="color:#50FA7B">show</span><span style="color:#F8F8F2">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">    return</span><span style="color:#F8F8F2"> app.</span><span style="color:#50FA7B">exec</span><span style="color:#F8F8F2">();</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"></span></code></pre>
+<p>In this example, we include the necessary header files, create QApplication and QLabel objects, display the label with a “Hello, World!” message, and execute the application.</p>
+<p>To compile and run this example, you need to install the Qt library and configure your development environment to use it.</p>
+<p>For more information and tutorials about Qt, you can refer to the <a href="https://doc.qt.io/qt-5/index.html" rel="noopener noreferrer nofollow" target="_blank">official Qt documentation</a>.</p>

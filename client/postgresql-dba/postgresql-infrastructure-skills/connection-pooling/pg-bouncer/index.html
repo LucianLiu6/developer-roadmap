@@ -1,0 +1,35 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/postgresql-dba/content/107-postgresql-infrastructure-skills/101-connection-pooling/100-pg-bouncer.md"></div> <h1 id="pgbouncer">PgBouncer</h1>
+<p>PgBouncer is a lightweight connection pooling solution for PostgreSQL databases. It efficiently manages database connections by maintaining a small pool of connections that are reused by the application. This results in reduced overhead and improved performance when establishing and tearing down connections, allowing applications to scale more effectively.</p>
+<p>PgBouncer acts as a middleware between the application and the PostgreSQL server. It listens to application connection requests, then forwards them to the appropriate PostgreSQL server instance after managing the connection pool. This approach helps to balance loads on the database server and helps avoid excessively high numbers of idle connections.</p>
+<h2 id="features-of-pgbouncer">Features of PgBouncer</h2>
+<ul>
+<li><strong>Lesser latency</strong>: PgBouncer has minimal overhead, which allows applications to connect to the database almost instantly.</li>
+<li><strong>Multi-pool modes</strong>: Supports three pooling modes - session pooling, transaction pooling, and statement pooling, which can be tuned to match specific use cases.</li>
+<li><strong>Scalability</strong>: Supports high number of connections, making it suitable for applications with a high number of concurrent users.</li>
+<li><strong>Security</strong>: Supports TLS/SSL encryption for secure client-to-PgBouncer and PgBouncer-to-PostgreSQL connections.</li>
+<li><strong>Connection Limits</strong>: Allows setting connection limits at various levels, such as global, per database, or per user.</li>
+</ul>
+<h2 id="installing-and-configuring-pgbouncer">Installing and Configuring PgBouncer</h2>
+<p>To install PgBouncer, follow the instructions outlined in the <a href="https://www.pgbouncer.org/install.html" rel="noopener noreferrer nofollow" target="_blank">official documentation</a>. After installation, you will need to configure <code>pgbouncer.ini</code> file to define database connection parameters, connection pool settings, and other configurations. An example configuration could look like this:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="ini"><code><span class="line"><span style="color:#F8F8F2">[databases]</span></span>
+<span class="line"><span style="color:#FF79C6">mydb</span><span style="color:#FF79C6"> =</span><span style="color:#FF79C6"> host=</span><span style="color:#F8F8F2">localhost </span><span style="color:#FF79C6">port=</span><span style="color:#F8F8F2">5432 </span><span style="color:#FF79C6">dbname=</span><span style="color:#F8F8F2">mydb</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F8F8F2">[pgbouncer]</span></span>
+<span class="line"><span style="color:#FF79C6">listen_addr</span><span style="color:#FF79C6"> =</span><span style="color:#F8F8F2"> 127.0.0.1</span></span>
+<span class="line"><span style="color:#FF79C6">listen_port</span><span style="color:#FF79C6"> =</span><span style="color:#F8F8F2"> 6432</span></span>
+<span class="line"><span style="color:#FF79C6">auth_type</span><span style="color:#FF79C6"> =</span><span style="color:#F8F8F2"> md5</span></span>
+<span class="line"><span style="color:#FF79C6">auth_file</span><span style="color:#FF79C6"> =</span><span style="color:#F8F8F2"> /path/to/pgbouncer/userlist.txt</span></span>
+<span class="line"><span style="color:#FF79C6">pool_mode</span><span style="color:#FF79C6"> =</span><span style="color:#F8F8F2"> session</span></span>
+<span class="line"><span style="color:#FF79C6">server_reset_query</span><span style="color:#FF79C6"> =</span><span style="color:#F8F8F2"> DISCARD ALL</span></span>
+<span class="line"><span style="color:#FF79C6">max_client_conn</span><span style="color:#FF79C6"> =</span><span style="color:#F8F8F2"> 100</span></span>
+<span class="line"><span style="color:#FF79C6">default_pool_size</span><span style="color:#FF79C6"> =</span><span style="color:#F8F8F2"> 20</span></span>
+<span class="line"></span></code></pre>
+<p>The example above demonstrates a simple configuration to set up a PgBouncer instance listening on port 6432 and forwarding connections to a PostgreSQL server running on the same machine (localhost:5432).</p>
+<p>After configuring PgBouncer, don’t forget to create the <code>userlist.txt</code> file mentioned in the <code>auth_file</code> setting, which should contain the database users and their hashed passwords.</p>
+<p>Finally, start the PgBouncer daemon to enable connection pooling.</p>
+<h2 id="useful-resources">Useful Resources</h2>
+<ul>
+<li><a href="https://www.pgbouncer.org" rel="noopener noreferrer nofollow" target="_blank">@official@Official PgBouncer Documentation</a></li>
+<li><a href="https://wiki.postgresql.org/wiki/PgBouncer" rel="noopener noreferrer nofollow" target="_blank">@article@PostgreSQL Wiki - PgBouncer</a></li>
+</ul>
+<p>By using PgBouncer, you can efficiently manage connections to your PostgreSQL database and improve the scalability and performance of your application. Happy pooling!</p>

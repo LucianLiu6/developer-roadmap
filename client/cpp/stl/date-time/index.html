@@ -1,0 +1,71 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/cpp/content/110-stl/103-date-time.md"></div> <h1 id="c-date-time">C++ Date Time</h1>
+<p>In C++, you can work with dates and times using the <code>chrono</code> library, which is part of the Standard Library (STL). The <code>chrono</code> library provides various data types and functions to represent and manipulate time durations, time points, and clocks.</p>
+<h2 id="duration">Duration</h2>
+<p>A <code>duration</code> represents a span of time, which can be expressed in various units such as seconds, minutes, hours, etc. To create a duration, use the <code>std::chrono::duration</code> template class. Common predefined duration types are:</p>
+<ul>
+<li><code>std::chrono::seconds</code></li>
+<li><code>std::chrono::minutes</code></li>
+<li><code>std::chrono::hours</code></li>
+</ul>
+<p><strong>Example:</strong></p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#FF79C6">#include</span><span style="color:#E9F284"> &#x3C;</span><span style="color:#F1FA8C">iostream</span><span style="color:#E9F284">></span></span>
+<span class="line"><span style="color:#FF79C6">#include</span><span style="color:#E9F284"> &#x3C;</span><span style="color:#F1FA8C">chrono</span><span style="color:#E9F284">></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">int</span><span style="color:#50FA7B"> main</span><span style="color:#F8F8F2">() {</span></span>
+<span class="line"><span style="color:#F8F8F2">    std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">chrono</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">seconds </span><span style="color:#50FA7B">sec</span><span style="color:#F8F8F2">(</span><span style="color:#BD93F9">5</span><span style="color:#F8F8F2">);</span></span>
+<span class="line"><span style="color:#F8F8F2">    std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">chrono</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">minutes </span><span style="color:#50FA7B">min</span><span style="color:#F8F8F2">(</span><span style="color:#BD93F9">2</span><span style="color:#F8F8F2">);</span></span>
+<span class="line"><span style="color:#F8F8F2">    std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">chrono</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">hours </span><span style="color:#50FA7B">hr</span><span style="color:#F8F8F2">(</span><span style="color:#BD93F9">1</span><span style="color:#F8F8F2">);</span></span>
+<span class="line"><span style="color:#FF79C6">    return</span><span style="color:#BD93F9"> 0</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"></span></code></pre>
+<h2 id="time-point">Time Point</h2>
+<p>A <code>time_point</code> represents a specific point in time. It is usually created using a combination of duration and a clock. In C++, there are three clock types provided by the <code>chrono</code> library:</p>
+<ul>
+<li><code>std::chrono::system_clock</code>: Represents the system-wide real time wall clock.</li>
+<li><code>std::chrono::steady_clock</code>: Represents a monotonic clock that is guaranteed to never be adjusted.</li>
+<li><code>std::chrono::high_resolution_clock</code>: Represents the clock with the shortest tick period.</li>
+</ul>
+<p><strong>Example:</strong></p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#FF79C6">#include</span><span style="color:#E9F284"> &#x3C;</span><span style="color:#F1FA8C">iostream</span><span style="color:#E9F284">></span></span>
+<span class="line"><span style="color:#FF79C6">#include</span><span style="color:#E9F284"> &#x3C;</span><span style="color:#F1FA8C">chrono</span><span style="color:#E9F284">></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">int</span><span style="color:#50FA7B"> main</span><span style="color:#F8F8F2">() {</span></span>
+<span class="line"><span style="color:#F8F8F2">    std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">chrono</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">system_clock</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">time_point tp </span><span style="color:#FF79C6">=</span><span style="color:#F8F8F2"> std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">chrono</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">system_clock</span><span style="color:#FF79C6">::</span><span style="color:#50FA7B">now</span><span style="color:#F8F8F2">();</span></span>
+<span class="line"><span style="color:#FF79C6">    return</span><span style="color:#BD93F9"> 0</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"></span></code></pre>
+<h2 id="clock">Clock</h2>
+<p>A clock provides access to the current time. It consists of the following elements:</p>
+<ul>
+<li><code>time_point</code>: A specific point in time.</li>
+<li><code>duration</code>: The time duration between two time points.</li>
+<li><code>now()</code>: A static function that returns the current time point.</li>
+</ul>
+<p><strong>Example:</strong></p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#FF79C6">#include</span><span style="color:#E9F284"> &#x3C;</span><span style="color:#F1FA8C">iostream</span><span style="color:#E9F284">></span></span>
+<span class="line"><span style="color:#FF79C6">#include</span><span style="color:#E9F284"> &#x3C;</span><span style="color:#F1FA8C">chrono</span><span style="color:#E9F284">></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">int</span><span style="color:#50FA7B"> main</span><span style="color:#F8F8F2">() {</span></span>
+<span class="line"><span style="color:#6272A4">    // Get the current time_point using system_clock</span></span>
+<span class="line"><span style="color:#F8F8F2">    std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">chrono</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">system_clock</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">time_point now </span><span style="color:#FF79C6">=</span><span style="color:#F8F8F2"> std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">chrono</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">system_clock</span><span style="color:#FF79C6">::</span><span style="color:#50FA7B">now</span><span style="color:#F8F8F2">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6272A4">    // Get the time_point 1 hour from now</span></span>
+<span class="line"><span style="color:#F8F8F2">    std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">chrono</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">system_clock</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">time_point one_hour_from_now </span><span style="color:#FF79C6">=</span><span style="color:#F8F8F2"> now </span><span style="color:#FF79C6">+</span><span style="color:#F8F8F2"> std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">chrono</span><span style="color:#FF79C6">::</span><span style="color:#50FA7B">hours</span><span style="color:#F8F8F2">(</span><span style="color:#BD93F9">1</span><span style="color:#F8F8F2">);</span></span>
+<span class="line"><span style="color:#FF79C6">    return</span><span style="color:#BD93F9"> 0</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"></span></code></pre>
+<h2 id="converting-time-points-to-calendar-time">Converting Time Points to Calendar Time</h2>
+<p>To convert a time point to calendar representation, you can use the <code>std::chrono::system_clock::to_time_t</code> function.</p>
+<p><strong>Example:</strong></p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#FF79C6">#include</span><span style="color:#E9F284"> &#x3C;</span><span style="color:#F1FA8C">iostream</span><span style="color:#E9F284">></span></span>
+<span class="line"><span style="color:#FF79C6">#include</span><span style="color:#E9F284"> &#x3C;</span><span style="color:#F1FA8C">chrono</span><span style="color:#E9F284">></span></span>
+<span class="line"><span style="color:#FF79C6">#include</span><span style="color:#E9F284"> &#x3C;</span><span style="color:#F1FA8C">ctime</span><span style="color:#E9F284">></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">int</span><span style="color:#50FA7B"> main</span><span style="color:#F8F8F2">() {</span></span>
+<span class="line"><span style="color:#F8F8F2">    std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">chrono</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">system_clock</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">time_point now </span><span style="color:#FF79C6">=</span><span style="color:#F8F8F2"> std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">chrono</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">system_clock</span><span style="color:#FF79C6">::</span><span style="color:#50FA7B">now</span><span style="color:#F8F8F2">();</span></span>
+<span class="line"><span style="color:#F8F8F2">    std</span><span style="color:#FF79C6">::time_t</span><span style="color:#F8F8F2"> now_c </span><span style="color:#FF79C6">=</span><span style="color:#F8F8F2"> std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">chrono</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">system_clock</span><span style="color:#FF79C6">::</span><span style="color:#50FA7B">to_time_t</span><span style="color:#F8F8F2">(now);</span></span>
+<span class="line"><span style="color:#F8F8F2">    std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">cout </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C">Current time: </span><span style="color:#E9F284">"</span><span style="color:#FF79C6"> &#x3C;&#x3C;</span><span style="color:#F8F8F2"> std</span><span style="color:#FF79C6">::</span><span style="color:#50FA7B">ctime</span><span style="color:#F8F8F2">(</span><span style="color:#FF79C6">&#x26;</span><span style="color:#F8F8F2">now_c) </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#F8F8F2"> std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">endl;</span></span>
+<span class="line"><span style="color:#FF79C6">    return</span><span style="color:#BD93F9"> 0</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"></span></code></pre>
+<p>This summarizes the basic functionality of working with date and time in C++ using the <code>chrono</code> library. You can find more advanced features, such as casting durations and time arithmetic, in the <a href="https://en.cppreference.com/w/cpp/chrono" rel="noopener noreferrer nofollow" target="_blank">C++ reference</a>.</p>

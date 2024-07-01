@@ -1,0 +1,11 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/linux/content/102-shell-basics/104-super-user.md"></div> <h1 id="super-user">Super User</h1>
+<p>The Super User, also known as “root user”, represents a user account in Linux with extensive powers, privileges, and capabilities. This user has complete control over the system and can access any data stored on it. This includes the ability to modify system configurations, change other user’s passwords, install software, and perform more administrative tasks in the shell environment.</p>
+<p>The usage of super user is critical to operating a Linux system properly and safely as it can potentially cause serious damage. The super user can be accessed through the <code>sudo</code> or <code>su</code> commands.</p>
+<p>Specifically, <code>su</code> switches the current user to the root, whereas <code>sudo</code> allows you to run a command as another user, default being root. However, they also have a key difference which is <code>sudo</code> will log the commands and its arguments which can be a handy audit trail.</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6272A4"># This would prompt for root password and switch you to root usermode</span></span>
+<span class="line"><span style="color:#50FA7B">$</span><span style="color:#F1FA8C"> su</span><span style="color:#F1FA8C"> -</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6272A4"># To perform a command as superuser (if allowed in sudoers list)</span></span>
+<span class="line"><span style="color:#50FA7B">$</span><span style="color:#F1FA8C"> sudo</span><span style="color:#FF79C6"> &#x3C;</span><span style="color:#F1FA8C">comman</span><span style="color:#F8F8F2">d</span><span style="color:#FF79C6">></span></span>
+<span class="line"></span></code></pre>
+<p>Note that super user privileges should be handled with care due to their potential to disrupt the system’s functionality. Mistaken changes to key system files or unauthorized access can lead to severe issues.</p>

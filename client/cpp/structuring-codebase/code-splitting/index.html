@@ -1,0 +1,38 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/cpp/content/106-structuring-codebase/101-code-splitting/index.md"></div> <h1 id="code-splitting">Code Splitting</h1>
+<p>Code splitting refers to the process of breaking down a large code base into smaller, more manageable files or modules. This helps improve the organization, maintainability, and readability of the code. In C++, code splitting is generally achieved through the use of separate compilation, header files, and source files.</p>
+<h3 id="header-files-h-or-hpp">Header Files (.h or .hpp)</h3>
+<p>Header files, usually with the <code>.h</code> or <code>.hpp</code> extension, are responsible for declaring classes, functions, and variables that are needed by multiple source files. They act as an interface between different parts of the code, making it easier to manage dependencies and reduce the chances of duplicated code.</p>
+<p>Example of a header file:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#6272A4">// example.h</span></span>
+<span class="line"><span style="color:#FF79C6">#ifndef</span><span style="color:#50FA7B"> EXAMPLE_H</span></span>
+<span class="line"><span style="color:#FF79C6">#define</span><span style="color:#50FA7B"> EXAMPLE_H</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">class</span><span style="color:#8BE9FD"> Example</span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#FF79C6">public:</span></span>
+<span class="line"><span style="color:#FF79C6">    void</span><span style="color:#50FA7B"> printMessage</span><span style="color:#F8F8F2">();</span></span>
+<span class="line"><span style="color:#F8F8F2">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">#endif</span></span>
+<span class="line"></span></code></pre>
+<h3 id="source-files-cpp">Source Files (.cpp)</h3>
+<p>Source files, with the <code>.cpp</code> extension, are responsible for implementing the actual functionality defined in the corresponding header files. They include the header files as needed and provide the function and class method definitions.</p>
+<p>Example of a source file:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#6272A4">// example.cpp</span></span>
+<span class="line"><span style="color:#FF79C6">#include</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C">example.h</span><span style="color:#E9F284">"</span></span>
+<span class="line"><span style="color:#FF79C6">#include</span><span style="color:#E9F284"> &#x3C;</span><span style="color:#F1FA8C">iostream</span><span style="color:#E9F284">></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">void</span><span style="color:#F8F8F2"> Example</span><span style="color:#FF79C6">::</span><span style="color:#50FA7B">printMessage</span><span style="color:#F8F8F2">() {</span></span>
+<span class="line"><span style="color:#F8F8F2">    std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">cout </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C">Hello, code splitting!</span><span style="color:#E9F284">"</span><span style="color:#FF79C6"> &#x3C;&#x3C;</span><span style="color:#F8F8F2"> std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">endl;</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"></span></code></pre>
+<h3 id="separate-compilation">Separate Compilation</h3>
+<p>C++ allows for separate compilation, which means that each source file can be compiled independently into an object file. These object files can then be linked together to form the final executable. This provides faster build times when making changes to a single source file since only that file needs to be recompiled, and the other object files can be reused.</p>
+<p>Example of separate compilation and linking:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="color:#6272A4"># Compile each source file into an object file</span></span>
+<span class="line"><span style="color:#50FA7B">g++</span><span style="color:#BD93F9"> -c</span><span style="color:#F1FA8C"> main.cpp</span><span style="color:#BD93F9"> -o</span><span style="color:#F1FA8C"> main.o</span></span>
+<span class="line"><span style="color:#50FA7B">g++</span><span style="color:#BD93F9"> -c</span><span style="color:#F1FA8C"> example.cpp</span><span style="color:#BD93F9"> -o</span><span style="color:#F1FA8C"> example.o</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6272A4"># Link object files together to create the executable</span></span>
+<span class="line"><span style="color:#50FA7B">g++</span><span style="color:#F1FA8C"> main.o</span><span style="color:#F1FA8C"> example.o</span><span style="color:#BD93F9"> -o</span><span style="color:#F1FA8C"> my_program</span></span>
+<span class="line"></span></code></pre>
+<p>By following the code splitting technique, you can better organize your C++ codebase, making it more manageable and maintainable.</p>

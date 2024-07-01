@@ -1,0 +1,8 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/rust/content/101-language-basics/102-constructs/102-traits.md"></div> <h1 id="traits">Traits</h1>
+<p>Traits in Rust define behaviors that are shared among different data types. Implementing traits for data types is a great way to group method signatures together and define a set of behaviors your types require. Essentially, anything with a certain <code>trait</code> applied to it will “inherit” the behavior of that trait’s methods, but this is not the same thing as inheritance found in object-oriented programming languages.</p>
+<p>Traits are abstract; it’s not possible to create instances of traits. However, we can define pointers of trait types, and these can hold any data type that implements the <code>trait</code>. A <code>trait</code> is <strong>implemented</strong> for something else with the syntax <code>impl TraitAbc for Xyz {...}</code>, which can be a concrete type or another trait.</p>
+<p>You should read carefully about traits in Rust and understand how some common traits, like <code>Copy</code>, are already implemented for various primitive types and how this could affect your program.</p>
+<p>Learn more from the following links:</p>
+<ul>
+<li><a href="https://doc.rust-lang.org/book/ch10-02-traits.html" rel="noopener noreferrer nofollow" target="_blank">@article@Traits: Defining Shared Behaviour</a></li>
+</ul>

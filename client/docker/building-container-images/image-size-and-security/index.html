@@ -1,0 +1,75 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/docker/content/106-building-container-images/102-image-size-and-security.md"></div> <h1 id="image-size-and-security">Image Size and Security</h1>
+<p>When building container images, it’s essential to be aware of both image size and security. The size of the image affects the speed at which your containers are built and deployed. Smaller images lead to faster builds and reduced network overhead when downloading the image. Security is crucial because container images can contain vulnerabilities that could potentially put your applications at risk.</p>
+<h2 id="reducing-image-size">Reducing Image Size</h2>
+<ul>
+<li>
+<p><strong>Use an appropriate base image:</strong> Choose a smaller, more lightweight base image that includes only the necessary components for your application. For example, consider using the <code>alpine</code> variant of an official image, if available, as it’s typically much smaller in size.</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="dockerfile"><code><span class="line"><span style="color:#FF79C6">FROM</span><span style="color:#F8F8F2"> node:14-alpine</span></span>
+<span class="line"></span></code></pre>
+</li>
+<li>
+<p><strong>Run multiple commands in a single <code>RUN</code> statement:</strong> Each <code>RUN</code> statement creates a new layer in the image, which contributes to the image size. Combine multiple commands into a single <code>RUN</code> statement using <code>&#x26;&#x26;</code> to minimize the number of layers and reduce the final image size.</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="dockerfile"><code><span class="line"><span style="color:#FF79C6">RUN</span><span style="color:#F8F8F2"> apt-get update &#x26;&#x26; \</span></span>
+<span class="line"><span style="color:#F8F8F2">    apt-get install -y some-required-package</span></span>
+<span class="line"></span></code></pre>
+</li>
+<li>
+<p><strong>Remove unnecessary files in the same layer:</strong> When you install packages or add files during the image build process, remove temporary or unused files in the same layer to reduce the final image size.</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="dockerfile"><code><span class="line"><span style="color:#FF79C6">RUN</span><span style="color:#F8F8F2"> apt-get update &#x26;&#x26; \</span></span>
+<span class="line"><span style="color:#F8F8F2">    apt-get install -y some-required-package &#x26;&#x26; \</span></span>
+<span class="line"><span style="color:#F8F8F2">    apt-get clean &#x26;&#x26; \</span></span>
+<span class="line"><span style="color:#F8F8F2">    rm -rf /var/lib/apt/lists/*</span></span>
+<span class="line"></span></code></pre>
+</li>
+<li>
+<p><strong>Use multi-stage builds:</strong> Use multi-stage builds to create smaller images. Multi-stage builds allow you to use multiple <code>FROM</code> statements in your Dockerfile. Each <code>FROM</code> statement creates a new stage in the build process. You can copy files from one stage to another using the <code>COPY --from</code> statement.</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="dockerfile"><code><span class="line"><span style="color:#FF79C6">FROM</span><span style="color:#F8F8F2"> node:14-alpine </span><span style="color:#FF79C6">AS</span><span style="color:#F8F8F2"> build</span></span>
+<span class="line"><span style="color:#FF79C6">WORKDIR</span><span style="color:#F8F8F2"> /app</span></span>
+<span class="line"><span style="color:#FF79C6">COPY</span><span style="color:#F8F8F2"> package*.json ./</span></span>
+<span class="line"><span style="color:#FF79C6">RUN</span><span style="color:#F8F8F2"> npm install</span></span>
+<span class="line"><span style="color:#FF79C6">COPY</span><span style="color:#F8F8F2"> . .</span></span>
+<span class="line"><span style="color:#FF79C6">RUN</span><span style="color:#F8F8F2"> npm run build</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">FROM</span><span style="color:#F8F8F2"> node:14-alpine</span></span>
+<span class="line"><span style="color:#FF79C6">WORKDIR</span><span style="color:#F8F8F2"> /app</span></span>
+<span class="line"><span style="color:#FF79C6">COPY</span><span style="color:#F8F8F2"> --from=build /app/dist ./dist</span></span>
+<span class="line"><span style="color:#FF79C6">COPY</span><span style="color:#F8F8F2"> package*.json ./</span></span>
+<span class="line"><span style="color:#FF79C6">RUN</span><span style="color:#F8F8F2"> npm install --production</span></span>
+<span class="line"><span style="color:#FF79C6">CMD</span><span style="color:#F8F8F2"> [</span><span style="color:#F1FA8C">"npm"</span><span style="color:#F8F8F2">, </span><span style="color:#F1FA8C">"start"</span><span style="color:#F8F8F2">]</span></span>
+<span class="line"></span></code></pre>
+</li>
+<li>
+<p><strong>Use <code>.dockerignore</code> file:</strong> Use a <code>.dockerignore</code> file to exclude unnecessary files from the build context that might cause cache invalidation and increase the final image size.</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>node_modules</span></span>
+<span class="line"><span>npm-debug.log</span></span>
+<span class="line"><span></span></span></code></pre>
+</li>
+</ul>
+<h2 id="enhancing-security">Enhancing Security</h2>
+<ul>
+<li>
+<p><strong>Keep base images updated:</strong> Regularly update the base images you’re using in your Dockerfiles to ensure they include the latest security patches.</p>
+</li>
+<li>
+<p><strong>Avoid running containers as root:</strong> Always use a non-root user when running your containers to minimize potential risks. Create a user and switch to it before running your application.</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="dockerfile"><code><span class="line"><span style="color:#FF79C6">RUN</span><span style="color:#F8F8F2"> addgroup -g 1000 appuser &#x26;&#x26; \</span></span>
+<span class="line"><span style="color:#F8F8F2">    adduser -u 1000 -G appuser -D appuser</span></span>
+<span class="line"><span style="color:#FF79C6">USER</span><span style="color:#F8F8F2"> appuser</span></span>
+<span class="line"></span></code></pre>
+</li>
+<li>
+<p><strong>Limit the scope of <code>COPY</code> or <code>ADD</code> instructions:</strong> Be specific about the files or directories you’re copying into the container image. Avoid using <code>COPY . .</code> as it may unintentionally include sensitive files.</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="dockerfile"><code><span class="line"><span style="color:#FF79C6">COPY</span><span style="color:#F8F8F2"> package*.json ./</span></span>
+<span class="line"><span style="color:#FF79C6">COPY</span><span style="color:#F8F8F2"> src/ src/</span></span>
+<span class="line"></span></code></pre>
+</li>
+<li>
+<p><strong>Scan images for vulnerabilities:</strong> Use tools like <a href="https://anchore.com/" rel="noopener noreferrer nofollow" target="_blank">Anchore</a> or <a href="https://github.com/quay/clair" rel="noopener noreferrer nofollow" target="_blank">Clair</a> to scan your images for vulnerabilities and fix them before deployment.</p>
+</li>
+</ul>
+<p>By following these best practices, you’ll be able to build more efficient and secure container images, leading to improved performance and a reduced risk of vulnerabilities in your applications.</p>
+<p>Visit the following resources to learn more:</p>
+<ul>
+<li><a href="https://docs.docker.com/build/building/multi-stage/" rel="noopener noreferrer nofollow" target="_blank">@official@Multi-stage builds</a></li>
+<li><a href="https://app.daily.dev/tags/security?ref=roadmapsh" rel="noopener noreferrer nofollow" target="_blank">@feed@Explore top posts about Security</a></li>
+</ul>

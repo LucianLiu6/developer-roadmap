@@ -1,0 +1,29 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/cpp/content/117-package-managers/103-nuget.md"></div> <h1 id="nuget">NuGet</h1>
+<p><a href="https://www.nuget.org/" rel="noopener noreferrer nofollow" target="_blank">NuGet</a> is a Microsoft-supported package manager for the .NET framework, mainly used in C# and other .NET languages, but also supports C++ projects with <code>PackageReference</code>. It allows you to easily add, update, and manage dependencies in your projects.</p>
+<h3 id="installation">Installation</h3>
+<p>You can use NuGet either as a command-line tool or integrated in your preferred IDE like Visual Studio or Visual Studio Code. If you’re using Visual Studio, it comes pre-installed. For other editors, you may need to download the command-line tool <code>nuget.exe</code>.</p>
+<h3 id="usage">Usage</h3>
+<p>You can use NuGet to manage your C++ dependencies using the PackageReference format in vcxproj files:</p>
+<ul>
+<li>Tools > NuGet Package Manager > Manage NuGet Packages for Solution…</li>
+<li>Package source should be set to “nuget.org”</li>
+<li>Select the Projects tab</li>
+<li>Use the search box to find packages</li>
+</ul>
+<p>For example, to install a package called “PackageName” for all configurations:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="xml"><code><span class="line"><span style="color:#F8F8F2">&#x3C;</span><span style="color:#FF79C6">Project</span><span style="color:#F8F8F2">></span></span>
+<span class="line"><span style="color:#F8F8F2">  &#x3C;</span><span style="color:#FF79C6">ItemGroup</span><span style="color:#F8F8F2">></span></span>
+<span class="line"><span style="color:#F8F8F2">    &#x3C;</span><span style="color:#FF79C6">PackageReference</span><span style="color:#50FA7B;font-style:italic"> Include</span><span style="color:#F8F8F2">=</span><span style="color:#E9F284">"</span><span style="color:#F1FA8C">PackageName</span><span style="color:#E9F284">"</span><span style="color:#50FA7B;font-style:italic"> Version</span><span style="color:#F8F8F2">=</span><span style="color:#E9F284">"</span><span style="color:#F1FA8C">1.0.0</span><span style="color:#E9F284">"</span><span style="color:#F8F8F2"> /></span></span>
+<span class="line"><span style="color:#F8F8F2">  &#x3C;/</span><span style="color:#FF79C6">ItemGroup</span><span style="color:#F8F8F2">></span></span>
+<span class="line"><span style="color:#F8F8F2">  ...</span></span>
+<span class="line"><span style="color:#F8F8F2">&#x3C;/</span><span style="color:#FF79C6">Project</span><span style="color:#F8F8F2">></span></span>
+<span class="line"></span></code></pre>
+<h3 id="nuget-command-line">NuGet Command-Line</h3>
+<p>You can also use the command-line tool <code>nuget.exe</code> for more advanced scenarios or for specific needs.</p>
+<p>Here’s an example of installing a package using the command line:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#50FA7B">nuget</span><span style="color:#F1FA8C"> install</span><span style="color:#F1FA8C"> PackageName</span></span>
+<span class="line"></span></code></pre>
+<p>And updating a package:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#50FA7B">nuget</span><span style="color:#F1FA8C"> update</span><span style="color:#F1FA8C"> PackageName</span></span>
+<span class="line"></span></code></pre>
+<p>For more information and detailed examples on using NuGet in your projects, please refer to the <a href="https://docs.microsoft.com/en-us/nuget/guides/native-packages" rel="noopener noreferrer nofollow" target="_blank">official documentation</a>.</p>

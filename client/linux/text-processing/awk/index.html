@@ -1,0 +1,15 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/linux/content/104-text-processing/117-awk.md"></div> <h1 id="awk---text-processing">awk - Text Processing</h1>
+<p>awk is a powerful text-processing language that is widely used in Unix-like operating systems, including Linux. Named after its three original developers - Alfred Aho, Peter Weinberger, and Brian Kernighan, awk is adept at performing operations upon text files, such as sorting, filtering, and report generation.</p>
+<p>The language comprises a set of commands within a script that define pattern-action pairs. Essentially, awk reads an input file line by line, identifies patterns that match what is specified in the script, and consequently executes actions upon those matches.</p>
+<p>Though a complete language with variables, expressions, and control structures, awk is most commonly used as a single-line command within bash shell scripts, leveraging its versatile text manipulation capabilities.</p>
+<p>Here’s an example of how to print first two fields of each line of a file using awk:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="awk"><code><span class="line"><span style="color:#F8F8F2">awk '{</span><span style="color:#FF79C6">print</span><span style="color:#BD93F9;font-style:italic"> $1</span><span style="color:#F8F8F2">,</span><span style="color:#BD93F9;font-style:italic">$2</span><span style="color:#F8F8F2">}' filename</span></span>
+<span class="line"></span></code></pre>
+<p>This would display the first and second field (typically separated by spaces) of every line in ‘filename’.</p>
+<p>Visit the following resources to learn more:</p>
+<ul>
+<li><a href="https://developer.ibm.com/tutorials/l-awk1/" rel="noopener noreferrer nofollow" target="_blank">@article@IBM.com: Awk by Example</a></li>
+<li><a href="https://linuxhandbook.com/awk-command-tutorial/" rel="noopener noreferrer nofollow" target="_blank">@article@Linux Handbook: Awk</a></li>
+<li><a href="https://www.youtube.com/watch?v=9YOZmI-zWok" rel="noopener noreferrer nofollow" target="_blank">@video@YouTube</a></li>
+<li><a href="https://app.daily.dev/tags/bash?ref=roadmapsh" rel="noopener noreferrer nofollow" target="_blank">@feed@Explore top posts about Bash</a></li>
+</ul>

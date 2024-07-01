@@ -1,0 +1,33 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/cpp/content/115-compilers/index.md"></div> <h1 id="compilers">Compilers</h1>
+<p>A compiler is a computer program that translates source code written in one programming language into a different language, usually machine code or assembly code, that can be executed directly by a computer’s processor. In the context of C++, compilers take your written C++ source code and convert it into an executable program.</p>
+<h2 id="popular-c-compilers">Popular C++ Compilers</h2>
+<p>There are several popular C++ compilers available, here’s a short list of some common ones:</p>
+<ul>
+<li>
+<p><strong>GNU Compiler Collection (GCC)</strong>: Developed by the GNU Project, GCC is an open-source compiler that supports multiple programming languages, including C++.</p>
+</li>
+<li>
+<p><strong>Clang</strong>: As part of the LLVM project, Clang is another open-source compiler that supports C++ and is known for its fast compilation times and extensive diagnostics.</p>
+</li>
+<li>
+<p><strong>Microsoft Visual C++ (MSVC)</strong>: MSVC is a commercial compiler provided by Microsoft as part of Visual Studio, and it’s widely used on Windows platforms.</p>
+</li>
+<li>
+<p><strong>Intel C++ Compiler (ICC)</strong>: ICC is a commercial compiler provided by Intel and is known for its ability to optimize code for the latest Intel processors.</p>
+</li>
+</ul>
+<h2 id="example-of-a-simple-c-compilation">Example of a Simple C++ Compilation</h2>
+<p>Let’s say you have a simple C++ program saved in a file called <code>hello.cpp</code>:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#FF79C6">#include</span><span style="color:#E9F284"> &#x3C;</span><span style="color:#F1FA8C">iostream</span><span style="color:#E9F284">></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">int</span><span style="color:#50FA7B"> main</span><span style="color:#F8F8F2">() {</span></span>
+<span class="line"><span style="color:#F8F8F2">  std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">cout </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C">Hello, World!</span><span style="color:#E9F284">"</span><span style="color:#FF79C6"> &#x3C;&#x3C;</span><span style="color:#F8F8F2"> std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">endl;</span></span>
+<span class="line"><span style="color:#FF79C6">  return</span><span style="color:#BD93F9"> 0</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"></span></code></pre>
+<p>You can compile this program using the GCC compiler by executing the following command in a command-line/terminal:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#50FA7B">g++</span><span style="color:#F1FA8C"> hello.cpp</span><span style="color:#BD93F9"> -o</span><span style="color:#F1FA8C"> hello</span></span>
+<span class="line"></span></code></pre>
+<p>This will generate an executable file called <code>hello</code> (or <code>hello.exe</code> on Windows) which you can run to see the output “Hello, World!“.</p>
+<h2 id="note">Note</h2>
+<p>When learning about compilers, it’s essential to know that they work closely with the linker and the standard library. The linker takes care of combining compiled object files and libraries into a single executable, while the standard library provides implementations for common functionalities used in your code.</p>

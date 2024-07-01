@@ -1,0 +1,17 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/linux/content/103-working-with-files/101-archiving.md"></div> <h1 id="archiving">Archiving</h1>
+<p>Linux offers powerful utilities for archiving, where multiple files and directories are combined into a single file, primarily for backup and simplification of distribution. The main tools used for this purpose are <code>tar</code>, <code>gzip</code>, and <code>bzip2</code>.</p>
+<p>The <code>tar</code> command, originally for tape archiving, is a versatile tool that can manage and organize files into one archive. Meanwhile, <code>gzip</code> and <code>bzip2</code> are used for file compression, reducing the file size and making data transmission easier.</p>
+<p>Take a look at the following commands in use:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6272A4"># To create a tar archive:</span></span>
+<span class="line"><span style="color:#50FA7B">tar</span><span style="color:#F1FA8C"> cvf</span><span style="color:#F1FA8C"> archive_name.tar</span><span style="color:#F1FA8C"> directory_to_archive/</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6272A4"># To extract a tar archive:</span></span>
+<span class="line"><span style="color:#50FA7B">tar</span><span style="color:#F1FA8C"> xvf</span><span style="color:#F1FA8C"> archive_name.tar</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6272A4"># To create a gzip compressed tar archive:</span></span>
+<span class="line"><span style="color:#50FA7B">tar</span><span style="color:#F1FA8C"> cvzf</span><span style="color:#F1FA8C"> archive_name.tar.gz</span><span style="color:#F1FA8C"> directory_to_archive/</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6272A4">#To create a bzip2 compressed tar archive:</span></span>
+<span class="line"><span style="color:#50FA7B">tar</span><span style="color:#F1FA8C"> cvjf</span><span style="color:#F1FA8C"> archive_name.tar.bz2</span><span style="color:#F1FA8C"> directory_to_archive/</span></span>
+<span class="line"></span></code></pre>
+<p>Remember, in Linux, archiving and compression are separate processes, hence <code>tar</code> to archive and <code>gzip</code>/<code>bzip2</code> to compress. Although they’re commonly used together, they can very much be used separately as per the requirements.</p>

@@ -1,0 +1,19 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/linux/content/110-disks-filesystems/104-swap.md"></div> <h1 id="linux-swap-under-disks-filesystems">Linux Swap under Disks Filesystems</h1>
+<p>Swap space in Linux is used when the amount of physical memory (RAM) is full. If the system needs more memory resources and the physical memory is full, inactive pages in memory are moved to the swap space. Swap space is a portion of a hard disk drive (HDD) that is used for virtual memory.</p>
+<p>Having swap space ensures that whenever your system runs low on physical memory, it can move some of the data to the swap, freeing up RAM space, but this comes with performance implications as disk-based storage is slower than RAM.</p>
+<p>In the context of disks and filesystems, the swap space can live in two places:</p>
+<ol>
+<li>In its own dedicated partition.</li>
+<li>In a regular file within an existing filesystem.</li>
+</ol>
+<p>For instance, to add a swap file, we might use the fallocate command to create a certain sized file for swap and the mkswap command to make it suitable for swap usage.</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>fallocate -l 1G /swapfile # creates a swap file</span></span>
+<span class="line"><span>chmod 600 /swapfile # secures the swap file by preventing regular users from reading it</span></span>
+<span class="line"><span>mkswap /swapfile # sets up the Linux swap area</span></span>
+<span class="line"><span>swapon /swapfile # enables the file for swapping</span></span>
+<span class="line"><span></span></span></code></pre>
+<p>Remember that the decision of where to place your swap space, how much swap space to have, and how to utilize swap space are all important considerations in optimizing your system’s performance.</p>
+<ul>
+<li><a href="https://wiki.archlinux.org/title/Swap" rel="noopener noreferrer nofollow" target="_blank">@article@ Swap - Arch Wiki</a></li>
+<li><a href="https://wiki.archlinux.org/title/Zram" rel="noopener noreferrer nofollow" target="_blank">@article@ zram (alternative) - Arch Wiki</a></li>
+</ul>

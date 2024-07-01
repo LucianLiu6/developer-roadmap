@@ -1,0 +1,22 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/postgresql-dba/content/102-rdbms-concepts/101-relational-model/102-tuples.md"></div> <h1 id="tuples">Tuples</h1>
+<p>In the relational model, a <strong>tuple</strong> is a fundamental concept that represents a single record or row in a table. In PostgreSQL, a tuple is composed of a set of attribute values, each corresponding to a specific column or field in the table. This section will cover the various aspects and properties of tuples within PostgreSQL.</p>
+<h2 id="attributes-and-values">Attributes and Values</h2>
+<p>A tuple is defined as an ordered set of attribute values, meaning that each value in a tuple corresponds to a specific attribute or column in the table. The values can be of different data types, such as integers, strings, or dates, depending on the schema of the table.</p>
+<p>For example, consider a <code>users</code> table with columns <code>id</code>, <code>name</code>, and <code>email</code>. A sample tuple in this table could be <code>(1, 'John Smith', 'john.smith@example.com')</code>, where each value corresponds to its respective column.</p>
+<h2 id="operations-on-tuples">Operations on Tuples</h2>
+<p>PostgreSQL provides a variety of operations that can be performed on tuples, which can be classified into three main categories:</p>
+<ul>
+<li>
+<p><strong>Projection</strong>: This operation involves selecting one or more attributes from a tuple and creating a new tuple with only the selected attributes. For example, projecting the <code>name</code> and <code>email</code> attributes from the previously mentioned tuple would result in <code>('John Smith', 'john.smith@example.com')</code>.</p>
+</li>
+<li>
+<p><strong>Selection</strong>: Selection involves filtering tuples based on a specific condition. For example, you may want to select all tuples from the <code>users</code> table where the <code>email</code> attribute ends with “@example.com”.</p>
+</li>
+<li>
+<p><strong>Join</strong>: The join operation combines tuples from two or more tables based on a common attribute or condition. For example, if we have another table called <code>orders</code> with a <code>user_id</code> column, we could use a join operation to retrieve all records from both tables where the <code>users.id</code> attribute matches the <code>orders.user_id</code>.</p>
+</li>
+</ul>
+<h2 id="unique-constraints-and-primary-keys">Unique Constraints and Primary Keys</h2>
+<p>In order to maintain data integrity within the relational model, it is often necessary to enforce unique constraints on specific attributes or combinations of attributes. In PostgreSQL, a <strong>primary key</strong> is a special type of unique constraint that ensures each tuple in a table is uniquely identifiable by its primary key value(s).</p>
+<p>For instance, in the <code>users</code> table, we could define the <code>id</code> column as a primary key, ensuring that no two tuples could have the same <code>id</code> value.</p>
+<p>By understanding the basics of tuples, you’ll have a solid foundation in working with PostgreSQL’s relational model, enabling you to efficiently store, retrieve, and manipulate data within your database.</p>

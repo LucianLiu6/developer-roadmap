@@ -1,0 +1,34 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/sql/content/115-advanced-sql/102-window-functions/101-rank.md"></div> <h1 id="rank">rank</h1>
+<p><code>RANK()</code> is a window function in SQL that assigns a unique rank to each distinct row within a partition of a result set. The rank of the first row within each partition is one. The <code>RANK()</code> function adds the number of tied rows to the tied rank to calculate the next rank. So the ranks may not be consecutive numbers.</p>
+<h2 id="parameters-of-rank-function">Parameters of RANK Function</h2>
+<p>There are no arguments for the <code>RANK()</code> function. However, since it’s a window function, the function operates on a set of rows (window) defined by the <code>OVER</code> clause, which is mandatory.</p>
+<h2 id="syntax">Syntax</h2>
+<p>The syntax of <code>RANK</code> function is:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#8BE9FD">RANK</span><span style="color:#F8F8F2"> () </span><span style="color:#FF79C6">OVER</span><span style="color:#F8F8F2"> (</span></span>
+<span class="line"><span style="color:#F8F8F2">    [PARTITION BY column_1, column_2,…]</span></span>
+<span class="line"><span style="color:#FF79C6">    ORDER BY</span><span style="color:#F8F8F2"> column_3,column_4,… </span></span>
+<span class="line"><span style="color:#F8F8F2">)</span></span>
+<span class="line"></span></code></pre>
+<p><code>PARTITION BY</code>: This clause divides the rows into multiple groups or partitions upon which the <code>RANK()</code> function is applied.</p>
+<p><code>ORDER BY</code>: This clause sorts the rows in each partition.</p>
+<p>If <code>PARTITION BY</code> is not specified, the function treats all rows in the result set as a single partition.</p>
+<h2 id="examples">Examples</h2>
+<p>Here’s an example query using the <code>RANK()</code> function:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#FF79C6">SELECT</span></span>
+<span class="line"><span style="color:#F8F8F2">    product_name, </span></span>
+<span class="line"><span style="color:#F8F8F2">    brand, </span></span>
+<span class="line"><span style="color:#8BE9FD">    RANK</span><span style="color:#F8F8F2"> () </span><span style="color:#FF79C6">OVER</span><span style="color:#F8F8F2"> (</span></span>
+<span class="line"><span style="color:#FF79C6">    PARTITION</span><span style="color:#FF79C6"> BY</span><span style="color:#F8F8F2"> brand</span></span>
+<span class="line"><span style="color:#FF79C6">    ORDER BY</span><span style="color:#F8F8F2"> product_name </span><span style="color:#FF79C6">ASC</span></span>
+<span class="line"><span style="color:#F8F8F2">) Product_rank</span></span>
+<span class="line"><span style="color:#FF79C6">FROM</span></span>
+<span class="line"><span style="color:#F8F8F2">    products;</span></span>
+<span class="line"></span></code></pre>
+<p>In this example, it generates a list of products, grouped by brand, and ranked by product_name within each brand. The <code>product_name</code> with the smallest value (alphabetically first when sorting ASC) gets a rank of 1 within its partition.</p>
+<h2 id="important-notes">Important Notes</h2>
+<ul>
+<li><code>RANK()</code> function may return duplicate rankings if the column on which the function is applied contains duplicate values.</li>
+<li>The <code>RANK()</code> function will leave a gap and create a non-consecutive ranking if there are equal rankings (ties).</li>
+<li><code>RANK()</code> function offers a very efficient way to solve top-N problems.</li>
+</ul>
+<p>You might also be interested in looking at other similar ranking functions in SQL like <code>DENSE_RANK()</code>, <code>ROW_NUMBER()</code>, etc.</p>

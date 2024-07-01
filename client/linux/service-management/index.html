@@ -1,0 +1,12 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/linux/content/108-service-management/index.md"></div> <h1 id="service-management">Service Management</h1>
+<p>Service Management in Linux refers to the system of controlling the services (or “daemons”) that Linux starts and stops during the process of booting up and shutting down your computer. These services perform various functions and provide processes that aren’t attached to the user interface.</p>
+<p>Linux systems, particularly system administrators, often need to manage these services, such as starting or stopping them, enabling or disabling them at boot time, etc. Various commands involved in service management in Linux include <code>systemctl start</code>, <code>systemctl stop</code>, <code>systemctl restart</code>, <code>systemctl reload</code>, <code>systemctl status</code>, and <code>systemctl enable/disable</code>, among others.</p>
+<p>In modern Linux distros, service management is primarily handled by systemd but in older or minimalistic distros, it’s handled by older systems like SystemV or Upstart.</p>
+<p>Here’s a basic example of starting and checking the status of a service (e.g., sshd service) using systemctl:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6272A4"># Start sshd service</span></span>
+<span class="line"><span style="color:#50FA7B">sudo</span><span style="color:#F1FA8C"> systemctl</span><span style="color:#F1FA8C"> start</span><span style="color:#F1FA8C"> sshd</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6272A4"># Check status of sshd service</span></span>
+<span class="line"><span style="color:#50FA7B">sudo</span><span style="color:#F1FA8C"> systemctl</span><span style="color:#F1FA8C"> status</span><span style="color:#F1FA8C"> sshd</span></span>
+<span class="line"></span></code></pre>
+<p>Managing services is a key skill in Linux system administration and essential for maintaining a secure and stable system.</p>

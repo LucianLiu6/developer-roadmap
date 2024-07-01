@@ -1,0 +1,44 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/react-native/content/104-core-components/111-listings/102-refresh-control.md"></div> <h1 id="refresh-control">Refresh Control</h1>
+<p><code>RefreshControl</code> is a component in React Native that is used to provide pull-to-refresh functionality for scrollable components like <code>ScrollView</code>, <code>ListView</code>, and <code>FlatList</code>.</p>
+<h2 id="how-to-use-refreshcontrol">How to use RefreshControl:</h2>
+<ul>
+<li>
+<p>Import <code>RefreshControl</code> from ‘react-native’:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>import { RefreshControl } from 'react-native';</span></span>
+<span class="line"><span></span></span></code></pre>
+</li>
+<li>
+<p>Add <code>RefreshControl</code> to a scrollable component (<code>ScrollView</code>, <code>ListView</code>, or <code>FlatList</code>). Here is an example with <code>FlatList</code>:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#FF79C6">import</span><span style="color:#F8F8F2"> React, { useState } </span><span style="color:#FF79C6">from</span><span style="color:#E9F284"> '</span><span style="color:#F1FA8C">react</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"><span style="color:#FF79C6">import</span><span style="color:#F8F8F2"> { FlatList, RefreshControl, Text } </span><span style="color:#FF79C6">from</span><span style="color:#E9F284"> '</span><span style="color:#F1FA8C">react-native</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">const</span><span style="color:#50FA7B"> App</span><span style="color:#FF79C6"> =</span><span style="color:#F8F8F2"> () </span><span style="color:#FF79C6">=></span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#FF79C6">    const</span><span style="color:#F8F8F2"> [refreshing, setRefreshing] </span><span style="color:#FF79C6">=</span><span style="color:#50FA7B"> useState</span><span style="color:#F8F8F2">(</span><span style="color:#BD93F9">false</span><span style="color:#F8F8F2">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">    const</span><span style="color:#50FA7B"> fetchData</span><span style="color:#FF79C6"> =</span><span style="color:#F8F8F2"> () </span><span style="color:#FF79C6">=></span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#6272A4">        // Fetch the data and update your state accordingly</span></span>
+<span class="line"><span style="color:#F8F8F2">    };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">    const</span><span style="color:#50FA7B"> onRefresh</span><span style="color:#FF79C6"> =</span><span style="color:#F8F8F2"> () </span><span style="color:#FF79C6">=></span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#50FA7B">        setRefreshing</span><span style="color:#F8F8F2">(</span><span style="color:#BD93F9">true</span><span style="color:#F8F8F2">);</span></span>
+<span class="line"><span style="color:#50FA7B">        fetchData</span><span style="color:#F8F8F2">().</span><span style="color:#50FA7B">then</span><span style="color:#F8F8F2">(() </span><span style="color:#FF79C6">=></span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#50FA7B">            setRefreshing</span><span style="color:#F8F8F2">(</span><span style="color:#BD93F9">false</span><span style="color:#F8F8F2">);</span></span>
+<span class="line"><span style="color:#F8F8F2">        });</span></span>
+<span class="line"><span style="color:#F8F8F2">    };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">    return</span><span style="color:#F8F8F2"> (</span></span>
+<span class="line"><span style="color:#F8F8F2">        &#x3C;</span><span style="color:#8BE9FD;font-style:italic">FlatList</span></span>
+<span class="line"><span style="color:#50FA7B;font-style:italic">            data</span><span style="color:#FF79C6">={</span><span style="color:#F8F8F2">[</span><span style="color:#E9F284">'</span><span style="color:#F1FA8C">Item 1</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">, </span><span style="color:#E9F284">'</span><span style="color:#F1FA8C">Item 2</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">, </span><span style="color:#E9F284">'</span><span style="color:#F1FA8C">Item 3</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">]</span><span style="color:#FF79C6">}</span></span>
+<span class="line"><span style="color:#50FA7B;font-style:italic">            renderItem</span><span style="color:#FF79C6">={</span><span style="color:#F8F8F2">({ </span><span style="color:#FFB86C;font-style:italic">item</span><span style="color:#F8F8F2"> }) </span><span style="color:#FF79C6">=></span><span style="color:#F8F8F2"> &#x3C;</span><span style="color:#8BE9FD;font-style:italic">Text</span><span style="color:#F8F8F2">></span><span style="color:#FF79C6">{</span><span style="color:#F8F8F2">item</span><span style="color:#FF79C6">}</span><span style="color:#F8F8F2">&#x3C;/</span><span style="color:#8BE9FD;font-style:italic">Text</span><span style="color:#F8F8F2">></span><span style="color:#FF79C6">}</span></span>
+<span class="line"><span style="color:#50FA7B;font-style:italic">            refreshControl</span><span style="color:#FF79C6">={</span></span>
+<span class="line"><span style="color:#F8F8F2">                &#x3C;</span><span style="color:#8BE9FD;font-style:italic">RefreshControl</span><span style="color:#50FA7B;font-style:italic"> refreshing</span><span style="color:#FF79C6">={</span><span style="color:#F8F8F2">refreshing</span><span style="color:#FF79C6">}</span><span style="color:#50FA7B;font-style:italic"> onRefresh</span><span style="color:#FF79C6">={</span><span style="color:#F8F8F2">onRefresh</span><span style="color:#FF79C6">}</span><span style="color:#F8F8F2"> /></span></span>
+<span class="line"><span style="color:#FF79C6">            }</span></span>
+<span class="line"><span style="color:#F8F8F2">        /></span></span>
+<span class="line"><span style="color:#F8F8F2">    );</span></span>
+<span class="line"><span style="color:#F8F8F2">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">export</span><span style="color:#FF79C6"> default</span><span style="color:#F8F8F2"> App;</span></span>
+<span class="line"></span></code></pre>
+</li>
+</ul>
+<p>In the example above, we have a <code>FlatList</code> that renders a list of items. When the user pulls down the list, the <code>onRefresh</code> function is triggered and fetches new data. The <code>refreshing</code> state is used to control the visibility of the refresh indicator. When <code>refreshing</code> is set to <code>true</code>, the refresh indicator is shown. It is hidden when <code>refreshing</code> is set to <code>false</code>.</p>

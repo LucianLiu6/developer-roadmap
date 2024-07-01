@@ -1,0 +1,50 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/postgresql-dba/content/108-learn-automation/103-terraform.md"></div> <h1 id="terraform">Terraform</h1>
+<p>Terraform is an Infrastructure as Code (IaC) tool developed by HashiCorp that allows you to streamline and automate the process of managing your infrastructure. With Terraform, you can define, provision, and manage resources like virtual machines, storage accounts, and networking resources using a declarative language called HashiCorp Configuration Language (HCL). You can also use JSON as an alternative to HCL, but HCL is more suitable for human-readable configuration.</p>
+<h3 id="advantages-of-terraform">Advantages of Terraform</h3>
+<ol>
+<li>
+<p><strong>Platform Agnostic</strong>: Terraform supports a variety of cloud providers like AWS, Google Cloud, Azure, and many more, allowing you to manage multi-cloud deployments seamlessly.</p>
+</li>
+<li>
+<p><strong>Version Control</strong>: By maintaining your infrastructure using code, you can leverage the power of version control systems like Git. This enables seamless collaboration, better understanding of changes, and the ability to roll back when needed.</p>
+</li>
+<li>
+<p><strong>Modularity</strong>: Terraform promotes modular and reusable code, which simplifies the process of managing complex infrastructure setups.</p>
+</li>
+<li>
+<p><strong>State Management</strong>: Terraform persists the state of your infrastructure, allowing you to determine real-time configuration and track changes over time.</p>
+</li>
+</ol>
+<h3 id="main-components-of-terraform">Main Components of Terraform</h3>
+<ol>
+<li>
+<p><strong>Configuration Files</strong>: These are written in HCL and describe the infrastructure you want to create, update, or delete.</p>
+</li>
+<li>
+<p><strong>Terraform CLI</strong>: The command-line interface that helps you manage the lifecycle of your infrastructure.</p>
+</li>
+<li>
+<p><strong>State File</strong>: This file stores the state of your infrastructure and is used by Terraform to determine the changes required during each operation.</p>
+</li>
+<li>
+<p><strong>Providers</strong>: These are the plugins that integrate Terraform with various cloud providers and services. Some popular providers are AWS, Azure, Google Cloud, and many more.</p>
+</li>
+</ol>
+<h3 id="terraform-workflow">Terraform Workflow</h3>
+<p>The typical workflow when working with Terraform involves four main steps:</p>
+<ol>
+<li>
+<p><strong>Write</strong>: Describe your infrastructure using configuration files.</p>
+</li>
+<li>
+<p><strong>Initialize</strong>: Run <code>terraform init</code> to download required providers and set up the backend for storing your state file.</p>
+</li>
+<li>
+<p><strong>Plan</strong>: Run <code>terraform plan</code> to preview the actions Terraform will take to achieve the desired infrastructure state.</p>
+</li>
+<li>
+<p><strong>Apply</strong>: Run <code>terraform apply</code> to execute the actions in the plan and provision your infrastructure.</p>
+</li>
+</ol>
+<p>Keep in mind that Terraform is highly extensible, supporting custom providers, provisioners, and various third-party tools to make managing your infrastructure even more efficient.</p>
+<p>In conclusion, if you’re looking to learn automation and improve your administration of PostgreSQL or any other infrastructure, becoming familiar with Terraform is an invaluable asset in your toolkit.</p>

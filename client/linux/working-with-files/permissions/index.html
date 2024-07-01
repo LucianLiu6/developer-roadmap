@@ -1,0 +1,14 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/linux/content/103-working-with-files/100-permissions.md"></div> <h1 id="linux-file-permissions">Linux File Permissions</h1>
+<p>In Linux systems, rights and privileges are assigned to files and directories in the form of permissions. These permissions indicate who can read, write, or execute (run) them. In Linux, there are three types of users: owners, groups, and others who can have a different set of permissions.</p>
+<p>In fact, permissions on the system are there for a reason: to prevent unprivileged users from making changes on the system that would ultimately affect other users. With inadequate permissions, unprivileged users are able to make changes that would be beneficial or harmless to the Linux system.</p>
+<p>Let’s have a look at an example:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#50FA7B">-rwxr--r--</span><span style="color:#BD93F9"> 1</span><span style="color:#F1FA8C"> root</span><span style="color:#F1FA8C"> root</span><span style="color:#BD93F9"> 4096</span><span style="color:#F1FA8C"> Jan</span><span style="color:#BD93F9"> 1</span><span style="color:#F1FA8C"> 12:00</span><span style="color:#F1FA8C"> filename</span></span>
+<span class="line"></span></code></pre>
+<p>From the above example, the first character <code>-</code> indicates if it is a regular file(<code>-</code>) or directory(<code>d</code>). The following group of three characters(<code>rwx</code>) represents the permissions for the file owner. The next three characters(<code>r--</code>) represent permissions for the group and the last set of three characters(<code>r--</code>) represents permissions for others.</p>
+<p>The <code>r</code> indicates that the file can be read, <code>w</code> indicates that the file can be written to, and <code>x</code> indicates that the file can be executed.</p>
+<p>The permissions can be changed using the <code>chmod</code>, <code>chown</code>, and <code>chgrp</code> commands.</p>
+<p>Learn more from the following resources:</p>
+<ul>
+<li><a href="https://linuxhandbook.com/linux-file-permissions/" rel="noopener noreferrer nofollow" target="_blank">@article@Linux File Permissions</a></li>
+<li><a href="https://www.youtube.com/watch?v=LnKoncbQBsM" rel="noopener noreferrer nofollow" target="_blank">@video@Linux File Permissions in 5 Minutes</a></li>
+</ul>

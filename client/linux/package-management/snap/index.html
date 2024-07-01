@@ -1,0 +1,7 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/linux/content/109-package-management/101-snap.md"></div> <h1 id="snap">Snap</h1>
+<p>Snap is a modern approach to package management in Linux systems promoted by Canonical (the company behind Ubuntu). Unlike traditional package management systems such as dpkg or RPM, Snap focuses on providing software as self-contained packages (known as ‘Snaps’) that include all of their dependencies. This ensures that a Snap application runs consistently across a variety of different Linux distributions.</p>
+<p>Snaps are installed from a Snapcraft store and are automatically updated in the background. The Snap update process is transactional, meaning if something goes wrong during an update, Snap can automatically revert to the previous working version.</p>
+<p>Here is a simple example of a snap command:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="color:#50FA7B">sudo</span><span style="color:#F1FA8C"> snap</span><span style="color:#F1FA8C"> install</span><span style="color:#F8F8F2"> [package-name]</span></span>
+<span class="line"></span></code></pre>
+<p>In the command above, <code>[package-name]</code> is the name of the snap package you want to install. You must run this command as the superuser (sudo), as root privileges are needed to install packages.</p>

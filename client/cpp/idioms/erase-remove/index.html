@@ -1,0 +1,29 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/cpp/content/112-idioms/104-erase-remove.md"></div> <h1 id="erase-remove-idiom">Erase-remove idiom</h1>
+<p>The erase-remove idiom is a common C++ technique to efficiently remove elements from a container, particularly from standard sequence containers like <code>std::vector</code>, <code>std::list</code>, and <code>std::deque</code>. It leverages the standard library algorithms <code>std::remove</code> (or <code>std::remove_if</code>) and the member function <code>erase()</code>.</p>
+<p>The idiom consists of two steps:</p>
+<ul>
+<li><code>std::remove</code> (or <code>std::remove_if</code>) moves the elements to be removed towards the end of the container and returns an iterator pointing to the first element to remove.</li>
+<li><code>container.erase()</code> removes the elements from the container using the iterator obtained in the previous step.</li>
+</ul>
+<p>Here’s an example:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#FF79C6">#include</span><span style="color:#E9F284"> &#x3C;</span><span style="color:#F1FA8C">algorithm</span><span style="color:#E9F284">></span></span>
+<span class="line"><span style="color:#FF79C6">#include</span><span style="color:#E9F284"> &#x3C;</span><span style="color:#F1FA8C">vector</span><span style="color:#E9F284">></span></span>
+<span class="line"><span style="color:#FF79C6">#include</span><span style="color:#E9F284"> &#x3C;</span><span style="color:#F1FA8C">iostream</span><span style="color:#E9F284">></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">int</span><span style="color:#50FA7B"> main</span><span style="color:#F8F8F2">() {</span></span>
+<span class="line"><span style="color:#F8F8F2">    std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">vector</span><span style="color:#FF79C6">&#x3C;int></span><span style="color:#F8F8F2"> numbers </span><span style="color:#FF79C6">=</span><span style="color:#F8F8F2"> {</span><span style="color:#BD93F9">1</span><span style="color:#F8F8F2">, </span><span style="color:#BD93F9">3</span><span style="color:#F8F8F2">, </span><span style="color:#BD93F9">2</span><span style="color:#F8F8F2">, </span><span style="color:#BD93F9">4</span><span style="color:#F8F8F2">, </span><span style="color:#BD93F9">3</span><span style="color:#F8F8F2">, </span><span style="color:#BD93F9">5</span><span style="color:#F8F8F2">, </span><span style="color:#BD93F9">3</span><span style="color:#F8F8F2">};</span></span>
+<span class="line"><span style="color:#F8F8F2">    </span></span>
+<span class="line"><span style="color:#6272A4">    // Remove all occurrences of 3 from the vector.</span></span>
+<span class="line"><span style="color:#F8F8F2">    numbers.</span><span style="color:#50FA7B">erase</span><span style="color:#F8F8F2">(std</span><span style="color:#FF79C6">::</span><span style="color:#50FA7B">remove</span><span style="color:#F8F8F2">(numbers.</span><span style="color:#50FA7B">begin</span><span style="color:#F8F8F2">(), numbers.</span><span style="color:#50FA7B">end</span><span style="color:#F8F8F2">(), </span><span style="color:#BD93F9">3</span><span style="color:#F8F8F2">), numbers.</span><span style="color:#50FA7B">end</span><span style="color:#F8F8F2">());</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">    for</span><span style="color:#F8F8F2"> (</span><span style="color:#FF79C6">int</span><span style="color:#F8F8F2"> number : numbers) {</span></span>
+<span class="line"><span style="color:#F8F8F2">        std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">cout </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#F8F8F2"> number </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#E9F284"> "</span><span style="color:#E9F284"> "</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"><span style="color:#F8F8F2">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">    return</span><span style="color:#BD93F9"> 0</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"></span></code></pre>
+<p>Output:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>1 2 4 5</span></span>
+<span class="line"><span></span></span></code></pre>
+<p>In this example, we used the <code>std::remove</code> algorithm to remove all occurrences of the number 3 from the <code>std::vector&#x3C;int> numbers</code>. After the removal, the vector contains only 1, 2, 4, and 5, as the output shows.</p>

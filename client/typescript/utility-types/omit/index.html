@@ -1,0 +1,28 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/typescript/content/111-utility-types/102-omit.md"></div> <h1 id="omit">Omit</h1>
+<p>Omit constructs a type by picking all properties from Type and then removing Keys (string literal or union of string literals).</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="typescript"><code><span class="line"><span style="color:#FF79C6">interface</span><span style="color:#8BE9FD;font-style:italic"> Todo</span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#F8F8F2">  title</span><span style="color:#FF79C6">:</span><span style="color:#8BE9FD;font-style:italic"> string</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"><span style="color:#F8F8F2">  description</span><span style="color:#FF79C6">:</span><span style="color:#8BE9FD;font-style:italic"> string</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"><span style="color:#F8F8F2">  completed</span><span style="color:#FF79C6">:</span><span style="color:#8BE9FD;font-style:italic"> boolean</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"><span style="color:#F8F8F2">  createdAt</span><span style="color:#FF79C6">:</span><span style="color:#8BE9FD;font-style:italic"> number</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">type</span><span style="color:#8BE9FD;font-style:italic"> TodoPreview</span><span style="color:#FF79C6"> =</span><span style="color:#8BE9FD;font-style:italic"> Omit</span><span style="color:#F8F8F2">&#x3C;</span><span style="color:#FFB86C;font-style:italic">Todo</span><span style="color:#F8F8F2">, </span><span style="color:#E9F284">'</span><span style="color:#F1FA8C">description</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">>;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">const</span><span style="color:#F8F8F2"> todo</span><span style="color:#FF79C6">:</span><span style="color:#8BE9FD;font-style:italic"> TodoPreview</span><span style="color:#FF79C6"> =</span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#F8F8F2">  title</span><span style="color:#FF79C6">:</span><span style="color:#E9F284"> '</span><span style="color:#F1FA8C">Clean room</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#F8F8F2">  completed</span><span style="color:#FF79C6">:</span><span style="color:#BD93F9"> false</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#F8F8F2">  createdAt</span><span style="color:#FF79C6">:</span><span style="color:#BD93F9"> 1615544252770</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#F8F8F2">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">type</span><span style="color:#8BE9FD;font-style:italic"> TodoInfo</span><span style="color:#FF79C6"> =</span><span style="color:#8BE9FD;font-style:italic"> Omit</span><span style="color:#F8F8F2">&#x3C;</span><span style="color:#FFB86C;font-style:italic">Todo</span><span style="color:#F8F8F2">, </span><span style="color:#E9F284">'</span><span style="color:#F1FA8C">completed</span><span style="color:#E9F284">'</span><span style="color:#FF79C6"> |</span><span style="color:#E9F284"> '</span><span style="color:#F1FA8C">createdAt</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">>;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">const</span><span style="color:#F8F8F2"> todoInfo</span><span style="color:#FF79C6">:</span><span style="color:#8BE9FD;font-style:italic"> TodoInfo</span><span style="color:#FF79C6"> =</span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#F8F8F2">  title</span><span style="color:#FF79C6">:</span><span style="color:#E9F284"> '</span><span style="color:#F1FA8C">Pick up kids</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#F8F8F2">  description</span><span style="color:#FF79C6">:</span><span style="color:#E9F284"> '</span><span style="color:#F1FA8C">Kindergarten closes at 5pm</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#F8F8F2">};</span></span>
+<span class="line"></span></code></pre>
+<p>Learn more from the following links:</p>
+<ul>
+<li><a href="https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype-keys" rel="noopener noreferrer nofollow" target="_blank">@article@Omit&#x3C;Type, Keys></a></li>
+</ul>

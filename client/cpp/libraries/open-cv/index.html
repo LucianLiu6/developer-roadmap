@@ -1,0 +1,44 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/cpp/content/libraries/101-open-cv.md"></div> <h1 id="opencv">OpenCV</h1>
+<p><strong>OpenCV (Open Source Computer Vision Library)</strong> is an open-source computer vision and machine learning software library. It was built to provide a common infrastructure for computer vision applications and to accelerate the use of machine perception in commercial products. OpenCV contains over 2,500 optimized algorithms for real-time computer vision and is actively used by a large community of programmers, researchers, and industries worldwide.</p>
+<p>The library has interfaces for C++, Python, Java, and MATLAB/Octave, and is widely used in various computer vision fields, such as:</p>
+<ul>
+<li>2D and 3D image processing</li>
+<li>Facial recognition and face detection</li>
+<li>Object detection and recognition</li>
+<li>Machine learning</li>
+</ul>
+<p>Here’s a simple example using OpenCV in C++ to read and display an image:</p>
+<p><strong>Prerequisite</strong>: Install OpenCV for C++ on your system (e.g., by following the <a href="https://docs.opencv.org/master/d7/d9f/tutorial_linux_install.html" rel="noopener noreferrer nofollow" target="_blank">official installation guide</a>).</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#FF79C6">#include</span><span style="color:#E9F284"> &#x3C;</span><span style="color:#F1FA8C">opencv2/opencv.hpp</span><span style="color:#E9F284">></span></span>
+<span class="line"><span style="color:#FF79C6">#include</span><span style="color:#E9F284"> &#x3C;</span><span style="color:#F1FA8C">opencv2/highgui/highgui.hpp</span><span style="color:#E9F284">></span></span>
+<span class="line"><span style="color:#FF79C6">#include</span><span style="color:#E9F284"> &#x3C;</span><span style="color:#F1FA8C">iostream</span><span style="color:#E9F284">></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">int</span><span style="color:#50FA7B"> main</span><span style="color:#F8F8F2">(</span><span style="color:#FF79C6">int</span><span style="color:#FFB86C;font-style:italic"> argc</span><span style="color:#F8F8F2">, </span><span style="color:#FF79C6">char**</span><span style="color:#FFB86C;font-style:italic"> argv</span><span style="color:#F8F8F2">) {</span></span>
+<span class="line"><span style="color:#FF79C6">    if</span><span style="color:#F8F8F2">(argc </span><span style="color:#FF79C6">!=</span><span style="color:#BD93F9"> 2</span><span style="color:#F8F8F2">) {</span></span>
+<span class="line"><span style="color:#F8F8F2">        std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">cout </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C">Usage: display_image ImageToLoadAndDisplay</span><span style="color:#E9F284">"</span><span style="color:#FF79C6"> &#x3C;&#x3C;</span><span style="color:#F8F8F2"> std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">endl;</span></span>
+<span class="line"><span style="color:#FF79C6">        return</span><span style="color:#FF79C6"> -</span><span style="color:#BD93F9">1</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"><span style="color:#F8F8F2">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F8F8F2">    cv</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">Mat image;</span></span>
+<span class="line"><span style="color:#F8F8F2">    image </span><span style="color:#FF79C6">=</span><span style="color:#F8F8F2"> cv</span><span style="color:#FF79C6">::</span><span style="color:#50FA7B">imread</span><span style="color:#F8F8F2">(argv[</span><span style="color:#BD93F9">1</span><span style="color:#F8F8F2">], cv</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">IMREAD_COLOR);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">    if</span><span style="color:#F8F8F2">(</span><span style="color:#FF79C6">!</span><span style="color:#F8F8F2">image.data) {</span></span>
+<span class="line"><span style="color:#F8F8F2">        std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">cout </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C">Could not open or find the image</span><span style="color:#E9F284">"</span><span style="color:#FF79C6"> &#x3C;&#x3C;</span><span style="color:#F8F8F2"> std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">endl;</span></span>
+<span class="line"><span style="color:#FF79C6">        return</span><span style="color:#FF79C6"> -</span><span style="color:#BD93F9">1</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"><span style="color:#F8F8F2">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F8F8F2">    cv</span><span style="color:#FF79C6">::</span><span style="color:#50FA7B">namedWindow</span><span style="color:#F8F8F2">(</span><span style="color:#E9F284">"</span><span style="color:#F1FA8C">Display window</span><span style="color:#E9F284">"</span><span style="color:#F8F8F2">, cv</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">WINDOW_AUTOSIZE);</span></span>
+<span class="line"><span style="color:#F8F8F2">    cv</span><span style="color:#FF79C6">::</span><span style="color:#50FA7B">imshow</span><span style="color:#F8F8F2">(</span><span style="color:#E9F284">"</span><span style="color:#F1FA8C">Display window</span><span style="color:#E9F284">"</span><span style="color:#F8F8F2">, image);</span></span>
+<span class="line"><span style="color:#F8F8F2">    cv</span><span style="color:#FF79C6">::</span><span style="color:#50FA7B">waitKey</span><span style="color:#F8F8F2">(</span><span style="color:#BD93F9">0</span><span style="color:#F8F8F2">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">    return</span><span style="color:#BD93F9"> 0</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"></span></code></pre>
+<p>This example reads an image from the given input path (<code>argv[1]</code>) and displays it in a window. The <code>cv::imread()</code> function is used to read the image, and the <code>cv::imshow()</code> function displays it in the created window.</p>
+<p>Remember to compile the code, linking the necessary libraries:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>g++ -o display_image display_image.cpp `pkg-config --cflags --libs opencv4`</span></span>
+<span class="line"><span></span></span></code></pre>
+<p>And run the executable with an image path as an argument:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>./display_image path/to/image.jpg</span></span>
+<span class="line"><span></span></span></code></pre>
+<p>For more advanced examples and detailed documentation on how to use OpenCV, please visit the <a href="https://docs.opencv.org/master/" rel="noopener noreferrer nofollow" target="_blank">official OpenCV documentation</a>.</p>

@@ -1,0 +1,24 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/postgresql-dba/content/107-postgresql-infrastructure-skills/101-connection-pooling/101-pg-bouncer-alternatives.md"></div> <h1 id="connection-pooling-alternatives-to-pgbouncer">Connection Pooling: Alternatives to PgBouncer</h1>
+<p>In the previous section, we discussed the importance of connection pooling and one of the most popular PostgreSQL connection poolers, PgBouncer. However, PgBouncer isn’t the only connection pooler available for PostgreSQL. In this section, we’ll explore some PgBouncer alternatives that you can use for connection pooling in your PostgreSQL deployment.</p>
+<h2 id="pgpool-ii">Pgpool-II</h2>
+<p><a href="https://www.pgpool.net/mediawiki/index.php/Main_Page" rel="noopener noreferrer nofollow" target="_blank">Pgpool-II</a> is another widely-used connection pooler for PostgreSQL. It provides several advanced features, such as load balancing, replication, and limiting connections.</p>
+<ul>
+<li><strong>Load Balancing</strong> - Pgpool-II can distribute read queries among multiple PostgreSQL servers to balance the read load, helping to improve overall performance.</li>
+<li><strong>Replication</strong> - In addition to connection pooling, Pgpool-II can act as a replication tool for creating real-time data backups.</li>
+<li><strong>Limiting Connections</strong> - You can set connection limits for clients to control the maximum number of allowed connections for specific users or databases.</li>
+</ul>
+<h2 id="haproxy">HAProxy</h2>
+<p><a href="http://www.haproxy.org/" rel="noopener noreferrer nofollow" target="_blank">HAProxy</a> is a high-performance and highly-available load balancer for TCP and HTTP-based applications, including PostgreSQL. It is particularly well-suited for distributing connections across multiple PostgreSQL servers for high availability and load balancing.</p>
+<ul>
+<li><strong>Connection Distribution</strong> - HAProxy uses load balancing algorithms to ensure connections are evenly distributed across the available servers, which can help prevent connection overloading.</li>
+<li><strong>Health Checking</strong> - HAProxy can perform periodic health checks on your PostgreSQL servers, which can help to ensure that client connections are redirected to healthy servers.</li>
+<li><strong>SSL Support</strong> - HAProxy provides SSL/TLS support, enabling secure connections between clients and PostgreSQL servers.</li>
+</ul>
+<h2 id="odyssey">Odyssey</h2>
+<p><a href="https://github.com/yandex/odyssey" rel="noopener noreferrer nofollow" target="_blank">Odyssey</a> is an open-source, multithreaded connection pooler for PostgreSQL developed by Yandex. It is designed for high-performance and large-scale deployments and supports features like transparent SSL, load balancing, and advanced routing.</p>
+<ul>
+<li><strong>High Performance</strong> - Odyssey uses a multithreaded architecture to process its connections, which can help significantly increase its performance compared to single-threaded connection poolers.</li>
+<li><strong>Advanced Routing</strong> - Odyssey allows you to configure routing rules and load balancing based on client, server, user, and even specific SQL queries.</li>
+<li><strong>Transparent SSL</strong> - Odyssey supports transparent SSL connections between clients and PostgreSQL servers, ensuring secure communication.</li>
+</ul>
+<p>Choosing the right connection pooler for your PostgreSQL setup depends on your specific needs, performance requirements, and the features you value most. Although PgBouncer is a popular choice for its simplicity and efficiency, it’s worth considering the other options presented here to make the best decision for your use case.</p>

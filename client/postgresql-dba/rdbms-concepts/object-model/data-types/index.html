@@ -1,0 +1,54 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/postgresql-dba/content/102-rdbms-concepts/100-object-model/105-data-types.md"></div> <h1 id="data-types-in-postgresql">Data Types in PostgreSQL</h1>
+<p>PostgreSQL supports a wide range of data types that allow you to store various kinds of information in your database. In this section, we’ll take a look at some of the most commonly used data types and provide a brief description of each. This will serve as a useful reference as you work with PostgreSQL.</p>
+<h2 id="numeric-data-types">Numeric Data Types</h2>
+<p>PostgreSQL offers several numeric data types to store integers and floating-point numbers:</p>
+<ul>
+<li><strong><code>smallint</code></strong>: A 2-byte signed integer that can store numbers between -32,768 and 32,767.</li>
+<li><strong><code>integer</code></strong>: A 4-byte signed integer that can store numbers between -2,147,483,648 and 2,147,483,647.</li>
+<li><strong><code>bigint</code></strong>: An 8-byte signed integer that can store numbers between -9,223,372,036,854,775,808 and 9,223,372,036,854,775,807.</li>
+<li><strong><code>decimal</code></strong>: An exact numeric type used to store numbers with a lot of digits, such as currency values. You can specify the precision and scale for this type.</li>
+<li><strong><code>numeric</code></strong>: This is an alias for the <code>decimal</code> data type.</li>
+<li><strong><code>real</code></strong>: A 4-byte floating-point number with a precision of 6 decimal digits.</li>
+<li><strong><code>double precision</code></strong>: An 8-byte floating-point number with a precision of 15 decimal digits.</li>
+</ul>
+<h2 id="character-data-types">Character Data Types</h2>
+<p>These data types are used to store text or string values:</p>
+<ul>
+<li><strong><code>char(n)</code></strong>: A fixed-length character string with a specified length <code>n</code>.</li>
+<li><strong><code>varchar(n)</code></strong>: A variable-length character string with a maximum length of <code>n</code>.</li>
+<li><strong><code>text</code></strong>: A variable-length character string with no specified maximum length.</li>
+</ul>
+<h2 id="binary-data-types">Binary Data Types</h2>
+<p>Binary data types are used to store binary data, such as images or serialized objects:</p>
+<ul>
+<li><strong><code>bytea</code></strong>: A binary data type that can store variable-length binary strings.</li>
+</ul>
+<h2 id="date-and-time-data-types">Date and Time Data Types</h2>
+<p>PostgreSQL provides different data types to store date and time values:</p>
+<ul>
+<li><strong><code>date</code></strong>: Stores date values with no time zone information (YYYY-MM-DD).</li>
+<li><strong><code>time</code></strong>: Stores time values with no time zone information (HH:MM:SS).</li>
+<li><strong><code>timestamp</code></strong>: Stores date and time values with no time zone information.</li>
+<li><strong><code>timestamptz</code></strong>: Stores date and time values including time zone information.</li>
+<li><strong><code>interval</code></strong>: Stores a time interval, like the difference between two timestamps.</li>
+</ul>
+<h2 id="boolean-data-type">Boolean Data Type</h2>
+<p>A simple data type to represent the truth values:</p>
+<ul>
+<li><strong><code>boolean</code></strong>: Stores a true or false value.</li>
+</ul>
+<h2 id="enumerated-types">Enumerated Types</h2>
+<p>You can also create custom data types, known as enumerated types, which consist of a static, ordered set of values:</p>
+<ul>
+<li><strong><code>CREATE TYPE</code></strong>: Used to define your custom enumerated type with a list of allowed values.</li>
+</ul>
+<h2 id="geometric-and-network-data-types">Geometric and Network Data Types</h2>
+<p>PostgreSQL provides special data types to work with geometric and network data:</p>
+<ul>
+<li><strong><code>point</code>, <code>line</code>, <code>lseg</code>, <code>box</code>, <code>polygon</code>, <code>path</code>, <code>circle</code></strong>: Geometric data types to store points, lines, and various shapes.</li>
+<li><strong><code>inet</code>, <code>cidr</code></strong>: Network data types to store IP addresses and subnets.</li>
+</ul>
+<p>In summary, PostgreSQL offers a broad range of data types that cater to different types of information. Understanding these data types and how to use them effectively will help you design efficient database schemas and optimize your database performance.</p>
+<ul>
+<li><a href="https://www.prisma.io/dataguide/postgresql/introduction-to-data-types" rel="noopener noreferrer nofollow" target="_blank">@article@An introduction to PostgreSQL data types</a></li>
+</ul>

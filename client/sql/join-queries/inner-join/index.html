@@ -1,0 +1,100 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/sql/content/106-join-queries/100-inner-join.md"></div> <h1 id="inner-join">INNER JOIN</h1>
+<p>An <code>INNER JOIN</code> in SQL is a type of join that returns the records with matching values in both tables. This operation compares each row of the first table with each row of the second table to find all pairs of rows that satisfy the join predicate.</p>
+<p>Few things to consider in case of <code>INNER JOIN</code>:</p>
+<ul>
+<li>It is a default join in SQL. If you mention <code>JOIN</code> in your query without specifying the type, SQL considers it as an <code>INNER JOIN</code>.</li>
+<li>It returns only the matching rows from both the tables.</li>
+<li>If there is no match, the returned is an empty result.</li>
+</ul>
+<h2 id="syntax">Syntax</h2>
+<p>Here is the syntax for an SQL <code>INNER JOIN</code>:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#FF79C6">SELECT</span><span style="color:#F8F8F2"> column_name(s)</span></span>
+<span class="line"><span style="color:#FF79C6">FROM</span><span style="color:#F8F8F2"> table1</span></span>
+<span class="line"><span style="color:#FF79C6">INNER JOIN</span><span style="color:#F8F8F2"> table2</span></span>
+<span class="line"><span style="color:#FF79C6">ON</span><span style="color:#BD93F9"> table1</span><span style="color:#F8F8F2">.</span><span style="color:#BD93F9">column_name</span><span style="color:#FF79C6"> =</span><span style="color:#BD93F9"> table2</span><span style="color:#F8F8F2">.</span><span style="color:#BD93F9">column_name</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"></span></code></pre>
+<p>The <code>INNER JOIN</code> keyword selects records that have matching values in both tables.</p>
+<h2 id="example">Example</h2>
+<p>Consider two tables:</p>
+<p><strong>Table1: <code>Orders</code></strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>OrderID</th><th>CustomerID</th><th>OrderAmount</th></tr></thead><tbody><tr><td>1</td><td>100</td><td>30</td></tr><tr><td>2</td><td>101</td><td>40</td></tr><tr><td>3</td><td>102</td><td>50</td></tr></tbody></table>
+<p><strong>Table2: <code>Customers</code></strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>CustomerID</th><th>Name</th><th>Country</th></tr></thead><tbody><tr><td>100</td><td>Ana</td><td>Germany</td></tr><tr><td>101</td><td>Ben</td><td>USA</td></tr><tr><td>103</td><td>Charlie</td><td>Australia</td></tr></tbody></table>
+<p>Now, if you want to select all orders, and any matching customer information:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#FF79C6">SELECT</span><span style="color:#BD93F9"> Orders</span><span style="color:#F8F8F2">.</span><span style="color:#BD93F9">OrderID</span><span style="color:#F8F8F2">, </span><span style="color:#BD93F9">Customers</span><span style="color:#F8F8F2">.</span><span style="color:#BD93F9">CustomerName</span><span style="color:#F8F8F2">, </span><span style="color:#BD93F9">Orders</span><span style="color:#F8F8F2">.</span><span style="color:#BD93F9">OrderAmount</span></span>
+<span class="line"><span style="color:#FF79C6">FROM</span><span style="color:#F8F8F2"> Orders</span></span>
+<span class="line"><span style="color:#FF79C6">INNER JOIN</span><span style="color:#F8F8F2"> Customers</span></span>
+<span class="line"><span style="color:#FF79C6">ON</span><span style="color:#BD93F9"> Orders</span><span style="color:#F8F8F2">.</span><span style="color:#BD93F9">CustomerID</span><span style="color:#FF79C6"> =</span><span style="color:#BD93F9"> Customers</span><span style="color:#F8F8F2">.</span><span style="color:#BD93F9">CustomerID</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"></span></code></pre>
+<p>This would produce the following result:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>OrderID</th><th>Name</th><th>OrderAmount</th></tr></thead><tbody><tr><td>1</td><td>Ana</td><td>30</td></tr><tr><td>2</td><td>Ben</td><td>40</td></tr></tbody></table>

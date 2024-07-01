@@ -1,0 +1,23 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/sql/content/101-basic-syntax/statements/103-delete.md"></div> <h1 id="delete">DELETE</h1>
+<p>The <code>DELETE</code> statement in SQL helps you remove existing records from a database. However, keep in mind, it is a destructive operation and may permanently erase data from your database.</p>
+<p>With the <code>DELETE</code> statement, you can perform the following:</p>
+<ol>
+<li>
+<p><strong>Delete All Rows:</strong></p>
+<p>The <code>DELETE</code> statement without a <code>WHERE</code> clause deletes all rows in a table. This operation is irreversible.</p>
+<p>Example:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#FF79C6">DELETE</span><span style="color:#FF79C6"> FROM</span><span style="color:#F8F8F2"> table_name;</span></span>
+<span class="line"></span></code></pre>
+<p>This SQL statement deletes all the records from <code>table_name</code>.</p>
+</li>
+<li>
+<p><strong>Delete Specific Rows:</strong></p>
+<p>When combined with the <code>WHERE</code> clause, the <code>DELETE</code> SQL statement erases specific rows that meet the condition.</p>
+<p>Example:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#FF79C6">DELETE</span><span style="color:#FF79C6"> FROM</span><span style="color:#F8F8F2"> table_name </span><span style="color:#FF79C6">WHERE</span><span style="color:#F8F8F2"> condition;</span></span>
+<span class="line"></span></code></pre>
+<p>This instance of the <code>DELETE</code> statement deletes records from <code>table_name</code> the place where the given <code>condition</code> matches.</p>
+</li>
+</ol>
+<p>It’s crucial to use <code>DELETE</code> cautiously because it has the potential to either erase certain important rows or entirely empty the table.</p>
+<p><em>Note: The deletion made by the “DELETE” statement is permanent and cannot be undone. Always ensure to have a backup before running a DELETE query, especially when it is on a production database.</em></p>

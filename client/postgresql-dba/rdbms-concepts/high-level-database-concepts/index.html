@@ -1,0 +1,49 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/postgresql-dba/content/102-rdbms-concepts/102-high-level-database-concepts/index.md"></div> <h1 id="high-level-database-concepts">High Level Database Concepts</h1>
+<p>In this section, we will explore some of the most important high-level concepts that revolve around relational databases and PostgreSQL. These concepts are crucial for understanding the overall functionality and best practices in working with databases.</p>
+<h2 id="data-models">Data Models</h2>
+<p>Data models are the foundation of any data management system. They define the structure in which data is stored, organized, and retrieved. The most prominent data models include:</p>
+<ul>
+<li>
+<p><strong>Relational Model:</strong> This model organizes data into tables (also known as relations), where each table comprises rows and columns. The relations can be queried and manipulated using a language like SQL.</p>
+</li>
+<li>
+<p><strong>Hierarchical Model:</strong> In this model, data is organized in a tree-like structure, with parent-child relationships between the nodes. This model is suitable for scenarios where there is a clear hierarchical structure in the data.</p>
+</li>
+<li>
+<p><strong>Network Model:</strong> Similar to the hierarchical model, the network model also establishes relationships between the nodes but allows for more complex connections between them rather than just parent-child relationships.</p>
+</li>
+</ul>
+<h2 id="database-management-systems-dbms">Database Management Systems (DBMS)</h2>
+<p>A Database Management System (DBMS) is software that helps manage, control, and facilitate interactions with databases. DBMSes can be classified into various types based on their data models, such as the Relational Database Management System (RDBMS), Hierarchical DBMS, and Network DBMS.</p>
+<h2 id="sql-structured-query-language">SQL: Structured Query Language</h2>
+<p>SQL is the standard language used to communicate with RDBMSes, including PostgreSQL. With SQL, you can perform actions like creating, updating, deleting, and querying data in the database. SQL consists of multiple components:</p>
+<ul>
+<li>
+<p>DDL (Data Definition Language): Used for defining and managing the structure of the database, like creating, altering, and deleting tables.</p>
+</li>
+<li>
+<p>DML (Data Manipulation Language): Deals with manipulating the data stored in the tables, like adding, updating, or deleting records.</p>
+</li>
+<li>
+<p>DCL (Data Control Language): Manages permissions and access control for the data, allowing you to grant or revoke access to specific users and roles.</p>
+</li>
+</ul>
+<h2 id="acid-properties">ACID Properties</h2>
+<p>Relational databases adhere to the ACID properties, ensuring the following characteristics:</p>
+<ul>
+<li>
+<p><strong>Atomicity:</strong> An operation (or transaction) should either be fully completed, or it should not be executed at all.</p>
+</li>
+<li>
+<p><strong>Consistency:</strong> The database should be consistent before and after a transaction. All constraints and business rules must be fulfilled and maintained.</p>
+</li>
+<li>
+<p><strong>Isolation:</strong> Transactions should be isolated from each other, meaning their execution should not have any impact on other transactions in progress.</p>
+</li>
+<li>
+<p><strong>Durability:</strong> Once committed, the changes made by a transaction must be permanent, even in the case of system failure or crash.</p>
+</li>
+</ul>
+<h2 id="normalization">Normalization</h2>
+<p>Normalization is a process of systematically organizing data in the database to reduce redundancy, improve consistency, and ensure data integrity. The normalization rules are divided into several forms, such as First Normal Form (1NF), Second Normal Form (2NF), Third Normal Form (3NF), and so on. Each form imposes a set of constraints to achieve a higher degree of data organization and consistency.</p>
+<p>Understanding and integrating these high-level database concepts will enable you to work efficiently with PostgreSQL and other RDBMSes while designing, developing, and maintaining databases.</p>

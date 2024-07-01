@@ -1,0 +1,43 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/cpp/content/107-structures-and-classes/101-oop/101-dynamic-polymorphism/virtual-tables.md"></div> <h1 id="virtual-tables">Virtual Tables</h1>
+<p>Virtual Tables (or Vtable) are a mechanism used by C++ compilers to support dynamic polymorphism. In dynamic polymorphism, the appropriate function is called at runtime, depending on the actual object type.</p>
+<p>When a class contains a virtual function, the compiler creates a virtual table for that class. This table contains function pointers to the virtual functions defined in the class. Each object of that class has a pointer to its virtual table (<em>vptr</em>, virtual pointer), which is automatically initialized by the compiler during object construction.</p>
+<h2 id="example">Example</h2>
+<p>Let’s consider the following example:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="cpp"><code><span class="line"><span style="color:#FF79C6">class</span><span style="color:#8BE9FD"> Base</span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#FF79C6">public:</span></span>
+<span class="line"><span style="color:#FF79C6">    virtual</span><span style="color:#FF79C6"> void</span><span style="color:#50FA7B"> function1</span><span style="color:#F8F8F2">() {</span></span>
+<span class="line"><span style="color:#F8F8F2">        std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">cout </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C">Base::function1</span><span style="color:#E9F284">"</span><span style="color:#FF79C6"> &#x3C;&#x3C;</span><span style="color:#F8F8F2"> std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">endl;</span></span>
+<span class="line"><span style="color:#F8F8F2">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">    virtual</span><span style="color:#FF79C6"> void</span><span style="color:#50FA7B"> function2</span><span style="color:#F8F8F2">() {</span></span>
+<span class="line"><span style="color:#F8F8F2">        std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">cout </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C">Base::function2</span><span style="color:#E9F284">"</span><span style="color:#FF79C6"> &#x3C;&#x3C;</span><span style="color:#F8F8F2"> std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">endl;</span></span>
+<span class="line"><span style="color:#F8F8F2">    }</span></span>
+<span class="line"><span style="color:#F8F8F2">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">class</span><span style="color:#8BE9FD"> Derived</span><span style="color:#F8F8F2"> : </span><span style="color:#FF79C6">public</span><span style="color:#8BE9FD;font-style:italic"> Base</span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#FF79C6">public:</span></span>
+<span class="line"><span style="color:#FF79C6">    void</span><span style="color:#50FA7B"> function1</span><span style="color:#F8F8F2">() </span><span style="color:#FF79C6">override</span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#F8F8F2">        std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">cout </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C">Derived::function1</span><span style="color:#E9F284">"</span><span style="color:#FF79C6"> &#x3C;&#x3C;</span><span style="color:#F8F8F2"> std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">endl;</span></span>
+<span class="line"><span style="color:#F8F8F2">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">    void</span><span style="color:#50FA7B"> function3</span><span style="color:#F8F8F2">() {</span></span>
+<span class="line"><span style="color:#F8F8F2">        std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">cout </span><span style="color:#FF79C6">&#x3C;&#x3C;</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C">Derived::function3</span><span style="color:#E9F284">"</span><span style="color:#FF79C6"> &#x3C;&#x3C;</span><span style="color:#F8F8F2"> std</span><span style="color:#FF79C6">::</span><span style="color:#F8F8F2">endl;</span></span>
+<span class="line"><span style="color:#F8F8F2">    }</span></span>
+<span class="line"><span style="color:#F8F8F2">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">int</span><span style="color:#50FA7B"> main</span><span style="color:#F8F8F2">() {</span></span>
+<span class="line"><span style="color:#F8F8F2">    Base</span><span style="color:#FF79C6">*</span><span style="color:#F8F8F2"> obj </span><span style="color:#FF79C6">=</span><span style="color:#FF79C6;font-weight:bold"> new</span><span style="color:#50FA7B"> Derived</span><span style="color:#F8F8F2">();</span><span style="color:#6272A4"> // create a Derived object and assign a pointer of type Base*</span></span>
+<span class="line"><span style="color:#F8F8F2">    obj</span><span style="color:#FF79C6">-></span><span style="color:#50FA7B">function1</span><span style="color:#F8F8F2">();</span><span style="color:#6272A4"> // calls Derived::function1, due to dynamic polymorphism</span></span>
+<span class="line"><span style="color:#F8F8F2">    obj</span><span style="color:#FF79C6">-></span><span style="color:#50FA7B">function2</span><span style="color:#F8F8F2">();</span><span style="color:#6272A4"> // calls Base::function2</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">    delete</span><span style="color:#F8F8F2"> obj;</span></span>
+<span class="line"><span style="color:#FF79C6">    return</span><span style="color:#BD93F9"> 0</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"></span></code></pre>
+<p>In this example, when a <code>Derived</code> object is created, the compiler generates a Vtable for <code>Derived</code> class, containing pointers to its virtual functions:</p>
+<ul>
+<li><code>Derived::function1</code> (overridden from <code>Base</code>)</li>
+<li><code>Base::function2</code> (inherits from Base)</li>
+</ul>
+<p>The <code>_vptr_</code> pointer in the <code>Derived</code> object points to this Vtable. When the <code>function1</code> is called on the <code>Base</code> pointer pointing to the <code>Derived</code> object, the function pointer in the Vtable is used to call the correct function (in this case, <code>Derived::function1</code>). Similarly, the call to <code>function2</code> calls <code>Base::function2</code>, since it’s the function pointer stored in the Vtable for <code>Derived</code> class.</p>
+<p>Note that <code>function3</code> is not part of the Vtable, as it is not a virtual function.</p>

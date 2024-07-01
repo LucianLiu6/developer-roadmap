@@ -1,0 +1,52 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/mongodb/content/101-datatypes/113-javascript.md"></div> <h1 id="javascript">JavaScript</h1>
+<p>In MongoDB, JavaScript is a valuable data type that allows you to store and manipulate code within the database effectively. This data type can be beneficial when working with complex data structures and scenarios that require more flexibility than what the standard BSON types offer. In this section, we will discuss the JavaScript data type, its usage, and some limitations.</p>
+<h2 id="usage">Usage</h2>
+<p>You can store JavaScript directly within MongoDB as a string value, and you can also access JavaScript functions in the context of the <code>mongo</code> shell or MongoDB server. To store JavaScript code, you can use the <code>Code</code> BSON data type or the <code>$function</code> operator, introduced in version 4.4.</p>
+<p>Here’s an example of storing JavaScript code in a MongoDB document:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F8F8F2">db.scripts.</span><span style="color:#50FA7B">insert</span><span style="color:#F8F8F2">({</span></span>
+<span class="line"><span style="color:#F8F8F2">  name</span><span style="color:#FF79C6">:</span><span style="color:#E9F284"> '</span><span style="color:#F1FA8C">helloWorld</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#F8F8F2">  code</span><span style="color:#FF79C6">:</span><span style="color:#FF79C6;font-weight:bold"> new</span><span style="color:#50FA7B"> Code</span><span style="color:#F8F8F2">(</span><span style="color:#E9F284">"</span><span style="color:#F1FA8C">function() { return 'Hello World!'; }</span><span style="color:#E9F284">"</span><span style="color:#F8F8F2">),</span></span>
+<span class="line"><span style="color:#F8F8F2">});</span></span>
+<span class="line"></span></code></pre>
+<p>And here is an example using the <code>$function</code> operator:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F8F8F2">db.collection.</span><span style="color:#50FA7B">aggregate</span><span style="color:#F8F8F2">([</span></span>
+<span class="line"><span style="color:#F8F8F2">  {</span></span>
+<span class="line"><span style="color:#F8F8F2">    $addFields</span><span style="color:#FF79C6">:</span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#F8F8F2">      volume</span><span style="color:#FF79C6">:</span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#F8F8F2">        $function</span><span style="color:#FF79C6">:</span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#F8F8F2">          body</span><span style="color:#FF79C6">:</span><span style="color:#E9F284"> '</span><span style="color:#F1FA8C">function(l, w, h) { return l * w * h; }</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#F8F8F2">          args</span><span style="color:#FF79C6">:</span><span style="color:#F8F8F2"> [</span><span style="color:#E9F284">'</span><span style="color:#F1FA8C">$length</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">, </span><span style="color:#E9F284">'</span><span style="color:#F1FA8C">$width</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">, </span><span style="color:#E9F284">'</span><span style="color:#F1FA8C">$height</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">],</span></span>
+<span class="line"><span style="color:#F8F8F2">          lang</span><span style="color:#FF79C6">:</span><span style="color:#E9F284"> '</span><span style="color:#F1FA8C">js</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#F8F8F2">        },</span></span>
+<span class="line"><span style="color:#F8F8F2">      },</span></span>
+<span class="line"><span style="color:#F8F8F2">    },</span></span>
+<span class="line"><span style="color:#F8F8F2">  },</span></span>
+<span class="line"><span style="color:#F8F8F2">]);</span></span>
+<span class="line"></span></code></pre>
+<h2 id="working-with-javascript-functions-and-map-reduce">Working with JavaScript Functions and Map-Reduce</h2>
+<p>You can utilize JavaScript functions with MongoDB’s Map-Reduce framework. Map-Reduce is a technique that processes large datasets by applying a map function to each document and then reducing the results according to a reduce function. JavaScript functions can significantly increase the flexibility and expressiveness of these operations.</p>
+<p>An example of Map-Reduce using JavaScript functions:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#FF79C6">var</span><span style="color:#50FA7B"> map</span><span style="color:#FF79C6"> =</span><span style="color:#FF79C6"> function</span><span style="color:#F8F8F2"> () {</span></span>
+<span class="line"><span style="color:#50FA7B">  emit</span><span style="color:#F8F8F2">(</span><span style="color:#BD93F9;font-style:italic">this</span><span style="color:#F8F8F2">.category, </span><span style="color:#BD93F9;font-style:italic">this</span><span style="color:#F8F8F2">.price);</span></span>
+<span class="line"><span style="color:#F8F8F2">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">var</span><span style="color:#50FA7B"> reduce</span><span style="color:#FF79C6"> =</span><span style="color:#FF79C6"> function</span><span style="color:#F8F8F2"> (</span><span style="color:#FFB86C;font-style:italic">key</span><span style="color:#F8F8F2">, </span><span style="color:#FFB86C;font-style:italic">values</span><span style="color:#F8F8F2">) {</span></span>
+<span class="line"><span style="color:#FF79C6">  return</span><span style="color:#F8F8F2"> Array.</span><span style="color:#50FA7B">sum</span><span style="color:#F8F8F2">(values);</span></span>
+<span class="line"><span style="color:#F8F8F2">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F8F8F2">db.products.</span><span style="color:#50FA7B">mapReduce</span><span style="color:#F8F8F2">(map, reduce, { out</span><span style="color:#FF79C6">:</span><span style="color:#E9F284"> '</span><span style="color:#F1FA8C">total_by_category</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2"> });</span></span>
+<span class="line"></span></code></pre>
+<h2 id="limitations">Limitations</h2>
+<p>While incredibly flexible, there are some limitations when using JavaScript in MongoDB:</p>
+<ul>
+<li>
+<p><strong>Performance</strong>: JavaScript execution in MongoDB is slower compared to native BSON queries, so it should not be the first choice for high-performance applications.</p>
+</li>
+<li>
+<p><strong>Concurrency</strong>: JavaScript in MongoDB is single-threaded, which can lead to reduced concurrency and potential blocking if several operations rely on JavaScript code execution.</p>
+</li>
+<li>
+<p><strong>Security</strong>: Storing and executing JavaScript code may present security risks like code injection attacks. Ensure proper precautions, such as validation and role management, are in place to minimize such risks.</p>
+</li>
+</ul>
+<p>In conclusion, MongoDB’s support for JavaScript as a data type brings flexibility and expressiveness to the database. However, be aware of the performance, concurrency, and security implications when working with JavaScript in your MongoDB applications.</p>

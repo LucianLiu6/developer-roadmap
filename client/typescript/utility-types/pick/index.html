@@ -1,0 +1,19 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/typescript/content/111-utility-types/101-pick.md"></div> <h1 id="pick">Pick</h1>
+<p>Pick constructs a type by picking the set of properties Keys (string literal or union of string literals) from Type.</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="typescript"><code><span class="line"><span style="color:#FF79C6">interface</span><span style="color:#8BE9FD;font-style:italic"> Todo</span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#F8F8F2">  title</span><span style="color:#FF79C6">:</span><span style="color:#8BE9FD;font-style:italic"> string</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"><span style="color:#F8F8F2">  description</span><span style="color:#FF79C6">:</span><span style="color:#8BE9FD;font-style:italic"> string</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"><span style="color:#F8F8F2">  completed</span><span style="color:#FF79C6">:</span><span style="color:#8BE9FD;font-style:italic"> boolean</span><span style="color:#F8F8F2">;</span></span>
+<span class="line"><span style="color:#F8F8F2">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">type</span><span style="color:#8BE9FD;font-style:italic"> TodoPreview</span><span style="color:#FF79C6"> =</span><span style="color:#8BE9FD;font-style:italic"> Pick</span><span style="color:#F8F8F2">&#x3C;</span><span style="color:#FFB86C;font-style:italic">Todo</span><span style="color:#F8F8F2">, </span><span style="color:#E9F284">'</span><span style="color:#F1FA8C">title</span><span style="color:#E9F284">'</span><span style="color:#FF79C6"> |</span><span style="color:#E9F284"> '</span><span style="color:#F1FA8C">completed</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">>;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF79C6">const</span><span style="color:#F8F8F2"> todo</span><span style="color:#FF79C6">:</span><span style="color:#8BE9FD;font-style:italic"> TodoPreview</span><span style="color:#FF79C6"> =</span><span style="color:#F8F8F2"> {</span></span>
+<span class="line"><span style="color:#F8F8F2">  title</span><span style="color:#FF79C6">:</span><span style="color:#E9F284"> '</span><span style="color:#F1FA8C">Clean room</span><span style="color:#E9F284">'</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#F8F8F2">  completed</span><span style="color:#FF79C6">:</span><span style="color:#BD93F9"> false</span><span style="color:#F8F8F2">,</span></span>
+<span class="line"><span style="color:#F8F8F2">};</span></span>
+<span class="line"></span></code></pre>
+<p>Learn more from the following links:</p>
+<ul>
+<li><a href="https://www.typescriptlang.org/docs/handbook/utility-types.html#picktype-keys" rel="noopener noreferrer nofollow" target="_blank">@article@Pick&#x3C;Type, Keys></a></li>
+</ul>

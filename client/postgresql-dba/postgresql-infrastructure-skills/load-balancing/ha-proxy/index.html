@@ -1,0 +1,51 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/postgresql-dba/content/107-postgresql-infrastructure-skills/107-load-balancing/100-ha-proxy.md"></div> <h1 id="haproxy">HAProxy</h1>
+<p>HAProxy, short for High Availability Proxy, is a popular open-source software used to provide high availability, load balancing, and proxying features for TCP and HTTP-based applications. It is commonly used to improve the performance, security, and reliability of web applications, databases, and other services.</p>
+<h2 id="load-balancing-with-haproxy">Load Balancing with HAProxy</h2>
+<p>When it comes to load balancing in PostgreSQL, HAProxy is a popular choice due to its flexibility and efficient performance. By distributing incoming database connections across multiple instances of your PostgreSQL cluster, HAProxy can help you achieve better performance, high availability, and fault tolerance.</p>
+<h2 id="key-features">Key Features</h2>
+<ul>
+<li>
+<p><strong>Connection distribution</strong>: HAProxy can efficiently distribute incoming connections among multiple servers by using a variety of load balancing algorithms, such as round-robin, static-rr, leastconn, and source.</p>
+</li>
+<li>
+<p><strong>Health checks</strong>: HAProxy can automatically check the health of your PostgreSQL instances and route traffic away from unhealthy instances, ensuring high availability and fault tolerance.</p>
+</li>
+<li>
+<p><strong>SSL/TLS termination</strong>: HAProxy can handle SSL/TLS termination on behalf of your PostgreSQL servers, which can reduce encryption overhead and simplify certificate management.</p>
+</li>
+<li>
+<p><strong>Logging and monitoring</strong>: HAProxy provides extensive logging and monitoring capabilities, enabling you to track the performance of your PostgreSQL cluster and troubleshoot issues efficiently.</p>
+</li>
+</ul>
+<h2 id="haproxy-configuration">HAProxy Configuration</h2>
+<p>Configuring HAProxy to work with PostgreSQL requires setting up a frontend, backend, and proper health checks. An example configuration may look like:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>global</span></span>
+<span class="line"><span>    log 127.0.0.1 local0</span></span>
+<span class="line"><span>    maxconn 4096</span></span>
+<span class="line"><span>    chroot /usr/share/haproxy</span></span>
+<span class="line"><span>    user haproxy</span></span>
+<span class="line"><span>    group haproxy</span></span>
+<span class="line"><span>    daemon</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>defaults</span></span>
+<span class="line"><span>    log global</span></span>
+<span class="line"><span>    mode tcp</span></span>
+<span class="line"><span>    option tcplog</span></span>
+<span class="line"><span>    timeout connect 5000ms</span></span>
+<span class="line"><span>    timeout client 50000ms</span></span>
+<span class="line"><span>    timeout server 50000ms</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>frontend psql</span></span>
+<span class="line"><span>    bind *:5000</span></span>
+<span class="line"><span>    default_backend psql_nodes</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>backend psql_nodes</span></span>
+<span class="line"><span>    balance roundrobin</span></span>
+<span class="line"><span>    option pgsql-check user haproxy_check</span></span>
+<span class="line"><span>    server node1 192.168.1.1:5432 check</span></span>
+<span class="line"><span>    server node2 192.168.1.2:5432 check</span></span>
+<span class="line"><span></span></span></code></pre>
+<p>This example configures HAProxy to listen on port 5000, distributing incoming connections using round-robin load balancing, and performing health checks using the <code>haproxy_check</code> PostgreSQL user.</p>
+<p>Remember to replace the IP addresses and ports in the <code>backend</code> section with the actual addresses of your PostgreSQL instances.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>By implementing HAProxy for your PostgreSQL cluster, you can enhance performance and availability while simplifying the management of your infrastructure. Further customization of the configuration, load balancing algorithms, and monitoring options can help you fine-tune your setup to suit the specific demands of your application.</p>

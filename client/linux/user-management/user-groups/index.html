@@ -1,0 +1,9 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/linux/content/107-user-management/101-user-groups.md"></div> <h1 id="linux-user-groups">Linux User Groups</h1>
+<p>In Linux, a User Group is a mechanism used to manage the system’s users and permissions. It represents a collection of users, designed specifically to simplify system administration. Each user in Linux is a part of one or more groups. These groups are primarily used for determining access rights to various system resources, including files, directories, devices, etc.</p>
+<p>Understanding and appropriately managing user groups in Linux is crucial for overall system security. It allows the administrator to grant certain privileges to a specific set of users, without granting them complete superuser or ‘root’ access.</p>
+<p>One can check a user’s group affiliations using the <code>groups</code> command, while the <code>/etc/group</code> file contains a list of all groups on the system.</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#50FA7B">groups</span><span style="color:#F8F8F2"> [username]</span></span>
+<span class="line"><span style="color:#50FA7B">cat</span><span style="color:#F1FA8C"> /etc/group</span></span>
+<span class="line"></span></code></pre>
+<p>At times, it becomes necessary to add or remove users from groups, modifications to group properties or even the creation and deletion of groups altogether. These operations can typically be performed using the <code>groupadd</code>, <code>groupdel</code>, <code>groupmod</code>, <code>usermod</code>, and <code>gpasswd</code> commands.</p>
+<p>Overall, user groups are an essential component of Linux User Management, helping to maintain a secure and organized system environment.</p>

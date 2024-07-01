@@ -1,0 +1,16 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/linux/content/110-disks-filesystems/105-lvm.md"></div> <h1 id="linux-logical-volume-manager-lvm">Linux Logical Volume Manager (LVM)</h1>
+<p>The Linux Logical Volume Manager (LVM) is a device mapper framework that provides logical volume management for the Linux kernel. It was created to ease disk management, allowing for the use of abstracted storage devices, known as logical volumes, instead of using physical storage devices directly.</p>
+<p>LVM is extremely flexible, and features include resizing volumes, mirroring volumes across multiple physical disks, and moving volumes between disks without needing to power down.</p>
+<p>LVM works on 3 levels: Physical Volumes (PVs), Volume Groups (VGs), and Logical Volumes (LVs).</p>
+<ul>
+<li>PVs are the actual disks or partitions.</li>
+<li>VGs combine PVs into a single storage pool.</li>
+<li>LVs carve out portions from the VG to be used by the system.</li>
+</ul>
+<p>To create an LVM, you need to follow these steps in Linux:</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#50FA7B">pvcreate</span><span style="color:#F1FA8C"> /dev/sdb1</span></span>
+<span class="line"><span style="color:#50FA7B">vgcreate</span><span style="color:#F1FA8C"> my-vg</span><span style="color:#F1FA8C"> /dev/sdb1</span></span>
+<span class="line"><span style="color:#50FA7B">lvcreate</span><span style="color:#BD93F9"> -L</span><span style="color:#F1FA8C"> 10G</span><span style="color:#F1FA8C"> my-vg</span><span style="color:#BD93F9"> -n</span><span style="color:#F1FA8C"> my-lv</span></span>
+<span class="line"></span></code></pre>
+<p>In the above commands, we create a physical volume on <code>/dev/sdb1</code>, then create a volume group named <code>my-vg</code>. Finally, we carve out a 10GB logical volume from the volume group and name it <code>my-lv</code>.</p>
+<p>These features, collectively, provide great ease in managing storage systems especially for large enterprise class systems where a large array of disks are typically used.</p>

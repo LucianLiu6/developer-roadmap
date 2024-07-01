@@ -1,0 +1,131 @@
+<div data-github-url="https://github.com/kamranahmedse/developer-roadmap/tree/master/src/data/roadmaps/postgresql-dba/content/107-postgresql-infrastructure-skills/105-kubernetes-deployment/100-simple-stateful-setup.md"></div> <h1 id="simple-stateful-setup">Simple Stateful Setup</h1>
+<p>In this section, we will discuss the basics of setting up a simple stateful <code>PostgreSQL</code> deployment on <code>Kubernetes</code>. A stateful setup ensures that data is persistent across pod restarts and failures. <code>Kubernetes</code> manages stateful applications using <code>StatefulSets</code>, which provide guarantees about the ordering and uniqueness of pods.</p>
+<h2 id="overview">Overview</h2>
+<p>Here are the key components and steps involved in setting up a simple stateful <code>PostgreSQL</code> deployment on <code>Kubernetes</code>:</p>
+<ul>
+<li>
+<p><strong>Create a Storage Class</strong>: Define a <code>StorageClass</code> resource in <code>Kubernetes</code>, specifying the type of storage to be used and the access mode (read-write, read-only, etc.).</p>
+</li>
+<li>
+<p><strong>Create a Persistent Volume Claim</strong>: Define a <code>PersistentVolumeClaim</code> (PVC) to request a specific amount of storage from the storage class for your <code>PostgreSQL</code> database.</p>
+</li>
+<li>
+<p><strong>Create a ConfigMap</strong>: Define a <code>ConfigMap</code> to store your database configuration settings (e.g., usernames, passwords, etc.), separate from your application code.</p>
+</li>
+<li>
+<p><strong>Create a Secret</strong>: Store sensitive data (e.g., database passwords) securely in a <code>Secret</code> object. The <code>Secret</code> will be mounted as a volume in the pod and the environment variables will be set.</p>
+</li>
+<li>
+<p><strong>Create a StatefulSet</strong>: Define a <code>StatefulSet</code> that manages the deployment of your <code>PostgreSQL</code> pods. Specify the container image, port, volumes (PVC and ConfigMap), and a startup script. It ensures the unique identifier for each pod and guarantees the order of pod creation/deletion.</p>
+</li>
+</ul>
+<h2 id="step-by-step-guide">Step by Step Guide</h2>
+<ul>
+<li>
+<p><strong>Storage Class</strong>:
+Create a YAML file for the <code>StorageClass</code> resource (e.g., <code>postgres-storage-class.yaml</code>):</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#8BE9FD">apiVersion</span><span style="color:#FF79C6">:</span><span style="color:#F1FA8C"> storage.k8s.io/v1</span></span>
+<span class="line"><span style="color:#8BE9FD">kind</span><span style="color:#FF79C6">:</span><span style="color:#F1FA8C"> StorageClass</span></span>
+<span class="line"><span style="color:#8BE9FD">metadata</span><span style="color:#FF79C6">:</span></span>
+<span class="line"><span style="color:#8BE9FD">  name</span><span style="color:#FF79C6">:</span><span style="color:#F1FA8C"> postgres-storage</span></span>
+<span class="line"><span style="color:#8BE9FD">provisioner</span><span style="color:#FF79C6">:</span><span style="color:#F1FA8C"> kubernetes.io/gce-pd</span></span>
+<span class="line"><span style="color:#8BE9FD">parameters</span><span style="color:#FF79C6">:</span></span>
+<span class="line"><span style="color:#8BE9FD">  type</span><span style="color:#FF79C6">:</span><span style="color:#F1FA8C"> pd-standard</span></span>
+<span class="line"></span></code></pre>
+<p>Apply the file with <code>kubectl</code>: <code>kubectl apply -f postgres-storage-class.yaml</code></p>
+</li>
+<li>
+<p><strong>Persistent Volume Claim</strong>:
+Create a YAML file for the <code>PersistentVolumeClaim</code> resource (e.g., <code>postgres-pvc.yaml</code>):</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#8BE9FD">apiVersion</span><span style="color:#FF79C6">:</span><span style="color:#F1FA8C"> v1</span></span>
+<span class="line"><span style="color:#8BE9FD">kind</span><span style="color:#FF79C6">:</span><span style="color:#F1FA8C"> PersistentVolumeClaim</span></span>
+<span class="line"><span style="color:#8BE9FD">metadata</span><span style="color:#FF79C6">:</span></span>
+<span class="line"><span style="color:#8BE9FD">  name</span><span style="color:#FF79C6">:</span><span style="color:#F1FA8C"> postgres-pvc</span></span>
+<span class="line"><span style="color:#8BE9FD">spec</span><span style="color:#FF79C6">:</span></span>
+<span class="line"><span style="color:#8BE9FD">  accessModes</span><span style="color:#FF79C6">:</span></span>
+<span class="line"><span style="color:#FF79C6">    -</span><span style="color:#F1FA8C"> ReadWriteOnce</span></span>
+<span class="line"><span style="color:#8BE9FD">  resources</span><span style="color:#FF79C6">:</span></span>
+<span class="line"><span style="color:#8BE9FD">    requests</span><span style="color:#FF79C6">:</span></span>
+<span class="line"><span style="color:#8BE9FD">      storage</span><span style="color:#FF79C6">:</span><span style="color:#F1FA8C"> 10Gi</span></span>
+<span class="line"><span style="color:#8BE9FD">  storageClassName</span><span style="color:#FF79C6">:</span><span style="color:#F1FA8C"> postgres-storage</span></span>
+<span class="line"></span></code></pre>
+<p>Apply the file with <code>kubectl</code>: <code>kubectl apply -f postgres-pvc.yaml</code></p>
+</li>
+<li>
+<p><strong>ConfigMap</strong>:
+Create a YAML file for the <code>ConfigMap</code> resource (e.g., <code>postgres-configmap.yaml</code>):</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#8BE9FD">apiVersion</span><span style="color:#FF79C6">:</span><span style="color:#F1FA8C"> v1</span></span>
+<span class="line"><span style="color:#8BE9FD">kind</span><span style="color:#FF79C6">:</span><span style="color:#F1FA8C"> ConfigMap</span></span>
+<span class="line"><span style="color:#8BE9FD">metadata</span><span style="color:#FF79C6">:</span></span>
+<span class="line"><span style="color:#8BE9FD">  name</span><span style="color:#FF79C6">:</span><span style="color:#F1FA8C"> postgres-config</span></span>
+<span class="line"><span style="color:#8BE9FD">data</span><span style="color:#FF79C6">:</span></span>
+<span class="line"><span style="color:#8BE9FD">  POSTGRES_DB</span><span style="color:#FF79C6">:</span><span style="color:#F1FA8C"> mydatabase</span></span>
+<span class="line"><span style="color:#8BE9FD">  POSTGRES_USER</span><span style="color:#FF79C6">:</span><span style="color:#F1FA8C"> myuser</span></span>
+<span class="line"></span></code></pre>
+<p>Apply the file with <code>kubectl</code>: <code>kubectl apply -f postgres-configmap.yaml</code></p>
+</li>
+<li>
+<p><strong>Secret</strong>:
+Create a YAML file for the <code>Secret</code> resource (e.g., <code>postgres-secret.yaml</code>):</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#8BE9FD">apiVersion</span><span style="color:#FF79C6">:</span><span style="color:#F1FA8C"> v1</span></span>
+<span class="line"><span style="color:#8BE9FD">kind</span><span style="color:#FF79C6">:</span><span style="color:#F1FA8C"> Secret</span></span>
+<span class="line"><span style="color:#8BE9FD">metadata</span><span style="color:#FF79C6">:</span></span>
+<span class="line"><span style="color:#8BE9FD">  name</span><span style="color:#FF79C6">:</span><span style="color:#F1FA8C"> postgres-secret</span></span>
+<span class="line"><span style="color:#8BE9FD">type</span><span style="color:#FF79C6">:</span><span style="color:#F1FA8C"> Opaque</span></span>
+<span class="line"><span style="color:#8BE9FD">data</span><span style="color:#FF79C6">:</span></span>
+<span class="line"><span style="color:#8BE9FD">  POSTGRES_PASSWORD</span><span style="color:#FF79C6">:</span><span style="color:#F1FA8C"> cG9zdGdyZXNfcGFzc3dvcmQ=</span><span style="color:#6272A4">  # Base64 encoded value of the actual password</span></span>
+<span class="line"></span></code></pre>
+<p>Apply the file with <code>kubectl</code>: <code>kubectl apply -f postgres-secret.yaml</code></p>
+</li>
+<li>
+<p><strong>StatefulSet</strong>:
+Create a YAML file for the <code>StatefulSet</code> resource (e.g., <code>postgres-statefulset.yaml</code>):</p>
+<pre class="astro-code dracula" style="background-color:#282A36;color:#F8F8F2; overflow-x: auto;" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#8BE9FD">apiVersion</span><span style="color:#FF79C6">:</span><span style="color:#F1FA8C"> apps/v1</span></span>
+<span class="line"><span style="color:#8BE9FD">kind</span><span style="color:#FF79C6">:</span><span style="color:#F1FA8C"> StatefulSet</span></span>
+<span class="line"><span style="color:#8BE9FD">metadata</span><span style="color:#FF79C6">:</span></span>
+<span class="line"><span style="color:#8BE9FD">  name</span><span style="color:#FF79C6">:</span><span style="color:#F1FA8C"> postgres</span></span>
+<span class="line"><span style="color:#8BE9FD">spec</span><span style="color:#FF79C6">:</span></span>
+<span class="line"><span style="color:#8BE9FD">  serviceName</span><span style="color:#FF79C6">:</span><span style="color:#E9F284"> "</span><span style="color:#F1FA8C">postgres</span><span style="color:#E9F284">"</span></span>
+<span class="line"><span style="color:#8BE9FD">  replicas</span><span style="color:#FF79C6">:</span><span style="color:#BD93F9"> 1</span></span>
+<span class="line"><span style="color:#8BE9FD">  selector</span><span style="color:#FF79C6">:</span></span>
+<span class="line"><span style="color:#8BE9FD">    matchLabels</span><span style="color:#FF79C6">:</span></span>
+<span class="line"><span style="color:#8BE9FD">      app</span><span style="color:#FF79C6">:</span><span style="color:#F1FA8C"> postgres</span></span>
+<span class="line"><span style="color:#8BE9FD">  template</span><span style="color:#FF79C6">:</span></span>
+<span class="line"><span style="color:#8BE9FD">    metadata</span><span style="color:#FF79C6">:</span></span>
+<span class="line"><span style="color:#8BE9FD">      labels</span><span style="color:#FF79C6">:</span></span>
+<span class="line"><span style="color:#8BE9FD">        app</span><span style="color:#FF79C6">:</span><span style="color:#F1FA8C"> postgres</span></span>
+<span class="line"><span style="color:#8BE9FD">    spec</span><span style="color:#FF79C6">:</span></span>
+<span class="line"><span style="color:#8BE9FD">      containers</span><span style="color:#FF79C6">:</span></span>
+<span class="line"><span style="color:#FF79C6">      -</span><span style="color:#8BE9FD"> name</span><span style="color:#FF79C6">:</span><span style="color:#F1FA8C"> postgres</span></span>
+<span class="line"><span style="color:#8BE9FD">        image</span><span style="color:#FF79C6">:</span><span style="color:#F1FA8C"> postgres:11</span></span>
+<span class="line"><span style="color:#8BE9FD">        ports</span><span style="color:#FF79C6">:</span></span>
+<span class="line"><span style="color:#FF79C6">        -</span><span style="color:#8BE9FD"> containerPort</span><span style="color:#FF79C6">:</span><span style="color:#BD93F9"> 5432</span></span>
+<span class="line"><span style="color:#8BE9FD">        env</span><span style="color:#FF79C6">:</span></span>
+<span class="line"><span style="color:#FF79C6">          -</span><span style="color:#8BE9FD"> name</span><span style="color:#FF79C6">:</span><span style="color:#F1FA8C"> POSTGRES_DB</span></span>
+<span class="line"><span style="color:#8BE9FD">            valueFrom</span><span style="color:#FF79C6">:</span></span>
+<span class="line"><span style="color:#8BE9FD">              configMapKeyRef</span><span style="color:#FF79C6">:</span></span>
+<span class="line"><span style="color:#8BE9FD">                name</span><span style="color:#FF79C6">:</span><span style="color:#F1FA8C"> postgres-config</span></span>
+<span class="line"><span style="color:#8BE9FD">                key</span><span style="color:#FF79C6">:</span><span style="color:#F1FA8C"> POSTGRES_DB</span></span>
+<span class="line"><span style="color:#FF79C6">          -</span><span style="color:#8BE9FD"> name</span><span style="color:#FF79C6">:</span><span style="color:#F1FA8C"> POSTGRES_USER</span></span>
+<span class="line"><span style="color:#8BE9FD">            valueFrom</span><span style="color:#FF79C6">:</span></span>
+<span class="line"><span style="color:#8BE9FD">              configMapKeyRef</span><span style="color:#FF79C6">:</span></span>
+<span class="line"><span style="color:#8BE9FD">                name</span><span style="color:#FF79C6">:</span><span style="color:#F1FA8C"> postgres-config</span></span>
+<span class="line"><span style="color:#8BE9FD">                key</span><span style="color:#FF79C6">:</span><span style="color:#F1FA8C"> POSTGRES_USER</span></span>
+<span class="line"><span style="color:#FF79C6">          -</span><span style="color:#8BE9FD"> name</span><span style="color:#FF79C6">:</span><span style="color:#F1FA8C"> POSTGRES_PASSWORD</span></span>
+<span class="line"><span style="color:#8BE9FD">            valueFrom</span><span style="color:#FF79C6">:</span></span>
+<span class="line"><span style="color:#8BE9FD">              secretKeyRef</span><span style="color:#FF79C6">:</span></span>
+<span class="line"><span style="color:#8BE9FD">                name</span><span style="color:#FF79C6">:</span><span style="color:#F1FA8C"> postgres-secret</span></span>
+<span class="line"><span style="color:#8BE9FD">                key</span><span style="color:#FF79C6">:</span><span style="color:#F1FA8C"> POSTGRES_PASSWORD</span></span>
+<span class="line"><span style="color:#8BE9FD">        volumeMounts</span><span style="color:#FF79C6">:</span></span>
+<span class="line"><span style="color:#FF79C6">        -</span><span style="color:#8BE9FD"> name</span><span style="color:#FF79C6">:</span><span style="color:#F1FA8C"> postgres-data</span></span>
+<span class="line"><span style="color:#8BE9FD">          mountPath</span><span style="color:#FF79C6">:</span><span style="color:#F1FA8C"> /var/lib/postgresql/data</span></span>
+<span class="line"><span style="color:#8BE9FD">      volumes</span><span style="color:#FF79C6">:</span></span>
+<span class="line"><span style="color:#FF79C6">      -</span><span style="color:#8BE9FD"> name</span><span style="color:#FF79C6">:</span><span style="color:#F1FA8C"> postgres-data</span></span>
+<span class="line"><span style="color:#8BE9FD">        persistentVolumeClaim</span><span style="color:#FF79C6">:</span></span>
+<span class="line"><span style="color:#8BE9FD">          claimName</span><span style="color:#FF79C6">:</span><span style="color:#F1FA8C"> postgres-pvc</span></span>
+<span class="line"></span></code></pre>
+<p>Apply the file with <code>kubectl</code>: <code>kubectl apply -f postgres-statefulset.yaml</code></p>
+</li>
+</ul>
+<p>Once all components have been created, <code>Kubernetes</code> will deploy a PostgreSQL stateful set with a persistent volume attached to the PostgreSQL pod, allowing the database to maintain its state.</p>
+<p>That’s it! You now have a basic understanding of how to set up a simple stateful <code>PostgreSQL</code> deployment on <code>Kubernetes</code>. You can build on this foundation to create more complex deployments with multiple replicas, load balancing, and high availability.</p>
