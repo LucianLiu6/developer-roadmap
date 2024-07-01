@@ -2838,7 +2838,7 @@
                   "y": "12",
                   "properties": {
                     "size": "17",
-                    "text": "Learn the Fundamentals"
+                    "text": "🚩Learn the Fundamentals"
                   }
                 }
               ]
@@ -2885,7 +2885,7 @@
                   "y": "11",
                   "properties": {
                     "size": "17",
-                    "text": "Tester Mindset"
+                    "text": "🏳️Tester Mindset"
                   }
                 }
               ]
@@ -2932,7 +2932,7 @@
                   "y": "11",
                   "properties": {
                     "size": "17",
-                    "text": "What is Quality Assurance?"
+                    "text": "🏳️What is Quality Assurance?"
                   }
                 }
               ]
@@ -2979,7 +2979,7 @@
                   "y": "11",
                   "properties": {
                     "size": "17",
-                    "text": "Testing Approaches"
+                    "text": "🚩Testing Approaches"
                   }
                 }
               ]
@@ -3167,7 +3167,7 @@
                   "y": "11",
                   "properties": {
                     "size": "17",
-                    "text": "Test Oracles"
+                    "text": "🏳️Test Oracles"
                   }
                 }
               ]
@@ -3214,7 +3214,7 @@
                   "y": "11",
                   "properties": {
                     "size": "17",
-                    "text": "Test Prioritization"
+                    "text": "🚩Test Prioritization"
                   }
                 }
               ]
@@ -3261,7 +3261,7 @@
                   "y": "11",
                   "properties": {
                     "size": "17",
-                    "text": "Manage your Testing"
+                    "text": "🏳Manage your Testing"
                   }
                 }
               ]

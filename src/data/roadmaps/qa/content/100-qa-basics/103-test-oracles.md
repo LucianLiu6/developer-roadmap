@@ -1,5 +1,8 @@
 # Test Oracles
 
+> **[Lucian comment]**  
+> 我都没看懂这个在说什么，先不管吧
+
 A test oracle is a mechanism; different from the program itself that can be used to check the correctness of the program's output for the test cases. Conceptually, we can consider testing a process in which the test cases are given to the test oracle and the program under testing.
 
 Visit the following resources to learn more:
