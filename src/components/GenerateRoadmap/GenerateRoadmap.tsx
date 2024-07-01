@@ -8,7 +8,7 @@ import {
 } from 'react';
 import './GenerateRoadmap.css';
 import { useToast } from '../../hooks/use-toast';
-import { generateAIRoadmapFromText } from '../../../editor/utils/roadmap-generator';
+// import { generateAIRoadmapFromText } from '../../../editor/utils/roadmap-generator';
 import { renderFlowJSON } from '../../../editor/renderer/renderer';
 import { replaceChildren } from '../../lib/dom';
 import { readAIRoadmapStream } from '../../helper/read-stream';
@@ -131,11 +131,11 @@ export function GenerateRoadmap(props: GenerateRoadmapProps) {
   const isKeyOnly = IS_KEY_ONLY_ROADMAP_GENERATION;
 
   const renderRoadmap = async (roadmap: string) => {
-    const { nodes, edges } = generateAIRoadmapFromText(roadmap);
-    const svg = await renderFlowJSON({ nodes, edges });
-    if (roadmapContainerRef?.current) {
-      replaceChildren(roadmapContainerRef?.current, svg);
-    }
+    // const { nodes, edges } = generateAIRoadmapFromText(roadmap);
+    // const svg = await renderFlowJSON({ nodes, edges });
+    // if (roadmapContainerRef?.current) {
+    //   replaceChildren(roadmapContainerRef?.current, svg);
+    // }
   };
 
   const loadTermRoadmap = async (term: string) => {
@@ -253,7 +253,7 @@ export function GenerateRoadmap(props: GenerateRoadmapProps) {
 
     pageProgressMessage.set('Redirecting to Editor');
 
-    const { nodes, edges } = generateAIRoadmapFromText(generatedRoadmapContent);
+    // const { nodes, edges } = generateAIRoadmapFromText(generatedRoadmapContent);
 
     const { response, error } = await httpPost<{
       roadmapId: string;
