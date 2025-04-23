@@ -12,7 +12,7 @@ import react from '@astrojs/react';
 export default defineConfig({
   site: 'https://roadmap.sh/',
   experimental: {
-    rewriting: true,
+    // rewriting: true,
   },
   markdown: {
     shikiConfig: {
@@ -43,7 +43,7 @@ export default defineConfig({
       ],
     ],
   },
-  output: 'hybrid',
+  output: 'static',
   adapter: node({
     mode: 'standalone',
   }),
